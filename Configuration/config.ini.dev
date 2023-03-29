@@ -1,0 +1,11 @@
+[DB.Central]
+	address =
+	username=
+	password=
+	database=
+[DB.Analytics]
+	address =
+	username=
+	password=
+	database=
+[Theme]
