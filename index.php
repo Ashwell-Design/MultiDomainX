@@ -1,8 +1,10 @@
 <?php
-	define('__ROOT__', dirname(__FILE__));
-	define('QS_PAGE',		isset($_GET['page']) ? strtolower($_GET['page']) : 'index');
-	define('QS_SUBPAGE',	isset($_GET['subpage']) ? strtolower($_GET['subpage']) : null);
-	define('QS',			isset($_GET['q']) ? (strpos($_GET['q'], '/') ? explode('/', strtolower($_GET['q'])) : strtolower($_GET['q'])) : null);
+	define('__ROOT__',		dirname(__FILE__));
+	define('QS_PAGE',		isset($_GET['page'])	? strtolower($_GET['page']) : 'index');
+	define('QS_SUBPAGE',	isset($_GET['subpage'])	? strtolower($_GET['subpage']) : null);
+	define('QS',			isset($_GET['q'])		? (strpos($_GET['q'], '/') ? explode('/', strtolower($_GET['q'])) : strtolower($_GET['q'])) : null);
+	define('QS_FILE',		isset($_GET['file'])	? strtolower($_GET['file']) : "doesnt");
+	define('QS_EXT',		isset($_GET['ext'])		? strtolower($_GET['ext']) : "exist");
 
 	require_once('Classes.php');
 
@@ -12,19 +14,28 @@
 	$db_c = new DB($config['DB.Central']['address'], $config['DB.Central']['username'], $config['DB.Central']['password'], $config['DB.Central']['database']);
 	$db_a = new DB($config['DB.Analytics']['address'], $config['DB.Analytics']['username'], $config['DB.Analytics']['password'], $config['DB.Analytics']['database']);
 
+	$tools = new Tools($db_c);
 	if($db_c->num_rows(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", $_SERVER['SERVER_NAME'])) > 0) {
 		$site = new Website($_SERVER['SERVER_NAME'], $db_c);
 		$siteinfo = $site->info();
 		$siteTheme = $site->getTheme();
-
-		$theme = new Theme($siteinfo['Theme'], $db_c);
+		
+		$theme = new Theme($siteinfo['Theme'], $db_c, $siteinfo['ID']);
 		$themeinfo = $theme->info();
 
 		$page = new Page(QS_PAGE, QS_SUBPAGE, QS, $db_c);
-		$pageinfo = $page->info();
-
-		print($theme->generate());
+		if($page->id) {
+			$pageinfo = $page->info();
+			if(file_exists($file = __ROOT__."\Themes\\".$themeinfo['Location']."\assets\\".QS_FILE.".".QS_EXT)) {
+				header("Content-Type: " . $tools->get_mime_type(QS_FILE.".".QS_EXT) . "; charset=UTF-8;");
+				print(file_get_contents($file));
+			} else {
+				print($theme->generate());
+			}
+		} else {
+			header('HTTP/1.0 404 Not Found');
+		}
 	} else {
-		echo "false";
+		header('HTTP/1.0 500 Internal Server Error');
 	}
 ?>
