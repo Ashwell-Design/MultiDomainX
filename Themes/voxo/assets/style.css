@@ -1,3 +1,9 @@
+body {
+	top: 0px!important;
+}
+.skiptranslate {
+    display: none!important;
+}
 .section-col {
 	padding: unset;
 }

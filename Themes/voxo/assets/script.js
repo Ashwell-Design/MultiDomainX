@@ -1,4 +1,88 @@
+function googleTranslateElementInit() {
+	new google.translate.TranslateElement({
+		pageLanguage: 'en',
+		includedLanguages: 'en,es,fr',
+		layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+	}, 'googtrans');
+}
+
+// Define the changeLanguage function to handle language changes
+function changeLanguage(lang) {
+	// Get the current language from the cookie
+	var currentLang = getCookie('googtrans').split('/')[2];  
+	// Get the current domain
+	var currentDomain = location.hostname.split('.').slice(-2).join('.');
+	// Check if the language is English
+	if(lang === 'en' && currentLang !== 'en') {
+		// Remove the language cookies
+		deleteCookies('googtrans');
+		// Refresh the page to apply the language change
+		//location.reload();
+	} else if (lang !== currentLang) {
+		// Set the language cookie
+		document.cookie = 'googtrans=/en/' + lang + '; path=/;domain=.'+currentDomain;
+		// Refresh the page to apply the language change
+		location.reload();
+	}
+}
+function getCookie(name) {
+	var cookieArray = document.cookie.split(';');
+	for(var i = 0; i < cookieArray.length; i++) {
+		var cookie = cookieArray[i];
+		while (cookie.charAt(0) == ' ') {
+			cookie = cookie.substring(1);
+		}
+		if (cookie.indexOf(name + '=') == 0) {
+			return cookie.substring(name.length + 1, cookie.length);
+		}
+	}
+	return null;
+}
+function checkCookieExists(name) {
+	var cookies = document.cookie.split(';');
+	for(var i = 0; i < cookies.length; i++) {
+		var cookie = cookies[i].trim();
+		if(cookie.indexOf(name + '=') == 0) {
+			return true;
+		}
+	}
+	return false;
+}
+function deleteCookies(name) {
+	var cookies = document.cookie.split(';');
+	for (var i = 0; i < cookies.length; i++) {
+		var cookie = cookies[i];
+		while (cookie.charAt(0) == ' ') {
+			cookie = cookie.substring(1);
+		}
+		if(cookie.indexOf(name) == 0) {
+			var cookieName = cookie.split('=')[0];
+			document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/; domain=' + location.hostname;
+		}
+	}
+	if(checkCookieExists(name)) {
+		console.error('Error removing cookie');
+	} else {
+		console.log('Successfully removed cookie');
+	}
+}
+  
 $(document).ready(function(){
+	// Callback function to execute when mutations are observed
+	var callback = function(mutationsList, observer) {
+		// Check for specific attribute changes
+		mutationsList.forEach(function(mutation) {
+			if (mutation.type === 'attributes' && mutation.attributeName === 'lang') {
+				// Do something when the attribute changes
+				$('.langChanger').val(mutation.target.getAttribute('lang'));
+			}
+		});
+	};
+	// Create an observer instance linked to the callback function
+	var observer = new MutationObserver(callback);
+	// Start observing the target node for configured mutations
+	observer.observe($('html').get(0), { attributes: true, childList: false, subtree: false });
+
 	// Get the context menu element
 	const $contextmenu = $('#contextmenu');
 	if($contextmenu.length > 0) {

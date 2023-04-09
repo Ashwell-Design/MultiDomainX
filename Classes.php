@@ -218,7 +218,7 @@
 			$this->sections_path = __ROOT__.'\\Sections';
 		}
 		public function generate() {
-			return "<!DOCTYPE html><html lang=\"en-GB\"><head>{$this->generateHead()}</head><body>{$this->generateBody()}</body></html>";
+			return "<!DOCTYPE html><html lang=\"en\"><head>{$this->generateHead()}</head><body id=\"googtrans\">{$this->generateBody()}</body></html>";
 		}
 		// Halves
 		public function generateHead($head='') {
