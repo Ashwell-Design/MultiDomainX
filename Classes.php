@@ -199,9 +199,7 @@
 		public function __construct($website, $db) {
 			$this->db = $db;
 			$this->website = $website;
-		}
-		public function info() {
-			return $this->db->assoc(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", $this->website));
+			$this->info = $db->assoc(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", $this->website));
 		}
 		public function getTheme() {
 			$id = $this->db->array(sprintf("SELECT `Theme` FROM `Domains` WHERE `Domain`='%s'", $this->website))[0];
@@ -210,15 +208,14 @@
 	}
 	class Theme {
 		protected $id, $db, $dom_id;
-		public function __construct($id, $db, $dom_id) {
+		public function __construct($theme_id, $db, $dom_id, $page) {
 			$this->db = $db;
+			$this->info = $db->assoc(sprintf("SELECT * FROM `Themes` WHERE `id`='%s'", $theme_id));
+			$this->theme_id = $theme_id;
 			$this->domain_id = $dom_id;
-			$this->id = $id;
-			$this->name = $db->array(sprintf("SELECT `Name` FROM `Themes` WHERE `id`='%s'", $this->id))[0];
-			$this->path = __ROOT__.'\\Themes\\'.$this->name;
-		}
-		public function info() {
-			return $this->db->assoc(sprintf("SELECT * FROM `Themes` WHERE `ID`='%s'", $this->id));
+			$this->page = $page;
+			$this->theme_path = __ROOT__.'\\Themes\\'.$this->info['Name'];
+			$this->sections_path = __ROOT__.'\\Sections';
 		}
 		public function generate() {
 			return "<!DOCTYPE html><html lang=\"en-GB\"><head>{$this->generateHead()}</head><body>{$this->generateBody()}</body></html>";
@@ -250,8 +247,8 @@
 						if($this->db->num_rows($sql = "SELECT `Type`, `File` FROM `Sections` WHERE `Code`='$seccode'") == 1) {
 							[$type, $file] = $this->db->array($sql);
 							$body .= $tools->ParseShortcodes(
-								file_get_contents("{$this->path}\\$type\\$file.php"),
-								"{$this->path}\\$type\\$file.ini",
+								file_get_contents("{$this->sections_path}\\$type\\$file.html"),
+								"{$this->sections_path}\\$type\\$file.ini",
 								$this->domain_id);
 							unset($secext);
 						}
@@ -267,33 +264,35 @@
 		}
 		// Segments
 		public function getMeta($out='<!-- META -->') {
-			$out .= '<meta charset="utf-8"><meta content="ie=edge" http-eqiv="X-UA-Compatible"><meta name="viewport" content="width=device-width, initial-scale=1.0">';
-			$out .= sprintf('<meta name="title" content="">');
-			$out .= sprintf('<meta name="description" content="">');
-			$out .= sprintf('<meta name="keywords" content="">');
-			$out .= sprintf('<meta name="theme-color" content="">');
+			$out .= sprintf('<meta charset="utf-8">');
+			$out .= sprintf('<meta content="ie=edge" http-eqiv="X-UA-Compatible">');
+			$out .= sprintf('<meta name="viewport" content="width=device-width, initial-scale=1.0">');
+			$out .= sprintf('<meta name="title" content="%s">', $this->page->info['Title']);
+			$out .= sprintf('<meta name="description" content="%s">', $this->page->info['Description']);
+			$out .= sprintf('<meta name="author" content="%s">', "Ashwell Design");
+			$out .= sprintf('<meta name="keywords" content="%s">', $this->page->info['Keywords']);
 			return $out;
 		}
 		public function getTitle($out='<!-- TITLE -->') {
-			return $out .= "<title>{$this->db->array(sprintf("SELECT `Title` FROM `Pages` WHERE `ID`='%s'", $this->id))[0]}</title>";
+			return $out .= "<title>{$this->page->info['Title']}</title>";
 		}
 		public function getStyles($out='<!-- STYLES -->') {
-			foreach(json_decode(file_get_contents("{$this->path}\\styles.json"), true) as $style) {
+			foreach(json_decode(file_get_contents("{$this->theme_path}\\styles.json"), true) as $style) {
 				$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $style['URL'], $style['Hash'], $style['URL'], $style['Hash']);
 			}
 			return $out;
 		}
 		public function getScripts($out='<!-- SCRIPTS -->') {
-			foreach(json_decode(file_get_contents("{$this->path}\\scripts.json"), true) as $script) {
+			foreach(json_decode(file_get_contents("{$this->theme_path}\\scripts.json"), true) as $script) {
 				$out .= sprintf("<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $script['URL'], $script['Hash']);
 			}
 			return $out;
 		}
 		public function getCustomHead($out='<!-- CUSTOM HEAD -->') {
-			return $out .= $this->db->array(sprintf("SELECT `Head` FROM `Pages` WHERE `ID`='%s'", $this->id))[0];
+			return $out .= $this->page->info['Head'];
 		}
 		public function getFavicon($out = '<!-- FAVICON -->') {
-			$image = '#';//$this->db->array(sprintf("SELECT `Styles` FROM `Pages` WHERE `ID`='%s'", $this->id))[0];
+			$image = '#';//$this->db->array(sprintf("SELECT `Styles` FROM `Pages` WHERE `ID`='%s'", $this->theme_id))[0];
 			return $out .= "<link rel=\"icon\" href=\"$image\" type=\"image/png\">";
 		}
 	}
@@ -305,13 +304,15 @@
 			$this->subpage = $subpage;
 			$this->query = $query;
 			if($this->db->array(sprintf("SELECT `ID` FROM `Pages` WHERE `Page`='%s' AND `Subpage`='%s'", $page, $subpage)) != "") {
-				$this->id = $this->db->array(sprintf("SELECT `ID` FROM `Pages` WHERE `Page`='%s' AND `Subpage`='%s'", $page, $subpage))[0];
+				$this->page_id = $this->db->array(sprintf("SELECT `ID` FROM `Pages` WHERE `Page`='%s' AND `Subpage`='%s'", $page, $subpage))[0];
 			} else {
-				$this->id = false;
+				$this->page_id = false;
 			}
-		}
-		public function info() {
-			return $this->db->assoc(sprintf("SELECT * FROM `Pages` WHERE `Page`='%s' AND `Subpage`='%s'", $this->page, $this->subpage));
+			if($this->page_id) {
+				$this->info = $this->db->assoc(sprintf("SELECT * FROM `Pages` WHERE `ID`='%s'", $this->page_id));
+			} else {
+				$this->info = false;
+			}
 		}
 	}
 ?>

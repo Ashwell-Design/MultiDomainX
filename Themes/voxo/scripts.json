@@ -16,12 +16,20 @@
 		"Tags": ["jQuery", "JS", "Library"],
 		"Hash": "sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
 	}, {
+		"Name": "Masonry",
+		"Description": "Masonry is a JavaScript grid layout library.",
+		"URL": "https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js",
+		"Image": "https://masonry.desandro.com/images/masonry-logo.svg",
+		"Version": "4.2.2",
+		"Tags": ["Masonry", "JS", "Library", "Grid", "Layout"],
+		"Hash": "sha512-JRlcvSZAXT8+5SQQAvklXGJuxXTouyq8oIMaYERZQasB8SBDHZaUbeASsJWpk0UUrf89DP3/aefPPrlMR1h1yQ=="
+	}, {
 		"Name": "script.js",
-		"Description": "script.js",
+		"Description": "script.js is a JavaScript library that makes it easy to load and execute JavaScript files.",
 		"URL": "./script.js",
-		"Image": "script.js",
+		"Image": "https://raw.githubusercontent.com/ded/script.js/master/logo.png",
 		"Version": "1.0.0",
 		"Tags": ["script.js", "script", "js", "javascript"],
-		"Hash": "sha512-YhQA1W8C58W61MWcJIubsbd7mGReS258AxJLXoj3loNqYr4hSPR/Lhm5FSYNA0G6pgLT7+wtSFNSt1c22UCSnA=="
+		"Hash": "sha512-/0V724qyOK7PbZm8npA+gHnZXuVCn2+EGzKlHgbvjuQaXAMm1/0DpiczQxJI6vqR4KTNR3dYVj3EzmZcJFw3nQ=="
 	}
 ]

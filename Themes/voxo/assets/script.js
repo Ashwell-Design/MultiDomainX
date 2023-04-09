@@ -93,6 +93,32 @@ $(document).ready(function(){
 			// prevent the default context menu from showing
 			event.preventDefault();
 
+			// Check if the target element is a link
+			const $link = $target.closest('[href]');
+			const isLink = $link.length > 0 && ($link[0].nodeName === 'A' || $link.closest('a').length > 0);
+
+			// Check if the target element is a text input or selected text
+			const selection = window.getSelection();
+			const hasSelection = selection && selection.toString().length > 0;
+			const isTextInput = $target.is('input[type="text"], textarea');
+
+			if(isLink) {
+				$contextmenu.find('li[for=links]').show();
+				$contextmenu.find('li[for=browser]').hide();
+				$contextmenu.find('li[for=text]').hide();
+				$contextmenu.find('li[for=default]').show();
+			} else if(hasSelection || isTextInput) {
+				$contextmenu.find('li[for=links]').hide();
+				$contextmenu.find('li[for=browser]').hide();
+				$contextmenu.find('li[for=text]').show();
+				$contextmenu.find('li[for=default]').show();
+			} else {
+				$contextmenu.find('li[for=links]').hide();
+				$contextmenu.find('li[for=browser]').show();
+				$contextmenu.find('li[for=text]').hide();
+				$contextmenu.find('li[for=default]').show();
+			}
+
 			// Calculate the maximum allowable position of the context menu and the position of the context menu based on the cursor position
 			const contextMenuWidth = $contextmenu.outerWidth();
 			const contextMenuHeight = $contextmenu.outerHeight();
@@ -109,31 +135,7 @@ $(document).ready(function(){
 			const top = y <= maxTop ? y : maxTop;
 			const left = x <= maxLeft ? x : maxLeft;
 
-			// Check if the target element is a link
-			const $link = $target.closest('[href]');
-			const isLink = $link.length > 0 && ($link[0].nodeName === 'A' || $link.closest('a').length > 0);
-
-			// Check if the target element is a text input or selected text
-			const selection = window.getSelection();
-			const hasSelection = selection && selection.toString().length > 0;
-			const isTextInput = $target.is('input[type="text"], textarea');
-
-			if(isLink) {
-				$contextmenu.find('div[for=links]').show();
-				$contextmenu.find('div[for=browser]').hide();
-				$contextmenu.find('div[for=text]').hide();
-				$contextmenu.find('div[for=default]').show();
-			} else if(hasSelection || isTextInput) {
-				$contextmenu.find('div[for=links]').hide();
-				$contextmenu.find('div[for=browser]').hide();
-				$contextmenu.find('div[for=text]').show();
-				$contextmenu.find('div[for=default]').show();
-			} else {
-				$contextmenu.find('div[for=links]').hide();
-				$contextmenu.find('div[for=browser]').show();
-				$contextmenu.find('div[for=text]').hide();
-				$contextmenu.find('div[for=default]').show();
-			}
+			// Show the context menu
 			$contextmenu.css({
 				top: top,
 				left: left

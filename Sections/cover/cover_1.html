@@ -1,0 +1,54 @@
+<style>
+
+.cover-container {
+  max-width: 42em;
+}
+
+
+/*
+ * Header
+ */
+
+.nav-masthead .nav-link {
+  color: rgba(255, 255, 255, .5);
+  border-bottom: .25rem solid transparent;
+}
+
+.nav-masthead .nav-link:hover,
+.nav-masthead .nav-link:focus {
+  border-bottom-color: rgba(255, 255, 255, .25);
+}
+
+.nav-masthead .nav-link + .nav-link {
+  margin-left: 1rem;
+}
+
+.nav-masthead .active {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+</style>
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column" style="height:100vh!important;">
+	<header class="mb-auto">
+		<div>
+			<h3 class="float-md-start mb-0"><%[g:company name]%></h3>
+			<nav class="nav nav-masthead justify-content-center float-md-end">
+				<%[l:nav]%>
+			</nav>
+		</div>
+	</header>
+	<main class="mb-auto px-3">
+		<h1 class="text-<%[t:title_color]%> text-<%[t:title_align]%> fs-<%[t:title_size]%>"><%[t:title]%></h1>
+		<p class="lead text-<%[t:text_color]%> text-<%[t:text_align]%> fs-<%[t:text_size]%>"><%[t:text]%></p>
+		<p class="lead text-<%[t:link_align]%>">
+			<a href="<%[t:link_url]%>" class="btn btn-lg btn-<%[t:link_color]%> fw-bold fs-<%[t:link_size]%>"><%[t:link]%></a>
+		</p>
+	</main>
+
+	<footer class="mx-auto">
+		<a href="#<%[t:scrollto_seection]%>" class="text-primary" style="text-decoration:none; color:inherit;">
+			<i class="fa-solid fa-2x fa-chevron-down fa-bounce"></i>
+		</a>
+	</footer>
+</div>
