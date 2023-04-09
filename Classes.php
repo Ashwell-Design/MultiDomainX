@@ -15,20 +15,20 @@
 				[$type, $string] = explode(':', strtolower($matches[1]), 2);
 				switch(strtolower($type)) {
 					case "g": // GLOBAL VARIABLE
-						return $this->db->array("SELECT `Value` FROM `global vars` WHERE `Name`='$string'")[0];
+						return $this->db->array("SELECT `Value` FROM `Global vars` WHERE `Name`='$string'")[0];
 					case "s": // STRING
 						return strtoupper($string);
 					case "l": // LIST
 						if($string == 'nav') {
 							$links = '';
-							$q = $this->db->query("SELECT `Name`, `Url` FROM `pages` WHERE `Domain`=$dom_id AND `Menu?`=1");
+							$q = $this->db->query("SELECT `Name`, `Url` FROM `Pages` WHERE `Domain`=$dom_id AND `Menu?`=1");
 							while($item = $this->db->array($q)) {
 								[$name, $url] = $item;
 								$links .= "<li class=\"nav-item\"><a href=\"$url\" class=\"nav-link\" style=\"color: inherit;\" aria-current=\"page\">$name</a></li>";
 							}
 							return $links;
 						} else {
-							$items = explode(';', $this->db->array("SELECT `Value` FROM `global lists` WHERE `Name`='$string'")[0]);
+							$items = explode(';', $this->db->array("SELECT `Value` FROM `Global lists` WHERE `Name`='$string'")[0]);
 							$links = '';
 							foreach($items as $item) {
 								if($item != '') {
@@ -140,64 +140,58 @@
 		}
 	}
 	class DB {
-		protected $address, $username, $password, $database, $sql;
-		public function __construct($address, $username, $password, $database) {
-			$this->address = $address;
-			$this->username = $username;
-			$this->password = $password;
-			$this->database = $database;
-			$this->sql = mysqli_connect($address, $username, $password, $database);
-		}
-		public function close() {
-			return mysqli_close($this->sql);
+		protected $db;
+		public function __construct($file) {
+			$this->db = new Sqlite3(__ROOT__."\\$file.sqlite");
 		}
 
 		public function query($string) {
-			return mysqli_query($this->sql, $string);
+			return $this->db->query($string);
 		}
 		public function execute($string) {
-			if($string instanceof mysqli_result) {
-				if(mysqli_warning_count($this->sql)) {
+			if ($string instanceof SQLite3Result) {
+				if ($this->lastErrorMsg() !== 'not an error') {
 					return false;
 				} else {
 					return true;
 				}
 			} else {
-				$this->query($string);
-				if(mysqli_warning_count($this->sql)) {
+				$result = $this->query($string);
+				if ($this->lastErrorMsg() !== 'not an error') {
 					return false;
 				} else {
 					return true;
 				}
 			}
-		}
+		}		
 		public function array($string) {
-			if($string instanceof mysqli_result) {
-				return mysqli_fetch_array($string);
+			if($string instanceof SQLite3Result) {
+				return ($string)->fetchArray();
 			} else {
-				return mysqli_fetch_array($this->query($string));
+				return ($this->query($string))->fetchArray();
 			}
 		}
 		public function assoc($string) {
-			if($string instanceof mysqli_result) {
-				return mysqli_fetch_assoc($string);
+			if($string instanceof SQLite3Result) {
+				return ($string)->fetchArray(SQLITE3_ASSOC);
 			} else {
-				return mysqli_fetch_assoc($this->query($string));
+				return ($this->query($string))->fetchArray(SQLITE3_ASSOC);
 			}
 		}
 		public function row($string) {
-			if($string instanceof mysqli_result) {
-				return mysqli_fetch_row($string);
+			if($string instanceof SQLite3Result) {
+				return sqlite3_fetch_row($string);
 			} else {
-				return mysqli_fetch_row($this->query($string));
+				return sqlite3_fetch_row($this->query($string));
 			}
 		}
 		public function num_rows($string) {
-			if($string instanceof mysqli_result) {
-				return mysqli_num_rows($string);
-			} else {
-				return mysqli_num_rows($this->query($string));
+			$q = $this->query($string);
+			$count = 0;
+			while ($row = $this->array($q)) {
+				$count++;
 			}
+			return $count;
 		}
 	}
 	class Website {
@@ -227,7 +221,7 @@
 			return $this->db->assoc(sprintf("SELECT * FROM `Themes` WHERE `ID`='%s'", $this->id));
 		}
 		public function generate() {
-			return "<!DOCTYPE html><html lang=\"en-GB\" data-bs-theme=\"dark\"><head>{$this->generateHead()}</head><body>{$this->generateBody()}</body></html>";
+			return "<!DOCTYPE html><html lang=\"en-GB\"><head>{$this->generateHead()}</head><body>{$this->generateBody()}</body></html>";
 		}
 		// Halves
 		public function generateHead($head='') {
@@ -249,15 +243,15 @@
 				array_shift($columns);
 				foreach($columns as $column) {
 					[$width, $section_string] = explode(';', $column);
-					$body .= "<div class=\"col-md-$width\" id=\"$cnt\">";
+					$body .= "<div class=\"col-md-$width section-col\" id=\"$cnt\">";
 					$sections = explode(',', $section_string);
 					foreach($sections as $section) {
 						[$seccode, $secext] = explode(':', $section);
-						if($this->db->num_rows("SELECT * FROM `sections` WHERE `Code`='$seccode'") == 1) {
-							$row = $this->db->assoc("SELECT * FROM `sections` WHERE `Code`='$seccode'");
+						if($this->db->num_rows($sql = "SELECT `Type`, `File` FROM `Sections` WHERE `Code`='$seccode'") == 1) {
+							[$type, $file] = $this->db->array($sql);
 							$body .= $tools->ParseShortcodes(
-								file_get_contents("{$this->path}\\{$row['Type']}\\{$row['File']}.php"),
-								"{$this->path}\\{$row['Type']}\\{$row['File']}.ini",
+								file_get_contents("{$this->path}\\$type\\$file.php"),
+								"{$this->path}\\$type\\$file.ini",
 								$this->domain_id);
 							unset($secext);
 						}
@@ -281,7 +275,7 @@
 			return $out;
 		}
 		public function getTitle($out='<!-- TITLE -->') {
-			return $out .= "<title>{$this->db->array(sprintf("SELECT `Title` FROM `pages` WHERE `ID`='%s'", $this->id))[0]}</title>";
+			return $out .= "<title>{$this->db->array(sprintf("SELECT `Title` FROM `Pages` WHERE `ID`='%s'", $this->id))[0]}</title>";
 		}
 		public function getStyles($out='<!-- STYLES -->') {
 			foreach(json_decode(file_get_contents("{$this->path}\\styles.json"), true) as $style) {
@@ -296,10 +290,10 @@
 			return $out;
 		}
 		public function getCustomHead($out='<!-- CUSTOM HEAD -->') {
-			return $out .= $this->db->array(sprintf("SELECT `Head` FROM `pages` WHERE `ID`='%s'", $this->id))[0];
+			return $out .= $this->db->array(sprintf("SELECT `Head` FROM `Pages` WHERE `ID`='%s'", $this->id))[0];
 		}
 		public function getFavicon($out = '<!-- FAVICON -->') {
-			$image = '#';//$this->db->array(sprintf("SELECT `Styles` FROM `pages` WHERE `ID`='%s'", $this->id))[0];
+			$image = '#';//$this->db->array(sprintf("SELECT `Styles` FROM `Pages` WHERE `ID`='%s'", $this->id))[0];
 			return $out .= "<link rel=\"icon\" href=\"$image\" type=\"image/png\">";
 		}
 	}

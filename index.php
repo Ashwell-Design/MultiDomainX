@@ -11,8 +11,8 @@
 	$cnf = new Config(__ROOT__.'\Configuration\config.ini');
 	$config = $cnf->read();
 
-	$db_c = new DB($config['DB.Central']['address'], $config['DB.Central']['username'], $config['DB.Central']['password'], $config['DB.Central']['database']);
-	$db_a = new DB($config['DB.Analytics']['address'], $config['DB.Analytics']['username'], $config['DB.Analytics']['password'], $config['DB.Analytics']['database']);
+	$db_c = new DB($config['Databases']['Central']);
+	$db_a = new DB($config['Databases']['Metrics']);
 
 	$tools = new Tools($db_c);
 	if($db_c->num_rows(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", $_SERVER['SERVER_NAME'])) > 0) {

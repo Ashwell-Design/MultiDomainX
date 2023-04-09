@@ -1,0 +1,11 @@
+{
+	"sqltools.connections": [
+		{
+			"previewLimit": 50,
+			"driver": "SQLite",
+			"database": "${workspaceFolder:MultiDomainX}/central.sqlite",
+			"name": "MultiDomainX Central",
+			"group": "MultiDomainX"
+		}
+	]
+}
