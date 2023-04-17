@@ -10,7 +10,7 @@
 			define("HOST",			explode('/', $payload['full_name'])[0]);
 			define("REPO",			explode('/', $payload['full_name'])[1]);
 			define("SPUR",			explode('/', $payload['ref'])[2]);
-			define("HOST_DIR",		ROOT_DIR."/".HOST
+			define("HOST_DIR",		ROOT_DIR."/".HOST);
 			define("REPO_DIR",		HOST_DIR."/".REPO);
 			define("SPUR_DIR",		REPO_DIR."/".SPUR);
 				   
