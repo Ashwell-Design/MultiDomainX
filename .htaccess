@@ -5,11 +5,11 @@
 	</Limit>
 #
 #	CORS
-	<IfModule mod_headers.c>
-		Access-Control-Allow-Credentials: true
-		Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE
-		Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token
-	</IfModule>
+#	<IfModule mod_headers.c>
+#		Access-Control-Allow-Credentials: true
+#		Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE
+#		Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token
+#	</IfModule>
 #
 #	ACCEPT WEBP
 	<ifModule mod_rewrite.c>
