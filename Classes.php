@@ -1,9 +1,4 @@
 <?php
-	foreach (glob(__ROOT__.'\Libs\*.php') as $file) {
-		if($file != __FILE__) {
-			require_once($file);
-		}
-	}
 	class Tools {
 		protected $db;
 		public function __construct($db) {
@@ -142,7 +137,7 @@
 	class DB {
 		protected $db;
 		public function __construct($file) {
-			$this->db = new Sqlite3(__ROOT__."\\$file.sqlite");
+			$this->db = new Sqlite3(__ROOT__."/$file.sqlite");
 		}
 
 		public function query($string) {
@@ -214,8 +209,8 @@
 			$this->theme_id = $theme_id;
 			$this->domain_id = $dom_id;
 			$this->page = $page;
-			$this->theme_path = __ROOT__.'\\Themes\\'.$this->info['Name'];
-			$this->sections_path = __ROOT__.'\\Sections';
+			$this->theme_path = __ROOT__.'/Themes/'.$this->info['Name'];
+			$this->sections_path = __ROOT__.'/Sections';
 		}
 		public function generate() {
 			return "<!DOCTYPE html><html lang=\"en\"><head>{$this->generateHead()}</head><body id=\"googtrans\">{$this->generateBody()}</body></html>";
@@ -247,8 +242,8 @@
 						if($this->db->num_rows($sql = "SELECT `Type`, `File` FROM `Sections` WHERE `Code`='$seccode'") == 1) {
 							[$type, $file] = $this->db->array($sql);
 							$body .= $tools->ParseShortcodes(
-								file_get_contents("{$this->sections_path}\\$type\\$file.html"),
-								"{$this->sections_path}\\$type\\$file.ini",
+								file_get_contents("{$this->sections_path}/$type/$file.html"),
+								"{$this->sections_path}/$type/$file.ini",
 								$this->domain_id);
 							unset($secext);
 						}
@@ -277,13 +272,13 @@
 			return $out .= "<title>{$this->page->info['Title']}</title>";
 		}
 		public function getStyles($out='<!-- STYLES -->') {
-			foreach(json_decode(file_get_contents("{$this->theme_path}\\styles.json"), true) as $style) {
+			foreach(json_decode(file_get_contents("{$this->theme_path}/styles.json"), true) as $style) {
 				$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $style['URL'], $style['Hash'], $style['URL'], $style['Hash']);
 			}
 			return $out;
 		}
 		public function getScripts($out='<!-- SCRIPTS -->') {
-			foreach(json_decode(file_get_contents("{$this->theme_path}\\scripts.json"), true) as $script) {
+			foreach(json_decode(file_get_contents("{$this->theme_path}/scripts.json"), true) as $script) {
 				$out .= sprintf("<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $script['URL'], $script['Hash']);
 			}
 			return $out;
