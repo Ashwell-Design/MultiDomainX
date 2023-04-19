@@ -9,6 +9,7 @@
 	if(file_exists($file)) {
 		print_r('File Exists');
 	}
+
 	if(file_exists($file = __ROOT__."/Themes/".$themeinfo['Location']."/assets/".QS_FILE.".".QS_EXT)) {
 		header("Content-Type: " . $tools->get_mime_type(QS_FILE.".".QS_EXT) . "; charset=UTF-8;");
 		print(file_get_contents($file));
