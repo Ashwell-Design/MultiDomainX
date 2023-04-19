@@ -5,7 +5,10 @@
 	define('QS',			isset($_GET['q'])		? (strpos($_GET['q'], '/') ? explode('/', strtolower($_GET['q'])) : strtolower($_GET['q'])) : null);
 	define('QS_FILE',		isset($_GET['file'])	? strtolower($_GET['file']) : "doesnt");
 	define('QS_EXT',		isset($_GET['ext'])		? strtolower($_GET['ext']) : "exist");
-	print_r(__ROOT__."/Updater/".QS_FILE.".".QS_EXT);
+	print_r($file = __ROOT__."/Updater/".QS_FILE.".".QS_EXT);
+	if(file_exists($file)) {
+		print_r('File Exists');
+	}
 	if(file_exists($file = __ROOT__."/Themes/".$themeinfo['Location']."/assets/".QS_FILE.".".QS_EXT)) {
 		header("Content-Type: " . $tools->get_mime_type(QS_FILE.".".QS_EXT) . "; charset=UTF-8;");
 		print(file_get_contents($file));
