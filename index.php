@@ -18,17 +18,13 @@
 		if($page->page_id) {
 			$theme = new Theme($website->info['Theme'], $db_c, $website->info['ID'], $page);
 			$themeinfo = $theme->info;
-			
 			if(file_exists($file = __ROOT__."/Themes/".$themeinfo['Location']."/assets/".QS_FILE.".".QS_EXT)) {
 				header("Content-Type: " . $tools->get_mime_type(QS_FILE.".".QS_EXT) . "; charset=UTF-8;");
 				print(file_get_contents($file));
-				die();
 			} elseif(file_exists($file = __ROOT__."/Updater/".QS_FILE.".".QS_EXT)) {
 				include_once($file);
-				die();
 			} else {
 				print($theme->generate());
-				die();
 			}
 		} else {
 			header('HTTP/1.0 404 Not Found');
