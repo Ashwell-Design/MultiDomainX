@@ -24,12 +24,20 @@
 		"Tags": ["Font Awesome", "CSS", "JS", "Framework", "Responsive", "Mobile", "Web"],
 		"Hash": "sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
 	},{
+		"Name": "colors.css",
+		"Description": "colors.css",
+		"URL": "./colors.css",
+		"Image": "./colors.css",
+		"Version": "1.0.0",
+		"Tags": ["colors", "css"],
+		"Hash": "sha512-X7Lni/gq6+5LSfRkUdZi6+nFhLGhaaUEbItMbXqti+tdYn5HvnTt0rD0Zj0sOS7rcY3F2kwYsXxo+wT1aL1Wsg=="
+	},{
 		"Name": "style.css",
 		"Description": "style.css",
 		"URL": "./style.css",
 		"Image": "./style.css",
 		"Version": "1.0.0",
 		"Tags": ["style", "css"],
-		"Hash": "sha512-q5Ty5b8zxbcGeNTd2RbNVJm9NACsiLubCdNESM5Y3LfK8cDMIdgjJr4ddqez+LScpsXeDGPrR9tu1l1Y9pkuUw=="
+		"Hash": "sha512-hr1K7hnCdN30wP23ms604n7Pzv1y/ljFAfzcJm3jvCuCVDfB+g5iCVUq/A+RxSoN/D+Qw5CWTHvzzvebkqIcnQ=="
 	}
 ]

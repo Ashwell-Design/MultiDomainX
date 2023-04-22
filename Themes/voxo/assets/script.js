@@ -1,73 +1,57 @@
 function googleTranslateElementInit() {
 	new google.translate.TranslateElement({
 		pageLanguage: 'en',
-		includedLanguages: 'en,es,fr',
+		includedLanguages: 'en,ar,bn,de,es,fa,fr,gu,hi,hu,id,it,ja,jv,ko,ms,mr,pl,pt,ro,ru,sw,ta,te,th,tr,uk,ur,vi,zh-CN,zh-TW,am,az,be,bg,ca,cs,cy,da,el,et,eu,fi,ga,gl,he,hr,ht,is,ka,km,kn',
 		layout: google.translate.TranslateElement.InlineLayout.SIMPLE
 	}, 'googtrans');
 }
-
 // Define the changeLanguage function to handle language changes
 function changeLanguage(lang) {
-	// Get the current language from the cookie
-	var currentLang = getCookie('googtrans').split('/')[2];  
-	// Get the current domain
-	var currentDomain = location.hostname.split('.').slice(-2).join('.');
-	// Check if the language is English
-	if(lang === 'en' && currentLang !== 'en') {
-		// Remove the language cookies
-		deleteCookies('googtrans');
-		// Refresh the page to apply the language change
-		//location.reload();
-	} else if (lang !== currentLang) {
+	if($('.skiptranslate').contents().find('a[title=Close]').length > 0) {
+		($('.skiptranslate').contents().find('a[title=Close]')[0]).click();
+	}
+	if(lang != "en") {
+		// Stop the Google Translate script
+		window.google.translate.TranslateElement = null;
 		// Set the language cookie
-		document.cookie = 'googtrans=/en/' + lang + '; path=/;domain=.'+currentDomain;
+		document.cookie = 'googtrans=/en/' + lang + '; path=/;';
 		// Refresh the page to apply the language change
 		location.reload();
 	}
 }
-function getCookie(name) {
-	var cookieArray = document.cookie.split(';');
-	for(var i = 0; i < cookieArray.length; i++) {
-		var cookie = cookieArray[i];
-		while (cookie.charAt(0) == ' ') {
-			cookie = cookie.substring(1);
-		}
-		if (cookie.indexOf(name + '=') == 0) {
-			return cookie.substring(name.length + 1, cookie.length);
-		}
-	}
-	return null;
+
+function loadElem(elem) {
+	setTimeout(function() {
+		$(elem).attr('preload-status', 'Loaded');
+	}, 10000);
 }
-function checkCookieExists(name) {
-	var cookies = document.cookie.split(';');
-	for(var i = 0; i < cookies.length; i++) {
-		var cookie = cookies[i].trim();
-		if(cookie.indexOf(name + '=') == 0) {
-			return true;
-		}
-	}
-	return false;
-}
-function deleteCookies(name) {
-	var cookies = document.cookie.split(';');
-	for (var i = 0; i < cookies.length; i++) {
-		var cookie = cookies[i];
-		while (cookie.charAt(0) == ' ') {
-			cookie = cookie.substring(1);
-		}
-		if(cookie.indexOf(name) == 0) {
-			var cookieName = cookie.split('=')[0];
-			document.cookie = cookieName + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/; domain=' + location.hostname;
-		}
-	}
-	if(checkCookieExists(name)) {
-		console.error('Error removing cookie');
-	} else {
-		console.log('Successfully removed cookie');
-	}
-}
-  
+
 $(document).ready(function(){
+	$('[preload=true]').each(function() {
+		var height = this.clientHeight;
+		this.style.height = height + 'px';
+		$(this).attr('preload-status', 'Loading');
+		loadElem(this);
+	});
+	$(document).on('click keydown', (event) => {
+		const $target = $(event.target);
+		const $dropdownMenu = $('.dropdown-menu.lang');
+		if($('.dropdown-menu.lang').is(':visible')) {
+			if ($target.closest($dropdownMenu).length) {
+				if($target.is('.dropdown-item')) {
+					changeLanguage($target.data('value'));
+				}
+			} else {
+			  // User clicked outside the menu
+			  $dropdownMenu.hide();
+			}
+		} else {
+			if($target.is('.lang-dropdown')) {
+				$('.dropdown-menu.lang').toggle();
+			}
+		}
+	});
+
 	// Callback function to execute when mutations are observed
 	var callback = function(mutationsList, observer) {
 		// Check for specific attribute changes
@@ -75,6 +59,13 @@ $(document).ready(function(){
 			if (mutation.type === 'attributes' && mutation.attributeName === 'lang') {
 				// Do something when the attribute changes
 				$('.langChanger').val(mutation.target.getAttribute('lang'));
+				if(mutation.target.getAttribute('lang') !== 'en') {
+					$('.langChanger').hide();
+					$('.resetLang').show();
+				} else {
+					$('.langChanger').show();
+					$('.resetLang').hide();
+				}
 			}
 		});
 	};
