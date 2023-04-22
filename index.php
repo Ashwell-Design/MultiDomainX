@@ -13,6 +13,7 @@
 	$db_a = new DB($config['Databases']['Metrics']);
 	$tools = new Tools($db_c);
 	print("Here: 1");
+	print($_SERVER['SERVER_NAME']);
 	if($db_c->num_rows(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", $_SERVER['SERVER_NAME'])) > 0) {
 		print("Here: 2");
 		$website = new Website($_SERVER['SERVER_NAME'], $db_c);
