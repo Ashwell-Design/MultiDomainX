@@ -12,23 +12,24 @@
 	$db_c = new DB($config['Databases']['Central']);
 	$db_a = new DB($config['Databases']['Metrics']);
 	$tools = new Tools($db_c);
+	print("Here: 1");
 	if($db_c->num_rows(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", $_SERVER['SERVER_NAME'])) > 0) {
-		print("Here: 1");
+		print("Here: 2");
 		$website = new Website($_SERVER['SERVER_NAME'], $db_c);
 		$page = new Page(QS_PAGE, QS_SUBPAGE, QS, $db_c);
 		if($page->page_id) {
-			print("Here: 2");
+			print("Here: 3");
 			$theme = new Theme($website->info['Theme'], $db_c, $website->info['ID'], $page);
 			$themeinfo = $theme->info;
 			if(file_exists($file = __ROOT__."/Themes/".$themeinfo['Location']."/assets/".QS_FILE.".".QS_EXT)) {
-				print("Here: 3");
+				print("Here: 4");
 				header("Content-Type: " . $tools->get_mime_type(QS_FILE.".".QS_EXT) . "; charset=UTF-8;");
 				print(file_get_contents($file));
 			} elseif(file_exists($file = __ROOT__."/".QS_FILE.".".QS_EXT)) {
-				print("Here: 4");
+				print("Here: 5");
 				require_once($file);
 			} else {
-				print("Here: 5");
+				print("Here: 6");
 				print($theme->generate());
 			}
 		} else {
