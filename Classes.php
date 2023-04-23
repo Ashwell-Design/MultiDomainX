@@ -127,6 +127,11 @@
 		}
 
 		function read() {
+			if(!file_exists($this->file)) {
+				if(!copy($this->file.'.dev', $this->file)) { 
+					die("unable to copy configiration file. please contact the administrator.");
+				}
+			}
 			return parse_ini_file($this->file, true);
 		}
 		function write($arr) {
