@@ -13,7 +13,7 @@
 	$db_a = new DB($config['Databases']['Metrics']);
 	$tools = new Tools($db_c);
 	print("Here: 1 <br />");
-	print("Current domain".$_SERVER['SERVER_NAME']. "<br />");
+	print("Current domain: ".$_SERVER['SERVER_NAME']. "<br />");
 	print("Allowed domains: ".implode(", ", $db_c->array(sprintf("SELECT `Domain` FROM `Domains`"))). "<br />");
 	if($db_c->num_rows(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", $_SERVER['SERVER_NAME'])) > 0) {
 		print("Here: 2 <br />");
