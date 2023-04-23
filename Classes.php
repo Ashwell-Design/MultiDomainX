@@ -278,13 +278,21 @@
 		}
 		public function getStyles($out='<!-- STYLES -->') {
 			foreach(json_decode(file_get_contents("{$this->theme_path}/styles.json"), true) as $style) {
-				$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $style['URL'], $style['Hash'], $style['URL'], $style['Hash']);
+				if(isset($style['Hash'])) {
+					$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $style['URL'], $style['Hash'], $style['URL'], $style['Hash']);
+				} else {
+					$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $style['URL'], $style['URL']);
+				}
 			}
 			return $out;
 		}
 		public function getScripts($out='<!-- SCRIPTS -->') {
 			foreach(json_decode(file_get_contents("{$this->theme_path}/scripts.json"), true) as $script) {
-				$out .= sprintf("<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $script['URL'], $script['Hash']);
+				if(isset($script['Hash'])) {
+					$out .= sprintf("<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $script['URL'], $script['Hash']);
+				} else {
+					$out .= sprintf("<script src=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $script['URL']);
+				}
 			}
 			return $out;
 		}
