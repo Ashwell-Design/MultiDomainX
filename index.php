@@ -15,7 +15,7 @@
 	print("Here: 1");
 	print("Current domain".$_SERVER['SERVER_NAME']);
 	print_r("Allowed domains: ");
-	print_r($db_c->array(sprintf("SELECT * FROM `Domains`")));
+	print_r($db_c->array(sprintf("SELECT `Domain` FROM `Domains`")));
 	if($db_c->num_rows(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", $_SERVER['SERVER_NAME'])) > 0) {
 		print("Here: 2");
 		$website = new Website($_SERVER['SERVER_NAME'], $db_c);
