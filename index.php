@@ -3,8 +3,8 @@
 	define('QS_PAGE',		isset($_GET['page'])	? strtolower($_GET['page']) : 'index');
 	define('QS_SUBPAGE',	isset($_GET['subpage'])	? strtolower($_GET['subpage']) : null);
 	define('QS',			isset($_GET['q'])		? (strpos($_GET['q'], '/') ? explode('/', strtolower($_GET['q'])) : strtolower($_GET['q'])) : null);
-	define('QS_FILE',		isset($_GET['file'])	? strtolower($_GET['file']) : "doesnt");
-	define('QS_EXT',		isset($_GET['ext'])		? strtolower($_GET['ext']) : "exist");
+	define('QS_FILE',		$_GET['file']);
+	define('QS_EXT',		$_GET['ext']);
 	print_r("${QS_FILE}.${QS_EXT}");
 	print_r($_GET['file'].".".$_GET['ext']);
 
