@@ -17,7 +17,7 @@
 	print("Current domain: ".SERVER_NAME. "<br />");
 	$q = $db_c->query("SELECT `Domain` FROM `Domains`");
 	while($item = $db_c->array($q)) {
-		if($item['Domain'] == SERVER_NAME]) {
+		if($item['Domain'] == SERVER_NAME) {
 			$doms[] = "<b>".$item['Domain']."</b>";
 		} else {
 			$doms[] = $item['Domain'];
