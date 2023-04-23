@@ -5,8 +5,8 @@
 	define('QS',			isset($_GET['q'])		? (strpos($_GET['q'], '/') ? explode('/', strtolower($_GET['q'])) : strtolower($_GET['q'])) : null);
 	define('QS_FILE',		$_GET['file']);
 	define('QS_EXT',		$_GET['ext']);
-
 	require_once('Classes.php');
+
 	$cnf = new Config(__ROOT__.'/Configuration/config.ini');
 	$config = $cnf->read();
 	$db_c = new DB($config['Databases']['Central']);
