@@ -4,7 +4,7 @@
 			$payload = json_decode($_POST['payload'], true);
 			define("GIT_PROT",		"https");
 			define("GIT_USER",		"azurrr");
-			define("GIT_PKEY",		"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");
+			define("GIT_PKEY",		"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");
 			define("GIT_ADDR",		"github.com");
 			define("ROOT_DIR",		"/kunden/homepages/36/d908228976/htdocs");
 			define("HOST",			explode('/', $payload['full_name'])[0]);
