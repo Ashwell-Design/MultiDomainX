@@ -209,7 +209,7 @@
 			$this->theme_id = $theme_id;
 			$this->domain_id = $dom_id;
 			$this->page = $page;
-			$this->theme_path = __ROOT__.'/Themes/'.$this->info['Name'];
+			$this->theme_path = __ROOT__.'/Themes/'.$this->info['Location'];
 			$this->sections_path = __ROOT__.'/Sections';
 		}
 		public function generate() {
