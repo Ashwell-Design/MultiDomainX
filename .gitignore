@@ -1,4 +1,6 @@
 /Configuration/config.ini
-/*.sqbpro
+*.sqbpro
+*.sqlite-journal
 /.vscode/*
+
 /Updater/git_webhook.php
