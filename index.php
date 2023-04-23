@@ -19,11 +19,14 @@
 			$theme = new Theme($website->info['Theme'], $db_c, $website->info['ID'], $page);
 			$themeinfo = $theme->info;
 			if(file_exists($file = __ROOT__."/Themes/".$themeinfo['Location']."/assets/".QS_FILE.".".QS_EXT)) {
+				print("Here: 1");
 				header("Content-Type: " . $tools->get_mime_type(QS_FILE.".".QS_EXT) . "; charset=UTF-8;");
 				print(file_get_contents($file));
 			} elseif(file_exists($file = __ROOT__."/".QS_FILE.".".QS_EXT)) {
+				print("Here: 2");
 				require_once($file);
 			} else {
+				print("Here: 3");
 				print($theme->generate());
 			}
 		} else {
