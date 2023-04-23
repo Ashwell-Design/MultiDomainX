@@ -5,7 +5,7 @@
 	define('QS',			isset($_GET['q'])		? (strpos($_GET['q'], '/') ? explode('/', strtolower($_GET['q'])) : strtolower($_GET['q'])) : null);
 	define('QS_FILE',		$_GET['file']);
 	define('QS_EXT',		$_GET['ext']);
-	print_r(QS_FILE);
+	print_r(QS_FILE.".".QS_EXT);
 	print_r($_GET['file'].".".$_GET['ext']);
 
 	require_once('Classes.php');
