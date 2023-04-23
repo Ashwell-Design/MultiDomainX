@@ -1,4 +1,10 @@
 <?php
+
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
+
 	define('__ROOT__',		dirname(__FILE__));
 	define('SERVER_NAME',	's908228974.websitehome.co.uk');//$_SERVER['SERVER_NAME']);
 	define('QS_PAGE',		isset($_GET['page'])	? strtolower($_GET['page']) : 'index');
