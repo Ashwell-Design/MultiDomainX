@@ -28,7 +28,7 @@
 				die("Updated. ".date(DateTime::ISO8601, strtotime('-2 hour')));
 			}
 		}
-		die("Error: 002");
+		die("Error: 002"); // payload not set, likely not github.
 	}
-	die("Error: 001");
+	die("Error: 001"); // Wrong request method
 ?>
