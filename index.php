@@ -15,7 +15,15 @@
 	$tools = new Tools($db_c);
 	print("Here: 1 <br />");
 	print("Current domain: ".SERVER_NAME. "<br />");
-	print("Allowed domains: ".implode(", ", $db_c->array(sprintf("SELECT `Domain` FROM `Domains`"))). "<br />");
+	$q = $db_c->query("SELECT `Domain` FROM `Domains`");
+	while($item = $db_c->array($q)) {
+		if($item['Domain'] == SERVER_NAME]) {
+			$doms[] = "<b>".$item['Domain']."</b>";
+		} else {
+			$doms[] = $item['Domain'];
+		}
+	}
+	print("Allowed domains: ".implode(", ", $doms). "<br />");
 	if($db_c->num_rows(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", SERVER_NAME)) > 0) {
 		print("Here: 2 <br />");
 		$website = new Website(SERVER_NAME, $db_c);
