@@ -23,6 +23,7 @@
 			if(file_exists($file = __ROOT__."/Themes/".$themeinfo['Location']."/assets/".QS_FILE.".".QS_EXT)) {
 				header("Content-Type: " . $tools->get_mime_type(QS_FILE.".".QS_EXT) . "; charset=UTF-8;");
 				print(file_get_contents($file));
+				die();
 			} elseif(file_exists($file = __ROOT__."/Updater/".QS_FILE.".".QS_EXT)) {
 				include_once($file);
 			} else {
