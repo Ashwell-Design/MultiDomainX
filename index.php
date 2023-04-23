@@ -11,7 +11,7 @@
 	$config = $cnf->read();
 	$db_c = new DB($config['Databases']['Central']);
 	$db_a = new DB($config['Databases']['Metrics']);
-
+	print_r("${QS_FILE}.${QS_EXT}");
 	$tools = new Tools($db_c);
 	if($db_c->num_rows(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", $_SERVER['SERVER_NAME'])) > 0) {
 		$website = new Website($_SERVER['SERVER_NAME'], $db_c);
