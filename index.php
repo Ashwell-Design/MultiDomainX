@@ -1,5 +1,6 @@
 <?php
 	define('__ROOT__',		dirname(__FILE__));
+	define('SERVER_NAME',	's908228974.websitehome.co.uk');//$_SERVER['SERVER_NAME']);
 	define('QS_PAGE',		isset($_GET['page'])	? strtolower($_GET['page']) : 'index');
 	define('QS_SUBPAGE',	isset($_GET['subpage'])	? strtolower($_GET['subpage']) : null);
 	define('QS',			isset($_GET['q'])		? (strpos($_GET['q'], '/') ? explode('/', strtolower($_GET['q'])) : strtolower($_GET['q'])) : null);
@@ -13,11 +14,11 @@
 	$db_a = new DB($config['Databases']['Metrics']);
 	$tools = new Tools($db_c);
 	print("Here: 1 <br />");
-	print("Current domain: ".$_SERVER['SERVER_NAME']. "<br />");
+	print("Current domain: ".SERVER_NAME. "<br />");
 	print("Allowed domains: ".implode(", ", $db_c->array(sprintf("SELECT `Domain` FROM `Domains`"))). "<br />");
-	if($db_c->num_rows(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", $_SERVER['SERVER_NAME'])) > 0) {
+	if($db_c->num_rows(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", SERVER_NAME)) > 0) {
 		print("Here: 2 <br />");
-		$website = new Website($_SERVER['SERVER_NAME'], $db_c);
+		$website = new Website(SERVER_NAME, $db_c);
 		$page = new Page(QS_PAGE, QS_SUBPAGE, QS, $db_c);
 		if($page->page_id) {
 			print("Here: 3 <br />");
