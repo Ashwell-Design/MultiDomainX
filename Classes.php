@@ -278,7 +278,7 @@
 		}
 		public function getStyles($out='<!-- STYLES -->') {
 			foreach(json_decode(file_get_contents("{$this->theme_path}/styles.json"), true) as $style) {
-				if(isset($style['Hash'])) {
+				if($style['Hash']!==null) {
 					$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $style['URL'], $style['Hash'], $style['URL'], $style['Hash']);
 				} else {
 					$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $style['URL'], $style['URL']);
@@ -288,7 +288,7 @@
 		}
 		public function getScripts($out='<!-- SCRIPTS -->') {
 			foreach(json_decode(file_get_contents("{$this->theme_path}/scripts.json"), true) as $script) {
-				if(isset($script['Hash'])) {
+				if($script['Hash']!==null) {
 					$out .= sprintf("<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $script['URL'], $script['Hash']);
 				} else {
 					$out .= sprintf("<script src=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $script['URL']);
