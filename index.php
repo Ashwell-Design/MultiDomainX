@@ -4,9 +4,8 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
-
 	define('__ROOT__',		dirname(__FILE__));
-	define('SERVER_NAME',	's908228974.websitehome.co.uk');//$_SERVER['SERVER_NAME']);
+	define('SERVER_NAME',	$_SERVER['SERVER_NAME']);
 	define('QS_PAGE',		isset($_GET['page'])	? strtolower($_GET['page']) : 'index');
 	define('QS_SUBPAGE',	isset($_GET['subpage'])	? strtolower($_GET['subpage']) : null);
 	define('QS',			isset($_GET['q'])		? (strpos($_GET['q'], '/') ? explode('/', strtolower($_GET['q'])) : strtolower($_GET['q'])) : null);
