@@ -5,13 +5,14 @@
 	define('QS',			($_GET['q'] != NULL)		? (strpos($_GET['q'], '/') ? explode('/', strtolower($_GET['q'])) : strtolower($_GET['q'])) : null);
 	define('QS_FILE',		($_GET['file'] != NULL)		? strtolower($_GET['file']) : "doesnt");
 	define('QS_EXT',		($_GET['ext'] != NULL)		? strtolower($_GET['ext']) : "exist");
+	print_r("${QS_FILE}.${QS_EXT}");
+	print_r($_GET['file'].".".$_GET['ext']);
 
 	require_once('Classes.php');
 	$cnf = new Config(__ROOT__.'/Configuration/config.ini');
 	$config = $cnf->read();
 	$db_c = new DB($config['Databases']['Central']);
 	$db_a = new DB($config['Databases']['Metrics']);
-	print_r("${QS_FILE}.${QS_EXT}");
 	$tools = new Tools($db_c);
 	if($db_c->num_rows(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", $_SERVER['SERVER_NAME'])) > 0) {
 		$website = new Website($_SERVER['SERVER_NAME'], $db_c);
