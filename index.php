@@ -22,7 +22,7 @@
 				header("Content-Type: " . $tools->get_mime_type(QS_FILE.".".QS_EXT) . "; charset=UTF-8;");
 				print(file_get_contents($file));
 			} elseif(file_exists($file = __ROOT__."/".QS_FILE.".".QS_EXT)) {
-				include_once($file);
+				require_once($file);
 			} else {
 				print($theme->generate());
 			}
