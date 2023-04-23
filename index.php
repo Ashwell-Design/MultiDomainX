@@ -6,6 +6,7 @@
 	define('QS_FILE',		$_GET['file']);
 	define('QS_EXT',		$_GET['ext']);
 	require_once('Classes.php');
+	die(__ROOT__."/".QS_FILE.".".QS_EXT);
 
 	$cnf = new Config(__ROOT__.'/Configuration/config.ini');
 	$config = $cnf->read();

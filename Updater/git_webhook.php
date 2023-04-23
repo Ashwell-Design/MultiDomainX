@@ -28,6 +28,7 @@
 				die("Updated. ".date(DateTime::ISO8601, strtotime('-2 hour')));
 			}
 		}
+		die("Error: 002");
 	}
-	die("404 Not Found");
+	die("Error: 001");
 ?>
