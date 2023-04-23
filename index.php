@@ -5,7 +5,6 @@
 	define('QS',			isset($_GET['q'])		? (strpos($_GET['q'], '/') ? explode('/', strtolower($_GET['q'])) : strtolower($_GET['q'])) : null);
 	define('QS_FILE',		$_GET['file']);
 	define('QS_EXT',		$_GET['ext']);
-	print_r(__ROOT__.QS_FILE.".".QS_EXT);
 
 	require_once('Classes.php');
 	$cnf = new Config(__ROOT__.'/Configuration/config.ini');
@@ -22,7 +21,7 @@
 			if(file_exists($file = __ROOT__."/Themes/".$themeinfo['Location']."/assets/".QS_FILE.".".QS_EXT)) {
 				header("Content-Type: " . $tools->get_mime_type(QS_FILE.".".QS_EXT) . "; charset=UTF-8;");
 				print(file_get_contents($file));
-			} elseif(file_exists($file = __ROOT__.QS_FILE.".".QS_EXT)) {
+			} elseif(file_exists($file = __ROOT__."/".QS_FILE.".".QS_EXT)) {
 				include_once($file);
 			} else {
 				print($theme->generate());
