@@ -5,6 +5,7 @@
 	define('QS',			isset($_GET['q'])		? (strpos($_GET['q'], '/') ? explode('/', strtolower($_GET['q'])) : strtolower($_GET['q'])) : null);
 	define('QS_FILE',		isset($_GET['file'])	? strtolower($_GET['file']) : "doesnt");
 	define('QS_EXT',		isset($_GET['ext'])		? strtolower($_GET['ext']) : "exist");
+
 	require_once('Classes.php');
 	$cnf = new Config(__ROOT__.'/Configuration/config.ini');
 	$config = $cnf->read();
