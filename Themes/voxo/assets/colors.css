@@ -144,7 +144,7 @@
 	}
 	.dropdown-menu {
 		--bs-dropdown-bg: var(--sc-27);
-		--bs-dropdown-color: var(--sc-05);
+		--bs-dropdown-link-color: var(--sc-05);
 	}
 	[type=checkbox], [type=radio], .form-control {
 		background-color: var(--sc-27);
