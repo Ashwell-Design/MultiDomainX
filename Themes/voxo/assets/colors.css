@@ -1,6 +1,5 @@
 body {
 	transition: all 0.3s ease;
-	opacity: 1;
 }
 :root { /* COLOURS */
 	/*BLue				  CYan				  TEal					GReen				  YEllow			*/
@@ -138,9 +137,6 @@ body {
 	}
 }
 @media (prefers-color-scheme: dark) {
-	body {
-		opacity: 0;
-	}
 	:root {
 		--bs-body-bg: var(--sc-29);
 		--bs-body-color: var(--sc-00);
