@@ -119,6 +119,10 @@ body {
 	--bs-card-border-radius: ;
 	--bs-card-spacer-y: 1rem;
 	--bs-card-spacer-x: 1rem;
+	/*
+	 * Buttons
+	 */
+	--bs-btn-color: var(--bs-body-color);
 }
 @media (prefers-color-scheme: light) {
 	:root {
