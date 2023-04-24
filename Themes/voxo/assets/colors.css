@@ -1,5 +1,5 @@
 body {
-	transition: all 0.3s ease;
+	transition: all 0.5s ease;
 	position: absolute;
 }
 body::before {
@@ -12,7 +12,7 @@ body::before {
 	z-index: -1;
 	background: var(--sc-00);
 	opacity: 1;
-	transition: opacity 0.3s ease;
+	transition: opacity 0.5s ease;
   }
 :root { /* COLOURS */
 	/*BLue				  CYan				  TEal					GReen				  YEllow			*/
