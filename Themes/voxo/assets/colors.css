@@ -111,7 +111,7 @@
 		--bs-body-bg: var(--sc-00);
 	}
 	.card {
-		--bs-card-bg: var(--bl-01);
+		--bs-card-bg: var(--sc-01);
 		--bs-card-border-color: var(--sc-02);
 	}
 	[type=checkbox], [type=radio], .form-control {
