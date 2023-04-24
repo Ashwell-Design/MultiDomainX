@@ -109,13 +109,13 @@
 		/*
 		 * Body
 		 */
-		--bs-body-color: var(--sc-17);
-		--bs-body-bg: var(--sc-00);
+		--bs-body-color: var(--sc-17)!important;
+		--bs-body-bg: var(--sc-00)!important;
 		/*
 		 * Cards
 		 */
-		--bs-card-bg: var(--sc-02);
-		--bs-card-border-color: var(--sc-05);
+		--bs-card-bg: var(--sc-02)!important;
+		--bs-card-border-color: var(--sc-05)!important;
 	}
 }
 @media (prefers-color-scheme: dark) {
@@ -123,12 +123,12 @@
 		/*
 		 * Body
 		 */
-		--bs-body-color: var(--sc-00);
-		--bs-body-bg: var(--sc-17);
+		--bs-body-color: var(--sc-00)!important;
+		--bs-body-bg: var(--sc-17)!important;
 		/*
 		 * Cards
 		 */
-		--bs-card-bg: var(--sc-15);
-		--bs-card-border-color: var(--sc-12);
+		--bs-card-bg: var(--sc-15)!important;
+		--bs-card-border-color: var(--sc-12)!important;
 	}
 }
