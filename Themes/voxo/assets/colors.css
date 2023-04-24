@@ -106,21 +106,21 @@
 }
 @media (prefers-color-scheme: light) {
 	:root {
-		--bs-body-color: var(--sc-17)!important;
-		--bs-body-bg: var(--sc-00)!important;
+		--bs-body-color: var(--sc-17);
+		--bs-body-bg: var(--sc-00);
 	}
 	.card {
-		--bs-card-bg: var(--sc-02)!important;
-		--bs-card-border-color: var(--sc-05)!important;
+		--bs-card-bg: var(--sc-01);
+		--bs-card-border-color: var(--sc-03);
 	}
 }
 @media (prefers-color-scheme: dark) {
 	:root {
-		--bs-body-color: var(--sc-00)!important;
-		--bs-body-bg: var(--sc-17)!important;
+		--bs-body-color: var(--sc-00);
+		--bs-body-bg: var(--sc-17);
 	}
 	.card {
-		--bs-card-bg: var(--sc-15)!important;
-		--bs-card-border-color: var(--sc-12)!important;
+		--bs-card-bg: var(--sc-16);
+		--bs-card-border-color: var(--sc-15);
 	}
 }
