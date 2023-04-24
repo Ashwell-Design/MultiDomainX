@@ -114,8 +114,8 @@
 		/*
 		 * Cards
 		 */
-		--bs-card-bg: var();
-		--bs-card-border-color: ;
+		--bs-card-bg: var(--sc-02);
+		--bs-card-border-color: var(--sc-05);
 	}
 }
 @media (prefers-color-scheme: dark) {
@@ -128,7 +128,7 @@
 		/*
 		 * Cards
 		 */
-		--bs-card-bg: ;
-		--bs-card-border-color: ;
+		--bs-card-bg: var(--sc-15);
+		--bs-card-border-color: var(--sc-12);
 	}
 }
