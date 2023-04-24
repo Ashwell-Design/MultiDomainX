@@ -124,6 +124,9 @@
 		--bs-card-bg: var(--sc-01);
 		--bs-card-border-color: var(--sc-02);
 	}
+	.dropdown-menu {
+		--bs-dropdown-color: var(--sc-05);
+	}
 	[type=checkbox], [type=radio], .form-control {
 		background-color: var(--sc-01);
 		border: 1px solid var(--sc-02);
@@ -137,6 +140,9 @@
 	.card {
 		--bs-card-bg: var(--sc-27);
 		--bs-card-border-color: var(--sc-25);
+	}
+	.dropdown-menu {
+		--bs-dropdown-color: var(--sc-27);
 	}
 	[type=checkbox], [type=radio], .form-control {
 		background-color: var(--sc-27);
