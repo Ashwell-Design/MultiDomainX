@@ -114,8 +114,8 @@
 		--bs-card-border-color: var(--sc-02);
 	}
 	[type=checkbox], [type=radio], .form-control {
-		background-color: var(--sc-);
-		border: 1px solid var(--sc-14);
+		background-color: var(--sc-01);
+		border: 1px solid var(--sc-02);
 	}
 }
 @media (prefers-color-scheme: dark) {
@@ -128,7 +128,7 @@
 		--bs-card-border-color: var(--sc-15);
 	}
 	[type=checkbox], [type=radio], .form-control {
-		background-color: var(--sc-15);
-		border: 1px solid var(--sc-14);
+		background-color: var(--sc-16);
+		border: 1px solid var(--sc-15);
 	}
 }
