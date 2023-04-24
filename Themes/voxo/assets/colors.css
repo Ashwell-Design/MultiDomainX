@@ -1,5 +1,6 @@
 body {
 	transition: all 0.5s ease;
+	transition-delay: 0.2s;
 }
 
 :root { /* COLOURS */
@@ -141,9 +142,6 @@ body {
 	:root {
 		--bs-body-bg: var(--sc-29);
 		--bs-body-color: var(--sc-00);
-	}
-	:root:not(.theme-light) {
-        transition-delay: 0.2s;
     }
 	.card {
 		--bs-card-bg: var(--sc-27);
