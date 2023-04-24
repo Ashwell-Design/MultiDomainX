@@ -1,19 +1,7 @@
 body {
 	transition: all 0.5s ease;
-	position: absolute;
 }
-body::before {
-	content: "";
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: -1;
-	background: var(--sc-00);
-	opacity: 1;
-	transition: opacity 1s ease;
-}
+
 :root { /* COLOURS */
 	/*BLue				  CYan				  TEal					GReen				  YEllow			*/
 	--bl-00: #FFFFFF; --cy-00: #ffffff; --te-00: #ffffff; --gr-00: #FFFFFF; --ye-00: #FFFFFF;
@@ -165,8 +153,5 @@ body::before {
 	[type=checkbox], [type=radio], .form-control {
 		background-color: var(--sc-27);
 		border: 1px solid var(--sc-25);
-	}
-	body::before {
-		opacity: 0;
 	}
 }
