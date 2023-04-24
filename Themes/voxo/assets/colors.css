@@ -94,18 +94,25 @@
 	--bs-gray: var(--sc-12);
 	--bs-gray-dark: var(--sc-16);
 	/*
-	 * Body
-	 */
-	--bs-body-color: var(--sc-17);
-	--bs-body-bg: var(--sc-00);
-	/*
 	 * Cards
 	 */
 	--bs-card-height: ;
-	--bs-card-bg: ;
 	--bs-card-border-width: ;
-	--bs-card-border-color: ;
 	--bs-card-border-radius: ;
+}
+@media (prefers-color-scheme: light) {
+	:root {
+		/*
+		 * Body
+		 */
+		--bs-body-color: var(--sc-17);
+		--bs-body-bg: var(--sc-00);
+		/*
+		 * Cards
+		 */
+		--bs-card-bg: ;
+		--bs-card-border-color: ;
+	}
 }
 @media (prefers-color-scheme: dark) {
 	:root {
@@ -118,8 +125,6 @@
 		 * Cards
 		 */
 		--bs-card-bg: ;
-		--bs-card-border-width: ;
 		--bs-card-border-color: ;
-		--bs-card-border-radius: ;
 	}
 }
