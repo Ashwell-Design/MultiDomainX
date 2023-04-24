@@ -106,28 +106,20 @@
 }
 @media (prefers-color-scheme: light) {
 	:root {
-		/*
-		 * Body
-		 */
 		--bs-body-color: var(--sc-17)!important;
 		--bs-body-bg: var(--sc-00)!important;
-		/*
-		 * Cards
-		 */
+	}
+	.card {
 		--bs-card-bg: var(--sc-02)!important;
 		--bs-card-border-color: var(--sc-05)!important;
 	}
 }
 @media (prefers-color-scheme: dark) {
 	:root {
-		/*
-		 * Body
-		 */
 		--bs-body-color: var(--sc-00)!important;
 		--bs-body-bg: var(--sc-17)!important;
-		/*
-		 * Cards
-		 */
+	}
+	.card {
 		--bs-card-bg: var(--sc-15)!important;
 		--bs-card-border-color: var(--sc-12)!important;
 	}
