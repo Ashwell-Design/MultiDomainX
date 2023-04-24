@@ -1,7 +1,19 @@
 body {
 	transition: all 0.5s ease;
-	background-color: var(--sc-29);
+	position: absolute;
 }
+body::before {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	background: linear-gradient(to bottom, var(--sc-00), var(--sc-30));
+	opacity: 1;
+	transition: opacity 0.5s ease;
+  }
 :root { /* COLOURS */
 	/*BLue				  CYan				  TEal					GReen				  YEllow			*/
 	--bl-00: #FFFFFF; --cy-00: #ffffff; --te-00: #ffffff; --gr-00: #FFFFFF; --ye-00: #FFFFFF;
@@ -138,6 +150,9 @@ body {
 	}
 }
 @media (prefers-color-scheme: dark) {
+	body::before {
+		opacity: 0;
+	  }
 	:root {
 		--bs-body-bg: var(--sc-29);
 		--bs-body-color: var(--sc-00);
