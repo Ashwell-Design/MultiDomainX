@@ -65,32 +65,17 @@
 	--sc-090: #1A1A1A;
 	--sc-095: #0D0D0D;
 	--sc-100: #000000;
-	
-	
-	
-	
-	
-	--bs-blue: var(--bl-060);
-	--bs-indigo: var(--in-060);
-	--bs-purple: var(--pu-060);
-	--bs-pink: var(--pi-060);
-	--bs-red: var(--re-060);
-	--bs-orange: var(--or-060);
-	--bs-yellow: var(--ye-060);
-	--bs-green: var(--gr-060);
-	--bs-teal: var(--te-060);
-	--bs-cyan: var(--cy-060);
 
-	--bs-primary: var(--bl-060);
-	--bs-secondary: var(--sc-045);
-	--bs-success: var(--te-060);
-	--bs-info: var(--bl-045);
-	--bs-warning: var(--or-050);
-	--bs-danger: var(--re-065);
-	--bs-white: var(--sc-000);
-	--bs-black: var(--sc-100);
-	--bs-gray: var(--sc-060);
-	--bs-gray-dark: var(--sc-080);
+	--bs-blue: var(--bl-060);	--bs-primary: var(--bl-060);
+	--bs-indigo: var(--in-060);	--bs-secondary: var(--sc-045);
+	--bs-purple: var(--pu-060);	--bs-success: var(--te-060);
+	--bs-pink: var(--pi-060);	--bs-info: var(--bl-045);
+	--bs-red: var(--re-060);	--bs-warning: var(--or-050);
+	--bs-orange: var(--or-060);	--bs-danger: var(--re-065);
+	--bs-yellow: var(--ye-060);	--bs-white: var(--sc-000);
+	--bs-green: var(--gr-060);	--bs-black: var(--sc-100);
+	--bs-teal: var(--te-060);	--bs-gray: var(--sc-060);
+	--bs-cyan: var(--cy-060);	--bs-gray-dark: var(--sc-080);
 }
 
 @media (prefers-color-scheme: light) {
@@ -101,7 +86,7 @@
 }
 @media (prefers-color-scheme: dark) {
 	:root {
-		--bs-body-color: var(--sc-010);
+		--bs-body-color: var(--sc-005);
 		--bs-body-bg: var(--sc-085);
 	}
 }
