@@ -1,4 +1,4 @@
-:root {
+:root { /* COLOURS */
 	/*BLue				  CYan				  TEal					GReen				  YEllow			*/
 	--bl-00: #FFFFFF; --cy-00: #ffffff; --te-00: #ffffff; --gr-00: #FFFFFF; --ye-00: #FFFFFF;
 	--bl-01: #f5f8fa; --cy-01: #f2ffff; --te-01: #f0f9fb; --gr-01: #f5fcf9; --ye-01: #fafafa;
@@ -20,7 +20,7 @@
 	--bl-17: #132e43; --cy-17: #007f7f; --te-17: #0f4d7b; --gr-17: #00371e; --ye-17: #714800;
 	--bl-18: #101f2c; --cy-18: #006666; --te-18: #003967; --gr-18: #002219; --ye-18: #5e3700;
 	--bl-19: #0b1012; --cy-19: #004c4c; --te-19: #001b4d; --gr-19: #001116; --ye-19: #4b2600;
-	--bl-20: #000000; --cy-20: #0a2221; --te-20: #000000; --gr-20: #000000; --ye-20: #380f00;	
+	--bl-20: #000000; --cy-20: #0a2221; --te-20: #000000; --gr-20: #000000; --ye-20: #380f00;
 	/* ORange			  REd				  PInk				  PUrple			   INdigo			*/
 	--or-00: #FFFFFF; --re-00: #FFFFFF; --pi-00: #FFFFFF; --pu-00: #FFFFFF; --in-00: #FFFFFF;
 	--or-01: #fcf9f2; --re-01: #ffd6d6; --pi-01: #f5f0f6; --pu-01: #f2f0ff; --in-01: #faf9fe;
@@ -65,28 +65,61 @@
 	--sc-090: #1A1A1A;
 	--sc-095: #0D0D0D;
 	--sc-100: #000000;
-
-	--bs-blue: var(--bl-060);	--bs-primary: var(--bl-060);
-	--bs-indigo: var(--in-060);	--bs-secondary: var(--sc-045);
-	--bs-purple: var(--pu-060);	--bs-success: var(--te-060);
-	--bs-pink: var(--pi-060);	--bs-info: var(--bl-045);
-	--bs-red: var(--re-060);	--bs-warning: var(--or-050);
-	--bs-orange: var(--or-060);	--bs-danger: var(--re-065);
-	--bs-yellow: var(--ye-060);	--bs-white: var(--sc-000);
-	--bs-green: var(--gr-060);	--bs-black: var(--sc-100);
-	--bs-teal: var(--te-060);	--bs-gray: var(--sc-060);
-	--bs-cyan: var(--cy-060);	--bs-gray-dark: var(--sc-080);
 }
-
-@media (prefers-color-scheme: light) {
-	:root {
-		--bs-body-color: var(--sc-085);
-		--bs-body-bg: var(--sc-005);
-	}
+:root { /* CUSTOM --BS-*/
+	/*
+	 * Base
+	 */
+	--bs-blue: var(--bl-12);
+	--bs-indigo: var(--in-12);
+	--bs-purple: var(--pu-12);
+	--bs-pink: var(--pi-12);
+	--bs-red: var(--re-12);
+	--bs-orange: var(--or-12);
+	--bs-yellow: var(--ye-12);
+	--bs-green: var(--gr-12);
+	--bs-teal: var(--te-12);
+	--bs-cyan: var(--cy-12);
+	/*
+	 * General
+	 */
+	--bs-primary: var(--bl-12);
+	--bs-secondary: var(--sc-09);
+	--bs-success: var(--te-12);
+	--bs-info: var(--bl-08);
+	--bs-warning: var(--or-10);
+	--bs-danger: var(--re-13);
+	--bs-white: var(--sc-00);
+	--bs-black: var(--sc-10);
+	--bs-gray: var(--sc-12);
+	--bs-gray-dark: var(--sc-16);
+	/*
+	 * Body
+	 */
+	--bs-body-color: var(--sc-17);
+	--bs-body-bg: var(--sc-00);
+	/*
+	 * Cards
+	 */
+	--bs-card-height: ;
+	--bs-card-bg: ;
+	--bs-card-border-width: ;
+	--bs-card-border-color: ;
+	--bs-card-border-radius: ;
 }
 @media (prefers-color-scheme: dark) {
 	:root {
-		--bs-body-color: var(--sc-005);
-		--bs-body-bg: var(--sc-085);
+		/*
+		 * Body
+		 */
+		--bs-body-color: var(--sc-00);
+		--bs-body-bg: var(--sc-17);
+		/*
+		 * Cards
+		 */
+		--bs-card-bg: ;
+		--bs-card-border-width: ;
+		--bs-card-border-color: ;
+		--bs-card-border-radius: ;
 	}
 }
