@@ -113,6 +113,10 @@
 		--bs-card-bg: var(--bl-01);
 		--bs-card-border-color: var(--sc-02);
 	}
+	[type=checkbox], [type=radio], .form-control {
+		background-color: var(--sc-);
+		border: 1px solid var(--sc-14);
+	}
 }
 @media (prefers-color-scheme: dark) {
 	:root {
@@ -122,5 +126,9 @@
 	.card {
 		--bs-card-bg: var(--sc-16);
 		--bs-card-border-color: var(--sc-15);
+	}
+	[type=checkbox], [type=radio], .form-control {
+		background-color: var(--sc-15);
+		border: 1px solid var(--sc-14);
 	}
 }
