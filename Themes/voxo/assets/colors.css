@@ -132,7 +132,7 @@
 @media (prefers-color-scheme: dark) {
 	:root {
 		--bs-body-color: var(--sc-00);
-		--bs-body-bg: var(--sc-17);
+		--bs-body-bg: var(--sc-29);
 	}
 	.card {
 		--bs-card-bg: var(--sc-16);
