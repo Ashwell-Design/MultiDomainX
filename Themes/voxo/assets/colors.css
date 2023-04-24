@@ -135,11 +135,11 @@
 		--bs-body-bg: var(--sc-29);
 	}
 	.card {
-		--bs-card-bg: var(--sc-16);
-		--bs-card-border-color: var(--sc-15);
+		--bs-card-bg: var(--sc-27);
+		--bs-card-border-color: var(--sc-25);
 	}
 	[type=checkbox], [type=radio], .form-control {
-		background-color: var(--sc-16);
-		border: 1px solid var(--sc-15);
+		background-color: var(--sc-27);
+		border: 1px solid var(--sc-25);
 	}
 }
