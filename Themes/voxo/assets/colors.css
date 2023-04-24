@@ -12,7 +12,7 @@ body::before {
 	z-index: -1;
 	background: var(--sc-00);
 	opacity: 1;
-	transition: opacity 1s ease;
+	transition: opacity 0.3s ease;
   }
 :root { /* COLOURS */
 	/*BLue				  CYan				  TEal					GReen				  YEllow			*/
