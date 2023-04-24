@@ -1,3 +1,6 @@
+body {
+	transition: background-color 0.5s ease-in-out;
+}
 :root { /* COLOURS */
 	/*BLue				  CYan				  TEal					GReen				  YEllow			*/
 	--bl-00: #FFFFFF; --cy-00: #ffffff; --te-00: #ffffff; --gr-00: #FFFFFF; --ye-00: #FFFFFF;
@@ -118,7 +121,7 @@
 @media (prefers-color-scheme: light) {
 	:root {
 		--bs-body-bg: var(--sc-00);
-		--bs-body-color: var(--sc-17);
+		--bs-body-color: var(--sc-29);
 	}
 	.card {
 		--bs-card-bg: var(--sc-01);
@@ -126,7 +129,7 @@
 	}
 	.dropdown-menu {
 		--bs-dropdown-bg: var(--sc-05);
-		--bs-dropdown-link-color: var(--sc-05);
+		--bs-dropdown-link-color: var(--sc-27);
 	}
 	[type=checkbox], [type=radio], .form-control {
 		background-color: var(--sc-01);
