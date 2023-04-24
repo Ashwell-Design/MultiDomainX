@@ -1,7 +1,8 @@
 body {
 	transition: background-color 0.3s ease,
 				color 0.3s ease,
-				background 0.3s ease, opacity 0.5s ease;
+				background 0.3s ease,
+				opacity 0.5s ease;
 	opacity: 1;
 }
 :root { /* COLOURS */
@@ -140,6 +141,9 @@ body {
 	}
 }
 @media (prefers-color-scheme: dark) {
+	body {
+		opacity: 0;
+	}
 	:root {
 		--bs-body-bg: var(--sc-29);
 		--bs-body-color: var(--sc-00);
