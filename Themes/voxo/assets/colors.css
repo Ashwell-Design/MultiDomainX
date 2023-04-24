@@ -117,14 +117,15 @@
 }
 @media (prefers-color-scheme: light) {
 	:root {
-		--bs-body-color: var(--sc-17);
 		--bs-body-bg: var(--sc-00);
+		--bs-body-color: var(--sc-17);
 	}
 	.card {
 		--bs-card-bg: var(--sc-01);
 		--bs-card-border-color: var(--sc-02);
 	}
 	.dropdown-menu {
+		--bs-dropdown-bg: var(--sc-05);
 		--bs-dropdown-color: var(--sc-05);
 	}
 	[type=checkbox], [type=radio], .form-control {
@@ -134,15 +135,16 @@
 }
 @media (prefers-color-scheme: dark) {
 	:root {
-		--bs-body-color: var(--sc-00);
 		--bs-body-bg: var(--sc-29);
+		--bs-body-color: var(--sc-00);
 	}
 	.card {
 		--bs-card-bg: var(--sc-27);
 		--bs-card-border-color: var(--sc-25);
 	}
 	.dropdown-menu {
-		--bs-dropdown-color: var(--sc-27);
+		--bs-dropdown-bg: var(--sc-27);
+		--bs-dropdown-color: var(--sc-05);
 	}
 	[type=checkbox], [type=radio], .form-control {
 		background-color: var(--sc-27);
