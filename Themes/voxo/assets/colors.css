@@ -13,7 +13,7 @@ body::before {
 	background: var(--sc-00);
 	opacity: 1;
 	transition: opacity 0.5s ease;
-  }
+}
 :root { /* COLOURS */
 	/*BLue				  CYan				  TEal					GReen				  YEllow			*/
 	--bl-00: #FFFFFF; --cy-00: #ffffff; --te-00: #ffffff; --gr-00: #FFFFFF; --ye-00: #FFFFFF;
