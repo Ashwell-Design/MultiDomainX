@@ -1,6 +1,6 @@
 body {
-	transition: all 0.3s ease;
-	mix-blend-mode: normal;
+	transition: all 0.5s ease;
+	background-color: var(--sc-29);
 }
 :root { /* COLOURS */
 	/*BLue				  CYan				  TEal					GReen				  YEllow			*/
@@ -138,9 +138,6 @@ body {
 	}
 }
 @media (prefers-color-scheme: dark) {
-	body {
-		mix-blend-mode: difference;
-	}
 	:root {
 		--bs-body-bg: var(--sc-29);
 		--bs-body-color: var(--sc-00);
