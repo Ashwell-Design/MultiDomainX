@@ -148,10 +148,6 @@ body::before {
 		background-color: var(--sc-01);
 		border: 1px solid var(--sc-02);
 	}
-	body {
-	  background-color: var(--bs-body-bg);
-	  color: var(--bs-body-color);
-	}
 }
 @media (prefers-color-scheme: dark) {
 	body::before {
@@ -172,9 +168,5 @@ body::before {
 	[type=checkbox], [type=radio], .form-control {
 		background-color: var(--sc-27);
 		border: 1px solid var(--sc-25);
-	}
-	body {
-	  background-color: var(--bs-body-bg);
-	  color: var(--bs-body-color);
 	}
 }
