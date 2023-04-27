@@ -46,7 +46,7 @@ $(document).ready(function(){
 			  $dropdownMenu.hide();
 			}
 		} else {
-			if($target.is('.lang-dropdown')) {
+			if($target.closest('#languageSelector').length) {
 				$('.dropdown-menu.lang').toggle();
 			}
 		}
