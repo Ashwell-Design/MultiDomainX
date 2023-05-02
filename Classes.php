@@ -248,17 +248,21 @@
 						$out .= '</div></div>';
 					} else {
 						$out .= '<div class="col-md-'.$width.'"><div class="row">';
-						[$width, $string] = explode(';', $string);
-						$out .= '<div class="col-md-'.$width.'"><div class="row">';
-						[$seccode, $string] = explode(':', $string);
-						$tools = new Tools($this->db);
-						if ($this->db->num_rows($sql = sprintf("SELECT `Type`, `File` FROM `Sections` WHERE `Code`='%s'", $seccode)) == 1) {
-							[$type, $file] = $this->db->array($sql);
-							$out .= $tools->ParseShortcodes(
-								file_get_contents("{$this->sections_path}/$type/$file.html"),
-								"{$this->sections_path}/$type/$file.ini",
-								$this->domain_id
-							);
+						if(strpos($string, ';')!==false) {
+							[$width, $string] = explode(';', $string);
+							$out .= '<div class="col-md-'.$width.'"><div class="row">';
+							if(strpos($string, ':')!==false) {
+								[$seccode, $string] = explode(':', $string);
+								$tools = new Tools($this->db);
+								if ($this->db->num_rows($sql = sprintf("SELECT `Type`, `File` FROM `Sections` WHERE `Code`='%s'", $seccode)) == 1) {
+									[$type, $file] = $this->db->array($sql);
+									$out .= $tools->ParseShortcodes(
+										file_get_contents("{$this->sections_path}/$type/$file.html"),
+										"{$this->sections_path}/$type/$file.ini",
+										$this->domain_id
+									);
+								}
+							}
 						}
 						$out .= '</div></div></div></div>';
 					}
