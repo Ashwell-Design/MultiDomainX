@@ -283,7 +283,7 @@
 		}
 		public function generateBody($body='') {
 			$body .= $this->getScripts();
-			if(($code = $this->db->array(sprintf("SELECT `Sections` FROM `Pages` WHERE `ID`='%s'", $this->domain_id))[0]) != null) {
+			if(($code = $this->db->array(sprintf("SELECT `Sections` FROM `Pages` WHERE `ID`='%s' AND `Page`='%s' AND `Subpage`='%s'", $this->domain_id, $this->page->page, $this->page->subpage))[0]) != null) {
 				$sections = explode("$", $code);	array_shift($sections);	$cnt=NULL;
 				$body .= '<main class="container-fluid row">';
 				foreach ($sections as $section) {
