@@ -118,7 +118,8 @@
 			} else {
 				return 'application/octet-stream';
 			}
-		}		
+		}
+
 	}
 	class Config {
 		protected $file;
@@ -220,6 +221,53 @@
 		public function generate() {
 			return "<!DOCTYPE html><html lang=\"en\"><head>{$this->generateHead()}</head><body id=\"googtrans\">{$this->generateBody()}</body></html>";
 		}
+		public function generateSectionRow($section) {
+			$out = NULL;
+			if(strpos($section, '%') !== false) {
+				$row = explode('%', $section);	array_shift($row);
+				foreach ($row as $section) {
+					[$width, $string] = explode('|', $section, 2);
+					if(strpos($string, ',') !== false) {
+						$row = explode(',', $string);
+						$out .= '<div class="col-md-'.$width.'"><div class="row">';
+						foreach ($row as $string) {
+							[$width, $string] = explode(';', $string);
+							$out .= '<div class="col-md-'.$width.'"><div class="row">';
+							[$seccode, $string] = explode(':', $string);
+							$tools = new Tools($this->db);
+							if ($this->db->num_rows($sql = sprintf("SELECT `Type`, `File` FROM `Sections` WHERE `Code`='%s'", $seccode)) == 1) {
+								[$type, $file] = $this->db->array($sql);
+								$out .= $tools->ParseShortcodes(
+									file_get_contents("{$this->sections_path}/$type/$file.html"),
+									"{$this->sections_path}/$type/$file.ini",
+									$this->domain_id
+								);
+							}
+							$out .= '</div></div>';
+						}
+						$out .= '</div></div>';
+					} else {
+						$out .= '<div class="col-md-'.$width.'"><div class="row">';
+						[$width, $string] = explode(';', $string);
+						$out .= '<div class="col-md-'.$width.'"><div class="row">';
+						[$seccode, $string] = explode(':', $string);
+						$tools = new Tools($this->db);
+						if ($this->db->num_rows($sql = sprintf("SELECT `Type`, `File` FROM `Sections` WHERE `Code`='%s'", $seccode)) == 1) {
+							[$type, $file] = $this->db->array($sql);
+							$out .= $tools->ParseShortcodes(
+								file_get_contents("{$this->sections_path}/$type/$file.html"),
+								"{$this->sections_path}/$type/$file.ini",
+								$this->domain_id
+							);
+						}
+						$out .= '</div></div></div></div>';
+					}
+				}
+			} else {
+
+			}
+			return $out;
+		}
 		// Halves
 		public function generateHead($head='') {
 			$head .= $this->getMeta();
@@ -230,33 +278,16 @@
 			return $head;
 		}
 		public function generateBody($body='') {
-			$tools = new Tools($this->db);
 			$body .= $this->getScripts();
 			if(($code = $this->db->array(sprintf("SELECT `Sections` FROM `Pages` WHERE `ID`='%s'", $this->domain_id))[0]) != null) {
-				$columns = explode("#", $code);
-				$seccode = $secext = NULL;
-				$cnt = 1;
-				$body .= '<main class="container-fluid"><div class="row">';
-				array_shift($columns);
-				foreach($columns as $column) {
-					[$width, $section_string] = explode(';', $column);
-					$body .= "<div class=\"col-md-$width section-col\" id=\"$cnt\">";
-					$sections = explode(',', $section_string);
-					foreach($sections as $section) {
-						[$seccode, $secext] = explode(':', $section);
-						if($this->db->num_rows($sql = "SELECT `Type`, `File` FROM `Sections` WHERE `Code`='$seccode'") == 1) {
-							[$type, $file] = $this->db->array($sql);
-							$body .= $tools->ParseShortcodes(
-								file_get_contents("{$this->sections_path}/$type/$file.html"),
-								"{$this->sections_path}/$type/$file.ini",
-								$this->domain_id);
-							unset($secext);
-						}
-					}
-					$body .= "</div>";
-					$cnt++;
+				$sections = explode("$", $code);	array_shift($sections);	$cnt=NULL;
+				$body .= '<main class="container-fluid row">';
+				foreach ($sections as $section) {
+					preg_match_all('/([0-9]+)\[([A-Za-z0-9\|\%\#\;\:\,]+)\]/', preg_replace('/\s+/', '', preg_replace('/\s+/', '', $section, 2)), $matches);
+					$row_string = $matches[2][0];	$cnt++;
+					$body .= $this->generateSectionRow($row_string);
 				}
-				$body .= '</div></main>';
+				$body .= '</main>';
 			} else {
 				$body = 'Error: No page string was set';
 			}

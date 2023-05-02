@@ -1,6 +1,5 @@
-body {
-	transition: background-color 0.5s linear 0s,
-				color 0.5s linear 0s;
+* {
+	transition: all 0.5s linear 0s!important;
 }
 
 :root { /* COLOURS */
@@ -49,27 +48,27 @@ body {
 	--or-19: #11010d; --re-19: #4d0000; --pi-19: #020002; --pu-19: #00001a; --in-19: #1b040e;
 	--or-20: #04010f; --re-20: #330000; --pi-20: #000000; --pu-20: #000000; --in-20: #120201;
 	/*SCale				*/
-	--sc-00: #FFFFFF;
-	--sc-01: #F7F7F7;
-	--sc-02: #F0F0F0;
-	--sc-03: #E9E9E9;
-	--sc-04: #E2E2E2;
-	--sc-05: #DBDBDB;
-	--sc-06: #D4D4D4;
-	--sc-07: #CDCDCD;
-	--sc-08: #C6C6C6;
-	--sc-09: #BFBFBF;
-	--sc-10: #B8B8B8;
-	--sc-11: #B1B1B1;
-	--sc-12: #AAAAAA;
-	--sc-13: #A3A3A3;
-	--sc-14: #9C9C9C;
-	--sc-15: #959595;
-	--sc-16: #8E8E8E;
-	--sc-17: #878787;
-	--sc-18: #808080;
-	--sc-19: #797979;
-	--sc-20: #727272;
+	--sc-00: #FFFFFF;	--sl-00: #FFFFFF;
+	--sc-01: #F7F7F7;	--sl-01: #F4F4F5;
+	--sc-02: #F0F0F0;	--sl-01: #E8E8EA;
+	--sc-03: #E9E9E9;	--sl-03: #DCDCDF;
+	--sc-04: #E2E2E2;	--sl-04: #D0D0D4;
+	--sc-05: #DBDBDB;	--sl-05: #C4C4C8;
+	--sc-06: #D4D4D4;	--sl-06: #B8B8BD;
+	--sc-07: #CDCDCD;	--sl-07: #ABABAF;
+	--sc-08: #C6C6C6;	--sl-08: #9F9FA4;
+	--sc-09: #BFBFBF;	--sl-09: #939399;
+	--sc-10: #B8B8B8;	--sl-10: #87878E;
+	--sc-11: #B1B1B1;	--sl-11: #7B7B81;
+	--sc-12: #AAAAAA;	--sl-12: #6F6F76;
+	--sc-13: #A3A3A3;	--sl-13: #636369;
+	--sc-14: #9C9C9C;	--sl-14: #57575F;
+	--sc-15: #959595;	--sl-15: #4B4B52;
+	--sc-16: #8E8E8E;	--sl-16: #3E3E45;
+	--sc-17: #878787;	--sl-17: #323238;
+	--sc-18: #808080;	--sl-18: #26262B;
+	--sc-19: #797979;	--sl-19: #1A1A1E;
+	--sc-20: #727272;	--sl-20: #0D0D0F;
 	--sc-21: #6B6B6B;
 	--sc-22: #646464;
 	--sc-23: #5D5D5D;
@@ -109,8 +108,10 @@ body {
 	--bs-danger: var(--re-13);
 	--bs-white: var(--sc-00);
 	--bs-black: var(--sc-10);
-	--bs-gray: var(--sc-12);
-	--bs-gray-dark: var(--sc-16);
+	--bs-silver: var(--sc-10);
+	--bs-silver-dark: var(--sc-17);
+	--bs-gray: var(--sc-20);
+	--bs-gray-dark: var(--sc-27);
 	/*
 	 * Cards
 	 */
@@ -125,7 +126,7 @@ body {
 }
 @media (prefers-color-scheme: light) {
 	:root {
-		--bs-body-bg: var(--sc-00);
+		--bs-body-bg: var(--sl-01);
 		--bs-body-color: var(--sc-29);
 	}
 	.card {
@@ -143,10 +144,13 @@ body {
 		background-color: var(--sc-01);
 		border: 1px solid var(--sc-02);
 	}
+	.sidebar-container {
+		background-color: var(--sl-09);
+	}
 }
 @media (prefers-color-scheme: dark) {
 	:root {
-		--bs-body-bg: var(--sc-29);
+		--bs-body-bg: var(--sl-18);
 		--bs-body-color: var(--sc-00);
     }
 	.card {
@@ -163,5 +167,8 @@ body {
 	[type=checkbox], [type=radio], .form-control {
 		background-color: var(--sc-27);
 		border: 1px solid var(--sc-25);
+	}
+	.sidebar-container {
+		background-color: var(--sl-17);
 	}
 }
