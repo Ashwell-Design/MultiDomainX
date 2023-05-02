@@ -126,8 +126,9 @@
 }
 @media (prefers-color-scheme: light) {
 	:root {
-		--bs-body-bg: var(--sl-01);
+		--bs-body-bg: var(--sl-04);
 		--bs-body-color: var(--sc-29);
+		--bs-border-color: var(--sl-10);
 	}
 	.card {
 		--bs-card-bg: var(--sc-01);
@@ -145,13 +146,14 @@
 		border: 1px solid var(--sc-02);
 	}
 	.sidebar-container {
-		background-color: var(--sl-09);
+		background-color: var(--sl-07);
 	}
 }
 @media (prefers-color-scheme: dark) {
 	:root {
 		--bs-body-bg: var(--sl-18);
 		--bs-body-color: var(--sc-00);
+		--bs-border-color: var(--sl-09);
     }
 	.card {
 		--bs-card-bg: var(--sc-27);
