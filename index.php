@@ -7,12 +7,18 @@ error_reporting(E_ALL);
 	define('__ROOT__',		dirname(__FILE__));
 	define('SERVER_NAME',	$_SERVER['SERVER_NAME']);
 	define('QS_PAGE',		isset($_GET['page'])	? strtolower($_GET['page']) : 'index');
-	define('QS_SUBPAGE',	isset($_GET['subpage'])	? strtolower($_GET['subpage']) : null);
-	define('QS',			isset($_GET['q'])		? (strpos($_GET['q'], '/') ? explode('/', strtolower($_GET['q'])) : strtolower($_GET['q'])) : null);
+	define('QS_SUBPAGE',	isset($_GET['subpage'])	? strtolower($_GET['subpage']) : '');
+	define('QS',			isset($_GET['q'])		? (strpos($_GET['q'], '/') ? explode('/', strtolower($_GET['q'])) : strtolower($_GET['q'])) : '');
 	define('QS_FILE',		isset($_GET['file'])	? strtolower($_GET['file']) : "doesnt");
 	define('QS_EXT',		isset($_GET['ext'])		? strtolower($_GET['ext']) : "exist");
 	require_once('Classes.php');
-
+	
+	print_r(SERVER_NAME.'<br />');
+	print_r(QS_PAGE.'<br />');
+	print_r(QS_SUBPAGE.'<br />');
+	print_r(QS.'<br />');
+	print_r(QS_FILE.'<br />');
+	print_r(QS_EXT.'<br />');
 	$cnf = new Config(__ROOT__.'/Configuration/config.ini');
 	$config = $cnf->read();
 	$db_c = new DB($config['Databases']['Central']);
