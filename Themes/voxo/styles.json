@@ -26,7 +26,7 @@
 	},{
 		"Name": "colors.css",
 		"Description": "colors.css",
-		"URL": "./colors.css",
+		"URL": "/colors.css",
 		"Image": "./colors.css",
 		"Version": "1.0.0",
 		"Tags": ["colors", "css"],
@@ -34,7 +34,7 @@
 	},{
 		"Name": "style.css",
 		"Description": "style.css",
-		"URL": "./style.css",
+		"URL": "/style.css",
 		"Image": "./style.css",
 		"Version": "1.0.0",
 		"Tags": ["style", "css"],
