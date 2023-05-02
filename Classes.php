@@ -16,10 +16,14 @@
 					case "l": // LIST
 						if($string == 'nav') {
 							$links = '';
-							$q = $this->db->query("SELECT `Name`, `Url` FROM `Pages` WHERE `Domain`=$dom_id AND `Menu?`=1");
+							$q = $this->db->query("SELECT `Name`, `Url`, `Page`, `Subpage` FROM `Pages` WHERE `Domain`=$dom_id AND `Menu?`=1");
 							while($item = $this->db->array($q)) {
-								[$name, $url] = $item;
-								$links .= "<li class=\"nav-item\"><a href=\"$url\" class=\"nav-link\" style=\"color: inherit;\" aria-current=\"page\">$name</a></li>";
+								[$name, $url, $page, $subpage] = $item;
+								$active = null;
+								if($page == QS_PAGE && $subpage == QS_SUBPAGE) {
+									$active = 'active';
+								}
+								$links .= "<li class=\"nav-item\"><a href=\"$url\" class=\"nav-link text-auto $active\" style=\"color: inherit;\" aria-current=\"page\">$name</a></li>";
 							}
 							return $links;
 						} else {
@@ -341,13 +345,13 @@
 	}
 	class Page {
 		protected $db, $page, $subpage, $query;
-		public function __construct($page, $subpage, $query, $db) {
+		public function __construct($dom_id, $page, $subpage, $query, $db) {
 			$this->db = $db;
 			$this->page = $page;
 			$this->subpage = $subpage;
 			$this->query = $query;
-			if($this->db->array(sprintf("SELECT `ID` FROM `Pages` WHERE `Page`='%s' AND `Subpage`='%s'", $page, $subpage)) != "") {
-				$this->page_id = $this->db->array(sprintf("SELECT `ID` FROM `Pages` WHERE `Page`='%s' AND `Subpage`='%s'", $page, $subpage))[0];
+			if($this->db->array(sprintf("SELECT `ID` FROM `Pages` WHERE `Domain`='%s' AND `Page`='%s' AND `Subpage`='%s'", $dom_id, $page, $subpage)) != "") {
+				$this->page_id = $this->db->array(sprintf("SELECT `ID` FROM `Pages` WHERE `Domain`='%s' AND `Page`='%s' AND `Subpage`='%s'", $dom_id, $page, $subpage))[0];
 			} else {
 				$this->page_id = false;
 			}
