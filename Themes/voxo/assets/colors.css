@@ -126,7 +126,7 @@
 }
 @media (prefers-color-scheme: light) {
 	:root {
-		--bs-body-bg: var(--sl-04);
+		--bs-body-bg: var(--sl-03);
 		--bs-body-color: var(--sc-29);
 		--bs-border-color: var(--sl-10);
 	}
