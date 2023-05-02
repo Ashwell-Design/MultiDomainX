@@ -1,7 +1,8 @@
 * {
 	transition: background-color 0.5s linear 0s,
 				background 0.5s linear 0s,
-				color 0.5s linear 0s!important;
+				color 0.5s linear 0s,
+				height 0.5s linear 0s!important;
 }
 
 :root { /* COLOURS */
