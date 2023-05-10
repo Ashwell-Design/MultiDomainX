@@ -32,6 +32,14 @@
 		"Tags": ["Masonry", "JS", "Library", "Grid", "Layout"],
 		"Hash": "sha512-JRlcvSZAXT8+5SQQAvklXGJuxXTouyq8oIMaYERZQasB8SBDHZaUbeASsJWpk0UUrf89DP3/aefPPrlMR1h1yQ=="
 	}, {
+		"Name": "Google Charts",
+		"Description": "Simple HTML5 charts using the canvas element.",
+		"URL": "https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.40.0/apexcharts.min.js",
+		"Image": "",
+		"Version": "4.3.0",
+		"Tags": ["chart", "JS", "Library"],
+		"Hash": "sha512-Kr1p/vGF2i84dZQTkoYZ2do8xHRaiqIa7ysnDugwoOcG0SbIx98erNekP/qms/hBDiBxj336//77d0dv53Jmew=="
+	}, {
 		"Name": "Google Translate",
 		"Description": "Google Translate is a free multilingual machine translation service developed by Google, to translate text.",
 		"URL": "/translate.js",
