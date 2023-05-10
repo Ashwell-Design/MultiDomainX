@@ -1,7 +1,7 @@
 <?
+	$conf = parse_ini_file('/Configuration/config.ini', true);
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if($_POST['payload']) { // Only respond to POST requests from Github
-			$conf = parse_ini_file('/Configuration/config.ini', true);
 			$payload = json_decode($_POST['payload'], true);
 			define("GIT_PROT",		"https");
 			define("GIT_USER",		"azurrr");
