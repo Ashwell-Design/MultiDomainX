@@ -15,7 +15,7 @@ error_reporting(E_ALL);
 
 	$cnf = new Config(__ROOT__.'/Configuration/config.ini');
 	$config = $cnf->read();
-	print_r($config)
+	print_r($config);
 	$db_c = new DB($config['Databases']['Central']);
 	$db_a = new DB($config['Databases']['Metrics']);
 	$tools = new Tools($db_c);
