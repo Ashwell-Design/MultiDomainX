@@ -1,10 +1,11 @@
 <?
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if($_POST['payload']) { // Only respond to POST requests from Github
+			$conf = parse_ini_file('/Configuration/config.ini', true);
 			$payload = json_decode($_POST['payload'], true);
 			define("GIT_PROT",		"https");
 			define("GIT_USER",		"azurrr");
-			define("GIT_PKEY",		"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");
+			define("GIT_PKEY",		$conf['Github']['Private_Key']);
 			define("GIT_ADDR",		"github.com");
 			define("ROOT_DIR",		"/kunden/homepages/36/d908228976/htdocs");
 			define("HOST",			explode('/', $payload['full_name'])[0]);
