@@ -151,6 +151,13 @@
 	.sidebar-container {
 		background-color: var(--sl-05);
 	}
+	.apexcharts-menu {
+		background: var(--sc-01)!important;
+		color: var(--bs-body-color)!important;
+	}
+	.apexcharts-theme-light .apexcharts-menu-item:hover {
+		background: var(--sl-03)!important;
+	}
 }
 @media (prefers-color-scheme: dark) {
 	:root {
@@ -175,5 +182,12 @@
 	}
 	.sidebar-container {
 		background-color: var(--sl-17);
+	}
+	.apexcharts-menu {
+		background: var(--sc-27)!important;
+		color: var(--bs-body-color)!important;
+	}
+	.apexcharts-theme-light .apexcharts-menu-item:hover {
+		background: var(--sc-29)!important;
 	}
 }

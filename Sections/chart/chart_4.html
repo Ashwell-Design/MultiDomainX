@@ -3,11 +3,17 @@
 	chart_elem = parent.appendChild(document.createElement("div"));
 	var chart = new ApexCharts(chart_elem, {
 		chart: {
-			type: 'line',
+			type: 'bar',
 			zoom: {
 				enabled: false
 			}
 		},
+		plotOptions: {
+			bar: {
+				borderRadius: 4,
+				horizontal: true,
+			}
+        },
 		stroke: {
 			curve: 'smooth'
         },

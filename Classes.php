@@ -226,17 +226,18 @@
 			return "<!DOCTYPE html><html lang=\"en\"><head>{$this->generateHead()}</head><body id=\"googtrans\">{$this->generateBody()}</body></html>";
 		}
 		public function generateSectionRow($section) {
-			$out = NULL;
+			$out = NULL; $cnt=0;
 			if(strpos($section, '%') !== false) {
 				$row = explode('%', $section);	array_shift($row);
 				foreach ($row as $section) {
 					[$width, $string] = explode('|', $section, 2);
 					if(strpos($string, ',') !== false) {
-						$row = explode(',', $string);
+						$row = explode(',', $string); 
 						$out .= '<div class="col-md-'.$width.'"><div class="row">';
 						foreach ($row as $string) {
+							$cnt++;
 							[$width, $string] = explode(';', $string);
-							$out .= '<div class="col-md-'.$width.'"><div class="row">';
+							$out .= '<div class="col-md-'.$width.'" id="'.$cnt.'"><div class="row">';
 							[$seccode, $string] = explode(':', $string);
 							$tools = new Tools($this->db);
 							if ($this->db->num_rows($sql = sprintf("SELECT `Type`, `File` FROM `Sections` WHERE `Code`='%s'", $seccode)) == 1) {
@@ -253,8 +254,9 @@
 					} else {
 						$out .= '<div class="col-md-'.$width.'"><div class="row">';
 						if(strpos($string, ';')!==false) {
+							$cnt++;
 							[$width, $string] = explode(';', $string);
-							$out .= '<div class="col-md-'.$width.'"><div class="row">';
+							$out .= '<div class="col-md-'.$width.'" id="'.$cnt.'"><div class="row">';
 							if(strpos($string, ':')!==false) {
 								[$seccode, $string] = explode(':', $string);
 								$tools = new Tools($this->db);
