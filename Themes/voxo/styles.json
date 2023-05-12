@@ -26,16 +26,16 @@
 	},{
 		"Name": "colors.css",
 		"Description": "colors.css",
-		"URL": "/colors.css",
-		"Image": "./colors.css",
+		"URL": "/Themes/Voxo/assets/colors.css",
+		"Image": "",
 		"Version": "1.0.0",
 		"Tags": ["colors", "css"],
 		"Hash": ""
 	},{
 		"Name": "style.css",
 		"Description": "style.css",
-		"URL": "/style.css",
-		"Image": "./style.css",
+		"URL": "/Themes/Voxo/assets/style.css",
+		"Image": "",
 		"Version": "1.0.0",
 		"Tags": ["style", "css"],
 		"Hash": ""

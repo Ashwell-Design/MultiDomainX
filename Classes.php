@@ -213,14 +213,16 @@
 	}
 	class Theme {
 		protected $id, $db, $dom_id;
-		public function __construct($theme_id, $db, $dom_id, $page) {
+		public function __construct($theme_id, $db, $dom_id, $page, $d_theme) {
 			$this->db = $db;
 			$this->info = $db->assoc(sprintf("SELECT * FROM `Themes` WHERE `id`='%s'", $theme_id));
 			$this->theme_id = $theme_id;
 			$this->domain_id = $dom_id;
 			$this->page = $page;
-			$this->theme_path = __ROOT__.'/Themes/'.$this->info['Location'];
-			$this->sections_path = __ROOT__.'/Sections';
+			$this->default_theme = $d_theme;
+			$this->theme_root = __ROOT__.'/Themes/';
+			$this->theme_path = $this->theme_root.$this->info['Location'];
+			$this->theme_path_default = $this->theme_root.$this->default_theme;
 		}
 		public function generate() {
 			return "<!DOCTYPE html><html lang=\"en\"><head>{$this->generateHead()}</head><body id=\"googtrans\">{$this->generateBody()}</body></html>";
@@ -242,11 +244,19 @@
 							$tools = new Tools($this->db);
 							if ($this->db->num_rows($sql = sprintf("SELECT `Type`, `File` FROM `Sections` WHERE `Code`='%s'", $seccode)) == 1) {
 								[$type, $file] = $this->db->array($sql);
-								$out .= $tools->ParseShortcodes(
-									file_get_contents("{$this->sections_path}/$type/$file.html"),
-									"{$this->sections_path}/$type/$file.ini",
-									$this->domain_id
-								);
+								if(file_exists("{$this->theme_path}/Sections/$type/$file.html")) {
+									$out .= $tools->ParseShortcodes(
+										file_get_contents("{$this->theme_path}/Sections/$type/$file.html"),
+										"{$this->theme_path}/Sections/$type/$file.ini",
+										$this->domain_id
+									);
+								} else {
+									$out .= $tools->ParseShortcodes(
+										file_get_contents("{$this->theme_path_default}/Sections/$type/$file.html"),
+										"{$this->theme_path_default}/Sections/$type/$file.ini",
+										$this->domain_id
+									);
+								}
 							}
 							$out .= '</div></div>';
 						}
@@ -262,11 +272,19 @@
 								$tools = new Tools($this->db);
 								if ($this->db->num_rows($sql = sprintf("SELECT `Type`, `File` FROM `Sections` WHERE `Code`='%s'", $seccode)) == 1) {
 									[$type, $file] = $this->db->array($sql);
-									$out .= $tools->ParseShortcodes(
-										file_get_contents("{$this->sections_path}/$type/$file.html"),
-										"{$this->sections_path}/$type/$file.ini",
-										$this->domain_id
-									);
+									if(file_exists("{$this->theme_path}/Sections/$type/$file.html")) {
+										$out .= $tools->ParseShortcodes(
+											file_get_contents("{$this->theme_path}/Sections/$type/$file.html"),
+											"{$this->theme_path}/Sections/$type/$file.ini",
+											$this->domain_id
+										);
+									} else {
+										$out .= $tools->ParseShortcodes(
+											file_get_contents("{$this->theme_path_default}/Sections/$type/$file.html"),
+											"{$this->theme_path_default}/Sections/$type/$file.ini",
+											$this->domain_id
+										);
+									}
 								}
 							}
 						}
@@ -318,22 +336,52 @@
 			return $out .= "<title>{$this->page->info['Title']}</title>";
 		}
 		public function getStyles($out='<!-- STYLES -->') {
-			foreach(json_decode(file_get_contents("{$this->theme_path}/styles.json"), true) as $style) {
-				if($style['Hash']!==null) {
-					$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $style['URL'], $style['Hash'], $style['URL'], $style['Hash']);
-				} else {
-					$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $style['URL'], $style['URL']);
+			if(file_exists("{$this->theme_path}/styles.json")) {
+				foreach(json_decode(file_get_contents("{$this->theme_path}/styles.json"), true) as $style) {
+					if($style['Hash']!==null) {
+						$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $style['URL'], $style['Hash'], $style['URL'], $style['Hash']);
+					} else {
+						$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $style['URL'], $style['URL']);
+					}
 				}
+			} else {
+				// TODO: Print error, Missing default theme styles
+			}
+			if(file_exists("{$this->theme_path_default}/styles.json")) {
+				foreach(json_decode(file_get_contents("{$this->theme_path_default}/styles.json"), true) as $style) {
+					if($style['Hash']!==null) {
+						$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $style['URL'], $style['Hash'], $style['URL'], $style['Hash']);
+					} else {
+						$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $style['URL'], $style['URL']);
+					}
+				}
+			} else {
+				// TODO: Print error, Missing theme styles
 			}
 			return $out;
 		}
 		public function getScripts($out='<!-- SCRIPTS -->') {
-			foreach(json_decode(file_get_contents("{$this->theme_path}/scripts.json"), true) as $script) {
-				if($script['Hash']!==null) {
-					$out .= sprintf("<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $script['URL'], $script['Hash']);
-				} else {
-					$out .= sprintf("<script src=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $script['URL']);
+			if(file_exists("{$this->theme_path}/scripts.json")) {
+				foreach(json_decode(file_get_contents("{$this->theme_path}/scripts.json"), true) as $script) {
+					if($script['Hash']!==null) {
+						$out .= sprintf("<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $script['URL'], $script['Hash']);
+					} else {
+						$out .= sprintf("<script src=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $script['URL']);
+					}
 				}
+			} else {
+				// TODO: Print error, Missing theme scripts
+			}
+			if(file_exists("{$this->theme_path_default}/scripts.json")) {
+				foreach(json_decode(file_get_contents("{$this->theme_path_default}/scripts.json"), true) as $script) {
+					if($script['Hash']!==null) {
+						$out .= sprintf("<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $script['URL'], $script['Hash']);
+					} else {
+						$out .= sprintf("<script src=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $script['URL']);
+					}
+				}
+			} else {
+				// TODO: Print error, Missing default theme scripts
 			}
 			return $out;
 		}
