@@ -40,6 +40,14 @@
 		"Tags": ["chart", "JS", "Library"],
 		"Hash": "sha512-Kr1p/vGF2i84dZQTkoYZ2do8xHRaiqIa7ysnDugwoOcG0SbIx98erNekP/qms/hBDiBxj336//77d0dv53Jmew=="
 	}, {
+		"Name": "SQL.js",
+		"Description": "",
+		"URL": "https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/sql-wasm.js",
+		"Image": "",
+		"Version": "1.6.1",
+		"Tags": ["chart", "JS", "Library"],
+		"Hash": "sha512-14M7CqWNUr6fzrgs9ncNWKdBtLu69HwEWq7J3/dPMUL+za3fBRLJvK6egAu4SSlxCM1apqsbVJHArGLl5fjldw=="
+	}, {
 		"Name": "Google Translate",
 		"Description": "Google Translate is a free multilingual machine translation service developed by Google, to translate text.",
 		"URL": "/Themes/Voxo/assets/translate.js",

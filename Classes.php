@@ -5,43 +5,52 @@
 			$this->db = $db;
 		}
 
-		function ParseShortcodes($string, $file='', $dom_id='') {
-			return preg_replace_callback('/<%\[([0-9a-zA-Z:_\- ]+)\]%>/', function($matches) use ($file, $dom_id) {
-				[$type, $string] = explode(':', strtolower($matches[1]), 2);
-				switch(strtolower($type)) {
-					case "g": // GLOBAL VARIABLE
-						return $this->db->array("SELECT `Value` FROM `Global vars` WHERE `Name`='$string'")[0];
-					case "s": // STRING
-						return strtoupper($string);
-					case "l": // LIST
-						if($string == 'nav') {
-							$links = '';
-							$q = $this->db->query("SELECT `Name`, `Url`, `Page`, `Subpage` FROM `Pages` WHERE `Domain`=$dom_id AND `Menu?`=1");
-							while($item = $this->db->array($q)) {
-								[$name, $url, $page, $subpage] = $item;
-								$active = null;
-								if($page == QS_PAGE && $subpage == QS_SUBPAGE) {
-									$active = 'active';
+		function ParseShortcodes($string, $file, $dom_id, $str) {
+			return preg_replace_callback('/<%\[([0-9a-zA-Z:_\- ]+)\]%>/', function($matches) use ($file, $dom_id, $str) {
+				if(!str_contains($matches[1], ':')) {
+					switch(strtolower($matches[1])) {
+						case "extension":
+							return $str;
+						default:
+							return "ERROR";
+					}
+				} else {
+					[$type, $string] = explode(':', strtolower($matches[1]), 2);
+					switch(strtolower($type)) {
+						case "g": // GLOBAL VARIABLE
+							return $this->db->array("SELECT `Value` FROM `Global vars` WHERE `Name`='$string'")[0];
+						case "s": // STRING
+							return strtoupper($string);
+						case "l": // LIST
+							if($string == 'nav') {
+								$links = '';
+								$q = $this->db->query("SELECT `Name`, `Url`, `Page`, `Subpage` FROM `Pages` WHERE `Domain`=$dom_id AND `Menu?`=1");
+								while($item = $this->db->array($q)) {
+									[$name, $url, $page, $subpage] = $item;
+									$active = null;
+									if($page == QS_PAGE && $subpage == QS_SUBPAGE) {
+										$active = 'active';
+									}
+									$links .= "<li class=\"nav-item\"><a href=\"$url\" class=\"nav-link text-auto $active\" style=\"color: inherit;\" aria-current=\"page\">$name</a></li>";
 								}
-								$links .= "<li class=\"nav-item\"><a href=\"$url\" class=\"nav-link text-auto $active\" style=\"color: inherit;\" aria-current=\"page\">$name</a></li>";
-							}
-							return $links;
-						} else {
-							$items = explode(';', $this->db->array("SELECT `Value` FROM `Global lists` WHERE `Name`='$string'")[0]);
-							$links = '';
-							foreach($items as $item) {
-								if($item != '') {
-									[$name, $link] = explode(':', $item, 2);
-									$links .= "<li class=\"nav-item\"><a href=\"$link\" class=\"nav-link\" style=\"color: inherit;\" aria-current=\"page\">$name</a></li>";
+								return $links;
+							} else {
+								$items = explode(';', $this->db->array("SELECT `Value` FROM `Global lists` WHERE `Name`='$string'")[0]);
+								$links = '';
+								foreach($items as $item) {
+									if($item != '') {
+										[$name, $link] = explode(':', $item, 2);
+										$links .= "<li class=\"nav-item\"><a href=\"$link\" class=\"nav-link\" style=\"color: inherit;\" aria-current=\"page\">$name</a></li>";
+									}
 								}
+								return $links;
 							}
-							return $links;
-						}
-					case "t": // PREDETERMINED THEME
-						$ini_array = parse_ini_file($file, true);
-						return $ini_array[$string];
-					default:
-						return "ERROR";
+						case "t": // PREDETERMINED THEME
+							$ini_array = parse_ini_file($file, true);
+							return $ini_array[$string];
+						default:
+							return "ERROR";
+				}
 				}
 			}, $string);
 		}
@@ -123,7 +132,6 @@
 				return 'application/octet-stream';
 			}
 		}
-
 	}
 	class Config {
 		protected $file;
@@ -248,13 +256,15 @@
 									$out .= $tools->ParseShortcodes(
 										file_get_contents("{$this->theme_path}/Sections/$type/$file.html"),
 										"{$this->theme_path}/Sections/$type/$file.ini",
-										$this->domain_id
+										$this->domain_id,
+										$string
 									);
 								} else {
 									$out .= $tools->ParseShortcodes(
 										file_get_contents("{$this->theme_path_default}/Sections/$type/$file.html"),
 										"{$this->theme_path_default}/Sections/$type/$file.ini",
-										$this->domain_id
+										$this->domain_id,
+										$string
 									);
 								}
 							}
@@ -276,13 +286,15 @@
 										$out .= $tools->ParseShortcodes(
 											file_get_contents("{$this->theme_path}/Sections/$type/$file.html"),
 											"{$this->theme_path}/Sections/$type/$file.ini",
-											$this->domain_id
+											$this->domain_id,
+											$string
 										);
 									} else {
 										$out .= $tools->ParseShortcodes(
 											file_get_contents("{$this->theme_path_default}/Sections/$type/$file.html"),
 											"{$this->theme_path_default}/Sections/$type/$file.ini",
-											$this->domain_id
+											$this->domain_id,
+											$string
 										);
 									}
 								}
@@ -311,7 +323,7 @@
 				$sections = explode("$", $code);	array_shift($sections);	$cnt=NULL;
 				$body .= '<main class="container-fluid row">';
 				foreach ($sections as $section) {
-					preg_match_all('/([0-9]+)\[([A-Za-z0-9\|\%\#\;\:\,]+)\]/', preg_replace('/\s+/', '', preg_replace('/\s+/', '', $section, 2)), $matches);
+					preg_match_all('/([0-9]+)\[([A-Za-z0-9\|\%\#\;\:\,\-]+)\]/', preg_replace('/\s+/', '', preg_replace('/\s+/', '', $section, 2)), $matches);
 					$row_string = $matches[2][0];	$cnt++;
 					$body .= $this->generateSectionRow($row_string);
 				}

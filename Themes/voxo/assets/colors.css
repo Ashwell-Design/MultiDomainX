@@ -1,8 +1,5 @@
 * {
-	transition: background-color 0.5s linear 0s,
-				background 0.5s linear 0s,
-				color 0.5s linear 0s,
-				height 0.5s linear 0s!important;
+	transition: all 0.25s linear 0s!important;
 }
 
 :root { /* COLOURS */
@@ -158,6 +155,9 @@
 	.apexcharts-theme-light .apexcharts-menu-item:hover {
 		background: var(--sl-03)!important;
 	}
+	.form-floating>.form-control-plaintext~label, .form-floating>.form-control:focus~label, .form-floating>.form-control:not(:placeholder-shown)~label, .form-floating>.form-select~label {
+		color: var(--sl-15)!important;
+	}
 }
 @media (prefers-color-scheme: dark) {
 	:root {
@@ -189,5 +189,8 @@
 	}
 	.apexcharts-theme-light .apexcharts-menu-item:hover {
 		background: var(--sc-29)!important;
+	}
+	.form-floating>.form-control-plaintext~label, .form-floating>.form-control:focus~label, .form-floating>.form-control:not(:placeholder-shown)~label, .form-floating>.form-select~label {
+		color: var(--sl-15)!important;
 	}
 }
