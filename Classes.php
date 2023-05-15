@@ -252,17 +252,17 @@
 							$tools = new Tools($this->db);
 							if ($this->db->num_rows($sql = sprintf("SELECT `Type`, `File` FROM `Sections` WHERE `Code`='%s'", $seccode)) == 1) {
 								[$type, $file] = $this->db->array($sql);
-								if(file_exists("{$this->theme_path}/Sections/$type/$file.html")) {
+								if(file_exists("{$this->theme_path}/sections/$type/$file.html")) {
 									$out .= $tools->ParseShortcodes(
-										file_get_contents("{$this->theme_path}/Sections/$type/$file.html"),
-										"{$this->theme_path}/Sections/$type/$file.ini",
+										file_get_contents("{$this->theme_path}/sections/$type/$file.html"),
+										"{$this->theme_path}/sections/$type/$file.ini",
 										$this->domain_id,
 										$string
 									);
 								} else {
 									$out .= $tools->ParseShortcodes(
-										file_get_contents("{$this->theme_path_default}/Sections/$type/$file.html"),
-										"{$this->theme_path_default}/Sections/$type/$file.ini",
+										file_get_contents("{$this->theme_path_default}/sections/$type/$file.html"),
+										"{$this->theme_path_default}/sections/$type/$file.ini",
 										$this->domain_id,
 										$string
 									);
@@ -282,17 +282,17 @@
 								$tools = new Tools($this->db);
 								if ($this->db->num_rows($sql = sprintf("SELECT `Type`, `File` FROM `Sections` WHERE `Code`='%s'", $seccode)) == 1) {
 									[$type, $file] = $this->db->array($sql);
-									if(file_exists("{$this->theme_path}/Sections/$type/$file.html")) {
+									if(file_exists("{$this->theme_path}/sections/$type/$file.html")) {
 										$out .= $tools->ParseShortcodes(
-											file_get_contents("{$this->theme_path}/Sections/$type/$file.html"),
-											"{$this->theme_path}/Sections/$type/$file.ini",
+											file_get_contents("{$this->theme_path}/sections/$type/$file.html"),
+											"{$this->theme_path}/sections/$type/$file.ini",
 											$this->domain_id,
 											$string
 										);
 									} else {
 										$out .= $tools->ParseShortcodes(
-											file_get_contents("{$this->theme_path_default}/Sections/$type/$file.html"),
-											"{$this->theme_path_default}/Sections/$type/$file.ini",
+											file_get_contents("{$this->theme_path_default}/sections/$type/$file.html"),
+											"{$this->theme_path_default}/sections/$type/$file.ini",
 											$this->domain_id,
 											$string
 										);
