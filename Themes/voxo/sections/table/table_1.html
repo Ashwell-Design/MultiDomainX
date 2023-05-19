@@ -7,9 +7,9 @@
 	</table>
 
 	<script>
-		var [table, cols] = '<%[extension]%>'.split('-', 2);
+		var [table, cols, buttonString] = '<%[extension]%>'.split('-', 3);
 		var tbody = (document.currentScript.parentNode).querySelector("tbody");
-		var thead = (document.currentScript.parentNode).querySelector("tbody");
+		var thead = (document.currentScript.parentNode).querySelector("thead");
 
 		initSqlJs({
 			locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${filename}`
@@ -21,7 +21,7 @@
 			xhr.onload = e => {
 				const uInt8Array = new Uint8Array(xhr.response);
 				const db = new SQL.Database(uInt8Array);
-
+				/* Header */
 				var stmt = db.prepare("PRAGMA table_info("+table+")");
 				stmt.getAsObject({$start:1, $end:1});
 				stmt.bind({$start:1, $end:2});
@@ -30,12 +30,13 @@
 				while(stmt.step()) {
 					if(cols.includes(i)) {
 						const row = stmt.getAsObject();
-						tbl_row = th.appendChild(document.createElement('th'));
-						tbl_row.textContent = Object.values(row)[1];
+						row_col = th.appendChild(document.createElement('th'));
+						row_col.textContent = Object.values(row)[1];
 					}
 					i++;
 				}
-
+				th.appendChild(document.createElement('th'));
+				/* Rows */
 				var stmt = db.prepare("SELECT * FROM " + table);
 				stmt.getAsObject({$start:1, $end:1});
 				stmt.bind({$start:1, $end:2});
@@ -43,12 +44,26 @@
 					const row = stmt.getAsObject();
 					var tr = tbody.appendChild(document.createElement('tr'));
 					for (let s=0; s<cols.length; s++) {
-						if(s == 0) {
-							tbl_row = tr.appendChild(document.createElement('th'));
-						} else {
-							tbl_row = tr.appendChild(document.createElement('td'))
-						}
-						tbl_row.textContent = Object.values(row)[cols[s]];
+						row_col = tr.appendChild(document.createElement('td'));
+						row_col.textContent = Object.values(row)[cols[s]];
+					}
+					btn_col = tr.appendChild(document.createElement('td'));
+					if(buttonString.length > 1) {
+						buttons = buttonString.split('+');
+						btn = '';
+						buttons.forEach((button) => {
+							[title, url] = button.split('/');
+							if(title.includes('=')) {
+								[cat, title] = title.split('=');
+								switch (cat) {
+									case "icon":
+										title='<i class="fa fa-'+title+'"></i>'
+
+								}
+							}
+							btn += '<a href="/'+url+'" class="p-1">'+title+'</a>';
+						});;
+						btn_col.innerHTML = btn;
 					}
 				}
 			};
