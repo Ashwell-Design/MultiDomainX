@@ -349,8 +349,8 @@
 		}
 		public function getStyles($out='<!-- STYLES -->') {
 			if(file_exists("{$this->theme_path}/info.json")) {
-				foreach(json_decode(file_get_contents("{$this->theme_path}/info.json"), true) as $style) {
-					if($style['Styles']['Hash']!==null) {
+				foreach(json_decode(file_get_contents("{$this->theme_path}/info.json"), true)['Styles'] as $style) {
+					if($style['Hash']!==null) {
 						$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $style['URL'], $style['Hash'], $style['URL'], $style['Hash']);
 					} else {
 						$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $style['URL'], $style['URL']);
@@ -360,8 +360,8 @@
 				// TODO: Print error, Missing default theme styles
 			}
 			if(file_exists("{$this->theme_path_default}/info.json")) {
-				foreach(json_decode(file_get_contents("{$this->theme_path_default}/info.json"), true) as $style) {
-					if($style['Styles']['Hash']!==null) {
+				foreach(json_decode(file_get_contents("{$this->theme_path_default}/info.json"), true)['Styles'] as $style) {
+					if($style['Hash']!==null) {
 						$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $style['URL'], $style['Hash'], $style['URL'], $style['Hash']);
 					} else {
 						$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $style['URL'], $style['URL']);
@@ -374,8 +374,8 @@
 		}
 		public function getScripts($out='<!-- SCRIPTS -->') {
 			if(file_exists("{$this->theme_path}/info.json")) {
-				foreach(json_decode(file_get_contents("{$this->theme_path}/info.json"), true) as $script) {
-					if($script['Scripts']['Hash']!==null) {
+				foreach(json_decode(file_get_contents("{$this->theme_path}/info.json"), true)['Scripts'] as $script) {
+					if($script['Hash']!==null) {
 						$out .= sprintf("<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $script['URL'], $script['Hash']);
 					} else {
 						$out .= sprintf("<script src=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $script['URL']);
@@ -385,8 +385,8 @@
 				// TODO: Print error, Missing theme scripts
 			}
 			if(file_exists("{$this->theme_path_default}/info.json")) {
-				foreach(json_decode(file_get_contents("{$this->theme_path_default}/info.json"), true) as $script) {
-					if($script['Scripts']['Hash']!==null) {
+				foreach(json_decode(file_get_contents("{$this->theme_path_default}/info.json"), true)['Scripts'] as $script) {
+					if($script['Hash']!==null) {
 						$out .= sprintf("<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $script['URL'], $script['Hash']);
 					} else {
 						$out .= sprintf("<script src=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $script['URL']);
