@@ -209,6 +209,7 @@
 	}
 	class Website {
 		protected $website, $db;
+		public $info;
 		public function __construct($website, $db) {
 			$this->db = $db;
 			$this->website = $website;
@@ -221,6 +222,7 @@
 	}
 	class Theme {
 		protected $id, $db, $dom_id;
+		public $info, $theme_id, $domain_id, $page, $default_theme, $theme_root, $theme_path, $theme_path_default;
 		public function __construct($theme_id, $db, $dom_id, $page, $d_theme) {
 			$this->db = $db;
 			$this->info = $db->assoc(sprintf("SELECT * FROM `Themes` WHERE `id`='%s'", $theme_id));
@@ -407,6 +409,7 @@
 	}
 	class Page {
 		protected $db, $page, $subpage, $query;
+		public $page_id, $info;
 		public function __construct($dom_id, $page, $subpage, $query, $db) {
 			$this->db = $db;
 			$this->page = $page;
