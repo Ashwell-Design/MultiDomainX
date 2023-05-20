@@ -3,10 +3,8 @@
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if($_POST['payload']) { // Only respond to POST requests from Github
 			$payload = json_decode($_POST['payload'], true);
-			define("GIT_PROT",		"https");
-			define("GIT_USER",		"azurrr");
+			define("GIT_USER",		$conf['Github']['username']);
 			define("GIT_PKEY",		$conf['Github']['Private_Key']);
-			define("GIT_ADDR",		"github.com");
 			define("ROOT_DIR",		"/kunden/homepages/36/d908228976/htdocs");
 			define("HOST",			explode('/', $payload['repository']['full_name'])[0]);	# Ashwell-Design
 			define("REPO",			explode('/', $payload['repository']['full_name'])[1]);	# MultiDomainX
@@ -15,7 +13,7 @@
 			define("REPO_DIR",		HOST_DIR."/".REPO);										# /Ashwell-Design/MultiDomainX/
 			define("SPUR_DIR",		REPO_DIR."/".SPUR);										# /Ashwell-Design/MultiDomainX/Development/
 
-			define("REMOTE_LINK",	GIT_PROT."://".GIT_USER.":".GIT_PKEY."@". GIT_ADDR."/".HOST."/".REPO.".git");
+			define("REMOTE_LINK",	"https://".GIT_USER.":".GIT_PKEY."@github.com/".HOST."/".REPO.".git");
 
 			if(!file_exists(HOST_DIR)) shell_exec("cd ".ROOT_DIR." && mkdir ".HOST);
 			if(!file_exists(REPO_DIR)) shell_exec("cd ".HOST_DIR." && mkdir ".REPO);
