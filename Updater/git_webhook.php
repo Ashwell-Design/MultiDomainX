@@ -1,5 +1,4 @@
 <?
-	define('__ROOT__',		dirname(__FILE__));
 	print_r(__ROOT__.'/Configuration/config.ini');
 	$conf = parse_ini_file(__ROOT__.'/Configuration/config.ini', true);
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
