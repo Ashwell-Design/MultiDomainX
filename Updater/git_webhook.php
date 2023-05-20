@@ -14,7 +14,7 @@
 			define("HOST_DIR",		ROOT_DIR."/".HOST);
 			define("REPO_DIR",		HOST_DIR."/".REPO);
 			define("SPUR_DIR",		REPO_DIR."/".SPUR);
-				   
+
 			define("REMOTE_LINK",	GIT_PROT."://".GIT_USER.":".GIT_PKEY."@". GIT_ADDR."/".HOST."/".REPO.".git");
 
 			if(!file_exists(HOST_DIR)) shell_exec("cd ".ROOT_DIR." && mkdir ".HOST);
