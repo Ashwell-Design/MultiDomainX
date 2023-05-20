@@ -24,8 +24,7 @@ error_reporting(E_ALL);
 		if($page->page_id) {
 			$theme = new Theme($website->info['Theme'], $db_c, $website->info['ID'], $page, $config['Theme']['Default']);
 			$themeinfo = $theme->info;
-			print($file = __ROOT__."/".QS_FILE.".".QS_EXT);
-			if(file_exists($file)) {
+			if(file_exists($file = __ROOT__."/".QS_FILE.".".QS_EXT)) {
 				header("Content-Type: " . $tools->get_mime_type(QS_FILE.".".QS_EXT) . "; charset=UTF-8;");
 				require_once($file);
 			} else {
