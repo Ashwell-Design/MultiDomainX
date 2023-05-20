@@ -11,8 +11,8 @@
 			define("GIT_PKEY",		$conf['Github']['Private_Key']);
 			define("GIT_ADDR",		"github.com");
 			define("ROOT_DIR",		"/kunden/homepages/36/d908228976/htdocs");
-			define("HOST",			explode('/', $payload['full_name'])[0]);
-			define("REPO",			explode('/', $payload['full_name'])[1]);
+			define("HOST",			explode('/', $payload['repository']['full_name'])[0]);
+			define("REPO",			explode('/', $payload['repository']['full_name'])[1]);
 			define("SPUR",			explode('/', $payload['ref'])[2]);
 			define("HOST_DIR",		ROOT_DIR."/".HOST);
 			define("REPO_DIR",		HOST_DIR."/".REPO);
