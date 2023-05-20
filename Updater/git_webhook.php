@@ -1,5 +1,7 @@
 <?
-	$conf = parse_ini_file('../Configuration/config.ini', true);
+	define('__ROOT__',		dirname(__FILE__));
+	print_r(__ROOT__.'/Configuration/config.ini');
+	$conf = parse_ini_file(__ROOT__.'/Configuration/config.ini', true);
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if($_POST['payload']) { // Only respond to POST requests from Github
 			$payload = json_decode($_POST['payload'], true);
