@@ -3,9 +3,6 @@
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if($_POST['payload']) { // Only respond to POST requests from Github
 			$payload = json_decode($_POST['payload'], true);
-
-			print_r($payload);
-
 			define("GIT_PROT",		"https");
 			define("GIT_USER",		"azurrr");
 			define("GIT_PKEY",		$conf['Github']['Private_Key']);
