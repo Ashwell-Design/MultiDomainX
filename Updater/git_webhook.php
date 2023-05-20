@@ -11,12 +11,12 @@
 			define("GIT_PKEY",		$conf['Github']['Private_Key']);
 			define("GIT_ADDR",		"github.com");
 			define("ROOT_DIR",		"/kunden/homepages/36/d908228976/htdocs");
-			define("HOST",			explode('/', $payload['repository']['full_name'])[0]);
-			define("REPO",			explode('/', $payload['repository']['full_name'])[1]);
-			define("SPUR",			explode('/', $payload['ref'])[2]);
-			define("HOST_DIR",		ROOT_DIR."/".HOST);
-			define("REPO_DIR",		HOST_DIR."/".REPO);
-			define("SPUR_DIR",		REPO_DIR."/".SPUR);
+			define("HOST",			explode('/', $payload['repository']['full_name'])[0]);	# Ashwell-Design
+			define("REPO",			explode('/', $payload['repository']['full_name'])[1]);	# MultiDomainX
+			define("SPUR",			explode('/', $payload['ref'])[2]); 						# Development
+			define("HOST_DIR",		ROOT_DIR."/".HOST);										# /Ashwell-Design/
+			define("REPO_DIR",		HOST_DIR."/".REPO);										# /Ashwell-Design/MultiDomainX/
+			define("SPUR_DIR",		REPO_DIR."/".SPUR);										# /Ashwell-Design/MultiDomainX/Development/
 
 			define("REMOTE_LINK",	GIT_PROT."://".GIT_USER.":".GIT_PKEY."@". GIT_ADDR."/".HOST."/".REPO.".git");
 
@@ -25,10 +25,10 @@
 			if(!file_exists(SPUR_DIR)) {
 				shell_exec("cd ".SPUR_DIR." && git clone ".REMOTE_LINK);
 				shell_exec("cd ".SPUR_DIR." && mv ".REPO."".SPUR);
-				shell_exec("cd ".REPOSITORY." && git checkout ".SPUR);
+				shell_exec("cd ".SPUR_DIR." && git checkout ".SPUR);
 				die("Cloned. ".date(DateTime::ISO8601, strtotime('-2 hour')));
 			} else {
-				shell_exec("cd ".REPOSITORY." && git pull origin ".SPUR);
+				shell_exec("cd ".SPUR_DIR." && git pull origin ".SPUR);
 				die("Updated. ".date(DateTime::ISO8601, strtotime('-2 hour')));
 			}
 		}
