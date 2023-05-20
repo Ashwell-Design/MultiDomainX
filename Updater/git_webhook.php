@@ -21,7 +21,7 @@
 			if(!file_exists(REPO_DIR)) shell_exec("cd ".HOST_DIR." && mkdir ".REPO);
 			if(!file_exists(SPUR_DIR)) {
 				shell_exec("cd ".SPUR_DIR." && git clone ".REMOTE_LINK);
-				shell_exec("cd ".SPUR_DIR." && mv ".REPO."".SPUR);
+				shell_exec("cd ".SPUR_DIR." && mv " . REPO . " " . SPUR );
 				shell_exec("cd ".SPUR_DIR." && git checkout ".SPUR);
 				die("Cloned. ".date(DateTime::ISO8601, strtotime('-2 hour')));
 			} else {
