@@ -237,17 +237,17 @@
 				<h1>License agreeement</h1>
 				<div class="btn-deck">
 					<button type="button" class="btn btn-close" data-method="close" data-target="#welcome"></button>
-					<button type="button" class="btn" data-method="open" data-target="#card-3">NEXT</button>
+					<button type="button" class="btn" data-method="open" data-target="#activation">NEXT</button>
 				</div>
 			</section>
 			<section class="card card-slideover" id="activation">
 				<h1>Activation</h1>
 				<div class="btn-deck">
 					<button type="button" class="btn btn-close" data-method="close" data-target="#license"></button>
-					<button type="button" class="btn" data-method="open" data-target="#card-3">NEXT</button>
+					<button type="button" class="btn" data-method="open" data-target="#installing">NEXT</button>
 				</div>
 			</section>
-			<section class="card card-slideover" id="card-3">
+			<section class="card card-slideover" id="installing">
 				<h1>Installing</h1>
 				<div class="btn-deck">
 					
