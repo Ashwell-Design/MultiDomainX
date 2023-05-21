@@ -71,6 +71,7 @@
 		.elem .c .3 { }
 		/* FORM */
 		.cont .frm {
+			/*
 			width: 50%;
 			height: auto;
 			position: fixed;
@@ -78,6 +79,7 @@
 			left: 50%;
 			min-height: 50%;
 			transform: translate(-50%, -50%);
+			*/
 		}
 		.card {
 		--anim-dura: .6s;
@@ -91,7 +93,7 @@
 		width: calc(100% - 2rem);
 		max-width: 400px;
 		height: 600px;
-		max-height: calc(100% - 8rem);
+		max-height: calc(100% - 2rem);
 		
 		padding: 1rem;
 		
@@ -228,12 +230,18 @@
 		<div class="frm">
 			<section class="card card-popup open" id="welcome">
 				<h1>Welcome</h1>
+				<p>
+
+				</p>
 				<div class="btn-deck">
 					<button type="button" class="btn" data-method="open" data-target="#license">NEXT</button>
 				</div>
 			</section>
 			<section class="card card-slideover" id="license">
 				<h1>License agreeement</h1>
+				<p>
+
+				</p>
 				<div class="btn-deck">
 					<button type="button" class="btn btn-close" data-method="close" data-target="#welcome"></button>
 					<button type="button" class="btn" data-method="open" data-target="#activation">NEXT</button>
@@ -241,6 +249,9 @@
 			</section>
 			<section class="card card-slideover" id="activation">
 				<h1>Activation</h1>
+				<p>
+
+				</p>
 				<div class="btn-deck">
 					<button type="button" class="btn btn-close" data-method="close" data-target="#license"></button>
 					<button type="button" class="btn" data-method="open" data-target="#installing">NEXT</button>
@@ -248,6 +259,9 @@
 			</section>
 			<section class="card card-slideover" id="installing">
 				<h1>Installing</h1>
+				<p>
+
+				</p>
 				<div class="btn-deck">
 					
 				</div>
