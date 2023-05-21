@@ -84,7 +84,6 @@
 		--anim-dura-alt: .55s;
 		
 		display: flex;
-		flex-flow: column wrap;
 		justify-content: space-between;
 		
 		opacity: 0;
