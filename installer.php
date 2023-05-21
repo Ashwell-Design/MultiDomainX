@@ -266,7 +266,7 @@
 				}
 			})
 		);
-	<script>
+	</script>
 </head>
 <body>
 	<div class="cont">
