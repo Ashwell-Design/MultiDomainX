@@ -13,8 +13,7 @@
 
 		initSqlJs({
 			locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${filename}`
-		})
-		.then(function(SQL){
+		}).then(function(SQL){
 			const xhr = new XMLHttpRequest();
 			xhr.open('GET', '/central.sqlite', true);
 			xhr.responseType = 'arraybuffer';
