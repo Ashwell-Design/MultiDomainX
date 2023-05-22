@@ -183,7 +183,7 @@
 							<p>Let's get started and unlock the potential of effortless multi-domain management with MultiDomainX!</p>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-outline-primary" data-method="open" data-target="#license">NEXT</button>
+							<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#license">NEXT</button>
 						</div>
 					</div>
 				</div>
@@ -198,8 +198,8 @@
 							<pre class="license overflow-visible m-auto"></pre>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-outline-danger" data-method="close" data-target="#welcome">BACK</button>
-							<button type="button" class="btn btn-outline-primary" data-method="open" data-target="#activation">NEXT</button>
+							<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#welcome">BACK</button>
+							<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#activation">NEXT</button>
 						</div>
 					</div>
 				</div>
@@ -214,8 +214,8 @@
 							
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-outline-danger" data-method="close" data-target="#license">BACK</button>
-							<button type="button" class="btn btn-outline-primary" data-method="open" data-target="#installing">ACCEPT</button>>
+							<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#license">BACK</button>
+							<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#installing">ACCEPT</button>>
 						</div>
 					</div>
 				</div>
