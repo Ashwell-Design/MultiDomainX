@@ -170,7 +170,7 @@
 			<div class="c three"></div>
 		</div>
 		<div class="frm">
-			<div class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal fade show d-block" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
