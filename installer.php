@@ -182,9 +182,7 @@
 			</section>
 			<section class="card card-slideover w-75" id="license">
 				<h1>License agreeement</h1>
-				<pre class="license">
-
-				</pre>
+				<pre class="license overflow-visible m-auto"></pre>
 				<div class="btn-deck">
 					<button type="button" class="btn btn-outline-danger" data-method="close" data-target="#welcome">BACK</button>
 					<button type="button" class="btn btn-outline-primary" data-method="open" data-target="#activation">NEXT</button>
