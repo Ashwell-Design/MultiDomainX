@@ -183,7 +183,9 @@
 			</section>
 			<section class="card card-slideover" id="license">
 				<h1>License agreeement</h1>
-				<iframe src="https://raw.githubusercontent.com/Ashwell-Design/MultiDomainX/Release/LICENSE.txt" title="LICENCE.txt"></iframe>
+				<pre class="license">
+
+				</pre>
 				<div class="btn-deck">
 					<button type="button" class="btn btn-outline-danger" data-method="close" data-target="#welcome">BACK</button>
 					<button type="button" class="btn btn-outline-primary" data-method="open" data-target="#activation">NEXT</button>
@@ -271,6 +273,7 @@
 			return xmlHttp.responseText;
 		}
 		var license = JSON.parse(httpGet('https://api.github.com/repos/Ashwell-Design/MultiDomainX/contents/LICENSE.txt'));
-		console.log(atob(license['content']))
+		const licenseElem = document.querySelector('pre.license');
+		licenseElem.innerHTML = atob(license['content'])
 	</script>
 </body>
