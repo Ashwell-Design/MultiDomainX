@@ -182,10 +182,10 @@
 		changeModal = () => {
 			var curr = $(event.currentTarget).closest('.modal')[0];
 			var next = $(event.currentTarget).attr('data-target');
-			console.log(curr);
 			$(curr).modal('hide');
 			$(next).modal('show');
 		}
+		$('#welcome').modal('show');
 		// PROGRESS BAR
 		updateProgress = (mode, value) => {
 			if(value < 101) {
