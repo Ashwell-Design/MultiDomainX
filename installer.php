@@ -178,49 +178,51 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js" integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script>
-		// MODALS
-		changeModal = () => {
-			var curr = $(event.currentTarget).closest('.modal')[0];
-			var next = $(event.currentTarget).attr('data-target');
-			$(curr).modal('hide');
-			$(next).modal('show');
-		}
-		$('#welcome').modal('show');
-		// PROGRESS BAR
-		updateProgress = (mode, value) => {
-			if(value < 101) {
-				var newProgress;
-				const element = document.querySelector('.pb');
-				const computedStyle = getComputedStyle(element);
-				var progress = parseInt(computedStyle.getPropertyValue('--progress'));
-				switch(mode) {
-					case 'add':
-						newProgress = progress+value;
-						if(newProgress>100) newProgress=100;
-						break;
-					case 'set':
-						newProgress = value;
-						break;
-					case 'sub':
-						newProgress = progress-value;
-						if(newProgress<0) newProgress=0;
-						break;
-				}
-				element.style.setProperty('--progress', `${newProgress}%`);
-				element.style.setProperty('--progress-text', `'${newProgress}%'`);
+		$( document ).ready(() => {
+			// MODALS
+			changeModal = () => {
+				var curr = $(event.currentTarget).closest('.modal')[0];
+				var next = $(event.currentTarget).attr('data-target');
+				$(curr).modal('hide');
+				$(next).modal('show');
 			}
-		}
-		updateProgress('set', 37)
+			$('#welcome').modal('show');
+			// PROGRESS BAR
+			updateProgress = (mode, value) => {
+				if(value < 101) {
+					var newProgress;
+					const element = document.querySelector('.pb');
+					const computedStyle = getComputedStyle(element);
+					var progress = parseInt(computedStyle.getPropertyValue('--progress'));
+					switch(mode) {
+						case 'add':
+							newProgress = progress+value;
+							if(newProgress>100) newProgress=100;
+							break;
+						case 'set':
+							newProgress = value;
+							break;
+						case 'sub':
+							newProgress = progress-value;
+							if(newProgress<0) newProgress=0;
+							break;
+					}
+					element.style.setProperty('--progress', `${newProgress}%`);
+					element.style.setProperty('--progress-text', `'${newProgress}%'`);
+				}
+			}
+			updateProgress('set', 37)
 
-		// LICENSE
-		function httpGet(theUrl) {
-			var xmlHttp = new XMLHttpRequest();
-			xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-			xmlHttp.send( null );
-			return xmlHttp.responseText;
-		}
-		var license = JSON.parse(httpGet('https://api.github.com/repos/Ashwell-Design/MultiDomainX/contents/LICENSE.txt'));
-		const licenseElem = document.querySelector('pre.license');
-		licenseElem.innerHTML = atob(license['content'])
+			// LICENSE
+			function httpGet(theUrl) {
+				var xmlHttp = new XMLHttpRequest();
+				xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+				xmlHttp.send( null );
+				return xmlHttp.responseText;
+			}
+			var license = JSON.parse(httpGet('https://api.github.com/repos/Ashwell-Design/MultiDomainX/contents/LICENSE.txt'));
+			const licenseElem = document.querySelector('pre.license');
+			licenseElem.innerHTML = atob(license['content'])
+		})
 	</script>
 </body>
