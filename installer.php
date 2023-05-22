@@ -184,7 +184,10 @@
 				var curr = $(event.currentTarget).closest('.modal')[0];
 				var next = $(event.currentTarget).attr('data-target');
 				$(curr).modal('hide');
-				$(next).modal('show');
+				$(next).modal({
+					backdrop: 'static',
+					keyboard: false
+				}).modal('show');
 			}
 			$('#welcome').modal({
 				backdrop: 'static',
