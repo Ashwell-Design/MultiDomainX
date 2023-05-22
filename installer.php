@@ -185,7 +185,9 @@
 			console.log(curr);
 			console.log(next);
 			$(curr).modal('hide');
-			$(next).modal('show');
+			$(next).modal({
+				backdrop: 'static',
+			});
 		}
 		// PROGRESS BAR
 		updateProgress = (mode, value) => {
