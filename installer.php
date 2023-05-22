@@ -120,7 +120,7 @@
 					<p>Let's get started and unlock the potential of effortless multi-domain management with MultiDomainX!</p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#license">NEXT</button>
+					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#license">NEXT</button>
 				</div>
 			</div>
 		</div>
