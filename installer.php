@@ -271,6 +271,6 @@
 			return xmlHttp.responseText;
 		}
 		var license = httpGet('https://api.github.com/repos/Ashwell-Design/MultiDomainX/contents/LICENSE.txt');
-		console.log(license)
+		console.log(license.content)
 	</script>
 </body>
