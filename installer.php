@@ -181,7 +181,8 @@
 		// MODALS
 		changeModal = (curr, next) => {
 			curr = $(curr).closest('.modal')[0];
-			console.log(this);
+			var element = event.currentTarget;
+		    console.log(element);
 			next = $(next)[0];
 			$(curr).modal('hide');
 			$(next).modal('show');
