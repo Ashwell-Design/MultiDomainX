@@ -99,7 +99,7 @@
 			*/
 	</style>
 </head>
-<body class="modal-open">
+<body>
 	<div class="cont">
 		<div class="elem">
 			<div class="c one"></div>
