@@ -186,7 +186,10 @@
 				$(curr).modal('hide');
 				$(next).modal('show');
 			}
-			$('#welcome').modal('show');
+			$('#welcome').modal({
+				backdrop: 'static',
+				keyboard: false
+			});
 			// PROGRESS BAR
 			updateProgress = (mode, value) => {
 				if(value < 101) {
