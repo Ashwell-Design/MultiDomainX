@@ -99,8 +99,13 @@
 			<div class="c two"></div>
 			<div class="c three"></div>
 		</div>
-		<div class="frm">
-			<div class="modal fade modal-xl show" tabindex="-1" role="dialog">
+		<div class="pb" style="--progress=0%; --progress-text='0%';"></div>
+		<div class="int">
+
+		</div>
+	</div>
+	
+	<div class="modal fade modal-xl show" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -163,12 +168,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="pb" style="--progress=0%; --progress-text='0%';"></div>
-		<div class="int">
-
-		</div>
-	</div>
 	<script>
 		// PROGRESS BAR
 		updateProgress = (mode, value) => {
