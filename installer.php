@@ -70,93 +70,23 @@
 			.elem .c .2 { }
 			.elem .c .3 { }
 		/* FORM */
-			.card::-webkit-scrollbar {
+			*::-webkit-scrollbar {
 				width: 5px;
 				background-color: #F5F5F5;
 			}
-			.card::-webkit-scrollbar-track {
+			*::-webkit-scrollbar-track {
 				-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 				border-radius: 10px;
 				background-color: #F5F5F5;
 
 			}
-			.card::-webkit-scrollbar-thumb {
+			*::-webkit-scrollbar-thumb {
 				border-radius: 10px;
 				-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 				background-color: #555;
 			}
-			.card {
-				--anim-dura: .6s;
-				--anim-dura-alt: .55s;
-				display: flex;
-				opacity: 0;
-				width: calc(100% - 2rem);
-				max-height: calc(100% - 2rem);
-				padding: 1rem;
-				position: fixed;
-				top: 50%;
-				left: 50%;
-				background: white;
-				box-shadow: 0 0 6px #0001, 0 6px 6px #0003;
-				border-radius: .5rem;
-				transform: translate(-50%, -50%);
-				transition: all var(--anim-dura) cubic-bezier(0.68, -0.55, 0.265, 1.55);
-				transition-delay: 0s;
-				overflow-y: scroll;
-			}
-			.card.open {
-				opacity: 1;
-				transform: translate(-50%, -50%);
-				transition-delay: 0s;
-			}
-			.card:not(.open.idle) {
-				transition-delay: var(--anim-dura);
-			}
-			.card.open.idle {
-				box-shadow: 0 0 2px #0001, 0 2px 2px #0002;
-				transform: translate(-50%, -38%) scale(.8);
-				transition-delay: 0s;
-			}
-			.card.open:after {
-				/*content: '';*/
-				opacity: 0;
-				width: 100%;
-				height: 100%;
-				position: absolute;
-				top: 100vh;
-				left: 100vw;
-				background: #0001;
-				border-radius: inherit;
-				transition: opacity var(--anim-dura) cubic-bezier(0.68, -0.55, 0.265, 1.55);
-				transition-delay: var(--anim-dura-alt);
-			}
-			.card.open.idle:after {
-				top: 0;
-				left: 0;
-				opacity: 1;
-				transition-delay: var(--anim-dura-alt);
-			}
-			.card.card-popup:not(.open) {
-				transform: translate(-50%, -50%) scale(.8);
-			}
-			.card.card-slideover {
-				transition-delay: var(--anim-dura);
-			}
-			.card.card-slideover:not(.open) {
-				transform: translate(-50%, 100vh);
-				transition-delay: 0s;
-			}
-			.card h1 {
-				font-size: 2rem;
-			}
-			.card .btn-deck {
-				display: flex;
-			}
-			.card .btn-deck button:not(:last-child) {
-				margin-right: 1rem;
-			}
-			.card .btn-deck button ~ button {
-				padding: 0 1rem;
+			.show {
+				display: block;
 			}
 		/* INTRODUCTION */
 			.cont .int { }
