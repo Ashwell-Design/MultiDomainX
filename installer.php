@@ -182,10 +182,8 @@
 		changeModal = (curr, next) => {
 			curr = $(curr).closest('.modal')[0];
 			next = $(next)[0];
-			//$(curr).modal('hide');
-			$(next).modal({
-				backdrop: 'static',
-			});
+			$(curr).modal('hide');
+			$(next).modal('show');
 		}
 		// PROGRESS BAR
 		updateProgress = (mode, value) => {
