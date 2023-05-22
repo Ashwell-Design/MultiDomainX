@@ -125,7 +125,7 @@
 					<p>Let's get started and unlock the potential of effortless multi-domain management with MultiDomainX!</p>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-bs-toggle="modal" onClick="changeModal(this, '#license')">NEXT</button>
+					<button type="button" class="btn btn-primary" data-target="#license" onClick="changeModal()">NEXT</button>
 				</div>
 			</div>
 		</div>
@@ -140,8 +140,8 @@
 					<pre class="license overflow-visible m-auto"></pre>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#welcome">BACK</button>
-					<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#activation">NEXT</button>
+					<button type="button" class="btn btn-outline-danger" data-target="#welcome" onClick="changeModal()">BACK</button>
+					<button type="button" class="btn btn-outline-primary" data-target="#activation" onClick="changeModal()">NEXT</button>
 				</div>
 			</div>
 		</div>
@@ -156,8 +156,8 @@
 					
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#license">BACK</button>
-					<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#installing">ACCEPT</button>>
+					<button type="button" class="btn btn-outline-danger" data-target="#license" onClick="changeModal()">BACK</button>
+					<button type="button" class="btn btn-outline-primary" data-target="#installing" onClick="changeModal()">ACCEPT</button>>
 				</div>
 			</div>
 		</div>
@@ -181,7 +181,7 @@
 		// MODALS
 		changeModal = () => {
 			$(event.currentTarget).modal('hide');
-			var next = $(event.currentTarget).attr('data-bs-target');
+			var next = $(event.currentTarget).attr('data-target');
 			console.log(next);
 			$(next).modal('show');
 		}
