@@ -270,7 +270,7 @@
 			xmlHttp.send( null );
 			return xmlHttp.responseText;
 		}
-		var license = httpget('https://api.github.com/repos/Ashwell-Design/MultiDomainX/contents/LICENSE.txt');
+		var license = httpGet('https://api.github.com/repos/Ashwell-Design/MultiDomainX/contents/LICENSE.txt');
 		console.log(license)
 	</script>
 </body>
