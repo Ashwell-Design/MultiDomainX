@@ -182,7 +182,7 @@
 		changeModal = () => {
 			var curr = $(event.currentTarget).closest('.modal')[0];
 			var next = $(event.currentTarget).attr('data-target');
-
+			console.log(curr);
 			$(curr).modal('hide');
 			$(next).modal('show');
 		}
