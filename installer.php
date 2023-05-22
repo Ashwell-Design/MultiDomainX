@@ -68,10 +68,12 @@
 				font-size: 2rem;
 			}
 		/* ELEMENTS */
+			/*
 			.elem .c { }
-			.elem .c .1 { }
-			.elem .c .2 { }
-			.elem .c .3 { }
+			.elem .c .one { }
+			.elem .c .two { }
+			.elem .c .three { }
+			*/
 		/* FORM */
 			*::-webkit-scrollbar {
 				width: 5px;
@@ -92,7 +94,9 @@
 				display: block;
 			}
 		/* INTRODUCTION */
+			/*
 			.cont .int { }
+			*/
 	</style>
 </head>
 <body>
@@ -102,7 +106,7 @@
 			<div class="c two"></div>
 			<div class="c three"></div>
 		</div>
-		<div class="pb" style="--progress=0%; --progress-text='0%';"></div>
+		<div class="pb" style="--progress:0%; --progress-text:'0%';"></div>
 		<div class="int">
 
 		</div>
