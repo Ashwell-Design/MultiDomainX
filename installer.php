@@ -112,7 +112,7 @@
 		</div>
 	</div>
 	
-	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-hidden="true" data-bs-backdrop="static" aria-labelledby="welcomeModalLabel">
+	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-hidden="true" data-bs-focus="true" aria-labelledby="welcomeModalLabel">
 		<div class="modal-dialog modal-fullscreen-xl-down" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -130,7 +130,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-hidden="true" data-bs-backdrop="static" aria-labelledby="licneseModalLabel">
+	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-hidden="true" data-bs-focus="false" aria-labelledby="licneseModalLabel">
 		<div class="modal-dialog modal-fullscreen-xl-down" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -146,7 +146,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-hidden="true" data-bs-backdrop="static" aria-labelledby="activationModalLabel">
+	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-hidden="true" data-bs-focus="false" aria-labelledby="activationModalLabel">
 		<div class="modal-dialog modal-fullscreen-xl-down" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -162,7 +162,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-hidden="true" data-bs-backdrop="static" aria-labelledby="installationModalLabel">
+	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-hidden="true" data-bs-focus="false" aria-labelledby="installationModalLabel">
 		<div class="modal-dialog modal-fullscreen-xl-down" role="document">
 			<div class="modal-content">
 				<div class="modal-header" id="installationModalLabel">
@@ -177,10 +177,6 @@
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script>
-		//
-			const welcomeModal = new bootstrap.Modal('#welcome', {
-				show: true,
-			});
 		// PROGRESS BAR
 		updateProgress = (mode, value) => {
 			if(value < 101) {
