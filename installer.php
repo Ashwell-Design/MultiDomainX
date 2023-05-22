@@ -112,11 +112,11 @@
 		</div>
 	</div>
 	
-	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-hidden="true" data-bs-backdrop="static" aria-labelledby="welcomeModalLabel">
 		<div class="modal-dialog modal-fullscreen-xl-down" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h1 class="modal-title" id="exampleModalLabel">Welcome</h1>
+					<h1 class="modal-title" id="welcomeModalLabel">Welcome</h1>
 				</div>
 				<div class="modal-body">
 					<p>Thank you for choosing MultiDomainX, the powerful multi-domain management application. This installer will guide you through the process of setting up MultiDomainX on your system.</p>
@@ -130,11 +130,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-hidden="true" data-bs-backdrop="static" aria-labelledby="licneseModalLabel">
 		<div class="modal-dialog modal-fullscreen-xl-down" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h1 class="modal-title" id="exampleModalLabel">License agreeement</h1>
+					<h1 class="modal-title" id="licneseModalLabel">License agreeement</h1>
 				</div>
 				<div class="modal-body">
 					<pre class="license overflow-visible m-auto"></pre>
@@ -146,11 +146,11 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-hidden="true" data-bs-backdrop="static" aria-labelledby="activationModalLabel">
 		<div class="modal-dialog modal-fullscreen-xl-down" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h1 class="modal-title" id="exampleModalLabel">Activation</h1>
+					<h1 class="modal-title" id="activationModalLabel">Activation</h1>
 				</div>
 				<div class="modal-body">
 					
@@ -162,10 +162,10 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-hidden="true" data-bs-backdrop="static" aria-labelledby="installationModalLabel">
 		<div class="modal-dialog modal-fullscreen-xl-down" role="document">
 			<div class="modal-content">
-				<div class="modal-header" id="exampleModalLabel">
+				<div class="modal-header" id="installationModalLabel">
 					<h1 class="modal-title">Installing</h1>
 				</div>
 				<div class="modal-body">
