@@ -180,9 +180,10 @@
 	<script>
 		// MODALS
 		changeModal = () => {
-			$(event.currentTarget).modal('hide');
+			var curr = $(event.currentTarget).closest('.modal')[0];
 			var next = $(event.currentTarget).attr('data-target');
-			console.log(next);
+
+			$(event.currentTarget).modal('hide');
 			$(next).modal('show');
 		}
 		// PROGRESS BAR
