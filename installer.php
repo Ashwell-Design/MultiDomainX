@@ -105,69 +105,69 @@
 		</div>
 	</div>
 	
-	<div class="modal fade modal-xl show" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h1 class="modal-title">Welcome</h1>
-						</div>
-						<div class="modal-body">
-							<p>Thank you for choosing MultiDomainX, the powerful multi-domain management application. This installer will guide you through the process of setting up MultiDomainX on your system.</p>
-							<p>Our installer ensures a seamless setup experience, allowing you to effortlessly manage multiple domains with ease.</p>
-							<p>Please follow the instructions provided in each step to complete the installation successfully. If you encounter any issues or have questions along the way, our support team is ready to assist you.</p>
-							<p>Let's get started and unlock the potential of effortless multi-domain management with MultiDomainX!</p>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#license">NEXT</button>
-						</div>
-					</div>
+	<div class="modal fade modal-xl show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title" id="exampleModalLabel">Welcome</h1>
+				</div>
+				<div class="modal-body">
+					<p>Thank you for choosing MultiDomainX, the powerful multi-domain management application. This installer will guide you through the process of setting up MultiDomainX on your system.</p>
+					<p>Our installer ensures a seamless setup experience, allowing you to effortlessly manage multiple domains with ease.</p>
+					<p>Please follow the instructions provided in each step to complete the installation successfully. If you encounter any issues or have questions along the way, our support team is ready to assist you.</p>
+					<p>Let's get started and unlock the potential of effortless multi-domain management with MultiDomainX!</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#license">NEXT</button>
 				</div>
 			</div>
-			<div class="modal fade modal-xl" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h1 class="modal-title">License agreeement</h1>
-						</div>
-						<div class="modal-body">
-							<pre class="license overflow-visible m-auto"></pre>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#welcome">BACK</button>
-							<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#activation">NEXT</button>
-						</div>
-					</div>
+		</div>
+	</div>
+	<div class="modal fade modal-xl" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title" id="exampleModalLabel">License agreeement</h1>
+				</div>
+				<div class="modal-body">
+					<pre class="license overflow-visible m-auto"></pre>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#welcome">BACK</button>
+					<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#activation">NEXT</button>
 				</div>
 			</div>
-			<div class="modal fade modal-xl" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h1 class="modal-title">Activation</h1>
-						</div>
-						<div class="modal-body">
-							
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#license">BACK</button>
-							<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#installing">ACCEPT</button>>
-						</div>
-					</div>
+		</div>
+	</div>
+	<div class="modal fade modal-xl" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title" id="exampleModalLabel">Activation</h1>
+				</div>
+				<div class="modal-body">
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#license">BACK</button>
+					<button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#installing">ACCEPT</button>>
 				</div>
 			</div>
-			<div class="modal fade modal-xl" tabindex="-1" role="dialog">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h1 class="modal-title">Installing</h1>
-						</div>
-						<div class="modal-body">
-						</div>
-						<div class="modal-footer">
-						</div>
-					</div>
+		</div>
+	</div>
+	<div class="modal fade modal-xl" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header" id="exampleModalLabel">
+					<h1 class="modal-title">Installing</h1>
+				</div>
+				<div class="modal-body">
+				</div>
+				<div class="modal-footer">
 				</div>
 			</div>
+		</div>
+	</div>
 	<script>
 		// PROGRESS BAR
 		updateProgress = (mode, value) => {
