@@ -190,6 +190,7 @@
 				backdrop: 'static',
 				keyboard: false
 			});
+			$('#welcome').modal('show')
 			// PROGRESS BAR
 			updateProgress = (mode, value) => {
 				if(value < 101) {
