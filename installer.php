@@ -13,211 +13,152 @@
 			background-size: cover;
 		}
 		/* CONTAINER */
-		.cont {
-			display: block;
-			width: 100vw;
-			height: 100vh;
-			overflow: hidden;
-		}
-		.cont::before {
-			content: "";
-			background: #16ccfe;
-			height: 100vh;
-			width: 100vw;
-			opacity: 0.3;
-			position: fixed;
-			z-index: -5;
-		}
+			.cont {
+				display: block;
+				width: 100vw;
+				height: 100vh;
+				overflow: hidden;
+			}
+			.cont::before {
+				content: "";
+				background: #16ccfe;
+				height: 100vh;
+				width: 100vw;
+				opacity: 0.3;
+				position: fixed;
+				z-index: -5;
+			}
 		/* PROGRESS BAR */
-		.cont .pb::before,
-		.cont .pb::after {
-			position: fixed;
-			display: inherit;
-			bottom: inherit;
-			height: inherit;
-		}
-		.cont .pb::before {
-			content: "";
-			background-color: silver;
-			opacity: 0.5;
-			width: 100vw;
-			z-index: -1;
-		}
-		.cont .pb {
-			--progress: ;
-			--progress-text: '';
-			position: absolute;
-			display: block;
-			height: 5px;
-			bottom: 0;
-			opacity: 1;
-			background-color: #00f1cf;
-			width: var(--progress);
-		}
-		.cont .pb::after {
-			left: 0;
-			bottom: 2rem;
-			height: auto;
-			left: 2rem;
-			content: var(--progress-text);
-			color: #00f1cf;
-			z-index: -1;
-			font-size: 2rem;
-		}
+			.cont .pb::before,
+			.cont .pb::after {
+				position: fixed;
+				display: inherit;
+				bottom: inherit;
+				height: inherit;
+			}
+			.cont .pb::before {
+				content: "";
+				background-color: silver;
+				opacity: 0.5;
+				width: 100vw;
+				z-index: -1;
+			}
+			.cont .pb {
+				--progress: ;
+				--progress-text: '';
+				position: absolute;
+				display: block;
+				height: 5px;
+				bottom: 0;
+				opacity: 1;
+				background-color: linear-gradient(#00f1cf, #00e6c7, #00f1cf);
+				width: var(--progress);
+			}
+			.cont .pb::after {
+				left: 0;
+				bottom: 2rem;
+				height: auto;
+				left: 2rem;
+				content: var(--progress-text);
+				color: #00f1cf;
+				z-index: -1;
+				font-size: 2rem;
+			}
 		/* ELEMENTS */
-		.elem .c { }
-		.elem .c .1 { }
-		.elem .c .2 { }
-		.elem .c .3 { }
+			.elem .c { }
+			.elem .c .1 { }
+			.elem .c .2 { }
+			.elem .c .3 { }
 		/* FORM */
-		.cont .frm {
-			/*
-			width: 50%;
-			height: auto;
-			position: fixed;
-			top: 50%;
-			left: 50%;
-			min-height: 50%;
-			transform: translate(-50%, -50%);
-			*/
-		}
-		.card {
-		--anim-dura: .6s;
-		--anim-dura-alt: .55s;
-		
-		display: flex;
-		justify-content: space-between;
-		
-		opacity: 0;
-		
-		width: calc(100% - 2rem);
-		max-width: 400px;
-		height: 600px;
-		max-height: calc(100% - 2rem);
-		
-		padding: 1rem;
-		
-		position: fixed!important;
-		top: 50%;
-		left: 50%;
-		
-		background: white;
-		box-shadow: 0 0 6px #0001, 0 6px 6px #0003;
-		
-		border-radius: .5rem;
-		
-		transform: translate(-50%, -50%);
-		
-		transition: all var(--anim-dura) cubic-bezier(0.68, -0.55, 0.265, 1.55);
-		transition-delay: 0s;
-		}
-
-		.card.open {
-		opacity: 1;
-		
-		transform: translate(-50%, -50%);
-		
-		transition-delay: 0s;
-		}
-
-		.card:not(.open.idle) {
-		transition-delay: var(--anim-dura);
-		}
-
-		.card.open.idle {
-		box-shadow: 0 0 2px #0001, 0 2px 2px #0002;
-		
-		transform: translate(-50%, -38%) scale(.8);
-		
-		transition-delay: 0s;
-		}
-
-		.card.open:after {
-		content: '';
-		
-		opacity: 0;
-		
-		width: 100%;
-		height: 100%;
-		
-		position: absolute;
-		top: 100vh;
-		left: 100vw;
-		
-		background: #0001;
-		
-		border-radius: inherit;
-		
-		transition: opacity var(--anim-dura) cubic-bezier(0.68, -0.55, 0.265, 1.55);
-		transition-delay: var(--anim-dura-alt);
-		}
-
-		.card.open.idle:after {
-		top: 0;
-		left: 0;
-		
-		opacity: 1;
-		
-		transition-delay: var(--anim-dura-alt);
-		}
-
-		.card.card-popup:not(.open) {
-		transform: translate(-50%, -50%) scale(.8);
-		}
-
-		.card.card-slideover {
-		transition-delay: var(--anim-dura);
-		}
-
-		.card.card-slideover:not(.open) {
-		transform: translate(-50%, 100%);
-		
-		transition-delay: 0s;
-		}
-
-		.card h1 {
-		font-size: 2rem;
-		}
-
-		.card .btn-deck {
-		display: flex;
-		}
-
-		.card .btn-deck button:not(:last-child) {
-		margin-right: 1rem;
-		}
-
-		.card .btn-deck button ~ button {
-		padding: 0 1rem;
-		}
-
-		@keyframes mymove {
-			000% {
-				rotate: 0deg;
-				top: 0px;
-				left: 0px;
+			.card::-webkit-scrollbar {
+				-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+				border-radius: 10px;
+				background-color: #F5F5F5;
 			}
-			049% {
-				rotate: -16deg;
-				top: -100%;
-				left: -50%;
+			.card::-webkit-scrollbar-track {
+				width: 5px;
+				background-color: #F5F5F5;
 			}
-			050% {
-				z-index: -50;
+			.card::-webkit-scrollbar-thumb {
+				border-radius: 10px;
+				-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+				background-color: #555;
 			}
-			051% {
-				rotate: -16deg;
-				top: -100%;
-				left: -50%;
+			.card {
+				--anim-dura: .6s;
+				--anim-dura-alt: .55s;
+				display: flex;
+				opacity: 0;
+				width: calc(100% - 2rem);
+				max-width: 400px;
+				max-height: calc(100% - 2rem);
+				padding: 1rem;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				background: white;
+				box-shadow: 0 0 6px #0001, 0 6px 6px #0003;
+				border-radius: .5rem;
+				transform: translate(-50%, -50%);
+				transition: all var(--anim-dura) cubic-bezier(0.68, -0.55, 0.265, 1.55);
+				transition-delay: 0s;
 			}
-			100% {
-				rotate: 0deg;
-				top: 0px;
-				left: 0px;
+			.card.open {
+				opacity: 1;
+				transform: translate(-50%, -50%);
+				transition-delay: 0s;
 			}
-		}
+			.card:not(.open.idle) {
+				transition-delay: var(--anim-dura);
+			}
+			.card.open.idle {
+				box-shadow: 0 0 2px #0001, 0 2px 2px #0002;
+				transform: translate(-50%, -38%) scale(.8);
+				transition-delay: 0s;
+			}
+			.card.open:after {
+				/*content: '';*/
+				opacity: 0;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 100vh;
+				left: 100vw;
+				background: #0001;
+				border-radius: inherit;
+				transition: opacity var(--anim-dura) cubic-bezier(0.68, -0.55, 0.265, 1.55);
+				transition-delay: var(--anim-dura-alt);
+			}
+			.card.open.idle:after {
+				top: 0;
+				left: 0;
+				opacity: 1;
+				transition-delay: var(--anim-dura-alt);
+			}
+			.card.card-popup:not(.open) {
+				transform: translate(-50%, -50%) scale(.8);
+			}
+			.card.card-slideover {
+				transition-delay: var(--anim-dura);
+			}
+			.card.card-slideover:not(.open) {
+				transform: translate(-50%, 100%);
+				transition-delay: 0s;
+			}
+			.card h1 {
+				font-size: 2rem;
+			}
+			.card .btn-deck {
+				display: flex;
+			}
+			.card .btn-deck button:not(:last-child) {
+				margin-right: 1rem;
+			}
+			.card .btn-deck button ~ button {
+				padding: 0 1rem;
+			}
 		/* INTRODUCTION */
-		.cont .int { }
+			.cont .int { }
 	</style>
 </head>
 <body>
@@ -230,9 +171,11 @@
 		<div class="frm">
 			<section class="card card-popup open" id="welcome">
 				<h1>Welcome</h1>
-				<p>
-
-				</p>
+				<p>MultiDomainX(MDX) is an innovative and user-friendly software solution designed to streamline web-traffic and sales management for small or large e-commerce businesses.</p>
+				<p>Thank you for choosing MultiDomainX, the powerful multi-domain management application. This installer will guide you through the process of setting up MultiDomainX on your system.</p>
+				<p>During the installation, you will be prompted to specify the installation path, configure optional components, and provide necessary configuration settings. Our installer ensures a seamless setup experience, allowing you to effortlessly manage multiple domains with ease.</p>
+				<p>Please follow the instructions provided in each step to complete the installation successfully. If you encounter any issues or have questions along the way, our support team is ready to assist you.</p>
+				<p>Let's get started and unlock the potential of effortless multi-domain management with MultiDomainX!</p>
 				<div class="btn-deck">
 					<button type="button" class="btn" data-method="open" data-target="#license">NEXT</button>
 				</div>
