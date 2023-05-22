@@ -181,7 +181,8 @@
 		// MODALS
 		changeModal = () => {
 			$(event.currentTarget).modal('hide');
-			var next = $(event.currentTarget).attr('data-bs-target')
+			var next = $(event.currentTarget).attr('data-bs-target');
+			console.log(next);
 			$(next).modal('show');
 		}
 		// PROGRESS BAR
