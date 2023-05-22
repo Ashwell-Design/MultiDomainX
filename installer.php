@@ -112,7 +112,7 @@
 		</div>
 	</div>
 	
-	<div class="modal modal-xl fade show" tabindex="-1" role="dialog" aria-hidden="true" data-bs-focus="false" aria-labelledby="welcomeModalLabel" id="welcome">
+	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="welcomeModalLabel" id="welcome">
 		<div class="modal-dialog modal-fullscreen-xl-down" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -130,7 +130,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-hidden="true" data-bs-focus="false" aria-labelledby="licneseModalLabel" id="license">
+	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="licneseModalLabel" id="license">
 		<div class="modal-dialog modal-fullscreen-xl-down" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -146,7 +146,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-hidden="true" data-bs-focus="false" aria-labelledby="activationModalLabel" id="activation">
+	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="activationModalLabel" id="activation">
 		<div class="modal-dialog modal-fullscreen-xl-down" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -162,7 +162,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-hidden="true" data-bs-focus="false" aria-labelledby="installationModalLabel" id="installation">
+	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="installationModalLabel" id="installation">
 		<div class="modal-dialog modal-fullscreen-xl-down" role="document">
 			<div class="modal-content">
 				<div class="modal-header" id="installationModalLabel">
@@ -185,6 +185,7 @@
 			$(curr).modal('hide');
 			$(next).modal('show');
 		}
+		changeModal('#', '#welcome')
 		// PROGRESS BAR
 		updateProgress = (mode, value) => {
 			if(value < 101) {
