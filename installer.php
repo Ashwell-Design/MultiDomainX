@@ -215,6 +215,7 @@
 		</div>
 	</div>
 	<script>
+		// PROGRESS BAR
 		updateProgress = (mode, value) => {
 			if(value < 101) {
 				var newProgress;
@@ -240,8 +241,7 @@
 		}
 		updateProgress('set', 37)
 
-
-
+		// CARDS
 		let wrapper = document.querySelector(".frm");
 		let cards = wrapper.querySelectorAll(".card");
 		const toggleCard = (card, prevCard) => (card.classList.toggle("open"), prevCard && prevCard.classList.toggle("idle"));
@@ -262,5 +262,15 @@
 				}
 			})
 		);
+
+		// LICENSE
+		function httpGet(theUrl) {
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+			xmlHttp.send( null );
+			return xmlHttp.responseText;
+		}
+		var license = httpget('https://api.github.com/repos/Ashwell-Design/MultiDomainX/contents/LICENSE.txt');
+		console.log(license)
 	</script>
 </body>
