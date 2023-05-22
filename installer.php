@@ -171,7 +171,7 @@
 			<div class="c three"></div>
 		</div>
 		<div class="frm">
-			<section class="card card-popup open" id="welcome">
+			<section class="card card-popup open w-75" id="welcome">
 				<h1>Welcome</h1>
 				<p>Thank you for choosing MultiDomainX, the powerful multi-domain management application. This installer will guide you through the process of setting up MultiDomainX on your system.</p>
 				<p>Our installer ensures a seamless setup experience, allowing you to effortlessly manage multiple domains with ease.</p>
@@ -181,7 +181,7 @@
 					<button type="button" class="btn btn-outline-primary" data-method="open" data-target="#license">NEXT</button>
 				</div>
 			</section>
-			<section class="card card-slideover" id="license">
+			<section class="card card-slideover w-75" id="license">
 				<h1>License agreeement</h1>
 				<pre class="license">
 
@@ -191,7 +191,7 @@
 					<button type="button" class="btn btn-outline-primary" data-method="open" data-target="#activation">NEXT</button>
 				</div>
 			</section>
-			<section class="card card-slideover" id="activation">
+			<section class="card card-slideover w-75" id="activation">
 				<h1>Activation</h1>
 				<p>
 
@@ -201,7 +201,7 @@
 					<button type="button" class="btn btn-outline-primary" data-method="open" data-target="#installing">ACCEPT</button>
 				</div>
 			</section>
-			<section class="card card-slideover" id="installing">
+			<section class="card card-slideover w-75" id="installing">
 				<h1>Installing</h1>
 				<p>
 
