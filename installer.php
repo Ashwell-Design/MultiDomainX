@@ -187,7 +187,7 @@
 						</div>
 					</div>
 				</div>
-			</section>
+			</div>
 			<section class="card card-slideover w-75" id="license">
 				<h1>License agreeement</h1>
 				<pre class="license overflow-visible m-auto"></pre>
