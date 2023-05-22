@@ -55,6 +55,7 @@
 				opacity: 1;
 				background: linear-gradient(#00f1cf, #00e6c7, #00f1cf);
 				width: var(--progress);
+				transition: width 1s;
 			}
 			.cont .pb::after {
 				left: 0;
