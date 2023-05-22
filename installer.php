@@ -180,6 +180,8 @@
 		// MODALS
 		changeModal = (curr, next) => {
 			curr = $(curr).closest('.modal');
+			console.log(curr);
+			console.log(next);
 			$(curr).modal('hide');
 			$(next).modal('show');
 		}
