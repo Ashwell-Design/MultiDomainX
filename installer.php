@@ -180,7 +180,6 @@
 		//
 			const welcomeModal = new bootstrap.Modal('#welcome', {
 				show: true,
-				backdrop: 'static',
 			});
 		// PROGRESS BAR
 		updateProgress = (mode, value) => {
