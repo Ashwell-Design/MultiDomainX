@@ -71,13 +71,14 @@
 			.elem .c .3 { }
 		/* FORM */
 			.card::-webkit-scrollbar {
-				-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-				border-radius: 10px;
+				width: 5px;
 				background-color: #F5F5F5;
 			}
 			.card::-webkit-scrollbar-track {
-				width: 5px;
+				-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+				border-radius: 10px;
 				background-color: #F5F5F5;
+
 			}
 			.card::-webkit-scrollbar-thumb {
 				border-radius: 10px;
@@ -102,6 +103,7 @@
 				transform: translate(-50%, -50%);
 				transition: all var(--anim-dura) cubic-bezier(0.68, -0.55, 0.265, 1.55);
 				transition-delay: 0s;
+				overflow-y: scroll;
 			}
 			.card.open {
 				opacity: 1;
