@@ -112,7 +112,7 @@
 		</div>
 	</div>
 	
-	<div class="modal modal-xl fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal modal-xl fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-fullscreen-xl-down" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
