@@ -105,8 +105,8 @@
 		</div>
 	</div>
 	
-	<div class="modal fade modal-xl modal-fullscreen-md-down show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
+	<div class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-xl modal-fullscreen-md-down" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h1 class="modal-title" id="exampleModalLabel">Welcome</h1>
@@ -123,8 +123,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal fade modal-xl modal-fullscreen-md-down" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
+	<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-xl modal-fullscreen-md-down" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h1 class="modal-title" id="exampleModalLabel">License agreeement</h1>
@@ -139,8 +139,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal fade modal-xl modal-fullscreen-md-down" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
+	<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-xl modal-fullscreen-md-down" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h1 class="modal-title" id="exampleModalLabel">Activation</h1>
@@ -155,8 +155,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="modal fade modal-xl modal-fullscreen-md-down" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
+	<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-xl modal-fullscreen-md-down" role="document">
 			<div class="modal-content">
 				<div class="modal-header" id="exampleModalLabel">
 					<h1 class="modal-title">Installing</h1>
