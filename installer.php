@@ -182,8 +182,6 @@
 		changeModal = (curr, next) => {
 			curr = $(curr).closest('.modal')[0];
 			next = $(next)[0];
-			console.log(curr);
-			console.log(next);
 			$(curr).modal('hide');
 			$(next).modal({
 				backdrop: 'static',
