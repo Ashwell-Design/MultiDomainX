@@ -170,14 +170,22 @@
 			<div class="c three"></div>
 		</div>
 		<div class="frm">
-			<section class="card card-popup open w-75" id="welcome">
-				<h1>Welcome</h1>
-				<p>Thank you for choosing MultiDomainX, the powerful multi-domain management application. This installer will guide you through the process of setting up MultiDomainX on your system.</p>
-				<p>Our installer ensures a seamless setup experience, allowing you to effortlessly manage multiple domains with ease.</p>
-				<p>Please follow the instructions provided in each step to complete the installation successfully. If you encounter any issues or have questions along the way, our support team is ready to assist you.</p>
-				<p>Let's get started and unlock the potential of effortless multi-domain management with MultiDomainX!</p>
-				<div class="btn-deck">
-					<button type="button" class="btn btn-outline-primary" data-method="open" data-target="#license">NEXT</button>
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="modal-title">Welcome</h1>
+						</div>
+						<div class="modal-body">
+							<p>Thank you for choosing MultiDomainX, the powerful multi-domain management application. This installer will guide you through the process of setting up MultiDomainX on your system.</p>
+							<p>Our installer ensures a seamless setup experience, allowing you to effortlessly manage multiple domains with ease.</p>
+							<p>Please follow the instructions provided in each step to complete the installation successfully. If you encounter any issues or have questions along the way, our support team is ready to assist you.</p>
+							<p>Let's get started and unlock the potential of effortless multi-domain management with MultiDomainX!</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline-primary" data-method="open" data-target="#license">NEXT</button>
+						</div>
+					</div>
 				</div>
 			</section>
 			<section class="card card-slideover w-75" id="license">
@@ -239,28 +247,6 @@
 			}
 		}
 		updateProgress('set', 37)
-
-		// CARDS
-		let wrapper = document.querySelector(".frm");
-		let cards = wrapper.querySelectorAll(".card");
-		const toggleCard = (card, prevCard) => (card.classList.toggle("open"), prevCard && prevCard.classList.toggle("idle"));
-		cards.forEach(card =>
-			card.addEventListener("click", e => {
-				const el = e.target;
-
-				if (el.tagName === "BUTTON") {
-					const method = el.dataset.method;
-
-					const target = wrapper.querySelector(el.dataset.target);
-					const parent = el.closest(".card");
-
-					if (method === "open")
-						toggleCard(target, parent);
-					else if (method === "close")
-						toggleCard(parent, target);
-				}
-			})
-		);
 
 		// LICENSE
 		function httpGet(theUrl) {
