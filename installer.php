@@ -178,7 +178,7 @@
 				<p>Please follow the instructions provided in each step to complete the installation successfully. If you encounter any issues or have questions along the way, our support team is ready to assist you.</p>
 				<p>Let's get started and unlock the potential of effortless multi-domain management with MultiDomainX!</p>
 				<div class="btn-deck">
-					<button type="button" class="btn btn-outline-primay" data-method="open" data-target="#license">NEXT</button>
+					<button type="button" class="btn btn-outline-primary" data-method="open" data-target="#license">NEXT</button>
 				</div>
 			</section>
 			<section class="card card-slideover" id="license">
@@ -188,7 +188,7 @@
 				</p>
 				<div class="btn-deck">
 					<button type="button" class="btn btn-outline-danger" data-method="close" data-target="#welcome">BACK</button>
-					<button type="button" class="btn btn-outline-primay" data-method="open" data-target="#activation">NEXT</button>
+					<button type="button" class="btn btn-outline-primary" data-method="open" data-target="#activation">NEXT</button>
 				</div>
 			</section>
 			<section class="card card-slideover" id="activation">
@@ -198,7 +198,7 @@
 				</p>
 				<div class="btn-deck">
 					<button type="button" class="btn btn-outline-danger" data-method="close" data-target="#license">BACK</button>
-					<button type="button" class="btn btn-outline-primay" data-method="open" data-target="#installing">NEXT</button>
+					<button type="button" class="btn btn-outline-primary" data-method="open" data-target="#installing">NEXT</button>
 				</div>
 			</section>
 			<section class="card card-slideover" id="installing">
