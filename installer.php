@@ -92,6 +92,7 @@
 			}
 			pre.license {
 				width: fit-content;
+				max-width: 100%;
 			}
 		/* INTRODUCTION */
 			/*
