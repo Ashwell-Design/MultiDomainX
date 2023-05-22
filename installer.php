@@ -170,7 +170,7 @@
 			<div class="c three"></div>
 		</div>
 		<div class="frm">
-			<div class="modal fade show d-block" tabindex="-1" role="dialog">
+			<div class="modal fade show d-block modal-xl" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -188,14 +188,22 @@
 					</div>
 				</div>
 			</div>
-			<section class="card card-slideover w-75" id="license">
-				<h1>License agreeement</h1>
-				<pre class="license overflow-visible m-auto"></pre>
-				<div class="btn-deck">
-					<button type="button" class="btn btn-outline-danger" data-method="close" data-target="#welcome">BACK</button>
-					<button type="button" class="btn btn-outline-primary" data-method="open" data-target="#activation">NEXT</button>
+			<div class="modal fade d-block modal-xl" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="modal-title">License agreeement</h1>
+						</div>
+						<div class="modal-body">
+							<pre class="license overflow-visible m-auto"></pre>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline-danger" data-method="close" data-target="#welcome">BACK</button>
+							<button type="button" class="btn btn-outline-primary" data-method="open" data-target="#activation">NEXT</button>
+						</div>
+					</div>
 				</div>
-			</section>
+			</div>
 			<section class="card card-slideover w-75" id="activation">
 				<h1>Activation</h1>
 				<p>
