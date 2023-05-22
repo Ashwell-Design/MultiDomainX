@@ -91,7 +91,6 @@
 				display: flex;
 				opacity: 0;
 				width: calc(100% - 2rem);
-				max-width: 400px;
 				max-height: calc(100% - 2rem);
 				padding: 1rem;
 				position: fixed;
