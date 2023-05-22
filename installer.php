@@ -183,9 +183,7 @@
 			</section>
 			<section class="card card-slideover" id="license">
 				<h1>License agreeement</h1>
-				<p>
-
-				</p>
+				<iframe src="https://raw.githubusercontent.com/Ashwell-Design/MultiDomainX/Release/LICENSE.txt" title="LICENCE.txt"></iframe>
 				<div class="btn-deck">
 					<button type="button" class="btn btn-outline-danger" data-method="close" data-target="#welcome">BACK</button>
 					<button type="button" class="btn btn-outline-primary" data-method="open" data-target="#activation">NEXT</button>
@@ -193,7 +191,9 @@
 			</section>
 			<section class="card card-slideover" id="activation">
 				<h1>Activation</h1>
-				<iframe src="https://raw.githubusercontent.com/Ashwell-Design/MultiDomainX/Release/LICENSE.txt"></iframe>
+				<p>
+
+				</p>
 				<div class="btn-deck">
 					<button type="button" class="btn btn-outline-danger" data-method="close" data-target="#license">BACK</button>
 					<button type="button" class="btn btn-outline-primary" data-method="open" data-target="#installing">ACCEPT</button>
