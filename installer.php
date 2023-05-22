@@ -180,7 +180,7 @@
 	<script>
 		// MODALS
 		changeModal = (curr, next) => {
-			curr = $(curr).closest('.modal');
+			curr = $(curr).closest('.modal')[0];
 			next = $(next);
 			console.log(curr);
 			console.log(next);
