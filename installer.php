@@ -170,7 +170,7 @@
 			<div class="c three"></div>
 		</div>
 		<div class="frm">
-			<div class="modal fade show d-block modal-xl" tabindex="-1" role="dialog">
+			<div class="modal fade modal-xl show" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -188,7 +188,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="modal fade d-block modal-xl" tabindex="-1" role="dialog">
+			<div class="modal fade modal-xl" tabindex="-1" role="dialog">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -204,25 +204,35 @@
 					</div>
 				</div>
 			</div>
-			<section class="card card-slideover w-75" id="activation">
-				<h1>Activation</h1>
-				<p>
-
-				</p>
-				<div class="btn-deck">
-					<button type="button" class="btn btn-outline-danger" data-method="close" data-target="#license">BACK</button>
-					<button type="button" class="btn btn-outline-primary" data-method="open" data-target="#installing">ACCEPT</button>
+			<div class="modal fade modal-xl" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="modal-title">Activation</h1>
+						</div>
+						<div class="modal-body">
+							
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline-danger" data-method="close" data-target="#license">BACK</button>
+							<button type="button" class="btn btn-outline-primary" data-method="open" data-target="#installing">ACCEPT</button>>
+						</div>
+					</div>
 				</div>
-			</section>
-			<section class="card card-slideover w-75" id="installing">
-				<h1>Installing</h1>
-				<p>
-
-				</p>
-				<div class="btn-deck">
-					
+			</div>
+			<div class="modal fade modal-xl" tabindex="-1" role="dialog">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="modal-title">Installing</h1>
+						</div>
+						<div class="modal-body">
+						</div>
+						<div class="modal-footer">
+						</div>
+					</div>
 				</div>
-			</section>
+			</div>
 		</div>
 		<div class="pb" style="--progress=0%; --progress-text='0%';"></div>
 		<div class="int">
