@@ -51,7 +51,7 @@
 				height: 5px;
 				bottom: 0;
 				opacity: 1;
-				background-color: linear-gradient(#00f1cf, #00e6c7, #00f1cf);
+				background: linear-gradient(#00f1cf, #00e6c7, #00f1cf);
 				width: var(--progress);
 			}
 			.cont .pb::after {
@@ -144,7 +144,7 @@
 				transition-delay: var(--anim-dura);
 			}
 			.card.card-slideover:not(.open) {
-				transform: translate(-50%, 100%);
+				transform: translate(-50%, 100vh);
 				transition-delay: 0s;
 			}
 			.card h1 {
@@ -173,9 +173,8 @@
 		<div class="frm">
 			<section class="card card-popup open" id="welcome">
 				<h1>Welcome</h1>
-				<p>MultiDomainX(MDX) is an innovative and user-friendly software solution designed to streamline web-traffic and sales management for small or large e-commerce businesses.</p>
 				<p>Thank you for choosing MultiDomainX, the powerful multi-domain management application. This installer will guide you through the process of setting up MultiDomainX on your system.</p>
-				<p>During the installation, you will be prompted to specify the installation path, configure optional components, and provide necessary configuration settings. Our installer ensures a seamless setup experience, allowing you to effortlessly manage multiple domains with ease.</p>
+				<p>Our installer ensures a seamless setup experience, allowing you to effortlessly manage multiple domains with ease.</p>
 				<p>Please follow the instructions provided in each step to complete the installation successfully. If you encounter any issues or have questions along the way, our support team is ready to assist you.</p>
 				<p>Let's get started and unlock the potential of effortless multi-domain management with MultiDomainX!</p>
 				<div class="btn-deck">
