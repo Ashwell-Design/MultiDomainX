@@ -171,14 +171,15 @@
 		<div class="modal-dialog modal-fullscreen-xl-down" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h1 class="modal-title" id="activationModalLabel">Activation</h1>
+					<h1 class="modal-title" id="activationModalLabel">Validating</h1>
 				</div>
 				<div class="modal-body">
-					
+					<div class="progress">
+						<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-outline-danger" data-target="#license" onClick="changeModal()">BACK</button>
-					<button type="button" class="btn btn-outline-primary" data-target="#installing" onClick="changeModal()">ACCEPT</button>
+					
 				</div>
 			</div>
 		</div>
