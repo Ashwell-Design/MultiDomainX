@@ -158,7 +158,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-outline-danger" data-target="#license" onClick="changeModal()">BACK</button>
-					<button type="button" class="btn btn-outline-primary" data-target="#installing" onClick="changeModal()">ACCEPT</button>>
+					<button type="button" class="btn btn-outline-primary" data-target="#installing" onClick="changeModal()">ACCEPT</button>
 				</div>
 			</div>
 		</div>
