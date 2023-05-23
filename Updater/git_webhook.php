@@ -21,10 +21,10 @@
 				shell_exec("cd ".SPUR_DIR." && git clone ".REMOTE_LINK);
 				shell_exec("cd ".SPUR_DIR." && mv " . REPO . " " . SPUR );
 				shell_exec("cd ".SPUR_DIR." && git checkout ".SPUR);
-				die("Cloned. ".date(DateTime::ISO8601, strtotime('-2 hour')));
+				die("Cloned. ".date(DateTime::ISO8601_EXPANDED, strtotime('-2 hour')));
 			} else {
 				shell_exec("cd ".SPUR_DIR." && git pull origin ".SPUR);
-				die("Updated. ".date(DateTime::ISO8601, strtotime('-2 hour')));
+				die("Updated. ".date(DateTime::ISO8601_EXPANDED, strtotime('-2 hour')));
 			}
 		}
 		die("Error: 002"); // payload not set, likely not github.
