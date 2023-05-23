@@ -162,7 +162,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-outline-danger" data-target="#license" onClick="changeModal()">BACK</button>
-					<button type="button" class="btn btn-outline-primary" data-target="#validation" onClick="changeModal()">NEXT</button>
+					<button type="button" class="btn btn-outline-primary" data-target="#validation" onClick="changeModal();validate()">NEXT</button>
 				</div>
 			</div>
 		</div>
@@ -216,6 +216,7 @@
 				keyboard: false
 			});
 			$('#welcome').modal('show')
+
 			// PROGRESS BAR
 			updateProgress = (mode, value) => {
 				if(value < 101) {
@@ -243,15 +244,21 @@
 			updateProgress('set', 37)
 
 			// LICENSE
-			function httpGet(theUrl) {
+			function httpGet(url) {
 				var xmlHttp = new XMLHttpRequest();
-				xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+				xmlHttp.open( "GET", url, false ); // false for synchronous request
 				xmlHttp.send( null );
 				return xmlHttp.responseText;
 			}
 			var license = JSON.parse(httpGet('https://api.github.com/repos/Ashwell-Design/MultiDomainX/contents/LICENSE.txt'));
 			const licenseElem = document.querySelector('pre.license');
 			licenseElem.innerHTML = atob(license['content'])
+
+			// VALIDATION
+			//httpGet();
+			function validate() {
+				console.log('Validating');
+			}
 		})
 	</script>
 </body>
