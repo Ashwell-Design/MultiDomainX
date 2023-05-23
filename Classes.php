@@ -196,6 +196,7 @@
 			$this->website = $website;
 			$this->info = $db->assoc(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", $this->website));
 		}
+
 		public function getTheme() {
 			$id = $this->db->array(sprintf("SELECT `Theme` FROM `Domains` WHERE `Domain`='%s'", $this->website))[0];
 			return $this->db->assoc(sprintf("SELECT * FROM `Themes` WHERE `ID`='%s' AND `Active?`=1", $id));
@@ -215,6 +216,7 @@
 			$this->theme_path = $this->theme_root.$this->info['Location'];
 			$this->theme_path_default = $this->theme_root.$this->default_theme;
 		}
+
 		public function generate() {
 			return "<!DOCTYPE html><html lang=\"en\"><head>{$this->generateHead()}</head><body id=\"googtrans\">{$this->generateBody()}</body></html>";
 		}
@@ -406,6 +408,11 @@
 			} else {
 				$this->info = false;
 			}
+		}
+
+		public function getConfiguration($cnf) {
+			$q = $this->db->query("SELECT `Field` FROM `Configuration` WHERE `Variable`=".$cnf);
+			print_r($this->db->row($q));
 		}
 	}
 ?>
