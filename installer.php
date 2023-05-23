@@ -156,8 +156,8 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label for="Input">License key</label>
-						<input type="licenseKey" class="form-control" id="Input" aria-describedby="licenseHelp" placeholder="xxxx-xxxx-xxxx-xxxx">
-						<small id="licenseHelp" class="form-text text-muted">Please wnter the licence key supplied with the download.</small>
+						<input type="licenseKey" class="form-control" id="Input" aria-describedby="licenseHelp" placeholder="XXXXXX-XXXXXX-XXXXXX-XXXXXX-XXXXXX">
+						<small id="licenseHelp" class="form-text text-muted">Please enter the licence key supplied.</small>
 					</div>
 				</div>
 				<div class="modal-footer">
