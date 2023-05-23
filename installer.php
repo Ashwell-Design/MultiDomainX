@@ -162,7 +162,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-outline-danger" data-target="#license" onClick="changeModal()">BACK</button>
-					<button type="button" class="btn btn-outline-primary" data-target="#validation" onClick="changeModal();validate()">NEXT</button>
+					<button type="button" class="btn btn-outline-primary" data-target="#validation" onClick="changeModal(); validateInstallation()">NEXT</button>
 				</div>
 			</div>
 		</div>
@@ -244,7 +244,7 @@
 			updateProgress('set', 37)
 
 			// LICENSE
-			function httpGet(url) {
+			httpGet = (url) => {
 				var xmlHttp = new XMLHttpRequest();
 				xmlHttp.open( "GET", url, false ); // false for synchronous request
 				xmlHttp.send( null );
@@ -256,7 +256,7 @@
 
 			// VALIDATION
 			//httpGet();
-			function validate() {
+			validateInstallation = () => {
 				console.log('Validating');
 			}
 		})
