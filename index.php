@@ -14,7 +14,6 @@ error_reporting(E_ALL);
 	require_once('Classes.php');
 
 	$cnf = new Config(__ROOT__.'/Configuration/config.ini');
-	$config = $cnf->read();
 	$db_c = new DB('central');
 	$db_a = new DB('metrics');
 	$tools = new Tools($db_c);
@@ -22,7 +21,7 @@ error_reporting(E_ALL);
 		$website = new Website(SERVER_NAME, $db_c);
 		$page = new Page($website->info['ID'], QS_PAGE, QS_SUBPAGE, QS, $db_c);
 		if($page->page_id) {
-			$theme = new Theme($website->info['Theme'], $db_c, $website->info['ID'], $page, $config['Theme']['Default']);
+			$theme = new Theme($website->info['Theme'], $db_c, $website->info['ID'], $page, 'voxo');
 			$themeinfo = $theme->info;
 			if(file_exists($file = __ROOT__."/".QS_FILE.".".QS_EXT)) {
 				header("Content-Type: " . $tools->get_mime_type(QS_FILE.".".QS_EXT) . "; charset=UTF-8;");
