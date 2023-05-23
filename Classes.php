@@ -174,9 +174,9 @@
 		}
 		public function row($string) {
 			if($string instanceof SQLite3Result) {
-				return sqlite3_fetch_row($string);
+				return array($string, SQLITE3_ASSOC);
 			} else {
-				return sqlite3_fetch_row($this->query($string));
+				return array($this->query($string), SQLITE3_ASSOC);
 			}
 		}
 		public function num_rows($string) {
