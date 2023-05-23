@@ -156,7 +156,6 @@
 		protected $db;
 		public function __construct($file) {
 			$this->db = new Sqlite3(__ROOT__."/$file.sqlite");
-			print(__ROOT__."/$file.sqlite");
 		}
 
 		public function query($string) {
