@@ -19,6 +19,7 @@ error_reporting(E_ALL);
 	if($db_c->num_rows(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", SERVER_NAME)) > 0) {
 		$website = new Website(SERVER_NAME, $db_c);
 		$page = new Page($website->info['ID'], QS_PAGE, QS_SUBPAGE, QS, $db_c);
+		$page->getConfiguration('DefaultTheme');
 		if($page->page_id) {
 			$theme = new Theme($website->info['Theme'], $db_c, $website->info['ID'], $page, 'voxo');
 			$themeinfo = $theme->info;
