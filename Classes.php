@@ -144,14 +144,14 @@
 		}
 		public function execute($string) {
 			if ($string instanceof SQLite3Result) {
-				if ($this->lastErrorMsg() !== 'not an error') {
+				if ($string == FALSE) {
 					return false;
 				} else {
 					return true;
 				}
 			} else {
-				$result = $this->query($string);
-				if ($this->lastErrorMsg() !== 'not an error') {
+				$result = $this->db->query($string);
+				if($result == FALSE) {
 					return false;
 				} else {
 					return true;
@@ -411,7 +411,7 @@
 		}
 
 		public function getConfiguration($cnf) {
-			$q = $this->db->query("SELECT `Field` FROM `Configuration` WHERE `Variable`=".$cnf);
+			$q = $this->db->query("SELECT `Variable` FROM `Configuration` WHERE `Variable`=".$cnf);
 			print_r($this->db->row($q));
 		}
 	}
