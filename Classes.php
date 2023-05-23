@@ -176,7 +176,8 @@
 			if($string instanceof SQLite3Result) {
 				return array($string, SQLITE3_ASSOC);
 			} else {
-				return array($this->db->query($string), SQLITE3_ASSOC);
+				$q = $this->query($string);
+				return array($q, SQLITE3_ASSOC);
 			}
 		}
 		public function num_rows($string) {
