@@ -154,13 +154,27 @@
 					<h1 class="modal-title" id="activationModalLabel">Activation</h1>
 				</div>
 				<div class="modal-body">
-					<form>
-						<div class="form-group">
-							<label for="Input">License key</label>
-							<input type="licenseKey" class="form-control" id="Input" aria-describedby="licenseHelp" placeholder="xxxx-xxxx-xxxx-xxxx">
-							<small id="licenseHelp" class="form-text text-muted">Please wnter the licence key supplied with the download.</small>
-						</div>
-					</form>
+					<div class="form-group">
+						<label for="Input">License key</label>
+						<input type="licenseKey" class="form-control" id="Input" aria-describedby="licenseHelp" placeholder="xxxx-xxxx-xxxx-xxxx">
+						<small id="licenseHelp" class="form-text text-muted">Please wnter the licence key supplied with the download.</small>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline-danger" data-target="#license" onClick="changeModal()">BACK</button>
+					<button type="button" class="btn btn-outline-primary" data-target="#installing" onClick="changeModal()">ACCEPT</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal modal-xl fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-hidden="true" aria-labelledby="activationModalLabel" id="activation">
+		<div class="modal-dialog modal-fullscreen-xl-down" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title" id="activationModalLabel">Activation</h1>
+				</div>
+				<div class="modal-body">
+					
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-outline-danger" data-target="#license" onClick="changeModal()">BACK</button>
