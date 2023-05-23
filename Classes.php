@@ -411,8 +411,7 @@
 		}
 
 		public function getConfiguration($cnf) {
-			$q = $this->db->row("SELECT `Field` FROM `Configuration` WHERE `Variable`='$cnf'");
-			print_r($q);
+			return $this->db->row("SELECT `Field` FROM `Configuration` WHERE `Variable`='$cnf'")[0];
 		}
 	}
 ?>
