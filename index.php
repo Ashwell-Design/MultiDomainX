@@ -15,8 +15,8 @@ error_reporting(E_ALL);
 
 	$cnf = new Config(__ROOT__.'/Configuration/config.ini');
 	$config = $cnf->read();
-	$db_c = new DB($config['Databases']['Central']);
-	$db_a = new DB($config['Databases']['Metrics']);
+	$db_c = new DB('central');
+	$db_a = new DB('metrics');
 	$tools = new Tools($db_c);
 	if($db_c->num_rows(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", SERVER_NAME)) > 0) {
 		$website = new Website(SERVER_NAME, $db_c);
