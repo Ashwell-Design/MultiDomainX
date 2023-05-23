@@ -258,9 +258,9 @@
 			//httpGet();
 			validateInstallation = () => {
 				console.log('Validating');
+				var curr = $(event.currentTarget).attr('data-target');
+				var next = $(event.currentTarget).attr('data-next');
 				setTimeout(() => {
-					var curr = $(event.currentTarget).attr('data-target');
-					var next = $(event.currentTarget).attr('data-next');
 					$(curr).modal('hide');
 					$(next).modal({
 						backdrop: 'static',
