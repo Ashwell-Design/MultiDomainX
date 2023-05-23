@@ -162,7 +162,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-outline-danger" data-target="#license" onClick="changeModal()">BACK</button>
-					<button type="button" class="btn btn-outline-primary" data-target="#validation" onClick="changeModal()">ACCEPT</button>
+					<button type="button" class="btn btn-outline-primary" data-target="#validation" onClick="changeModal()">NEXT</button>
 				</div>
 			</div>
 		</div>
