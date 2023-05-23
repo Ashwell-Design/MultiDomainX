@@ -13,7 +13,6 @@ error_reporting(E_ALL);
 	define('QS_EXT',		isset($_GET['ext'])		? $_GET['ext'] : "exist");
 	require_once('Classes.php');
 
-	$cnf = new Config(__ROOT__.'/Configuration/config.ini');
 	$db_c = new DB('central');
 	$db_a = new DB('metrics');
 	$tools = new Tools($db_c);

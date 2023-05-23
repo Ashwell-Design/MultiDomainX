@@ -133,25 +133,6 @@
 			}
 		}
 	}
-	class Config {
-		protected $file;
-		public function __construct($file) {
-			$this->file = $file;
-		}
-
-		function read() {
-			if(!file_exists($this->file)) {
-				if(!copy($this->file.'.dev', $this->file)) { 
-					die("unable to copy configiration file. please contact the administrator.");
-				}
-			}
-			return parse_ini_file($this->file, true);
-		}
-		function write($arr) {
-			$tools = new Tools($this->db);
-			return file_put_contents($this->file, $tools->array_to_ini_string($arr));
-		}
-	}
 	class DB {
 		protected $db;
 		public function __construct($file) {
