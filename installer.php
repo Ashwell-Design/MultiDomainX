@@ -162,7 +162,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-outline-danger" data-target="#license" onClick="changeModal()">BACK</button>
-					<button type="button" class="btn btn-outline-primary" data-target="#validation" onClick="changeModal(); validateInstallation()">NEXT</button>
+					<button type="button" class="btn btn-outline-primary" data-target="#validation" data-next="#installation" onClick="changeModal(); validateInstallation()">NEXT</button>
 				</div>
 			</div>
 		</div>
@@ -258,6 +258,16 @@
 			//httpGet();
 			validateInstallation = () => {
 				console.log('Validating');
+				setTimeout(() => {
+					var curr = $(event.currentTarget).attr('data-target');
+					var next = $(event.currentTarget).attr('data-next');
+					$(curr).modal('hide');
+					$(next).modal({
+						backdrop: 'static',
+						keyboard: false
+					}).modal('show');
+				}, 3000);
+
 			}
 		})
 	</script>
