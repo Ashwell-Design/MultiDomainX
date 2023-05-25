@@ -25,7 +25,7 @@
 			padding: unset;
 			margin: unset;
 			background-image: url('https://i.pinimg.com/originals/f9/d1/df/f9d1df4811f6fb6703941b834d123e70.jpg');
-			background-position: center center;
+			
 			background-repeat: no-repeat;
 			background-size: cover;
 		}
