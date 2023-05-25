@@ -7,7 +7,7 @@
 		@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
 		*::-webkit-scrollbar {
 			width: 5px;
-			background-color: #F5F5F5;
+			background-color: transparent;
 		}
 		*::-webkit-scrollbar-track {
 			-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
