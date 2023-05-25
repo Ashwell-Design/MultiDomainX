@@ -5,6 +5,21 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer">
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap');
+		*::-webkit-scrollbar {
+			width: 5px;
+			background-color: #F5F5F5;
+		}
+		*::-webkit-scrollbar-track {
+			-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+			border-radius: 10px;
+			background-color: #F5F5F5;
+
+		}
+		*::-webkit-scrollbar-thumb {
+			border-radius: 10px;
+			-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+			background-color: #555;
+		}
 		body{
 			font-family: 'Comfortaa';
 			padding: unset;
@@ -14,104 +29,50 @@
 			background-repeat: no-repeat;
 			background-size: cover;
 		}
-		/* CONTAINER */
-			.cont {
-				display: block;
-				width: 100vw;
-				height: 100vh;
-				overflow: hidden;
-			}
-			.cont::before {
-				content: "";
-				background: #16ccfe;
-				height: 100vh;
-				width: 100vw;
-				opacity: 0.3;
-				position: fixed;
-				z-index: -5;
-			}
-		/* PROGRESS BAR */
-			.cont .pb::before,
-			.cont .pb::after {
-				position: fixed;
-				display: inherit;
-				bottom: inherit;
-				height: inherit;
-			}
-			.cont .pb::before {
-				content: "";
-				background-color: silver;
-				opacity: 0.5;
-				width: 100vw;
-				z-index: -1;
-			}
-			.cont .pb {
-				--progress: ;
-				--progress-text: '';
-				position: absolute;
-				display: block;
-				height: 5px;
-				bottom: 0;
-				opacity: 1;
-				background: linear-gradient(#00f1cf, #00e6c7, #00f1cf);
-				width: var(--progress);
-				transition: width 1s;
-			}
-			.cont .pb::after {
-				left: 0;
-				bottom: 2rem;
-				height: auto;
-				left: 2rem;
-				content: var(--progress-text);
-				color: #00f1cf;
-				z-index: -1;
-				font-size: 2rem;
-			}
-		/* ELEMENTS */
-			/*
-			.elem .c { }
-			.elem .c .one { }
-			.elem .c .two { }
-			.elem .c .three { }
-			*/
-		/* FORM */
-			*::-webkit-scrollbar {
-				width: 5px;
-				background-color: #F5F5F5;
-			}
-			*::-webkit-scrollbar-track {
-				-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-				border-radius: 10px;
-				background-color: #F5F5F5;
-
-			}
-			*::-webkit-scrollbar-thumb {
-				border-radius: 10px;
-				-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-				background-color: #555;
-			}
-			pre.license {
-				width: fit-content;
-				max-width: 100%;
-			}
-		/* INTRODUCTION */
-			/*
-			.cont .int { }
-			*/
+		pre.license {
+			width: fit-content;
+			max-width: 100%;
+		}
+		.pb::before,
+		.pb::after {
+			position: fixed;
+			display: inherit;
+			bottom: inherit;
+			height: inherit;
+		}
+		.pb::before {
+			content: "";
+			background-color: silver;
+			opacity: 0.5;
+			width: 100vw;
+			z-index: -1;
+		}
+		.pb {
+			--progress: ;
+			--progress-text: '';
+			position: absolute;
+			display: block;
+			height: 5px;
+			bottom: 0;
+			opacity: 1;
+			background: linear-gradient(#00f1cf, #00e6c7, #00f1cf);
+			width: var(--progress);
+			transition: width 1s;
+		}
+		.pb::after {
+			left: 0;
+			bottom: 2rem;
+			height: auto;
+			left: 2rem;
+			content: var(--progress-text);
+			color: #00f1cf;
+			z-index: -1;
+			font-size: 2rem;
+		}
 	</style>
 </head>
 <body>
-	<div class="cont">
-		<div class="elem">
-			<div class="c one"></div>
-			<div class="c two"></div>
-			<div class="c three"></div>
-		</div>
-		<div class="pb" style="--progress:0%; --progress-text:'0%';"></div>
-		<div class="int">
-
-		</div>
-	</div>
+	<div class="pb" style="--progress:0%; --progress-text:'0%';"></div>
 	
 	<div class="modal modal-xl fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-hidden="true" aria-labelledby="welcomeModalLabel" id="welcome">
 		<div class="modal-dialog modal-fullscreen-xl-down" role="document">
