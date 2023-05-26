@@ -220,15 +220,8 @@
 				var curr = $(event.currentTarget).attr('data-target');
 				var next = $(event.currentTarget).attr('data-next');
 				var key = $('input[type=licenseKey]').val();
-				$.ajax('https://ryvor.github.io/Licensing/api?$=Validate&key='+key+'&system=<?=PHP_OS?>', {
-					dataType: 'json', // type of response data
-					timeout: 500,     // timeout milliseconds
-					success: function (data,status,xhr) {   // success callback function
-						console.log(data);
-					},
-					error: function (jqXhr, textStatus, errorMessage) { // error callback 
-						console.log(errorMessage);
-					}
+				$.get('https://ryvor.github.io/Licensing/api?$=Validate&key='+key+'&system=<?=PHP_OS?>', function( data ) {
+					console.log(data)
 				});
 				setTimeout(() => {
 					$(curr).modal('hide');
