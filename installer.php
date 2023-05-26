@@ -160,23 +160,14 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js" integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script>
 		$( document ).ready(() => {
-			// MODALS
-			changeModal = () => {
-				var curr = $(event.currentTarget).closest('.modal')[0];
-				var next = $(event.currentTarget).attr('data-target');
+			// Functions 
+			changeModal = (curr=$(event.currentTarget).closest('.modal')[0], next=$(event.currentTarget).attr('data-target')) => {
 				$(curr).modal('hide');
 				$(next).modal({
 					backdrop: 'static',
 					keyboard: false
 				}).modal('show');
 			}
-			$('#welcome').modal({
-				backdrop: 'static',
-				keyboard: false
-			});
-			$('#welcome').modal('show')
-
-			// PROGRESS BAR
 			updateProgress = (mode, value) => {
 				if(value < 101) {
 					var newProgress;
@@ -200,15 +191,26 @@
 					element.style.setProperty('--progress-text', `'${newProgress}%'`);
 				}
 			}
-			updateProgress('set', 37)
-
-			// LICENSE
+			httpQS = (params) => {
+				return Object.entries(params).map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`).join('&');
+			}
 			httpGet = (url) => {
 				var xmlHttp = new XMLHttpRequest();
 				xmlHttp.open( "GET", url, false );
 				xmlHttp.send( null );
 				return xmlHttp.responseText;
 			}
+
+			// MODALS
+			$('#welcome').modal({
+				backdrop: 'static',
+				keyboard: false
+			}, 'show');
+
+			// PROGRESS BAR
+			updateProgress('set', 37)
+
+			// LICENSE
 			var license = JSON.parse(httpGet('https://api.github.com/repos/Ashwell-Design/MultiDomainX/contents/LICENSE.txt'));
 			const licenseElem = document.querySelector('pre.license');
 			licenseElem.innerHTML = atob(license['content'])
