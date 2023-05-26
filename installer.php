@@ -220,7 +220,7 @@
 				var curr = $(event.currentTarget).attr('data-target');
 				var next = $(event.currentTarget).attr('data-next');
 				var key = $('input[type=licenseKey]').val();
-				$.get('https://ryvor.github.io/Licensing/api?$=Validate&key='+key+'&system=<?=PHP_OS?>', function( data ) {
+				$.get('https://ryvor.github.io/Licensing/api?$=Validate&project=MultiDomainX&key='+key+'&agent=<?=PHP_OS?>', function( data ) {
 					console.log(data)
 				});
 				setTimeout(() => {
