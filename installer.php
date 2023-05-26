@@ -157,5 +157,78 @@
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js" integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-	<script src="https://raw.githubusercontent.com/Ashwell-Design/MultiDomainX/Development/installer.js"></script>
+	<script>
+		$( document ).ready(() => {
+			// MODALS
+			changeModal = () => {
+				var curr = $(event.currentTarget).closest('.modal')[0];
+				var next = $(event.currentTarget).attr('data-target');
+				$(curr).modal('hide');
+				$(next).modal({
+					backdrop: 'static',
+					keyboard: false
+				}).modal('show');
+			}
+			$('#welcome').modal({
+				backdrop: 'static',
+				keyboard: false
+			});
+			$('#welcome').modal('show')
+
+			// PROGRESS BAR
+			updateProgress = (mode, value) => {
+				if(value < 101) {
+					var newProgress;
+					const element = document.querySelector('.pb');
+					const computedStyle = getComputedStyle(element);
+					var progress = parseInt(computedStyle.getPropertyValue('--progress'));
+					switch(mode) {
+						case 'add':
+							newProgress = progress+value;
+							if(newProgress>100) newProgress=100;
+							break;
+						case 'set':
+							newProgress = value;
+							break;
+						case 'sub':
+							newProgress = progress-value;
+							if(newProgress<0) newProgress=0;
+							break;
+					}
+					element.style.setProperty('--progress', `${newProgress}%`);
+					element.style.setProperty('--progress-text', `'${newProgress}%'`);
+				}
+			}
+			updateProgress('set', 37)
+
+			// LICENSE
+			httpGet = (url) => {
+				var xmlHttp = new XMLHttpRequest();
+				xmlHttp.open( "GET", url, false ); // false for synchronous request
+				xmlHttp.send( null );
+				return xmlHttp.responseText;
+			}
+			var license = JSON.parse(httpGet('https://api.github.com/repos/Ashwell-Design/MultiDomainX/contents/LICENSE.txt'));
+			const licenseElem = document.querySelector('pre.license');
+			licenseElem.innerHTML = atob(license['content'])
+
+			// VALIDATION
+			//httpGet();
+			validateInstallation = () => {
+				var curr = $(event.currentTarget).attr('data-target');
+				var next = $(event.currentTarget).attr('data-next');
+
+				var valid = JSON.parse(httpGet('https://ryvor-licensing.vercel.app/api/validate/'));
+				console.log(valid['status']);
+				setTimeout(() => {
+					$(curr).modal('hide');
+					$(next).modal({
+						backdrop: 'static',
+						keyboard: false
+					}).modal('show');
+				}, 3000);
+
+			}
+		})
+	</script>
 </body>
