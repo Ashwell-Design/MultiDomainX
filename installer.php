@@ -220,8 +220,16 @@
 				var curr = $(event.currentTarget).attr('data-target');
 				var next = $(event.currentTarget).attr('data-next');
 				var key = $('input[type=licenseKey]').val();
-				var res = JSON.parse(httpGet('https://ryvor.github.io/Licensing/MultiDomainX/Validate?key='+key+'&system=<?=PHP_OS ?>'));
-				console.log(res);
+				$.ajax('https://ryvor.github.io/Licensing/api?$=Validate&key='+key+'&system=<?=PHP_OS?>', {
+					dataType: 'json', // type of response data
+					timeout: 500,     // timeout milliseconds
+					success: function (data,status,xhr) {   // success callback function
+						console.log(data);
+					},
+					error: function (jqXhr, textStatus, errorMessage) { // error callback 
+						console.log(errorMessage);
+					}
+				});
 				setTimeout(() => {
 					$(curr).modal('hide');
 					$(next).modal({
