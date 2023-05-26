@@ -204,7 +204,8 @@
 			// LICENSE
 			httpGet = (url) => {
 				var xmlHttp = new XMLHttpRequest();
-				xmlHttp.open( "GET", url, false );
+				xmlHttp.open( "GET", url, false ); // false for synchronous request
+				xmlHttp.send( null );
 				return xmlHttp.responseText;
 			}
 			var license = JSON.parse(httpGet('https://api.github.com/repos/Ashwell-Design/MultiDomainX/contents/LICENSE.txt'));
