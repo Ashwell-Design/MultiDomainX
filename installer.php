@@ -204,8 +204,9 @@
 			// MODALS
 			$('#welcome').modal({
 				backdrop: 'static',
-				keyboard: false
-			}, 'show');
+				keyboard: false,
+				show: true,
+			});
 
 			// PROGRESS BAR
 			updateProgress('set', 37)
