@@ -67,8 +67,6 @@
 	</style>
 </head>
 <body>
-	<div class="pb" style="--progress:0%; --progress-text:'0%';"></div>
-	
 	<div class="modal modal-xl fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-hidden="true" aria-labelledby="welcomeModalLabel" id="welcome">
 		<div class="modal-dialog modal-fullscreen-xl-down" role="document">
 			<div class="modal-content">
@@ -155,6 +153,8 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="pb" style="--progress:0%; --progress-text:'0%';"></div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js" integrity="sha512-i9cEfJwUwViEPFKdC1enz4ZRGBj8YQo6QByFTF92YXHi7waCqyexvRD75S5NVTsSiTv7rKWqG9Y5eFxmRsOn0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<script>
@@ -204,7 +204,7 @@
 			// LICENSE
 			httpGet = (url) => {
 				var xmlHttp = new XMLHttpRequest();
-				xmlHttp.open( "GET", url, false ); // false for synchronous request
+				xmlHttp.open( "GET", url, false );
 				xmlHttp.send( null );
 				return xmlHttp.responseText;
 			}
@@ -213,13 +213,11 @@
 			licenseElem.innerHTML = atob(license['content'])
 
 			// VALIDATION
-			//httpGet();
 			validateInstallation = () => {
 				var curr = $(event.currentTarget).attr('data-target');
 				var next = $(event.currentTarget).attr('data-next');
 
 				var valid = JSON.parse(httpGet('https://ryvor-licensing.vercel.app/api/validate/'));
-				console.log(valid['status']);
 				setTimeout(() => {
 					$(curr).modal('hide');
 					$(next).modal({
