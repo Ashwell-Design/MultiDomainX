@@ -387,7 +387,21 @@
 		}
 		public function getFavicon($out = '<!-- FAVICON -->') {
 			$image = $this->db->array(sprintf("SELECT `Favicon` FROM `Pages` WHERE `ID`='%s'", $this->theme_id))[0];
-			return $out .= "<link rel=\"icon\" href=\"$image\" type=\"image/png\">";
+			$out .= sprintf('<link rel="apple-touch-icon" sizes="57x57" href="/MD_Static/Favicons/%s/apple-icon-57x57.png">', $image);
+			$out .= sprintf('<link rel="apple-touch-icon" sizes="60x60" href="/MD_Static/Favicons/%s/apple-icon-60x60.png">', $image);
+			$out .= sprintf('<link rel="apple-touch-icon" sizes="72x72" href="/MD_Static/Favicons/%s/apple-icon-72x72.png">', $image);
+			$out .= sprintf('<link rel="apple-touch-icon" sizes="76x76" href="/MD_Static/Favicons/%s/apple-icon-76x76.png">', $image);
+			$out .= sprintf('<link rel="apple-touch-icon" sizes="114x114" href="/MD_Static/Favicons/%s/apple-icon-114x114.png">', $image);
+			$out .= sprintf('<link rel="apple-touch-icon" sizes="120x120" href="/MD_Static/Favicons/%s/apple-icon-120x120.png">', $image);
+			$out .= sprintf('<link rel="apple-touch-icon" sizes="144x144" href="/MD_Static/Favicons/%s/apple-icon-144x144.png">', $image);
+			$out .= sprintf('<link rel="apple-touch-icon" sizes="152x152" href="/MD_Static/Favicons/%s/apple-icon-152x152.png">', $image);
+			$out .= sprintf('<link rel="apple-touch-icon" sizes="180x180" href="/MD_Static/Favicons/%s/apple-icon-180x180.png">', $image);
+			$out .= sprintf('<link rel="icon" type="image/png" sizes="192x192"  href="/MD_Static/Favicons/%s/android-icon-192x192.png">', $image);
+			$out .= sprintf('<link rel="icon" type="image/png" sizes="32x32" href="/MD_Static/Favicons/%s/favicon-32x32.png">', $image);
+			$out .= sprintf('<link rel="icon" type="image/png" sizes="96x96" href="/MD_Static/Favicons/%s/favicon-96x96.png">', $image);
+			$out .= sprintf('<link rel="icon" type="image/png" sizes="16x16" href="/MD_Static/Favicons/%s/favicon-16x16.png">', $image);
+			$out .= sprintf('<meta name="msapplication-TileImage" content="/MD_Static/Favicons/%s/ms-icon-144x144.png">', $image);
+			return $out .= '<meta name="msapplication-TileColor" content="#ffffff">';
 		}
 	}
 	class Page {
