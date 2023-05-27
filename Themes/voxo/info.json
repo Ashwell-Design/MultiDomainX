@@ -44,14 +44,14 @@
 			"Hash": "sha512-14M7CqWNUr6fzrgs9ncNWKdBtLu69HwEWq7J3/dPMUL+za3fBRLJvK6egAu4SSlxCM1apqsbVJHArGLl5fjldw=="
 		}, {"Name": "Google Translate",
 			"Description": "Google Translate is a free multilingual machine translation service developed by Google, to translate text.",
-			"URL": "/Themes/Voxo/assets/translate.js",
+			"URL": "/Themes/voxo/assets/translate.js",
 			"Image": "https://www.gstatic.com/images/branding/product/1x/translate_512dp.png",
 			"Version": "1.0.0",
 			"Tags": ["Google Translate", "Google", "Translate", "Translation", "Machine Translation", "Multilingual"],
 			"Hash": ""
 		}, {"Name": "Script.js",
 			"Description": "script.js is a JavaScript library that makes it easy to load and execute JavaScript files.",
-			"URL": "/Themes/Voxo/assets/script.js",
+			"URL": "/Themes/voxo/assets/script.js",
 			"Image": "https://raw.githubusercontent.com/ded/script.js/master/logo.png",
 			"Version": "1.0.0",
 			"Tags": ["script.js", "script", "js", "javascript"],
@@ -82,14 +82,14 @@
 			"Hash": "sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
 		}, {"Name": "colors.css",
 			"Description": "colors.css",
-			"URL": "/Themes/Voxo/assets/colors.css",
+			"URL": "/Themes/voxo/assets/colors.css",
 			"Image": "",
 			"Version": "1.0.0",
 			"Tags": ["colors", "css"],
 			"Hash": ""
 		}, {"Name": "style.css",
 			"Description": "style.css",
-			"URL": "/Themes/Voxo/assets/style.css",
+			"URL": "/Themes/voxo/assets/style.css",
 			"Image": "",
 			"Version": "1.0.0",
 			"Tags": ["style", "css"],
