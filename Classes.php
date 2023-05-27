@@ -333,8 +333,8 @@
 			return $out .= "<title>{$this->page->info['Title']}</title>";
 		}
 		public function getStyles($out='<!-- STYLES -->') {
-			if(file_exists("{$this->theme_path}/info.json")) {
-				foreach(json_decode(file_get_contents("{$this->theme_path}/info.json"), true)['Styles'] as $style) {
+			if(file_exists("{$this->theme_path_default}/info.json")) {
+				foreach(json_decode(file_get_contents("{$this->theme_path_default}/info.json"), true)['Styles'] as $style) {
 					if($style['Hash']!==null) {
 						$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $style['URL'], $style['Hash'], $style['URL'], $style['Hash']);
 					} else {
@@ -344,8 +344,8 @@
 			} else {
 				// TODO: Print error, Missing default theme styles
 			}
-			if(file_exists("{$this->theme_path_default}/info.json")) {
-				foreach(json_decode(file_get_contents("{$this->theme_path_default}/info.json"), true)['Styles'] as $style) {
+			if(file_exists("{$this->theme_path}/info.json")) {
+				foreach(json_decode(file_get_contents("{$this->theme_path}/info.json"), true)['Styles'] as $style) {
 					if($style['Hash']!==null) {
 						$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $style['URL'], $style['Hash'], $style['URL'], $style['Hash']);
 					} else {
