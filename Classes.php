@@ -386,7 +386,7 @@
 			return $out .= $this->page->info['Head'];
 		}
 		public function getFavicon($out = '<!-- FAVICON -->') {
-			$image = '#';//$this->db->array(sprintf("SELECT `Styles` FROM `Pages` WHERE `ID`='%s'", $this->theme_id))[0];
+			$image = $this->db->array(sprintf("SELECT `Favicon` FROM `Pages` WHERE `ID`='%s'", $this->theme_id))[0];
 			return $out .= "<link rel=\"icon\" href=\"$image\" type=\"image/png\">";
 		}
 	}
