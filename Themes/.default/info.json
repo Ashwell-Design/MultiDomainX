@@ -186,8 +186,8 @@
 			{	"Name": "Cover 1",
 				"File": "cover 1",
 				"Version": "1.0",
-				"Vars": [{
-					"Name": "Title",
+				"Vars": [
+					{"Name": "Title",
 					"Description": "",
 					"Vars": [
 						"title:string",
@@ -195,26 +195,25 @@
 						"title_size:int",
 						"title_align:string"
 					]
-				}, {
-					"Name": "Text",
-					"Description": "",
-					"Vars": [
-						"text:string",
-						"text_color:string",
-						"text_size:int",
-						"text_align:string"
-					]
-				}, {
-					"Name": "Link",
-					"Description": "",
-					"Vars": [
-						"link:string",
-						"link_url:string",
-						"link_color:string",
-						"link_size:int",
-						"link_align:string"
-					]
-				}]
+					}, {"Name": "Text",
+						"Description": "",
+						"Vars": [
+							"text:string",
+							"text_color:string",
+							"text_size:int",
+							"text_align:string"
+						]
+					}, {"Name": "Link",
+						"Description": "",
+						"Vars": [
+							"link:string",
+							"link_url:string",
+							"link_color:string",
+							"link_size:int",
+							"link_align:string"
+						]
+					}
+				]
 			}
 		],
 		"Features": [
@@ -714,14 +713,28 @@
 			}
 		],
 		"Forms": [
-			{	"Name": "",
-				"File": "",
+			{	"Name": "Forms 1",
+				"File": "form_1",
 				"Version": "1.0",
-				"Vars": []
-			}, {"Name": "",
-				"File": "",
-				"Version": "1.0",
-				"Vars": []
+				"Vars": [
+					{	"Name": "Prompt",
+						"Description": "",
+						"Vars": [
+							"title_text:string",
+							"title_color:string",
+							"title_size:int"
+						]
+					}, {
+						"Name": "Inputs",
+						"Description": "",
+						"Vars": [
+							"email_text:string",
+							"password_text:string",
+							"remember_text:int",
+							"submit_text:string"
+						]
+					}
+				]
 			}
 		],
 		"Headers": [
@@ -768,36 +781,232 @@
 			}
 		],
 		"Heros": [
-			{	"Name": "",
-				"File": "",
+			{	"Name": "Hero 1",
+				"File": "hero_1",
+				"Version": "1.0",
+				"Vars": [
+					{	"Name": "Title",
+						"Description": "",
+						"Vars": [
+							"title_text:string",
+							"title_color:string",
+							"title_size:int"
+						]
+					}, {"Name": "Description",
+						"Description": "",
+						"Vars": [
+							"description_text:string",
+							"description_color:string",
+							"description_size:int"
+						]
+					}, {"Name": "Button 1",
+						"Description": "",
+						"Vars": [
+							"button_1_text:string",
+							"button_1_color:string",
+							"button_1_link:int",
+							"button_1_size:int"
+						]
+					}, {"Name": "Button 2",
+						"Description": "",
+						"Vars": [
+							"button_2_text:string",
+							"button_2_color:string",
+							"button_2_link:int",
+							"button_2_size:int"
+						]
+					}
+				]
+			}, {"Name": "Hero 2",
+				"File": "hero_2",
 				"Version": "1.0",
 				"Vars": []
-			}, {"Name": "",
-				"File": "",
+			}, {"Name": "Hero 3",
+				"File": "hero_3",
+				"Version": "1.0",
+				"Vars": []
+			}, {"Name": "Hero 4",
+				"File": "hero_4",
+				"Version": "1.0",
+				"Vars": []
+			}, {"Name": "Hero 5",
+				"File": "hero_5",
+				"Version": "1.0",
+				"Vars": []
+			}, {"Name": "Hero 6",
+				"File": "hero_6",
 				"Version": "1.0",
 				"Vars": []
 			}
 		],
 		"Jumbotrons": [
-			{	"Name": "",
-				"File": "",
+			{	"Name": "Jumbotron 1",
+				"File": "jumbotron_1",
 				"Version": "1.0",
-				"Vars": []
-			}, {"Name": "",
-				"File": "",
+				"Vars": [
+					{	"Name": "Title",
+						"Description": "",
+						"Vars": [
+							"title_text:string",
+							"title_color:string",
+							"title_size:int"
+						]
+					}, {"Name": "Description",
+						"Description": "",
+						"Vars": [
+							"description_text:string",
+							"description_color:string",
+							"description_size:int"
+						]
+					}, {"Name": "Button 1",
+						"Description": "",
+						"Vars": [
+							"button_1_text:string",
+							"button_1_color:string",
+							"button_1_link:int",
+							"button_1_size:int"
+						]
+					}, {"Name": "Button 2",
+						"Description": "",
+						"Vars": [
+							"button_2_text:string",
+							"button_2_color:string",
+							"button_2_link:int",
+							"button_2_size:int"
+						]
+					}
+				]
+			}, {"Name": "Jumbotron 2",
+				"File": "jumbotron_2",
 				"Version": "1.0",
-				"Vars": []
+				"Vars": [
+					{	"Name": "Title",
+						"Description": "",
+						"Vars": [
+							"title_text:string",
+							"title_color:string",
+							"title_size:int"
+						]
+					}, {"Name": "Description",
+						"Description": "",
+						"Vars": [
+							"description_text:string",
+							"description_color:string",
+							"description_size:int"
+						]
+					}, {"Name": "Button 1",
+						"Description": "",
+						"Vars": [
+							"button_1_text:string",
+							"button_1_color:string",
+							"button_1_link:int",
+							"button_1_size:int"
+						]
+					}
+				]
+			}, {"Name": "Jumbotron 3",
+				"File": "jumbotron_3",
+				"Version": "1.0",
+				"Vars": [
+					{	"Name": "Title",
+						"Description": "",
+						"Vars": [
+							"title_text:string",
+							"title_color:string",
+							"title_size:int"
+						]
+					}, {"Name": "Description",
+						"Description": "",
+						"Vars": [
+							"description_text:string",
+							"description_color:string",
+							"description_size:int"
+						]
+					}
+				]
+			}, {"Name": "Jumbotron 4",
+				"File": "jumbotron_4",
+				"Version": "1.0",
+				"Vars": [
+					{	"Name": "Title",
+						"Description": "",
+						"Vars": [
+							"title_text:string",
+							"title_color:string",
+							"title_size:int"
+						]
+					}, {"Name": "Description",
+						"Description": "",
+						"Vars": [
+							"description_text:string",
+							"description_color:string",
+							"description_size:int"
+						]
+					}
+				]
 			}
 		],
 		"Pricing": [
-			{	"Name": "",
-				"File": "",
+			{	"Name": "Pricing 1",
+				"File": "pricing_1",
 				"Version": "1.0",
-				"Vars": []
-			}, {"Name": "",
-				"File": "",
-				"Version": "1.0",
-				"Vars": []
+				"Vars": [
+					{	"Name": "Title",
+						"Description": "",
+						"Vars": [
+							"inc1:string",
+							"inc2:string",
+							"inc3:string",
+							"inc4:string",
+							"inc5:string"
+						]
+					}, {"Name": "Teir 1",
+						"Description": "",
+						"Vars": [
+							"t1_title:string",
+							"t1_promo:string",
+							"t1_price:string",
+							"t1_term:string",
+							"t1_button:string",
+							"t1_button_link:string",
+							"t1_inc1:string",
+							"t1_inc2:string",
+							"t1_inc3:string",
+							"t1_inc4:string",
+							"t1_inc5:string"
+						]
+					}, {"Name": "Teir 2",
+						"Description": "",
+						"Vars": [
+							"t2_title:string",
+							"t2_promo:string",
+							"t2_price:string",
+							"t2_term:string",
+							"t2_button:string",
+							"t2_button_link:string",
+							"t2_inc1:string",
+							"t2_inc2:string",
+							"t2_inc3:string",
+							"t2_inc4:string",
+							"t2_inc5:stringt"
+						]
+					}, {"Name": "Teir 3",
+						"Description": "",
+						"Vars": [
+							"t3_title:string",
+							"t3_promo:string",
+							"t3_price:string",
+							"t3_term:string",
+							"t3_button:string",
+							"t3_button_link:string",
+							"t3_inc1:string",
+							"t3_inc2:string",
+							"t3_inc3:string",
+							"t3_inc4:string",
+							"t3_inc5:stringt"
+						]
+					}
+				]
 			}
 		],
 		"Sidebars": [
