@@ -1,4 +1,21 @@
 {
+	"Root": ".default",
+	"Name": {
+		"Normal": "Default Theme",
+		"Short": "Default"
+	},
+	"Description": {
+		"Normal": "The Default theme for MultiDomainX",
+		"Short": "The Default theme for MultiDomainX",
+		"File": "README.md"
+	},
+	"Icon": "icon.jpg",
+	"Author": {
+		"Name": "Ashwell-Design",
+		"Icon": "author.png"
+	},
+	"GitHub": "Ashwell-Design/MultiDomainX",
+
 	"Scripts": [
 		{   "Name": "jQuery",
 			"Description": "jQuery is a fast, small, and feature-rich JavaScript library.",
@@ -46,14 +63,14 @@
 			"Description": "Google Translate is a free multilingual machine translation service developed by Google, to translate text.",
 			"URL": "/Themes/.default/assets/translate.js",
 			"Image": "https://www.gstatic.com/images/branding/product/1x/translate_512dp.png",
-			"Version": "1.0.0",
+			"Version": "1.0",
 			"Tags": ["Google Translate", "Google", "Translate", "Translation", "Machine Translation", "Multilingual"],
 			"Hash": ""
 		}, {"Name": "Script.js",
 			"Description": "script.js is a JavaScript library that makes it easy to load and execute JavaScript files.",
 			"URL": "/Themes/.default/assets/script.js",
 			"Image": "https://raw.githubusercontent.com/ded/script.js/master/logo.png",
-			"Version": "1.0.0",
+			"Version": "1.0",
 			"Tags": ["script.js", "script", "js", "javascript"],
 			"Hash": ""
 		}
@@ -84,73 +101,473 @@
 			"Description": "colors.css",
 			"URL": "/Themes/.default/assets/colors.css",
 			"Image": "",
-			"Version": "1.0.0",
+			"Version": "1.0",
 			"Tags": ["colors", "css"],
 			"Hash": ""
 		}, {"Name": "style.css",
 			"Description": "style.css",
 			"URL": "/Themes/.default/assets/style.css",
 			"Image": "",
-			"Version": "1.0.0",
+			"Version": "1.0",
 			"Tags": ["style", "css"],
 			"Hash": ""
 		}
 	],
 	"Sections": {
 		"Breadcrumbs": [
-			{	"Name": "",
-				"File": ""
-			}, {"Name": "",
-				"File": ""
+			{	"Name": "Breadcrumbs 1",
+				"File": "breadcrumbs_1",
+				"Version": "1.0",
+				"Vars": []
+			}, {"Name": "Breadcrumbs 2",
+				"File": "breadcrumbs_2",
+				"Version": "1.0",
+				"Vars": []
+			}, {"Name": "Breadcrumbs 3",
+				"File": "breadcrumbs_3",
+				"Version": "1.0",
+				"Vars": []
+			}, {"Name": "Breadcrumbs 4",
+				"File": "breadcrumbs_4",
+				"Version": "1.0",
+				"Vars": []
 			}
 		],
-		"Contexts": [
-			{	"Name": "",
-				"File": ""
-			}, {"Name": "",
-				"File": ""
+		"Carousels": [
+			{	"Name": "Carousel 1",
+				"File": "carousel_1",
+				"Version": "1.0",
+				"Vars": []
+			}
+		],
+		"Charts": [
+			{	"Name": "Chart 1",
+				"File": "chart_1",
+				"Version": "1.0",
+				"Vars": []
+			}, {"Name": "Chart 2",
+				"File": "chart_2",
+				"Version": "1.0",
+				"Vars": []
+			}, {"Name": "Chart 3",
+				"File": "chart_3",
+				"Version": "1.0",
+				"Vars": []
+			}, {"Name": "Chart 4",
+				"File": "chart_4",
+				"Version": "1.0",
+				"Vars": []
+			}, {"Name": "Chart 5",
+				"File": "chart_5",
+				"Version": "1.0",
+				"Vars": []
+			}, {"Name": "Chart 6",
+				"File": "chart_6",
+				"Version": "1.0",
+				"Vars": []
+			}
+		],
+		"ContextMenus": [
+			{	"Name": "Context 1",
+				"File": "context_1",
+				"Version": "1.0",
+				"Vars": []
+			}, {"Name": "Context 2",
+				"File": "context_2",
+				"Version": "1.0",
+				"Vars": []
+			}, {"Name": "Context 3",
+				"File": "context_3",
+				"Version": "1.0",
+				"Vars": []
+			}
+		],
+		"Covers": [
+			{	"Name": "Cover 1",
+				"File": "cover 1",
+				"Version": "1.0",
+				"Vars": [{
+					"Name": "Title",
+					"Description": "",
+					"Vars": [
+						"title:string",
+						"title_color:string",
+						"title_size:int",
+						"title_align:string"
+					]
+				}, {
+					"Name": "Text",
+					"Description": "",
+					"Vars": [
+						"text:string",
+						"text_color:string",
+						"text_size:int",
+						"text_align:string"
+					]
+				}, {
+					"Name": "Link",
+					"Description": "",
+					"Vars": [
+						"link:string",
+						"link_url:string",
+						"link_color:string",
+						"link_size:int",
+						"link_align:string"
+					]
+				}]
 			}
 		],
 		"Features": [
-			{	"Name": "",
-				"File": ""
-			}, {"Name": "",
-				"File": ""
+			{	"Name": "Feature 1",
+				"File": "feature_1",
+				"Version": "1.0",
+				"Vars": [{
+					"Name": "Title",
+					"Description": "",
+					"Vars": [
+						"title:string",
+						"title_color:string",
+						"title_size:int"
+					]
+				}, {
+					"Name": "Feature 1",
+					"Description": "",
+					"Vars": [
+						"1_icon:string",
+						"1_icon_color:string",
+						"1_icon_background:int",
+						"1_icon_size:string",
+						"1_title:string",
+						"1_title_color:string",
+						"1_title_size:string",
+						"1_text:string",
+						"1_text_color:string",
+						"1_text_size:string",
+						"1_link:string",
+						"1_link_url:string"
+					]
+				}, {
+					"Name": "Feature 2",
+					"Description": "",
+					"Vars": [
+						"2_icon:string",
+						"2_icon_color:string",
+						"2_icon_background:int",
+						"2_icon_size:string",
+						"2_title:string",
+						"2_title_color:string",
+						"2_title_size:string",
+						"2_text:string",
+						"2_text_color:string",
+						"2_text_size:string",
+						"2_link:string",
+						"2_link_url:string"
+					]
+				}, {
+					"Name": "Feature 3",
+					"Description": "",
+					"Vars": [
+						"3_icon:string",
+						"3_icon_color:string",
+						"3_icon_background:int",
+						"3_icon_size:string",
+						"3_title:string",
+						"3_title_color:string",
+						"3_title_size:string",
+						"3_text:string",
+						"3_text_color:string",
+						"3_text_size:string",
+						"3_link:string",
+						"3_link_url:string"
+					]
+				}]
+			}, {"Name": "Feature 2",
+				"File": "feature_2",
+				"Version": "1.0",
+				"Vars": [{
+					"Name": "Title",
+					"Description": "",
+					"Vars": [
+						"title:string",
+						"title_color:string",
+						"title_size:int"
+					]
+				}, {
+					"Name": "Feature 1",
+					"Description": "",
+					"Vars": [
+						"1_icon:string",
+						"1_icon_color:string",
+						"1_icon_size:string",
+						"1_title:string",
+						"1_title_color:string",
+						"1_title_size:string",
+						"1_text:string",
+						"1_text_color:string",
+						"1_text_size:string",
+						"1_link:string",
+						"1_link_url:string"
+					]
+				}, {
+					"Name": "Feature 2",
+					"Description": "",
+					"Vars": [
+						"2_icon:string",
+						"2_icon_color:string",
+						"2_icon_size:string",
+						"2_title:string",
+						"2_title_color:string",
+						"2_title_size:string",
+						"2_text:string",
+						"2_text_color:string",
+						"2_text_size:string",
+						"2_link:string",
+						"2_link_url:string"
+					]
+				}, {
+					"Name": "Feature 3",
+					"Description": "",
+					"Vars": [
+						"3_icon:string",
+						"3_icon_color:string",
+						"3_icon_size:string",
+						"3_title:string",
+						"3_title_color:string",
+						"3_title_size:string",
+						"3_text:string",
+						"3_text_color:string",
+						"3_text_size:string",
+						"3_link:string",
+						"3_link_url:string"
+					]
+				}]
+			}, {"Name": "Feature 3",
+				"File": "feature_3",
+				"Version": "1.0",
+				"Vars": [{
+					"Name": "Title",
+					"Description": "",
+					"Vars": [
+						"title:string",
+						"title_color:string",
+						"title_size:int"
+					]
+				}, {
+					"Name": "Feature 1",
+					"Description": "",
+					"Vars": [
+						"1_image:string",
+						"1_icon:string",
+						"1_title:string",
+						"1_title_color:string",
+						"1_title_size:string",
+						"1_location:string",
+						"1_date:string"
+					]
+				}, {
+					"Name": "Feature 2",
+					"Description": "",
+					"Vars": [
+						"2_image:string",
+						"2_icon:string",
+						"2_title:string",
+						"2_title_color:string",
+						"2_title_size:string",
+						"2_location:string",
+						"2_date:string"
+					]
+				}, {
+					"Name": "Feature 3",
+					"Description": "",
+					"Vars": [
+						"3_image:string",
+						"3_icon:string",
+						"3_title:string",
+						"3_title_color:string",
+						"3_title_size:string",
+						"3_location:string",
+						"3_date:string"
+					]
+				}]
+			}, {"Name": "Feature 4",
+				"File": "feature_4",
+				"Version": "1.0",
+				"Vars": [{
+					"Name": "Title",
+					"Description": "",
+					"Vars": [
+						"title:string",
+						"title_color:string",
+						"title_size:int"
+					]
+				}, {
+					"Name": "Feature 1",
+					"Description": "",
+					"Vars": [
+						"1_icon:string",
+						"1_icon_color:string",
+						"1_title:string",
+						"1_title_color:string",
+						"1_title_size:string",
+						"1_text:string",
+						"1_text_color:string",
+						"1_text_size:string"
+					]
+				}, {
+					"Name": "Feature 2",
+					"Description": "",
+					"Vars": [
+						"2_icon:string",
+						"2_icon_color:string",
+						"2_title:string",
+						"2_title_color:string",
+						"2_title_size:string",
+						"2_text:string",
+						"2_text_color:string",
+						"2_text_size:string"
+					]
+				}, {
+					"Name": "Feature 3",
+					"Description": "",
+					"Vars": [
+						"3_icon:string",
+						"3_icon_color:string",
+						"3_title:string",
+						"3_title_color:string",
+						"3_title_size:string",
+						"3_text:string",
+						"3_text_color:string",
+						"3_text_size:string"
+					]
+				}, {
+					"Name": "Feature 4",
+					"Description": "",
+					"Vars": [
+						"4_icon:string",
+						"4_icon_color:string",
+						"4_title:string",
+						"4_title_color:string",
+						"4_title_size:string",
+						"4_text:string",
+						"4_text_color:string",
+						"4_text_size:string"
+					]
+				}, {
+					"Name": "Feature 5",
+					"Description": "",
+					"Vars": [
+						"5_icon:string",
+						"5_icon_color:string",
+						"5_title:string",
+						"5_title_color:string",
+						"5_title_size:string",
+						"5_text:string",
+						"5_text_color:string",
+						"5_text_size:string"
+					]
+				}, {
+					"Name": "Feature 6",
+					"Description": "",
+					"Vars": [
+						"6_icon:string",
+						"6_icon_color:string",
+						"6_title:string",
+						"6_title_color:string",
+						"6_title_size:string",
+						"6_text:string",
+						"6_text_color:string",
+						"6_text_size:string"
+					]
+				}, {
+					"Name": "Feature 7",
+					"Description": "",
+					"Vars": [
+						"7_icon:string",
+						"7_icon_color:string",
+						"7_title:string",
+						"7_title_color:string",
+						"7_title_size:string",
+						"7_text:string",
+						"7_text_color:string",
+						"7_text_size:string"
+					]
+				}, {
+					"Name": "Feature 8",
+					"Description": "",
+					"Vars": [
+						"8_icon:string",
+						"8_icon_color:string",
+						"8_title:string",
+						"8_title_color:string",
+						"8_title_size:string",
+						"8_text:string",
+						"8_text_color:string",
+						"8_text_size:string"
+					]
+				}]
+			}, {"Name": "Feature 5",
+				"File": "feature_5",
+				"Version": "1.0",
+				"Vars": []
+			}, {"Name": "Feature 6",
+				"File": "feature_6",
+				"Version": "1.0",
+				"Vars": []
 			}
 		],
 		"Footers": [
 			{	"Name": "",
-				"File": ""
+				"File": "",
+				"Version": "1.0",
+				"Vars": []
 			}, {"Name": "",
-				"File": ""
+				"File": "",
+				"Version": "1.0",
+				"Vars": []
 			}
 		],
 		"Headers": [
 			{	"Name": "",
-				"File": ""
+				"File": "",
+				"Version": "1.0",
+				"Vars": []
 			}, {"Name": "",
-				"File": ""
+				"File": "",
+				"Version": "1.0",
+				"Vars": []
 			}
 		],
 		"Heros": [
 			{	"Name": "",
-				"File": ""
+				"File": "",
+				"Version": "1.0",
+				"Vars": []
 			}, {"Name": "",
-				"File": ""
+				"File": "",
+				"Version": "1.0",
+				"Vars": []
 			}
 		],
 		"Jumbotrons": [
 			{	"Name": "",
-				"File": ""
+				"File": "",
+				"Version": "1.0",
+				"Vars": []
 			}, {"Name": "",
-				"File": ""
+				"File": "",
+				"Version": "1.0",
+				"Vars": []
 			}
 		],
 		"Sidebars": [
 			{	"Name": "",
-				"File": ""
+				"File": "",
+				"Version": "1.0",
+				"Vars": []
 			}, {"Name": "",
-				"File": ""
+				"File": "",
+				"Version": "1.0",
+				"Vars": []
 			}
 		]
 	}
