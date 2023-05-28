@@ -309,7 +309,6 @@
 				$body .= '<main class="container-fluid row">';
 				foreach ($sections as $section) {
 					preg_match_all('/([0-9]+)\[([A-Za-z0-9\|\%\#\;\:\,\-\=\+]+)\]/', preg_replace('/\s+/', '', preg_replace('/\s+/', '', $section, 2)), $matches);
-					var_dump($matches);
 					$row_string = $matches[2][0];	$cnt++;
 					$body .= $this->generateSectionRow($row_string);
 				}
