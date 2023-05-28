@@ -208,7 +208,7 @@ $(document).ready(function(){
 		  
 			// Set the position of the context menu
 			const top = cursorY <= maxTop ? cursorY : maxTop;
-			const left = cursorX >= maxLeft ? cursorX : maxLeft;
+			const left = cursorX <= maxLeft ? cursorX : maxLeft;
 
 			console.log(windowWidth);
 			console.log(maxLeft);
