@@ -210,6 +210,11 @@ $(document).ready(function(){
 			const top = y <= maxTop ? y : maxTop;
 			const left = x <= maxLeft ? x : maxLeft;
 
+			console.log(windowWidth);
+			console.log(maxLeft);
+			console.log(x);
+			console.log(left);
+
 			// Show the context menu
 			$contextmenu.css({
 				top: top,
