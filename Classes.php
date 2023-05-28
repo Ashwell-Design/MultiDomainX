@@ -208,7 +208,6 @@
 		public function __construct($theme_id, $db, $dom_id, $page, $d_theme) {
 			$this->db = $db;
 			$this->info = $db->assoc(sprintf("SELECT * FROM `Themes` WHERE `id`='%s'", $theme_id));
-			print_r($this->info);
 			$this->theme_id = $theme_id;
 			$this->domain_id = $dom_id;
 			$this->page = $page;

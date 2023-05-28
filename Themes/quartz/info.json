@@ -2,7 +2,7 @@
 	"Scripts": [
 		{   "Name": "Script.js",
 			"Description": "script.js is a JavaScript library that makes it easy to load and execute JavaScript files.",
-			"URL": "/Themes/elemental/assets/script.js",
+			"URL": "/Themes/quartz/assets/script.js",
 			"Image": "",
 			"Version": "1.0.0",
 			"Tags": ["script.js", "script", "js", "javascript"],
@@ -12,7 +12,7 @@
 	"Styles": [
 		{   "Name": "style.css",
 			"Description": "style.css",
-			"URL": "/Themes/elemental/assets/style.css",
+			"URL": "/Themes/quartz/assets/style.css",
 			"Image": "",
 			"Version": "1.0.0",
 			"Tags": ["style", "css"],
