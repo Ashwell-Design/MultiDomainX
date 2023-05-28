@@ -145,9 +145,6 @@
 		background-color: var(--sc-01);
 		border: 1px solid var(--sc-02);
 	}
-	.sidebar-container {
-		background-color: var(--sl-05);
-	}
 	.apexcharts-menu {
 		background: var(--sc-01)!important;
 		color: var(--bs-body-color)!important;
@@ -179,9 +176,6 @@
 	[type=checkbox], [type=radio], .form-control {
 		background-color: var(--sc-27);
 		border: 1px solid var(--sc-25);
-	}
-	.sidebar-container {
-		background-color: var(--sl-17);
 	}
 	.apexcharts-menu {
 		background: var(--sc-27)!important;
