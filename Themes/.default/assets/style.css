@@ -9,9 +9,6 @@
 	.text-auto {
 		color: var(--bs-body-color);
 	}
-	.row {
-		height: 100%;
-	}
 	.h-0 {
 		height: 0vh!important;
 	}
