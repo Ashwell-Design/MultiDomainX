@@ -211,9 +211,8 @@ $(document).ready(function(){
 			const left = cursorX <= maxLeft ? cursorX : maxLeft;
 
 			console.log(windowWidth);
+			console.log(contextMenuWidth);
 			console.log(maxLeft);
-			console.log(cursorX);
-			console.log(left);
 
 			// Show the context menu
 			$contextmenu.css({
