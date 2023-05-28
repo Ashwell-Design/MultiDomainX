@@ -213,8 +213,9 @@ $(document).ready(function(){
 			// Show the context menu
 			$contextmenu.css({
 				top: top,
-				left: left
-			}).show().focus();
+				left: left,
+				display: 'flex'
+			}).focus();
 		});
 	}	
 });
