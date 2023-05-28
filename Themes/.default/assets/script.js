@@ -212,7 +212,7 @@ $(document).ready(function(){
 
 			console.log(windowWidth);
 			console.log(maxLeft);
-			console.log(x);
+			console.log(cursorX);
 			console.log(left);
 
 			// Show the context menu
