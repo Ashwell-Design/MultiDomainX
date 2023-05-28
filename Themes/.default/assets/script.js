@@ -199,16 +199,16 @@ $(document).ready(function(){
 			const contextMenuHeight = $contextmenu.outerHeight();
 			const windowWidth = $(window).width();
 			const windowHeight = $(window).height();
-			const x = event.clientX;
-			const y = event.clientY;
+			const cursorX = event.clientX;
+			const cursorY = event.clientY;
 		  
 			// Calculate the maximum allowable position of the context menu
 			const maxTop = windowHeight - contextMenuHeight - 5;
 			const maxLeft = windowWidth - contextMenuWidth - 5;
 		  
 			// Set the position of the context menu
-			const top = y <= maxTop ? y : maxTop;
-			const left = x <= maxLeft ? x : maxLeft;
+			const top = cursorY <= maxTop ? cursorY : maxTop;
+			const left = cursorX >= maxLeft ? cursorX : maxLeft;
 
 			console.log(windowWidth);
 			console.log(maxLeft);
