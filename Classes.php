@@ -305,7 +305,6 @@
 		public function generateBody($body='') {
 			$body .= $this->getScripts();
 			if(($code = $this->page->info['Sections']) != null) {
-				print_r($code);
 				$sections = explode("$", $code);	array_shift($sections);	$cnt=NULL;
 				$body .= '<main class="container-fluid row">';
 				foreach ($sections as $section) {
