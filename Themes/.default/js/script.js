@@ -94,7 +94,7 @@ $(document).ready(function(){
 		this.style.height = height + 'px';
 
 		$(this).attr('preload-status', 'Loading');
-		window[command](this)
+		window[command]($(this))
 		$(this).attr('preload-status', 'Loaded');
 	});
 
