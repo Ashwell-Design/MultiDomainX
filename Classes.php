@@ -366,14 +366,16 @@
 			$scss->setFormatter('ScssPhp\ScssPhp\Formatter\Expanded');
 			if(file_exists("{$this->theme_path}/info.json")) {
 				foreach(json_decode(file_get_contents("{$this->theme_path}/info.json"), true)['Sass'] as $style) {
-					$out = '<style>' . $scss->compileFile($style['Location'])->getCss() . '</style>';
+					$c = file_get_contents($style['Location']);
+					$out = '<style>' . $scss->compileString($c)->getCss() . '</style>';
 				}
 			} else {
 				// TODO: Print error, Missing theme styles
 			}
 			if(file_exists("{$this->theme_path_default}/info.json")) {
 				foreach(json_decode(file_get_contents("{$this->theme_path_default}/info.json"), true)['Sass'] as $style) {
-					$out = '<style>' . $scss->compileFile($style['Location'])->getCss() . '</style>';
+					$c = file_get_contents($style['Location']);
+					$out = '<style>' . $scss->compileString($c)->getCss() . '</style>';
 				}
 			} else {
 				// TODO: Print error, Missing default theme styles
