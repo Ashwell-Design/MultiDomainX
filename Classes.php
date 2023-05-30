@@ -1,7 +1,4 @@
 <?php
-	require_once __ROOT__.'/Vendor/scssphp-1.11.0/scss.inc.php';
-	use ScssPhp\ScssPhp\Compiler;
-
 	class Tools {
 		protected $db;
 		public function __construct($db) {

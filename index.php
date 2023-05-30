@@ -1,4 +1,7 @@
 <?php
+require_once __ROOT__.'/Vendor/scssphp-1.11.0/scss.inc.php';
+use ScssPhp\ScssPhp\Compiler;
+
 ini_set('display_errors', '1'); error_reporting(E_ALL);
 
 define('__ROOT__',		dirname(__FILE__));
