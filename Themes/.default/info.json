@@ -1,5 +1,6 @@
 {
 	"Root": ".default",
+	"version": 1.0,
 	"Name": {
 		"Normal": "Default Theme",
 		"Short": "Default"

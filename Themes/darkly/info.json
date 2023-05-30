@@ -1,5 +1,6 @@
 {
 	"Root": "darkly",
+	"version": 1.0,
 	"Name": {
 		"Normal": "Darkly Theme",
 		"Short": "Darkly"

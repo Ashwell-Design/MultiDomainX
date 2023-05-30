@@ -1,5 +1,6 @@
 {
 	"Root": "flatly",
+	"version": 1.0,
 	"Name": {
 		"Normal": "Flatly Theme",
 		"Short": "Flatly"

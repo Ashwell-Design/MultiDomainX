@@ -1,5 +1,6 @@
 {
 	"Root": "quartz",
+	"version": 1.0,
 	"Name": {
 		"Normal": "Quartz theme",
 		"Short": "Quartz"

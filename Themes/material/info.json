@@ -1,5 +1,6 @@
 {
 	"Root": "Material",
+	"version": 1.0,
 	"Name": {
 		"Normal": "Material Theme",
 		"Short": "Material"

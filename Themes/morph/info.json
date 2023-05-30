@@ -1,5 +1,6 @@
 {
 	"Root": "morph",
+	"version": 1.0,
 	"Name": {
 		"Normal": "Morph Theme",
 		"Short": "Morph"

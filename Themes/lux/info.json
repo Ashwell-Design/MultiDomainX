@@ -1,5 +1,6 @@
 {
 	"Root": "lux",
+	"version": 1.0,
 	"Name": {
 		"Normal": "Lux Theme",
 		"Short": "Lux"
