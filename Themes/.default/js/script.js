@@ -23,8 +23,8 @@ function changeLanguage(lang) {
 // Loads a table
 function loadTable(extension) {
 	var [table, cols, buttonString] = extension.split('-', 3);
-	var tbody = $('.table[preload-function=loadTable(\''+extension+'\')]');
-	var thead = $('.table[preload-function=loadTable(\''+extension+'\')]');
+	var tbody = $('.table[preload-function=\'loadTable(\''+extension+'\')\']');
+	var thead = $('.table[preload-function=\'loadTable(\''+extension+'\')\']');
 
 	initSqlJs({
 		locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${filename}`
