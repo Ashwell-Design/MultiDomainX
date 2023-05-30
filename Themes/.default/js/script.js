@@ -24,8 +24,8 @@ function changeLanguage(lang) {
 function loadTable(extension, elem) {
 	console.log(elem);
 	var [table, cols, buttonString] = extension.split('-', 3);
-	var tbody = (document.currentScript.parentNode).querySelector("tbody");
-	var thead = (document.currentScript.parentNode).querySelector("thead");
+	var tbody = $('table[preload-function=loadTable(\''+extension+'\')] tbody');
+	var thead = $('table[preload-function=loadTable(\''+extension+'\')] thead');
 
 	initSqlJs({
 		locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${filename}`
