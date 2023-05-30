@@ -93,8 +93,7 @@ $(document).ready(function(){
 		this.style.height = height + 'px';
 
 		$(this).attr('preload-status', 'Loading');
-		var dynamicFunction = new Function(attributes, command);
-		dynamicFunction();
+		window[command](arguments)
 		$(this).attr('preload-status', 'Loaded');
 	});
 
