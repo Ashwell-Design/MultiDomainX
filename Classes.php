@@ -341,7 +341,7 @@
 					foreach ($styles as $style) {
 						$url = isset($style['URL']) ? $style['URL'] : '';
 						if (!filter_var($url, FILTER_VALIDATE_URL)) $url = "/Themes/".$this->info['Location']."/css".$url;
-						$integrity = $style['Hash'] !== null ? sprintf(" integrity=\"%s\"", $style['Hash']) : '';
+						$integrity = ($style['Hash'] !== null)? $style['Hash'] : '';
 						$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\"%s crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\"%s crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $url, $integrity, $url, $integrity);
 					}
 				} else {
@@ -359,7 +359,7 @@
 					foreach ($scripts as $script) {
 						$url = isset($script['URL']) ? $script['URL'] : '';
 						if(!filter_var($url, FILTER_VALIDATE_URL)) $url = "/Themes/".$this->info['Location']."/js".$url;
-						$integrity = $script['Hash'] !== null ? sprintf(" integrity=\"%s\"", $script['Hash']) : '';
+						$integrity = ($style['Hash'] !== null)? $style['Hash'] : '';
 						$out .= sprintf("<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $url, $integrity);
 					}
 				} else {
