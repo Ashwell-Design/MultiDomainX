@@ -40,29 +40,29 @@ function loadTable(elem) {
 			var stmt = db.prepare("PRAGMA table_info("+table+")");
 			stmt.getAsObject({$start:1, $end:1});
 			stmt.bind({$start:1, $end:2});
-			var th = thead.appendChild(document.createElement('tr'));
+			var th = thead.append(document.createElement('tr'));
 			var i=0;
 			while(stmt.step()) {
 				if(cols.includes(i)) {
 					const row = stmt.getAsObject();
-					row_col = th.appendChild(document.createElement('th'));
+					row_col = th.append(document.createElement('th'));
 					row_col.textContent = Object.values(row)[1];
 				}
 				i++;
 			}
-			th.appendChild(document.createElement('th'));
+			th.append(document.createElement('th'));
 			/* Rows */
 			var stmt = db.prepare("SELECT * FROM " + table);
 			stmt.getAsObject({$start:1, $end:1});
 			stmt.bind({$start:1, $end:2});
 			while(stmt.step()) {
 				const row = stmt.getAsObject();
-				var tr = tbody.appendChild(document.createElement('tr'));
+				var tr = tbody.append(document.createElement('tr'));
 				for (let s=0; s<cols.length; s++) {
-					row_col = tr.appendChild(document.createElement('td'));
+					row_col = tr.append(document.createElement('td'));
 					row_col.textContent = Object.values(row)[cols[s]];
 				}
-				btn_col = tr.appendChild(document.createElement('td'));
+				btn_col = tr.append(document.createElement('td'));
 				if(buttonString.length > 1) {
 					buttons = buttonString.split('+');
 					btn = '';
