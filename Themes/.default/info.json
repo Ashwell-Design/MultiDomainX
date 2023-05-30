@@ -79,48 +79,39 @@
 	"Styles": [
 		{	"Name": "Bootstrap",
 			"Description": "Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.",
-			"URL": "https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css.DONOTLOAD",
+			"URL": "https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css",
 			"Image": "http://getbootstrap.com/assets/img/bootstrap-stack.png",
 			"Version": "5.2.3",
 			"Tags": ["Bootstrap", "CSS", "JS", "Framework", "Responsive", "Mobile", "Web"],
 			"Hash": "sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
 		}, {"Name": "Normalize.css",
 			"Description": "Normalize.css makes browsers render all elements more consistently and in line with modern standards. It precisely targets only the styles that need normalizing.",
-			"URL": "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css.DONOTLOAD",
+			"URL": "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css",
 			"Image": "https://necolas.github.io/normalize.css/logo.svg",
 			"Version": "8.0.1",
 			"Tags": ["Normalize", "CSS", "JS", "Framework", "Responsive", "Mobile", "Web"],
 			"Hash": "sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
 		}, {"Name": "Font Awesome",
 			"Description": "Font Awesome gives you scalable vector icons that can instantly be customized — size, color, drop shadow, and anything that can be done with the power of CSS.",
-			"URL": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css.DONOTLOAD",
+			"URL": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
 			"Image": "https://fontawesome.com/images/logo.svg",
 			"Version": "6.4.0",
 			"Tags": ["Font Awesome", "CSS", "JS", "Framework", "Responsive", "Mobile", "Web"],
 			"Hash": "sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
 		}, {"Name": "colors.css",
 			"Description": "colors.css",
-			"URL": "/Themes/.default/assets/colors.css.DONOTLOAD",
+			"URL": "/Themes/.default/assets/colors.css",
 			"Image": "",
 			"Version": "1.0",
 			"Tags": ["colors", "css"],
 			"Hash": ""
 		}, {"Name": "style.css",
 			"Description": "style.css",
-			"URL": "/Themes/.default/assets/style.css.DONOTLOAD",
+			"URL": "/Themes/.default/assets/style.css",
 			"Image": "",
 			"Version": "1.0",
 			"Tags": ["style", "css"],
 			"Hash": ""
-		}
-	],
-	"Sass": [
-		{	"Name": "Bootstrap",
-			"Description": "Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.",
-			"Version": "5.2.3",
-			"Location": "/sass/bootstrap.scss",
-			"Image": "https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo-shadow.png",
-			"Tags": ["Bootstrap", "CSS", "JS", "Framework", "Responsive", "Mobile", "Web"]
 		}
 	],
 	"Sections": {
