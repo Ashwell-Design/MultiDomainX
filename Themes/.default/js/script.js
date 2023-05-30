@@ -22,6 +22,7 @@ function changeLanguage(lang) {
 }
 // Loads a table
 function loadTable(extension) {
+	console.log(extension);
 	var [table, cols, buttonString] = extension.split('-', 3);
 	var tbody = $('.table[preload-function=\'loadTable(\''+extension+'\')\']');
 	var thead = $('.table[preload-function=\'loadTable(\''+extension+'\')\']');
@@ -93,8 +94,7 @@ $(document).ready(function(){
 		this.style.height = height + 'px';
 
 		$(this).attr('preload-status', 'Loading');
-		var dynamicFunction = new Function(attributes, command);
-		dynamicFunction();
+		window[command](arguments)
 		$(this).attr('preload-status', 'Loaded');
 	});
 
