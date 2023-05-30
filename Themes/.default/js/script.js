@@ -22,7 +22,7 @@ function changeLanguage(lang) {
 }
 // Loads a table
 function loadTable(elem) {
-	console.log(elem);
+	console.log(elem[0]);
 	var [table, cols, buttonString] = extension.split('-', 3);
 	var tbody = $('.table[preload-function=\'loadTable(\''+extension+'\')\']');
 	var thead = $('.table[preload-function=\'loadTable(\''+extension+'\')\']');
