@@ -381,6 +381,7 @@
 			} else {
 				// TODO: Print error, Missing default theme sass
 			}
+			return $out;
 		}
 		public function getScripts($out='<!-- SCRIPTS -->') {
 			if(file_exists("{$this->theme_path}/info.json")) {
