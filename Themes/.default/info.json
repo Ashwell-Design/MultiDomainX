@@ -77,14 +77,7 @@
 		}
 	],
 	"Styles": [
-		{	"Name": "Bootstrap",
-			"Description": "Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web.",
-			"URL": "https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css",
-			"Image": "http://getbootstrap.com/assets/img/bootstrap-stack.png",
-			"Version": "5.2.3",
-			"Tags": ["Bootstrap", "CSS", "JS", "Framework", "Responsive", "Mobile", "Web"],
-			"Hash": "sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
-		}, {"Name": "Normalize.css",
+		{	"Name": "Normalize.css",
 			"Description": "Normalize.css makes browsers render all elements more consistently and in line with modern standards. It precisely targets only the styles that need normalizing.",
 			"URL": "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css",
 			"Image": "https://necolas.github.io/normalize.css/logo.svg",
