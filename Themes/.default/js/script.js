@@ -21,8 +21,8 @@ function changeLanguage(lang) {
 	}
 }
 // Loads a table
-function loadTable(extension) {
-	console.log(extension);
+function loadTable(elem) {
+	console.log(elem);
 	var [table, cols, buttonString] = extension.split('-', 3);
 	var tbody = $('.table[preload-function=\'loadTable(\''+extension+'\')\']');
 	var thead = $('.table[preload-function=\'loadTable(\''+extension+'\')\']');
@@ -94,7 +94,7 @@ $(document).ready(function(){
 		this.style.height = height + 'px';
 
 		$(this).attr('preload-status', 'Loading');
-		window[command](attributes)
+		window[command](this)
 		$(this).attr('preload-status', 'Loaded');
 	});
 
