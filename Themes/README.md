@@ -2,6 +2,8 @@
 
 This is the base folder for al themes you have installed. Any that havent already been installed through the website wil not be usable.
 
+> **_NOTE:_**  DO NOT DELETE THE `.default` THEME. the website relies on that as a main/backup theme for style and functionality
+
 ## Existing Theme
 
 ### Installation
