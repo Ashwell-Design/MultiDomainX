@@ -358,7 +358,7 @@
 					$scripts = json_decode(file_get_contents($infoPath), true)['Scripts'];
 					foreach ($scripts as $script) {
 						$url = isset($script['URL']) ? $script['URL'] : '';
-						if(!filter_var($url, FILTER_VALIDATE_URL)) $url = "/Themes/".$this->info['Location']."/css".$url;
+						if(!filter_var($url, FILTER_VALIDATE_URL)) $url = "/Themes/".$this->info['Location']."/js".$url;
 						$integrity = $script['Hash'] !== null ? sprintf(" integrity=\"%s\"", $script['Hash']) : '';
 						$out .= sprintf("<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $url, $integrity);
 					}
