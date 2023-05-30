@@ -87,12 +87,14 @@ function loadTable(extension) {
 $(document).ready(function(){
 	$('[preload=true]').each(function() {
 		const command=$(this).attr('preload-function')
+		const attributes=$(this).attr('preload-attributes')
 
 		var height = (this.clientHeight>0)? this.clientHeight: 20;
 		this.style.height = height + 'px';
 
 		$(this).attr('preload-status', 'Loading');
-		eval(command);
+		var dynamicFunction = new Function(attributes, command);
+		dynamicFunction();
 		$(this).attr('preload-status', 'Loaded');
 	});
 
