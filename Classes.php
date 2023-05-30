@@ -359,7 +359,7 @@
 					foreach ($scripts as $script) {
 						$url = isset($script['URL']) ? $script['URL'] : '';
 						if(!filter_var($url, FILTER_VALIDATE_URL)) $url = "/Themes/".$this->info['Location']."/js".$url;
-						$integrity = ($style['Hash'] !== null)? $style['Hash'] : '';
+						$integrity = ($script['Hash'] !== null)? $script['Hash'] : '';
 						$out .= sprintf("<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $url, $integrity);
 					}
 				} else {
