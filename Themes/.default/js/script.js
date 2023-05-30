@@ -22,10 +22,10 @@ function changeLanguage(lang) {
 }
 // Loads a table
 function loadTable(elem) {
-	extension = $(elem).attr('preload-attributes')
+	extension = $(elem[0]).attr('preload-attributes')
 	var [table, cols, buttonString] = extension.split('-', 3);
-	var tbody = $(elem+'>tbody');
-	var thead = $(elem+'>thead');
+	var tbody = $(elem[0]+'>tbody');
+	var thead = $(elem[0]+'>thead');
 
 	initSqlJs({
 		locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${filename}`
