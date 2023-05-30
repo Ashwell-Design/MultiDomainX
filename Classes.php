@@ -365,20 +365,20 @@
 			$scss = new Compiler();
 			$scss->setFormatter('ScssPhp\ScssPhp\Formatter\Expanded');
 			if(file_exists("{$this->theme_path}/info.json")) {
-				foreach(json_decode(file_get_contents("{$this->theme_path}/info.json"), true)['Sass'] as $style) {
-					$c = file_get_contents($this->theme_path.'/'.$style['Location']);
-					$out = '<style>' . $scss->compileString($c)->getCss() . '</style>';
+				foreach(json_decode(file_get_contents("{$this->theme_path}/info.json"), true)['Sass'] as $sass) {
+					$out .= sprintf("<link rel=\"stylesheet\" href=\"%s\">", $sass['Location']);
+					$out = '<style>' . $scss->compileString(file_get_contents($this->theme_path.'/'.$sass['Location']))->getCss() . '</style>';
 				}
 			} else {
-				// TODO: Print error, Missing theme styles
+				// TODO: Print error, Missing theme sass
 			}
 			if(file_exists("{$this->theme_path_default}/info.json")) {
-				foreach(json_decode(file_get_contents("{$this->theme_path_default}/info.json"), true)['Sass'] as $style) {
-					$c = file_get_contents($this->theme_path_default.'/'.$style['Location']);
-					$out = '<style>' . $scss->compileString($c)->getCss() . '</style>';
+				foreach(json_decode(file_get_contents("{$this->theme_path_default}/info.json"), true)['Sass'] as $sass) {
+					$out .= sprintf("<link rel=\"stylesheet\" href=\"%s\">", $sass['Location']);
+					$out = '<style>' . $scss->compileString(file_get_contents($this->theme_path_default.'/'.$sass['Location']))->getCss() . '</style>';
 				}
 			} else {
-				// TODO: Print error, Missing default theme styles
+				// TODO: Print error, Missing default theme sass
 			}
 		}
 		public function getScripts($out='<!-- SCRIPTS -->') {
