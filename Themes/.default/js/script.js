@@ -25,7 +25,6 @@ function loadTable(extension) {
 	var [table, cols, buttonString] = extension.split('-', 3);
 	var tbody = $('.table[preload-function=loadTable(\''+extension+'\')]');
 	var thead = $('.table[preload-function=loadTable(\''+extension+'\')]');
-	console.log(tbody);
 
 	initSqlJs({
 		locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${filename}`
@@ -89,7 +88,7 @@ $(document).ready(function(){
 	$('[preload=true]').each(function() {
 		const command=$(this).attr('preload-function')
 
-		var height = this.clientHeight;
+		var height = (this.clientHeight>0)? this.clientHeight: 5;
 		this.style.height = height + 'px';
 
 		$(this).attr('preload-status', 'Loading');
