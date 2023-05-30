@@ -21,8 +21,8 @@ function changeLanguage(lang) {
 	}
 }
 // Loads a table
-function loadTable(extension, elem) {
-	console.log(elem);
+function loadTable(extension) {
+	console.log('table[preload-function=loadTable(\''+extension+'\')] tbody');
 	var [table, cols, buttonString] = extension.split('-', 3);
 	var tbody = $('table[preload-function=loadTable(\''+extension+'\')] tbody');
 	var thead = $('table[preload-function=loadTable(\''+extension+'\')] thead');
