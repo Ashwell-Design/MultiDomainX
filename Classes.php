@@ -362,20 +362,21 @@
 			return $out;
 		}
 		public function getSass($out='') {
-			$scss = new Compiler();
-			$scss->setFormatter('ScssPhp\ScssPhp\Formatter\Expanded');
+			$sass = new Compiler();
+			$sass->setFormatter('ScssPhp\ScssPhp\Formatter\Expanded');
+
 			if(file_exists("{$this->theme_path}/info.json")) {
-				foreach(json_decode(file_get_contents("{$this->theme_path}/info.json"), true)['Sass'] as $sass) {
-					$out .= sprintf("<link rel=\"stylesheet\" href=\"%s\">", $sass['Location']);
-					$out = '<style>' . $scss->compileString(file_get_contents($this->theme_path.'/'.$sass['Location']))->getCss() . '</style>';
+				foreach(json_decode(file_get_contents("{$this->theme_path}/info.json"), true)['Sass'] as $scss) {
+					$out .= sprintf("<link rel=\"stylesheet\" href=\"%s\">", $scss['Location']);
+					$out .= '<style>' . $sass->compileString(file_get_contents($this->theme_path.'/'.$scss['Location']))->getCss() . '</style>';
 				}
 			} else {
 				// TODO: Print error, Missing theme sass
 			}
 			if(file_exists("{$this->theme_path_default}/info.json")) {
-				foreach(json_decode(file_get_contents("{$this->theme_path_default}/info.json"), true)['Sass'] as $sass) {
-					$out .= sprintf("<link rel=\"stylesheet\" href=\"%s\">", $sass['Location']);
-					$out = '<style>' . $scss->compileString(file_get_contents($this->theme_path_default.'/'.$sass['Location']))->getCss() . '</style>';
+				foreach(json_decode(file_get_contents("{$this->theme_path_default}/info.json"), true)['Sass'] as $scss) {
+					$out .= sprintf("<link rel=\"stylesheet\" href=\"%s\">", $scss['Location']);
+					$out .= '<style>' . $sass->compileString(file_get_contents($this->theme_path_default.'/'.$scss['Location']))->getCss() . '</style>';
 				}
 			} else {
 				// TODO: Print error, Missing default theme sass
