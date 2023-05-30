@@ -21,7 +21,8 @@ function changeLanguage(lang) {
 	}
 }
 // Loads a table
-function loadTable(extension) {
+function loadTable(extension, elem) {
+	console.log(elem);
 	var [table, cols, buttonString] = extension.split('-', 3);
 	var tbody = (document.currentScript.parentNode).querySelector("tbody");
 	var thead = (document.currentScript.parentNode).querySelector("thead");
