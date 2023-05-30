@@ -23,8 +23,8 @@ function changeLanguage(lang) {
 // Loads a table
 function loadTable(extension) {
 	var [table, cols, buttonString] = extension.split('-', 3);
-	var tbody = $('table[preload-function=loadTable(\''+extension+'\')] tbody');
-	var thead = $('table[preload-function=loadTable(\''+extension+'\')] thead');
+	var tbody = $('.table[preload-function=loadTable(\''+extension+'\')]');
+	var thead = $('.table[preload-function=loadTable(\''+extension+'\')]');
 	console.log(tbody);
 
 	initSqlJs({
