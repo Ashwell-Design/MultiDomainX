@@ -340,10 +340,9 @@
 				if(file_exists($infoPath)) {
 					$styles = json_decode(file_get_contents($infoPath), true)['Styles'];
 					foreach ($styles as $style) {
-						if (filter_var($url, FILTER_VALIDATE_URL)) {
-							$url = $style['URL'];
-						} else {
-							$url = $themePath."/css".$style['URL'];
+						$url = isset($style['URL']) ? $style['URL'] : '';
+						if (!filter_var($url, FILTER_VALIDATE_URL)) {
+							$url = $themePath."/css".$url;
 						}
 		
 						$integrity = $style['Hash'] !== null ? sprintf(" integrity=\"%s\"", $style['Hash']) : '';
