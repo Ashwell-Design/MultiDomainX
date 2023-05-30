@@ -20,20 +20,82 @@ function changeLanguage(lang) {
 		location.reload();
 	}
 }
-// Loads a pre-loaded element
-function loadElem(elem) {
-	setTimeout(function() {
-		$(elem).attr('preload-status', 'Loaded');
-	}, 10000);
-}
+// Loads a table
+function loadTable(extension) {
+	var [table, cols, buttonString] = extension.split('-', 3);
+	var tbody = (document.currentScript.parentNode).querySelector("tbody");
+	var thead = (document.currentScript.parentNode).querySelector("thead");
 
+	initSqlJs({
+		locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${filename}`
+	}).then(function(SQL){
+		const xhr = new XMLHttpRequest();
+		xhr.open('GET', '/central.sqlite', true);
+		xhr.responseType = 'arraybuffer';
+		xhr.onload = e => {
+			const uInt8Array = new Uint8Array(xhr.response);
+			const db = new SQL.Database(uInt8Array);
+			/* Header */
+			var stmt = db.prepare("PRAGMA table_info("+table+")");
+			stmt.getAsObject({$start:1, $end:1});
+			stmt.bind({$start:1, $end:2});
+			var th = thead.appendChild(document.createElement('tr'));
+			var i=0;
+			while(stmt.step()) {
+				if(cols.includes(i)) {
+					const row = stmt.getAsObject();
+					row_col = th.appendChild(document.createElement('th'));
+					row_col.textContent = Object.values(row)[1];
+				}
+				i++;
+			}
+			th.appendChild(document.createElement('th'));
+			/* Rows */
+			var stmt = db.prepare("SELECT * FROM " + table);
+			stmt.getAsObject({$start:1, $end:1});
+			stmt.bind({$start:1, $end:2});
+			while(stmt.step()) {
+				const row = stmt.getAsObject();
+				var tr = tbody.appendChild(document.createElement('tr'));
+				for (let s=0; s<cols.length; s++) {
+					row_col = tr.appendChild(document.createElement('td'));
+					row_col.textContent = Object.values(row)[cols[s]];
+				}
+				btn_col = tr.appendChild(document.createElement('td'));
+				if(buttonString.length > 1) {
+					buttons = buttonString.split('+');
+					btn = '';
+					buttons.forEach((button) => {
+						[title, url] = button.split('/');
+						if(title.includes('=')) {
+							[cat, title] = title.split('=');
+							switch (cat) {
+								case "icon":
+									title='<i class="fa fa-'+title+'"></i>'
+
+							}
+						}
+						btn += '<a href="/'+url+'" class="p-1">'+title+'</a>';
+					});;
+					btn_col.innerHTML = btn;
+				}
+			}
+		};
+		xhr.send();
+	});
+}
 $(document).ready(function(){
 	$('[preload=true]').each(function() {
+		const command=$(this).attr('preload-function')
+
 		var height = this.clientHeight;
 		this.style.height = height + 'px';
+
 		$(this).attr('preload-status', 'Loading');
-		loadElem(this);
+		eval(command);
+		$(this).attr('preload-status', 'Loaded');
 	});
+
 	$(document).on('click keydown', (event) => {
 		const $target = $(event.target);
 		const $dropdownMenu = $('.dropdown-menu.lang');
@@ -219,5 +281,4 @@ $(document).ready(function(){
 			}).focus();
 		});
 	}
-
 });
