@@ -1,0 +1,41 @@
+{
+	"Root": "lux",
+	"Name": {
+		"Normal": "Lux Theme",
+		"Short": "Lux"
+	},
+	"Description": {
+		"Normal": "",
+		"Short": "",
+		"File": "README.md"
+	},
+	"Icon": "icon.jpg",
+	"Author": {
+		"Name": "Ashwell-Design",
+		"Icon": "author.png"
+	},
+	"GitHub": "Ashwell-Design/MultiDomainX",
+
+	"Scripts": [
+		{   "Name": "Script.js",
+			"Description": "script.js is a JavaScript library that makes it easy to load and execute JavaScript files.",
+			"URL": "/Themes/lux/assets/script.js",
+			"Image": "",
+			"Version": "1.0.0",
+			"Tags": ["script.js", "script", "js", "javascript"],
+			"Hash": ""
+		}
+	],
+	"Styles": [
+		{   "Name": "style.css",
+			"Description": "style.css",
+			"URL": "/Themes/lux/assets/style.css",
+			"Image": "",
+			"Version": "1.0.0",
+			"Tags": ["style", "css"],
+			"Hash": ""
+		}
+	],
+	"Sections": {
+	}
+}
