@@ -26,23 +26,6 @@ function loadElem(elem) {
 		$(elem).attr('preload-status', 'Loaded');
 	}, 10000);
 }
-// Convert the SASS/SCSS to CSS using SASS.JS
-// Get all <link rel="scss"> elements and Loop through each SCSS link and compile the SCSS to CSS
-document.querySelectorAll('link[rel="scss"]').forEach(async (link) => {
-	// Fetch the SCSS file contents
-	const response = await fetch(link.getAttribute('href'));
-	const scssCode = await response.text();
-
-	// Compile SCSS to CSS using sass.js
-	const cssCode = Sass.compile(scssCode);
-
-	// Create a <style> element and add the compiled CSS
-	const styleElement = document.createElement('style');
-	styleElement.textContent = cssCode;
-
-	// Replace the <link rel="scss"> element with the <style> element
-	link.parentNode.replaceChild(styleElement, link);
-});
 
 $(document).ready(function(){
 	$('[preload=true]').each(function() {
