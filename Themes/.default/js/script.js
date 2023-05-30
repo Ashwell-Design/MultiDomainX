@@ -88,7 +88,7 @@ $(document).ready(function(){
 	$('[preload=true]').each(function() {
 		const command=$(this).attr('preload-function')
 
-		var height = (this.clientHeight>0)? this.clientHeight: 5;
+		var height = (this.clientHeight>0)? this.clientHeight: 10;
 		this.style.height = height + 'px';
 
 		$(this).attr('preload-status', 'Loading');
