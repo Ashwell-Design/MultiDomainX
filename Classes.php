@@ -1,5 +1,5 @@
 <?php
-	require 'Vendor/scssphp-1.11.0/scss.inc.php';
+	require __ROOT__.'/Vendor/scssphp-1.11.0/scss.inc.php';
 	use ScssPhp\ScssPhp\Compiler;
 
 	class Tools {
