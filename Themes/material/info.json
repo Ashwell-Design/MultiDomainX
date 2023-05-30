@@ -1,8 +1,8 @@
 {
-	"Root": "lux",
+	"Root": "Material",
 	"Name": {
-		"Normal": "Lux Theme",
-		"Short": "Lux"
+		"Normal": "Material Theme",
+		"Short": "Material"
 	},
 	"Description": {
 		"Normal": "",
