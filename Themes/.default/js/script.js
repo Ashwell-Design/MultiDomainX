@@ -86,8 +86,8 @@ function loadTable(extension) {
 }
 $(document).ready(function(){
 	$('[preload=true]').each(function() {
-		const command=$(this).attr('preload-function')
-		const attributes=$(this).attr('preload-attributes')
+		const command = $(this).attr('preload-function');
+		const attributes = $(this).attr('preload-attributes');
 
 		var height = (this.clientHeight>0)? this.clientHeight: 20;
 		this.style.height = height + 'px';
