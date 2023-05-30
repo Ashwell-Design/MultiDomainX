@@ -345,7 +345,7 @@
 						if (filter_var($url, FILTER_VALIDATE_URL)) {
 							$url = $style['URL'];
 						} else {
-							$url = $themePath."/css/".$url['URL'];
+							$url = $themePath."/css".$url['URL'];
 						}
 		
 						$integrity = $style['Hash'] !== null ? sprintf(" integrity=\"%s\"", $style['Hash']) : '';
