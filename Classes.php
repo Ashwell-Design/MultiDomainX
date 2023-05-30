@@ -336,15 +336,11 @@
 			$themePaths = [$this->theme_path_default, $this->theme_path];
 			foreach ($themePaths as $themePath) {
 				$infoPath = "{$themePath}/info.json";
-		
 				if(file_exists($infoPath)) {
 					$styles = json_decode(file_get_contents($infoPath), true)['Styles'];
 					foreach ($styles as $style) {
 						$url = isset($style['URL']) ? $style['URL'] : '';
-						if (!filter_var($url, FILTER_VALIDATE_URL)) {
-							$url = $themePath."/css".$url;
-						}
-		
+						if (!filter_var($url, FILTER_VALIDATE_URL)) $url = $themePath."/css".$url;
 						$integrity = $style['Hash'] !== null ? sprintf(" integrity=\"%s\"", $style['Hash']) : '';
 						$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\"%s crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\"%s crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $url, $integrity, $url, $integrity);
 					}
@@ -358,18 +354,11 @@
 			$themePaths = [$this->theme_path_default, $this->theme_path];
 			foreach ($themePaths as $themePath) {
 				$infoPath = "{$themePath}/info.json";
-		
 				if(file_exists($infoPath)) {
 					$scripts = json_decode(file_get_contents($infoPath), true)['Scripts'];
 					foreach ($scripts as $script) {
 						$url = isset($script['URL']) ? $script['URL'] : '';
-		
-						if (filter_var($url, FILTER_VALIDATE_URL)) {
-							$url = $script['URL'];
-						} else {
-							$url = $themePath."/js/".$url['URL'];
-						}
-		
+						if(!filter_var($url, FILTER_VALIDATE_URL)) $url = $themePath."/css".$url;
 						$integrity = $script['Hash'] !== null ? sprintf(" integrity=\"%s\"", $script['Hash']) : '';
 						$out .= sprintf("<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $url, $integrity);
 					}
