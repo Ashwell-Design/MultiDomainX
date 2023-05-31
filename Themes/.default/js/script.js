@@ -21,7 +21,7 @@ function changeLanguage(lang) {
 	}
 }
 // Loads a table
-function loadTable(elem, callback) {
+function loadTable(elem) {
 	var elem = $(elem)[0];
 	if($(elem).length > 0) {
 		extension = $(elem).attr('preload-attributes');
@@ -72,9 +72,8 @@ function loadTable(elem, callback) {
 			xhr.send();
 		});
 	}
-	callback();
 }
-$(document).ready(function(){
+$(document).ready(async function() {
 	$('[preload=true]').each(async function() {
 		const command = ($(this).attr('preload-function').length > 0)? $(this).attr('preload-function'): '';
 		var height = (this.clientHeight>0)? this.clientHeight: 20;
@@ -91,7 +90,8 @@ $(document).ready(function(){
 		}
 		$(this).data('command-executed', true);
 	});
-
+});
+$(document).ready(function() {
 	$(document).on('click keydown', (event) => {
 		const $target = $(event.target);
 		const $dropdownMenu = $('.dropdown-menu.lang');
