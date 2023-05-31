@@ -49,7 +49,7 @@ function loadTable(elem) {
 					if(cols.includes(i)) {
 						const row = stmt.getAsObject();
 						row_col = $(th).append(document.createElement('th'));
-						$(row_col).text(Object.values(row)[1]);
+						$(row_col).html(Object.values(row)[1]);
 					}
 					i++;
 				}
@@ -64,7 +64,6 @@ function loadTable(elem) {
 					var tr = $(tbody).append(document.createElement('tr'));
 					for (let s=0; s<cols.length; s++) { // cycles through eeach column
 						row_col = $(tr).append(document.createElement('td'));
-						console.log(Object.values(row)[cols[s]]);
 						$(row_col).text(Object.values(row)[cols[s]]);
 					}
 					if(buttonString.length > 1) { // Checks if there are any buttons for the table
