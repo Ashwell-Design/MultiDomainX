@@ -43,13 +43,13 @@ function loadTable(elem) {
 				var stmt = db.prepare("PRAGMA table_info("+table+")");
 				stmt.getAsObject({$start:1, $end:1});
 				stmt.bind({$start:1, $end:2});
-				var th = $(thead).append(document.createElement('tr'));
+				var tr = $(thead).append(document.createElement('tr'));
 				var i=0;
 				while(stmt.step()) {
 					if(cols.includes(i)) {
 						const row = stmt.getAsObject();
-						row_col = $(th).append(document.createElement('th'));
-						$(row_col).html(Object.values(row)[1]);
+						th = $(tr).append(document.createElement('th'));
+						$(th).html(Object.values(row)[1]);
 					}
 					i++;
 				}
