@@ -64,11 +64,12 @@ function loadTable(elem) {
 				stmt.run()
 				while (stmt.step()) {
 					data_row = $("<tr></tr>").appendTo(thead);
-					var rows = stmt.getAsObject(); 
+					var rows = stmt.getAsObject();
+					console.log(rows);
 					rows.foreach((row) => {
 						console.log(row);
+						header_row = $("<th></th>").appendTo(data_row);
 					});
-					header_row = $("<th></th>").appendTo(data_row);
 				}
 			};
 			xhr.send();
