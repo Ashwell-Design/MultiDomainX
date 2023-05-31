@@ -58,16 +58,16 @@ function loadTable(elem) {
 				var stmt = db.prepare("SELECT * FROM " + table);
 				stmt.getAsObject({$start:1, $end:1});
 				stmt.bind({$start:1, $end:2});
+				var i=0;
 				while(stmt.step()) {
 					const row = stmt.getAsObject();
 					var tr = $(tbody).append(document.createElement('tr'));
 					for (let s=0; s<cols.length; s++) {
 						row_col = $(tr).append(document.createElement('td'));
-						console.log(Object.values(row)[cols[s]]);
 						$(row_col).text(Object.values(row)[cols[s]]);
 					}
-					btn_col = $(tr).append(document.createElement('td'));
 					if(buttonString.length > 1) {
+						btn_col = $(tr).append(document.createElement('td'));
 						buttons = buttonString.split('+');
 						btn = '';
 						buttons.forEach((button) => {
