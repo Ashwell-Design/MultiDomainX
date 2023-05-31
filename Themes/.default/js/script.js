@@ -49,10 +49,9 @@ function loadTable(elem) {
 				var i=0;
 				while(stmt.step()) {
 					const row = stmt.getAsObject();
-					console.log(Object.values(row));
 					if(cols.includes(i.toString())) {
 						th = $(table_row).append(document.createElement('th'));
-						$(th).html(Object.values(row)[1]);
+						$(th).html(row[1]);
 					}
 					i++;
 				}
