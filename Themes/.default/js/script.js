@@ -54,7 +54,7 @@ function loadTable(elem) {
 					i++;
 				}
 				$(th).append(document.createElement('th'));
-				/* Rows */
+				/* Rows
 				var stmt = db.prepare("SELECT * FROM " + table);
 				stmt.getAsObject({$start:1, $end:1});
 				stmt.bind({$start:1, $end:2});
@@ -87,6 +87,7 @@ function loadTable(elem) {
 						$(btn_col).html(btn);
 					}
 				}
+				*/
 			};
 			xhr.send();
 		});
