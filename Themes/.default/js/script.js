@@ -53,7 +53,9 @@ function loadTable(elem) {
 					}
 					i++;
 				}
-				$(th).append(document.createElement('th'));
+				if(buttonString.length > 1) { // Checks if there are any buttons for the 
+					th = $(tr).append(document.createElement('th'));
+				}
 				/* Rows
 				var stmt = db.prepare("SELECT * FROM " + table);
 				stmt.getAsObject({$start:1, $end:1});
