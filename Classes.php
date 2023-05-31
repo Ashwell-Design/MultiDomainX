@@ -257,7 +257,7 @@
 						}
 						$out .= '</div></div>';
 					} else {
-						$out .= '<div class="col-md-'.$width.'"><div class="row">';
+						$out .= '<div class="col-md-'.$width.'"><div class="row h-100">';
 						if(strpos($string, ';')!==false) {
 							$cnt++;
 							[$width, $string] = explode(';', $string);
