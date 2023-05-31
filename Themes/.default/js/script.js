@@ -92,7 +92,7 @@ $(document).ready(async function() {
 			await new Promise((resolve) => {
 				const elem = $(this);
 
-				window[command](elem, function() {
+				window[command](elem, function(callback) {
 					console.log($(this));
 					$(this).attr('prelo1ad-status', 'Loaded');
 					resolve();
