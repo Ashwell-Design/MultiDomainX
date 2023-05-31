@@ -53,6 +53,7 @@ function loadTable(elem) {
 					}
 					i++;
 					console.log(Object.values(row));
+					console.log(i);
 				}
 				if(buttonString.length > 1) { // Checks if there are any buttons for the 
 					th = $(tr).append(document.createElement('th'));
