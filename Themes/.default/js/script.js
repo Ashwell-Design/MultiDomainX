@@ -55,12 +55,15 @@ function loadTable(elem) {
 					}
 					i++;
 				}
+				/*
 				if(buttonString.length > 1) { // Checks if there are any buttons for the 
 					table_row = thead.append(tr);
 				}
+				*/
 				/**
 				 * TABLE BODY
 				 */
+				/*
 				var stmt = db.prepare("SELECT * FROM "+table);
 				stmt.getAsObject({$start:1, $end:1});
 				stmt.bind({$start:1, $end:2});
@@ -68,6 +71,7 @@ function loadTable(elem) {
 				while(stmt.step()) {
 					table_row = tbody.append(tr);
 				}
+				*/
 			};
 			xhr.send();
 		});
