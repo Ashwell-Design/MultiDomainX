@@ -47,7 +47,7 @@ function loadTable(elem) {
 				var i=0;
 				while(stmt.step()) {
 					const row = stmt.getAsObject();
-					console.log(cols.includes(i));
+					console.log(cols.includes(i.toString()));
 					console.log(cols);
 					console.log(i);
 					if(cols.includes(i)) {
