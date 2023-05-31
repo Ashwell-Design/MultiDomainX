@@ -82,8 +82,10 @@ $(document).ready(async function() {
 
 		if(!$(this).data('command-executed')) {
 			await new Promise((resolve) => {
-				window[command]($(this), function() {
-					$(this).attr('preload-status', 'Loaded');
+				const elem = $(this)
+
+				window[command](elem, function() {
+					elem.attr('preload-status', 'Loaded');
 					resolve();
 				});
 			});
