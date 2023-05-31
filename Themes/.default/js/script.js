@@ -23,7 +23,7 @@ function changeLanguage(lang) {
 // Loads a table
 function loadTable(elem) {
 	var elem = $(elem)[0];
-	if($(elem).length > 0) {
+	if($(elem).length > 0 && $(elem).attr('preload-status') == 'Loaded') {
 		extension = $(elem).attr('preload-attributes');
 		const [table, cols, buttonString] = extension.split('-', 3);
 		const $thead = $(elem).children('thead')[0];
