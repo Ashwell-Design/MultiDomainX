@@ -52,13 +52,21 @@ function loadTable(elem) {
 				header_row = $("<tr></tr>").appendTo(thead);
 				while (stmt.step()) {
 					if(cols.includes(i.toString())) {
-						$("<tr></tr>").appendTo(header_row).html('hello');
-					} else {
-						console.log('false');
+						$("<th></th>").appendTo(header_row).html(Object.values(stmt.getAsObject())[1]);
 					}
 					i++;
 				}
-				var i=0
+				var i=0;
+				/** 
+				 * TABLE HEADER
+				 */
+				var stmt = db.prepare("PRAGMA table_info("+table+")");
+				stmt.run()
+				while (stmt.step()) {
+					data_row = $("<tr></tr>").appendTo(thead);
+					
+					header_row = $("<th></th>").appendTo(data_row);
+				}
 			};
 			xhr.send();
 		});
