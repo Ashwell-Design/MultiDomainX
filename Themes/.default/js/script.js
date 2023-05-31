@@ -82,11 +82,13 @@ $(document).ready(function(){
 		$(this).attr('preload-status', 'Loading');
 
 		if(!$(this).data('command-executed')) {
-			window[command]($(this), function() {
-				$(this).attr('preload-status', 'Loaded');
+			await new Promise((resolve) => {
+				window[command]($(this), function() {
+					$(this).attr('preload-status', 'Loaded');
+					resolve();
+				});
 			});
 		}
-
 		$(this).data('command-executed', true);
 	});
 
