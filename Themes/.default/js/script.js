@@ -40,7 +40,7 @@ function loadTable(elem) {
 				const uInt8Array = new Uint8Array(xhr.response);
 				const db = new SQL.Database(uInt8Array);
 				/* Header */
-				var stmt = db.prepare("PRAGMA table_info("+table+")");
+				var stmt = db.prepare("PRAGMA table_info("+table+") LIMIT 1");
 				stmt.getAsObject({$start:1, $end:1});
 				stmt.bind({$start:1, $end:2});
 				var tr = $(thead).append(document.createElement('tr'));
