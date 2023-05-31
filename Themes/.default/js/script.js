@@ -93,7 +93,8 @@ $(document).ready(async function() {
 				const elem = $(this);
 
 				window[command](elem, function() {
-					$(this).attr('preload-status', 'Loaded');
+					console.log($(this));
+					$(this).attr('prelo1ad-status', 'Loaded');
 					resolve();
 				});
 			});
@@ -286,5 +287,5 @@ $(document).ready(function() {
 				display: 'flex'
 			}).focus();
 		});
-	}
-});
+	}7
+});77
