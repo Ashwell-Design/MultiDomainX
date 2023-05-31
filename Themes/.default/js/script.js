@@ -30,8 +30,7 @@ function loadTable(elem) {
 		const thead = $(elem).children('thead')[0];
 		const tbody = $(elem).children('tbody')[0];
 
-		const tr = document.createElement("tr");
-		/*const th = document.createElement("th");*/
+		const data_rows = document.createElement("tr");
 		const td = document.createElement("td");
 
 		const xhr = new XMLHttpRequest();
@@ -50,10 +49,10 @@ function loadTable(elem) {
 				var stmt = db.prepare("PRAGMA table_info("+table+")");
 				stmt.run()
 				var i=0;
+				$(thead).append(document.createElement("tr"));
 				while (stmt.step()) {
 					if(cols.includes(i.toString())) {
-						var th = document.createElement("th");
-						$(thead).append(th);
+						$(thead).append(document.createElement("th"));
 					} else {
 						console.log('false');
 					}
