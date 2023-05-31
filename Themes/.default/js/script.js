@@ -93,7 +93,7 @@ $(document).ready(async function() {
 				const elem = $(this);
 
 				window[command](elem, function(callback) {
-					$(callback).attr('preload-status', 'Loaded');
+					$(callback).attr('preload-statu', 'Loaded');
 					resolve();
 				});
 			});
