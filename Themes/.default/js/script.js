@@ -72,6 +72,7 @@ function loadTable(elem) {
 			xhr.send();
 		});
 	}
+	callback()
 }
 $(document).ready(function(){
 	$('[preload=true]').each(function() {
