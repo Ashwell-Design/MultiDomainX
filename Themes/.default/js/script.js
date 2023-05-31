@@ -65,7 +65,7 @@ function loadTable(elem) {
 				while (stmt.step()) {
 					data_row = $("<tr></tr>").appendTo(thead);
 					cols.forEach((col) => {
-						$("<td></td>").appendTo(data_row).html($("<th></th>").appendTo(header_row).html(Object.values(stmt.getAsObject())[col]);
+						$("<td></td>").appendTo(data_row).html(Object.values(stmt.getAsObject())[col]);
 					})
 				}
 			};
