@@ -228,11 +228,11 @@
 					[$width, $string] = explode('|', $section, 2);
 					if(strpos($string, ',') !== false) {
 						$row = explode(',', $string); 
-						$out .= '<div class="col-md-'.$width.'"><div class="row h-100">';
+						$out .= '<div class="col-md-'.$width.'"><div class="row">';
 						foreach ($row as $string) {
 							$cnt++;
 							[$width, $string] = explode(';', $string);
-							$out .= '<div class="col-md-'.$width.'" id="'.$cnt.'"><div class="row h-100">';
+							$out .= '<div class="col-md-'.$width.'" id="'.$cnt.'"><div class="row">';
 							[$seccode, $string] = explode(':', $string);
 							$tools = new Tools($this->db);
 							if ($this->db->num_rows($sql = sprintf("SELECT `Type`, `File` FROM `Sections` WHERE `Code`='%s'", $seccode)) == 1) {
@@ -257,11 +257,11 @@
 						}
 						$out .= '</div></div>';
 					} else {
-						$out .= '<div class="col-md-'.$width.'"><div class="row h-100">';
+						$out .= '<div class="col-md-'.$width.'"><div class="row">';
 						if(strpos($string, ';')!==false) {
 							$cnt++;
 							[$width, $string] = explode(';', $string);
-							$out .= '<div class="col-md-'.$width.'" id="'.$cnt.'"><div class="row h-100">';
+							$out .= '<div class="col-md-'.$width.'" id="'.$cnt.'"><div class="row">';
 							if(strpos($string, ':')!==false) {
 								[$seccode, $string] = explode(':', $string);
 								$tools = new Tools($this->db);
