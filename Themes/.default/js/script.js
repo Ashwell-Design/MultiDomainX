@@ -87,7 +87,7 @@ $(document).ready(async function() {
 
 				window[command](elem, function(elem) {
 					console.log('hello');
-					elem.attr('preload-status', 'Loaded');
+					$(elem).attr('preload-status', 'Loaded');
 					resolve();
 				});
 			});
