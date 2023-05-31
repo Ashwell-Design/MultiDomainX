@@ -52,7 +52,7 @@ function loadTable(elem) {
 				while(stmt.step()) {
 					const row = stmt.getAsObject();
 					if(cols.includes(i.toString())) {
-						table_row.append(th).innerText('Here '+i);
+						table_row.append(th)//.innerText('Here '+i);
 					}
 					i++;
 				}
