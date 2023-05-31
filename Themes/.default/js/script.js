@@ -23,69 +23,71 @@ function changeLanguage(lang) {
 // Loads a table
 function loadTable(elem) {
 	elem = $(elem)[0];
-	extension = $(elem).attr('preload-attributes')
-	var [table, cols, buttonString] = extension.split('-', 3);
-	
-	var tbody = $(elem).children('tbody')[0];
-	var thead = $(elem).children('thead')[0];
+	extension = $(elem).attr('preload-attributes');
+	if($(elem).length > 0) {
+		var [table, cols, buttonString] = extension.split('-', 3);
+		
+		var tbody = $(elem).children('tbody')[0];
+		var thead = $(elem).children('thead')[0];
 
-	initSqlJs({
-		locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${filename}`
-	}).then(function(SQL){
-		const xhr = new XMLHttpRequest();
-		xhr.open('GET', '/central.sqlite', true);
-		xhr.responseType = 'arraybuffer';
-		xhr.onload = e => {
-			const uInt8Array = new Uint8Array(xhr.response);
-			const db = new SQL.Database(uInt8Array);
-			/* Header */
-			var stmt = db.prepare("PRAGMA table_info("+table+")");
-			stmt.getAsObject({$start:1, $end:1});
-			stmt.bind({$start:1, $end:2});
-			var th = $(thead).append(document.createElement('tr'));
-			var i=0;
-			while(stmt.step()) {
-				if(cols.includes(i)) {
+		initSqlJs({
+			locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${filename}`
+		}).then(function(SQL){
+			const xhr = new XMLHttpRequest();
+			xhr.open('GET', '/central.sqlite', true);
+			xhr.responseType = 'arraybuffer';
+			xhr.onload = e => {
+				const uInt8Array = new Uint8Array(xhr.response);
+				const db = new SQL.Database(uInt8Array);
+				/* Header */
+				var stmt = db.prepare("PRAGMA table_info("+table+")");
+				stmt.getAsObject({$start:1, $end:1});
+				stmt.bind({$start:1, $end:2});
+				var th = $(thead).append(document.createElement('tr'));
+				var i=0;
+				while(stmt.step()) {
+					if(cols.includes(i)) {
+						const row = stmt.getAsObject();
+						row_col = $(th).append(document.createElement('th'));
+						$(row_col).text = Object.values(row)[1];
+					}
+					i++;
+				}
+				$(th).append(document.createElement('th'));
+				/* Rows */
+				var stmt = db.prepare("SELECT * FROM " + table);
+				stmt.getAsObject({$start:1, $end:1});
+				stmt.bind({$start:1, $end:2});
+				while(stmt.step()) {
 					const row = stmt.getAsObject();
-					row_col = $(th).append(document.createElement('th'));
-					$(row_col).text = Object.values(row)[1];
-				}
-				i++;
-			}
-			$(th).append(document.createElement('th'));
-			/* Rows */
-			var stmt = db.prepare("SELECT * FROM " + table);
-			stmt.getAsObject({$start:1, $end:1});
-			stmt.bind({$start:1, $end:2});
-			while(stmt.step()) {
-				const row = stmt.getAsObject();
-				var tr = $(tbody).append(document.createElement('tr'));
-				for (let s=0; s<cols.length; s++) {
-					row_col = $(tr).append(document.createElement('td'));
-					$(row_col).text = Object.values(row)[cols[s]];
-				}
-				btn_col = $(tr).append(document.createElement('td'));
-				if(buttonString.length > 1) {
-					buttons = buttonString.split('+');
-					btn = '';
-					buttons.forEach((button) => {
-						[title, url] = button.split('/');
-						if(title.includes('=')) {
-							[cat, title] = title.split('=');
-							switch (cat) {
-								case "icon":
-									title='<i class="fa fa-'+title+'"></i>'
+					var tr = $(tbody).append(document.createElement('tr'));
+					for (let s=0; s<cols.length; s++) {
+						row_col = $(tr).append(document.createElement('td'));
+						$(row_col).text = Object.values(row)[cols[s]];
+					}
+					btn_col = $(tr).append(document.createElement('td'));
+					if(buttonString.length > 1) {
+						buttons = buttonString.split('+');
+						btn = '';
+						buttons.forEach((button) => {
+							[title, url] = button.split('/');
+							if(title.includes('=')) {
+								[cat, title] = title.split('=');
+								switch (cat) {
+									case "icon":
+										title='<i class="fa fa-'+title+'"></i>'
 
+								}
 							}
-						}
-						btn += '<a href="/'+url+'" class="p-1">'+title+'</a>';
-					});;
-					$(btn_col).html = btn;
+							btn += '<a href="/'+url+'" class="p-1">'+title+'</a>';
+						});;
+						$(btn_col).html = btn;
+					}
 				}
-			}
-		};
-		xhr.send();
-	});
+			};
+			xhr.send();
+		});
+	}
 }
 $(document).ready(function(){
 	$('[preload=true]').each(function() {
