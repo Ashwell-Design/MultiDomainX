@@ -25,10 +25,9 @@ function loadTable(elem) {
 	var elem = $(elem)[0];
 	if($(elem).length > 0) {
 		extension = $(elem).attr('preload-attributes');
-		var [table, cols, buttonString] = extension.split('-', 3);
-		cols = cols.split("");
-		var thead = $(elem).children('thead')[0];
-		var tbody = $(elem).children('tbody')[0];
+		const [table, cols, buttonString] = extension.split('-', 3);
+		const thead = $(elem).children('thead')[0];
+		const tbody = $(elem).children('tbody')[0];
 		const tr = document.createElement("tr");
 		const th = document.createElement("th");
 		const td = document.createElement("td");
