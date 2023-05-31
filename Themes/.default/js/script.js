@@ -48,7 +48,7 @@ function loadTable(elem) {
 				if(cols.includes(i)) {
 					const row = stmt.getAsObject();
 					row_col = $(th).append(document.createElement('th'));
-					row_col.textContent = Object.values(row)[1];
+					$(row_col).text = Object.values(row)[1];
 				}
 				i++;
 			}
@@ -62,7 +62,7 @@ function loadTable(elem) {
 				var tr = $(tbody).append(document.createElement('tr'));
 				for (let s=0; s<cols.length; s++) {
 					row_col = $(tr).append(document.createElement('td'));
-					row_col.textContent = Object.values(row)[cols[s]];
+					$(row_col).text = Object.values(row)[cols[s]];
 				}
 				btn_col = $(tr).append(document.createElement('td'));
 				if(buttonString.length > 1) {
@@ -80,7 +80,7 @@ function loadTable(elem) {
 						}
 						btn += '<a href="/'+url+'" class="p-1">'+title+'</a>';
 					});;
-					btn_col.innerHTML = btn;
+					$(btn_col).html = btn;
 				}
 			}
 		};
