@@ -72,7 +72,7 @@ function loadTable(elem, callback) {
 			xhr.send();
 		});
 	}
-	callback();
+	callback(elem);
 }
 $(document).ready(async function() {
 	$('[preload=true]').each(async function() {
@@ -85,7 +85,7 @@ $(document).ready(async function() {
 			await new Promise((resolve) => {
 				const elem = $(this);
 
-				window[command](elem, function() {
+				window[command](elem, function(elem) {
 					console.log('hello');
 					elem.attr('preload-status', 'Loaded');
 					resolve();
