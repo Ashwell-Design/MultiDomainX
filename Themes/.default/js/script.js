@@ -26,6 +26,7 @@ function loadTable(elem) {
 	if($(elem).length > 0 && $(elem).attr('preload-status') != 'Loaded') {
 		extension = $(elem).attr('preload-attributes');
 		const [table, col_ids, buttonString] = extension.split('-', 3);
+		console.log(col_ids);
 		const cols = col_ids.split(".");
 		const thead = $(elem).children('thead')[0];
 		const tbody = $(elem).children('tbody')[0];
