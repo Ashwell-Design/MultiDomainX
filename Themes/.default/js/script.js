@@ -94,7 +94,6 @@ function loadTable(elem) {
 $(document).ready(function(){
 	$('[preload=true]').each(function() {
 		const command = ($(this).attr('preload-function').length > 0)? $(this).attr('preload-function'): '';
-		console.log($(this).attr('preload-function').length);
 
 		var height = (this.clientHeight>0)? this.clientHeight: 20;
 		this.style.height = height + 'px';
