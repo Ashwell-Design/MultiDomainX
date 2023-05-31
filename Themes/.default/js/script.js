@@ -85,10 +85,9 @@ $(document).ready(function(){
 				resolve();
 			  });
 			});
-		
 			$(this).attr('preload-status', 'Loaded');
-			$(this).data('command-executed', true);
 		}
+		$(this).data('command-executed', true);
 	});
 
 	$(document).on('click keydown', (event) => {
