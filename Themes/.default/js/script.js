@@ -21,7 +21,7 @@ function changeLanguage(lang) {
 	}
 }
 // Loads a table
-function loadTable(elem) {
+function loadTable(elem, callback) {
 	var elem = $(elem)[0];
 	if($(elem).length > 0) {
 		extension = $(elem).attr('preload-attributes');
@@ -72,6 +72,7 @@ function loadTable(elem) {
 			xhr.send();
 		});
 	}
+	callback();
 }
 $(document).ready(async function() {
 	$('[preload=true]').each(async function() {
@@ -82,7 +83,7 @@ $(document).ready(async function() {
 
 		if(!$(this).data('command-executed')) {
 			await new Promise((resolve) => {
-				const elem = $(this)
+				const elem = $(this);
 
 				window[command](elem, function() {
 					console.log('hello');
