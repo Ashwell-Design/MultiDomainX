@@ -85,8 +85,8 @@ $(document).ready(async function() {
 			await new Promise((resolve) => {
 				const elem = $(this);
 
-				window[command](elem, function(elem) {
-					($(elem)[0]).attr('preload-status', 'Loaded');
+				window[command](elem, function() {
+					$(this).attr('preload-status', 'Loaded');
 					resolve();
 				});
 			});
