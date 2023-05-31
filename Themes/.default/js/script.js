@@ -46,12 +46,13 @@ function loadTable(elem) {
 				var tr = $(thead).append(document.createElement('tr'));
 				var i=0;
 				while(stmt.step()) {
+					const row = stmt.getAsObject();
 					if(cols.includes(i)) {
-						const row = stmt.getAsObject();
 						th = $(tr).append(document.createElement('th'));
 						$(th).html(Object.values(row)[1]);
 					}
 					i++;
+					console.log(Object.values(row));
 				}
 				if(buttonString.length > 1) { // Checks if there are any buttons for the 
 					th = $(tr).append(document.createElement('th'));
