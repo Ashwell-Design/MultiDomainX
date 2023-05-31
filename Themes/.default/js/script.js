@@ -47,12 +47,12 @@ function loadTable(elem) {
 				var stmt = db.prepare("PRAGMA table_info("+table+")");
 				stmt.getAsObject({$start:1, $end:1});
 				stmt.bind({$start:1, $end:2});
-				table_row = thead.append(tr);
+				$table_row = $thead.append(tr);
 				var i=0;
 				while(stmt.step()) {
 					const row = stmt.getAsObject();
 					if(cols.includes(i.toString())) {
-						$row = table_row.append(th)
+						$row = $table_row.append(th)
 						console.log(row);
 					}
 					i++;
