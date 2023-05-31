@@ -53,7 +53,7 @@ function loadTable(elem) {
 					const row = stmt.getAsObject();
 					if(cols.includes(i.toString())) {
 						row = table_row.append(th)
-						row.innerText('Here '+i);
+						console.log(row);
 					}
 					i++;
 				}
