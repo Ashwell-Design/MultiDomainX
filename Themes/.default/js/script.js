@@ -60,7 +60,7 @@ function loadTable(elem) {
 				/** 
 				 * TABLE HEADER
 				 */
-				var stmt = db.prepare("SELEXT * FROM "+table);
+				var stmt = db.prepare("SELECT * FROM "+table);
 				stmt.run()
 				while (stmt.step()) {
 					data_row = $("<tr></tr>").appendTo(thead);
