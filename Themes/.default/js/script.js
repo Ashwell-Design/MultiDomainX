@@ -86,7 +86,7 @@ $(document).ready(async function() {
 				const elem = $(this);
 
 				window[command](elem, function(elem) {
-					console.log('hello');
+					console.log($(elem));
 					$(elem).attr('preload-status', 'Loaded');
 					resolve();
 				});
