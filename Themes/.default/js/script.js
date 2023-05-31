@@ -64,7 +64,7 @@ function loadTable(elem) {
 				stmt.run()
 				while (stmt.step()) {
 					data_row = $("<tr></tr>").appendTo(thead);
-					
+					var row = stmt.getAsObject(); 
 					header_row = $("<th></th>").appendTo(data_row);
 				}
 			};
