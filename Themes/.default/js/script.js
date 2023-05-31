@@ -20,60 +20,67 @@ function changeLanguage(lang) {
 		location.reload();
 	}
 }
-// Loads a table
-function loadTable(elem, callback) {
-	var elem = $(elem)[0];
-	if($(elem).length > 0) {
-		extension = $(elem).attr('preload-attributes');
-		const [table, col_ids, buttonString] = extension.split('-', 3);
-		const cols = col_ids.split(".");
-		const thead = $(elem).children('thead')[0];
-		const tbody = $(elem).children('tbody')[0];
+/**
+ * FUNCTIONS FOR PRELOADING ELEMENTS
+ */
+	/**
+	 * 
+	 * @param {DOM ELement} elem 
+	 * @param {Function} callback 
+	 */
+		function loadTable(elem, callback) {
+			var elem = $(elem)[0];
+			if($(elem).length > 0) {
+				extension = $(elem).attr('preload-attributes');
+				const [table, col_ids, buttonString] = extension.split('-', 3);
+				const cols = col_ids.split(".");
+				const thead = $(elem).children('thead')[0];
+				const tbody = $(elem).children('tbody')[0];
 
-		const data_rows = document.createElement("tr");
-		const td = document.createElement("td");
+				const data_rows = document.createElement("tr");
+				const td = document.createElement("td");
 
-		const xhr = new XMLHttpRequest();
+				const xhr = new XMLHttpRequest();
 
-		initSqlJs({
-			locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${filename}`
-		}).then(function(SQL){
-			xhr.open('GET', '/central.sqlite', true);
-			xhr.responseType = 'arraybuffer';
-			xhr.onload = e => {
-				const uInt8Array = new Uint8Array(xhr.response);
-				const db = new SQL.Database(uInt8Array);
-				/** 
-				 * TABLE HEADER
-				 */
-				var stmt = db.prepare("PRAGMA table_info("+table+")");
-				stmt.run()
-				var i=0;
-				header_row = $("<tr></tr>").appendTo(thead);
-				while (stmt.step()) {
-					if(cols.includes(i.toString())) {
-						$("<th></th>").appendTo(header_row).html(Object.values(stmt.getAsObject())[1]);
-					}
-					i++;
-				}
-				var i=0;
-				/** 
-				 * TABLE HEADER
-				 */
-				var stmt = db.prepare("SELECT * FROM "+table);
-				stmt.run()
-				while (stmt.step()) {
-					data_row = $("<tr></tr>").appendTo(thead);
-					cols.forEach((col) => {
-						$("<td></td>").appendTo(data_row).html(Object.values(stmt.getAsObject())[col]);
-					})
-				}
-			};
-			xhr.send();
-		});
-	}
-	callback(elem);
-}
+				initSqlJs({
+					locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${filename}`
+				}).then(function(SQL){
+					xhr.open('GET', '/central.sqlite', true);
+					xhr.responseType = 'arraybuffer';
+					xhr.onload = e => {
+						const uInt8Array = new Uint8Array(xhr.response);
+						const db = new SQL.Database(uInt8Array);
+						/** 
+						 * TABLE HEADER
+						 */
+						var stmt = db.prepare("PRAGMA table_info("+table+")");
+						stmt.run()
+						var i=0;
+						header_row = $("<tr></tr>").appendTo(thead);
+						while (stmt.step()) {
+							if(cols.includes(i.toString())) {
+								$("<th></th>").appendTo(header_row).html(Object.values(stmt.getAsObject())[1]);
+							}
+							i++;
+						}
+						var i=0;
+						/** 
+						 * TABLE HEADER
+						 */
+						var stmt = db.prepare("SELECT * FROM "+table);
+						stmt.run()
+						while (stmt.step()) {
+							data_row = $("<tr></tr>").appendTo(thead);
+							cols.forEach((col) => {
+								$("<td></td>").appendTo(data_row).html(Object.values(stmt.getAsObject())[col]);
+							})
+						}
+					};
+					xhr.send();
+				});
+			}
+			callback(elem);
+		}
 $(document).ready(async function() {
 	$('[preload=true]').each(async function() {
 		const command = ($(this).attr('preload-function').length > 0)? $(this).attr('preload-function'): '';
