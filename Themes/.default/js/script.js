@@ -26,11 +26,11 @@ function loadTable(elem) {
 	if($(elem).length > 0) {
 		extension = $(elem).attr('preload-attributes');
 		const [table, cols, buttonString] = extension.split('-', 3);
-		const thead = $(elem).children('thead')[0];
-		const tbody = $(elem).children('tbody')[0];
-		const tr = document.createElement("tr");
-		const th = document.createElement("th");
-		const td = document.createElement("td");
+		const $thead = $(elem).children('thead')[0];
+		const $tbody = $(elem).children('tbody')[0];
+		const $tr = document.createElement("tr");
+		const $th = document.createElement("th");
+		const $td = document.createElement("td");
 
 		initSqlJs({
 			locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${filename}`
@@ -52,7 +52,7 @@ function loadTable(elem) {
 				while(stmt.step()) {
 					const row = stmt.getAsObject();
 					if(cols.includes(i.toString())) {
-						row = table_row.append(th)
+						$row = table_row.append(th)
 						console.log(row);
 					}
 					i++;
