@@ -35,10 +35,11 @@ function loadTable(elem) {
 		const th = document.createElement("th");
 		const td = document.createElement("td");
 
+		const xhr = new XMLHttpRequest();
+
 		initSqlJs({
 			locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${filename}`
 		}).then(function(SQL){
-			const xhr = new XMLHttpRequest();
 			xhr.open('GET', '/central.sqlite', true);
 			xhr.responseType = 'arraybuffer';
 			xhr.onload = e => {
@@ -58,25 +59,7 @@ function loadTable(elem) {
 						thead.append(table_row);
 					}
 				}
-				i=null
-
-				/*
-				if(buttonString.length > 1) { // Checks if there are any buttons for the 
-					table_row = thead.append(tr);
-				}
-				*/
-				/**
-				 * TABLE BODY
-				 */
-				/*
-				var stmt = db.prepare("SELECT * FROM "+table);
-				stmt.getAsObject({$start:1, $end:1});
-				stmt.bind({$start:1, $end:2});
-				var i=0;
-				while(stmt.step()) {
-					table_row = tbody.append(tr);
-				}
-				*/
+				i=null;
 			};
 			xhr.send();
 		});
