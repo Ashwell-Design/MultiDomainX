@@ -49,14 +49,14 @@ function loadTable(elem) {
 				 */
 				var stmt = db.prepare("PRAGMA table_info("+table+")");
 				stmt.run()
+				i=0;
 				while (stmt.step()) {
 					if(cols.includes(i.toString())) {
-						var row = stmt.getAsObject();
-						var columnName = row.name;
-						var table_row = $('<th></th>').html(columnName);;
-						thead.append(table_row);
+						console.log(i)
+						thead.append(th);
 					}
 				}
+				i=0
 			};
 			xhr.send();
 		});
