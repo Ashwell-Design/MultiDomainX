@@ -45,19 +45,19 @@ function loadTable(elem) {
 				var stmt = db.prepare("PRAGMA table_info("+table+")");
 				stmt.getAsObject({$start:1, $end:1});
 				stmt.bind({$start:1, $end:2});
-				var tr = $(thead).append(document.createElement('tr'));
+				var table_row = $(thead).append(document.createElement('tr'));
 				var i=0;
 				while(stmt.step()) {
 					const row = stmt.getAsObject();
 					console.log(Object.values(row));
 					if(cols.includes(i.toString())) {
-						th = $(tr).append(document.createElement('th'));
+						th = $(table_row).append(document.createElement('th'));
 						$(th).html(Object.values(row)[1]);
 					}
 					i++;
 				}
 				if(buttonString.length > 1) { // Checks if there are any buttons for the 
-					th = $(tr).append(document.createElement('th'));
+					th = $(table_row).append(document.createElement('th'));
 				}
 				/**
 				 * TABLE BODY
@@ -65,7 +65,7 @@ function loadTable(elem) {
 				var stmt = db.prepare("SELECT * FROM "+table);
 				stmt.getAsObject({$start:1, $end:1});
 				stmt.bind({$start:1, $end:2});
-				var tr = $(tbody).append(document.createElement('tr'));
+				var table_row = $(tbody).append(document.createElement('tr'));
 				var i=0;
 				while(stmt.step()) {
 				}
