@@ -49,8 +49,8 @@ function loadTable(elem) {
 				while (stmt.step()) {
 					var row = stmt.getAsObject();
 					var columnName = row.name;
-					th = $('<th></th>').html(columnName);;
-					thead.append(th);
+					table_row = $('<th></th>').html(columnName);;
+					thead.append(table_row);
 				}
 
 				/*
