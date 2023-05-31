@@ -86,14 +86,14 @@ $(document).ready(async function() {
 		const command = ($(this).attr('preload-function').length > 0)? $(this).attr('preload-function'): '';
 		var height = (this.clientHeight>0)? this.clientHeight: 20;
 		this.style.height = height + 'px';
-		$(this).attr('preload-status', 'Loading');
 
 		if(!$(this).data('command-executed')) {
+			$(this).attr('preload-status', 'Loading');
 			await new Promise((resolve) => {
 				const elem = $(this);
 
 				window[command](elem, function(callback) {
-					$(callback).attr('preload-statu', 'Loaded');
+					$(callback).attr('preload-status', 'Loaded');
 					resolve();
 				});
 			});
