@@ -46,12 +46,16 @@ function loadTable(elem) {
 				 */
 				var stmt = db.prepare("PRAGMA table_info("+table+")");
 				stmt.run();
+				var i = 0;
 				while (stmt.step()) {
-					var row = stmt.getAsObject();
-					var columnName = row.name;
-					table_row = $('<th></th>').html(columnName);;
-					thead.append(table_row);
+					if(cols.includes()) {
+						var row = stmt.getAsObject();
+						var columnName = row.name;
+						var table_row = $('<th></th>').html(columnName);;
+						thead.append(table_row);
+					}
 				}
+				i=null
 
 				/*
 				if(buttonString.length > 1) { // Checks if there are any buttons for the 
