@@ -63,7 +63,7 @@ function loadTable(elem) {
 					var tr = $(tbody).append(document.createElement('tr'));
 					for (let s=0; s<cols.length; s++) {
 						row_col = $(tr).append(document.createElement('td'));
-						$(row_col).text = Object.values(row)[cols[s]];
+						$(row_col).text(Object.values(row)[cols[s]]);
 					}
 					btn_col = $(tr).append(document.createElement('td'));
 					if(buttonString.length > 1) {
