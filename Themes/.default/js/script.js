@@ -47,6 +47,9 @@ function loadTable(elem) {
 				var i=0;
 				while(stmt.step()) {
 					const row = stmt.getAsObject();
+					console.log(cols.includes(i));
+					console.log(cols);
+					console.log(i);
 					if(cols.includes(i)) {
 						console.log(i);
 						th = $(tr).append(document.createElement('th'));
