@@ -21,9 +21,9 @@ function changeLanguage(lang) {
 	}
 }
 // Loads a table
-function loadTable(elem) {
+function loadTable(elem, callback) {
 	var elem = $(elem)[0];
-	if($(elem).length > 0 && $(elem).attr('preload-status') != 'Loaded') {
+	if($(elem).length > 0) {
 		extension = $(elem).attr('preload-attributes');
 		const [table, col_ids, buttonString] = extension.split('-', 3);
 		const cols = col_ids.split(".");
@@ -72,7 +72,7 @@ function loadTable(elem) {
 			xhr.send();
 		});
 	}
-	callback()
+	callback();
 }
 $(document).ready(function(){
 	$('[preload=true]').each(function() {
