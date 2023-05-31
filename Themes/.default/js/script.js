@@ -39,7 +39,9 @@ function loadTable(elem) {
 			xhr.onload = e => {
 				const uInt8Array = new Uint8Array(xhr.response);
 				const db = new SQL.Database(uInt8Array);
-				/* Header */
+				/** 
+				 * TABLE HEADER
+				 */
 				var stmt = db.prepare("PRAGMA table_info("+table+")");
 				stmt.getAsObject({$start:1, $end:1});
 				stmt.bind({$start:1, $end:2});
@@ -57,40 +59,16 @@ function loadTable(elem) {
 				if(buttonString.length > 1) { // Checks if there are any buttons for the 
 					th = $(tr).append(document.createElement('th'));
 				}
-				/* Rows
-				var stmt = db.prepare("SELECT * FROM " + table);
+				/**
+				 * TABLE BODY
+				 */
+				var stmt = db.prepare("SELECT * FROM "+table);
 				stmt.getAsObject({$start:1, $end:1});
 				stmt.bind({$start:1, $end:2});
+				var tr = $(tbody).append(document.createElement('tr'));
 				var i=0;
-				while(stmt.step()) { // Cycles through each row
-					const row = stmt.getAsObject();
-					var tr = $(tbody).append(document.createElement('tr'));
-					for (let s=0; s<cols.length; s++) { // cycles through eeach column
-						row_col = $(tr).append(document.createElement('td'));
-						$(row_col).text(Object.values(row)[cols[s]]);
-					}
-					if(buttonString.length > 1) { // Checks if there are any buttons for the table
-						btn_col = $(tr).append(document.createElement('td'));
-						buttons = buttonString.split('+');
-						btn = '';
-						buttons.forEach((button) => {
-							[title, url] = button.split('/');
-							if(title.includes('=')) {
-								[cat, title] = title.split('=');
-								switch (cat) {
-									case "icon":
-										title='<i class="fa fa-'+title+'"></i>';
-									case "text":
-										title=title;
-
-								}
-							}
-							btn += '<a href="/'+url+'" class="p-1">'+title+'</a>';
-						});;
-						$(btn_col).html(btn);
-					}
+				while(stmt.step()) {
 				}
-				*/
 			};
 			xhr.send();
 		});
