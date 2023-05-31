@@ -63,10 +63,9 @@ function loadTable(elem) {
 				var stmt = db.prepare("PRAGMA table_info("+table+")");
 				stmt.run()
 				while (stmt.step()) {
-					var row = stmt.getAsObject();
 					data_row = $("<tr></tr>").appendTo(thead);
 					cols.forEach((col) => {
-						$("<td></td>").appendTo(data_row).html(row[col]);
+						$("<td></td>").appendTo(data_row).html($("<th></th>").appendTo(header_row).html(Object.values(stmt.getAsObject())[col]);
 					})
 				}
 			};
