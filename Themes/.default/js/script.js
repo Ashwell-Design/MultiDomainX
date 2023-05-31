@@ -65,12 +65,9 @@ function loadTable(elem) {
 				while (stmt.step()) {
 					data_row = $("<tr></tr>").appendTo(thead);
 					var rows = stmt.getAsObject();
-					rows.forEach(row => {
-						row.forEach(column => {
-							console.log(column);
-						});
-						console.log('');
-					});			  
+					for (var column in row) {
+						data_row.html(row[column]);
+					}
 				}
 			};
 			xhr.send();
