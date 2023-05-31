@@ -93,8 +93,7 @@ function loadTable(elem) {
 }
 $(document).ready(function(){
 	$('[preload=true]').each(function() {
-		var command = $(this).attr('preload-function');
-		var attributes = $(this).attr('preload-attributes');
+		const command = ($(this).attr('preload-function').length > 0)? $(this).attr('preload-function'): '';
 
 		var height = (this.clientHeight>0)? this.clientHeight: 20;
 		this.style.height = height + 'px';
@@ -102,7 +101,6 @@ $(document).ready(function(){
 		$(this).attr('preload-status', 'Loading');
 		window[command]($(this));
 		$(this).attr('preload-status', 'Loaded');
-		command=attributes = null
 	});
 
 	$(document).on('click keydown', (event) => {
