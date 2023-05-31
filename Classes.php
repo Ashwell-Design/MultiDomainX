@@ -261,7 +261,7 @@
 						if(strpos($string, ';')!==false) {
 							$cnt++;
 							[$width, $string] = explode(';', $string);
-							$out .= '<div class="col-md-'.$width.'" id="'.$cnt.'"><div class="row">';
+							$out .= '<div class="col-md-'.$width.'" id="'.$cnt.'"><div class="row h-100">';
 							if(strpos($string, ':')!==false) {
 								[$seccode, $string] = explode(':', $string);
 								$tools = new Tools($this->db);
