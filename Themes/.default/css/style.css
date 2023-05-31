@@ -636,7 +636,6 @@ progress {
 	margin-top: calc(-1 * var(--bs-gutter-y));
 	margin-right: calc(-0.5 * var(--bs-gutter-x));
 	margin-left: calc(-0.5 * var(--bs-gutter-x));
-	height: 100%;
 }
 .row > * {
 	flex-shrink: 0;
