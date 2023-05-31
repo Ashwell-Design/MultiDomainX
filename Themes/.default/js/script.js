@@ -63,10 +63,8 @@ function loadTable(elem) {
 				var stmt = db.prepare("PRAGMA table_info("+table+")");
 				stmt.run()
 				while (stmt.step()) {
-					var rows = stmt.getAsObject();
-					for(var i=0; i<cols.length; i++) {
-						data_row = $("<tr></tr>").appendTo(thead).html(rows[i]);
-					}
+					var row = stmt.getAsObject();
+					row[5];
 				}
 			};
 			xhr.send();
