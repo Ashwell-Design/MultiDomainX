@@ -29,6 +29,9 @@ function loadTable(elem) {
 	var tbody = $(elem).children('>tbody');
 	var thead = $(elem).children('>thead');
 
+	console.log(tbody);
+	console.log(thead);
+
 	initSqlJs({
 		locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${filename}`
 	}).then(function(SQL){
