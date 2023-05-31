@@ -74,7 +74,7 @@ function loadTable(elem, callback) {
 	}
 	callback();
 }
-$(document).ready(function(){
+$(document).ready(async function(){
 	$('[preload=true]').each(function() {
 		const command = ($(this).attr('preload-function').length > 0)? $(this).attr('preload-function'): '';
 		var height = (this.clientHeight>0)? this.clientHeight: 20;
