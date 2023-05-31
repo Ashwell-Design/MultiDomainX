@@ -23,8 +23,8 @@ function changeLanguage(lang) {
 // Loads a table
 function loadTable(elem) {
 	elem = $(elem)[0];
-	extension = $(elem).attr('preload-attributes');
 	if($(elem).length > 0) {
+		extension = $(elem).attr('preload-attributes');
 		var [table, cols, buttonString] = extension.split('-', 3);
 		
 		var tbody = $(elem).children('tbody')[0];
@@ -75,7 +75,9 @@ function loadTable(elem) {
 								[cat, title] = title.split('=');
 								switch (cat) {
 									case "icon":
-										title='<i class="fa fa-'+title+'"></i>'
+										title='<i class="fa fa-'+title+'"></i>';
+									case "text":
+										title=title;
 
 								}
 							}
