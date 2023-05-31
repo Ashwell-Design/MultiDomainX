@@ -79,7 +79,12 @@ $(document).ready(function(){
 		var height = (this.clientHeight>0)? this.clientHeight: 20;
 		this.style.height = height + 'px';
 		$(this).attr('preload-status', 'Loading');
-		//window[command]($(this));
+
+		if (!$(this).data('command-executed')) {
+			window[command]($(this));
+			$(this).data('command-executed', true);
+		}
+
 		$(this).attr('preload-status', 'Loaded');
 	});
 
