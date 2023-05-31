@@ -23,6 +23,9 @@ function changeLanguage(lang) {
 // Loads a table
 function loadTable(elem) {
 	elem = elem[0];
+	console.log(elem);
+	console.log(elem[0]);
+	console.log($(elem));
 	extension = $(elem).attr('preload-attributes')
 	var [table, cols, buttonString] = extension.split('-', 3);
 	var tbody = $(elem).children('>tbody');
