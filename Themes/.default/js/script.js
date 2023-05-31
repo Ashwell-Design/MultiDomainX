@@ -74,19 +74,18 @@ function loadTable(elem) {
 	}
 }
 $(document).ready(function(){
-	$('[preload=true]').each(async function() {
+	$('[preload=true]').each(function() {
 		const command = ($(this).attr('preload-function').length > 0)? $(this).attr('preload-function'): '';
 		var height = (this.clientHeight>0)? this.clientHeight: 20;
 		this.style.height = height + 'px';
+		$(this).attr('preload-status', 'Loading');
 
-		if (!$(this).data('command-executed')) {
-			await new Promise((resolve) => {
-			  window[command]($(this), function() {
-				resolve();
-			  });
+		if(!$(this).data('command-executed')) {
+			window[command]($(this), function() {
+				$(this).attr('preload-status', 'Loaded');
 			});
-			$(this).attr('preload-status', 'Loaded');
 		}
+
 		$(this).data('command-executed', true);
 	});
 
