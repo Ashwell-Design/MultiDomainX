@@ -64,7 +64,7 @@ function loadTable(elem) {
 				stmt.run()
 				while (stmt.step()) {
 					var row = stmt.getAsObject();
-					cols.foreach((col) => {
+					cols.forEach((col) => {
 						console.log(col);
 					})
 				}
