@@ -27,7 +27,6 @@ function loadTable(elem) {
 		extension = $(elem).attr('preload-attributes');
 		var [table, cols, buttonString] = extension.split('-', 3);
 		cols = cols.split("");
-		console.log(cols)
 		var tbody = $(elem).children('tbody')[0];
 		var thead = $(elem).children('thead')[0];
 
@@ -49,12 +48,11 @@ function loadTable(elem) {
 				while(stmt.step()) {
 					const row = stmt.getAsObject();
 					if(cols.includes(i)) {
+						console.log(i);
 						th = $(tr).append(document.createElement('th'));
 						$(th).html(Object.values(row)[1]);
 					}
 					i++;
-					console.log(Object.values(row));
-					console.log(i);
 				}
 				if(buttonString.length > 1) { // Checks if there are any buttons for the 
 					th = $(tr).append(document.createElement('th'));
