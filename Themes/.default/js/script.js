@@ -27,7 +27,7 @@ function loadTable(elem) {
 		extension = $(elem).attr('preload-attributes');
 		const [table, col_ids, buttonString] = extension.split('-', 3);
 		const cols = col_ids.split("");
-
+		console.log(cols);
 		const thead = $(elem).children('thead')[0];
 		const tbody = $(elem).children('tbody')[0];
 
@@ -50,7 +50,7 @@ function loadTable(elem) {
 				 */
 				var stmt = db.prepare("PRAGMA table_info("+table+")");
 				stmt.run()
-				console.log(stmt);;
+				console.log(stmt);
 				while (stmt.step()) {
 					if(cols.includes(i)) {
 						var row = stmt.getAsObject();
@@ -59,7 +59,6 @@ function loadTable(elem) {
 						thead.append(table_row);
 					}
 				}
-				i=null;
 			};
 			xhr.send();
 		});
