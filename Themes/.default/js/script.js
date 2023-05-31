@@ -52,7 +52,7 @@ function loadTable(elem) {
 				var i=0;
 				while (stmt.step()) {
 					console.log(i);
-					if(cols.includes(i.toString())) {
+					if(cols.includes(i)) {
 						console.log('true');
 						$(thead).append(th);
 					} else {
