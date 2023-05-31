@@ -94,7 +94,7 @@ $(document).ready(async function() {
 
 				window[command](elem, function(callback) {
 					console.log(callback);
-					$(this).attr('prelo1ad-status', 'Loaded');
+					$(callback).attr('prelo1ad-status', 'Loaded');
 					resolve();
 				});
 			});
