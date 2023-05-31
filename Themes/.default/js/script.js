@@ -49,8 +49,8 @@ function loadTable(elem) {
 				 * TABLE HEADER
 				 */
 				var stmt = db.prepare("PRAGMA table_info("+table+")");
-				stmt.run();
-				var i = 0;
+				stmt.run()
+				console.log(stmt);;
 				while (stmt.step()) {
 					if(cols.includes(i)) {
 						var row = stmt.getAsObject();
