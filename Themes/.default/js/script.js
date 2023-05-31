@@ -27,8 +27,11 @@ function loadTable(elem) {
 		extension = $(elem).attr('preload-attributes');
 		var [table, cols, buttonString] = extension.split('-', 3);
 		cols = cols.split("");
-		var tbody = $(elem).children('tbody')[0];
 		var thead = $(elem).children('thead')[0];
+		var tbody = $(elem).children('tbody')[0];
+		const tr = document.createElement("tr");
+		const th = document.createElement("th");
+		const td = document.createElement("td");
 
 		initSqlJs({
 			locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${filename}`
@@ -45,19 +48,16 @@ function loadTable(elem) {
 				var stmt = db.prepare("PRAGMA table_info("+table+")");
 				stmt.getAsObject({$start:1, $end:1});
 				stmt.bind({$start:1, $end:2});
-				var table_row = $(thead).append(document.createElement('tr'));
+				thead.append(tr);
 				var i=0;
 				while(stmt.step()) {
 					const row = stmt.getAsObject();
 					if(cols.includes(i.toString())) {
-						head_row = $(table_row).append(document.createElement('th'));
-						console.log(head_row);
-						$(head_row).html(row[1]);
 					}
 					i++;
 				}
 				if(buttonString.length > 1) { // Checks if there are any buttons for the 
-					th = $(table_row).append(document.createElement('th'));
+					table_row = thead.append(tr);
 				}
 				/**
 				 * TABLE BODY
@@ -65,9 +65,9 @@ function loadTable(elem) {
 				var stmt = db.prepare("SELECT * FROM "+table);
 				stmt.getAsObject({$start:1, $end:1});
 				stmt.bind({$start:1, $end:2});
-				var table_row = $(tbody).append(document.createElement('tr'));
 				var i=0;
 				while(stmt.step()) {
+					tbody.append(tr);
 				}
 			};
 			xhr.send();
