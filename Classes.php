@@ -228,11 +228,11 @@
 					[$width, $string] = explode('|', $section, 2);
 					if(strpos($string, ',') !== false) {
 						$row = explode(',', $string); 
-						$out .= '<div class="col-md-'.$width.'"><div class="row h-100p">';
+						$out .= '<div class="col-md-'.$width.'"><div class="row h-100">';
 						foreach ($row as $string) {
 							$cnt++;
 							[$width, $string] = explode(';', $string);
-							$out .= '<div class="col-md-'.$width.'" id="'.$cnt.'"><div class="row h-100p">';
+							$out .= '<div class="col-md-'.$width.'" id="'.$cnt.'"><div class="row h-100">';
 							[$seccode, $string] = explode(':', $string);
 							$tools = new Tools($this->db);
 							if ($this->db->num_rows($sql = sprintf("SELECT `Type`, `File` FROM `Sections` WHERE `Code`='%s'", $seccode)) == 1) {
