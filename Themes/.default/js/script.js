@@ -48,8 +48,8 @@ function loadTable(elem) {
 				while(stmt.step()) {
 					if(cols.includes(i)) {
 						const row = stmt.getAsObject();
-						console.log(row);
 						row_col = $(th).append(document.createElement('th'));
+						console.log(Object.values(row));
 						$(row_col).text = Object.values(row)[1];
 					}
 					i++;
