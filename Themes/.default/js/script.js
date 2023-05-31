@@ -58,6 +58,7 @@ function loadTable(elem) {
 					} else {
 						console.log('false');
 					}
+					i++;
 				}
 				var i=0
 			};
