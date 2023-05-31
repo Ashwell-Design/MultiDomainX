@@ -27,8 +27,10 @@ function loadTable(elem) {
 		extension = $(elem).attr('preload-attributes');
 		const [table, col_ids, buttonString] = extension.split('-', 3);
 		const cols = col_ids.split("");
+
 		const thead = $(elem).children('thead')[0];
 		const tbody = $(elem).children('tbody')[0];
+
 		const tr = document.createElement("tr");
 		const th = document.createElement("th");
 		const td = document.createElement("td");
