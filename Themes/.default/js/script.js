@@ -50,8 +50,9 @@ function loadTable(elem) {
 				while(stmt.step()) {
 					const row = stmt.getAsObject();
 					if(cols.includes(i.toString())) {
-						th = $(table_row).append(document.createElement('th'));
-						$(th).html(row[1]);
+						head_row = $(table_row).append(document.createElement('th'));
+						console.log(head_row);
+						$(head_row).html(row[1]);
 					}
 					i++;
 				}
