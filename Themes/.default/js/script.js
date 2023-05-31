@@ -31,7 +31,7 @@ function loadTable(elem) {
 		const tbody = $(elem).children('tbody')[0];
 
 		const tr = document.createElement("tr");
-		const th = document.createElement("th");
+		/*const th = document.createElement("th");*/
 		const td = document.createElement("td");
 
 		const xhr = new XMLHttpRequest();
@@ -52,7 +52,8 @@ function loadTable(elem) {
 				var i=0;
 				while (stmt.step()) {
 					if(cols.includes(i.toString())) {
-						$(thead).append(new th);
+						var th = document.createElement("th");
+						$(thead).append(th);
 					} else {
 						console.log('false');
 					}
