@@ -70,7 +70,7 @@ function changeLanguage(lang) {
 						var stmt = db.prepare("SELECT * FROM "+table);
 						stmt.run()
 						while (stmt.step()) {
-							data_row = $("<tr></tr>").appendTo(thead);
+							data_row = $("<tr></tr>").appendTo(tbody);
 							cols.forEach((col) => {
 								$("<td></td>").appendTo(data_row).html(Object.values(stmt.getAsObject())[col]);
 							})
