@@ -49,7 +49,7 @@ function loadTable(elem) {
 					if(cols.includes(i)) {
 						const row = stmt.getAsObject();
 						row_col = $(th).append(document.createElement('th'));
-						$(row_col).text() = Object.values(row)[1];
+						$(row_col).text(Object.values(row)[1]);
 					}
 					i++;
 				}
@@ -83,7 +83,7 @@ function loadTable(elem) {
 							}
 							btn += '<a href="/'+url+'" class="p-1">'+title+'</a>';
 						});;
-						$(btn_col).html() = btn;
+						$(btn_col).html(btn);
 					}
 				}
 			};
