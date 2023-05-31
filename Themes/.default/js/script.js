@@ -78,14 +78,14 @@ $(document).ready(function(){
 		const command = ($(this).attr('preload-function').length > 0)? $(this).attr('preload-function'): '';
 		var height = (this.clientHeight>0)? this.clientHeight: 20;
 		this.style.height = height + 'px';
-		$(this).attr('preload-status', 'Loading');
 
+		$(this).attr('preload-status', 'Loading');
 		if (!$(this).data('command-executed')) {
-			window[command]($(this));
+			window[command]($(this), function() {
+				$(this).attr('preload-status', 'Loaded');
+			  });
 			$(this).data('command-executed', true);
 		}
-
-		$(this).attr('preload-status', 'Loaded');
 	});
 
 	$(document).on('click keydown', (event) => {
