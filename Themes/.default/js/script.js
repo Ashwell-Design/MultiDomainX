@@ -49,10 +49,10 @@ function loadTable(elem) {
 				var stmt = db.prepare("PRAGMA table_info("+table+")");
 				stmt.run()
 				var i=0;
-				header_row = $(thead).append(document.createElement("tr"));
+				header_row = $("<tr></tr>").appendTo(thead);
 				while (stmt.step()) {
 					if(cols.includes(i.toString())) {
-						$(header_row).append(document.createElement("th"));
+						$("<tr></tr>").appendTo(header_row).html('hello');
 					} else {
 						console.log('false');
 					}
