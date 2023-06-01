@@ -72,7 +72,8 @@ function changeLanguage(lang) {
 						if(buttonString.length > 0) {
 							$("<th></th>").appendTo(header_row);
 							buttonString.split('+').forEach((button) => {
-								[_, type, front, url] = button.split(/=|\/(.+)/);
+								[front, url] = button.split('/', 2);
+								[type, front] = front.split('=', 2);
 								console.log(button);
 								console.log(type);
 								console.log(front);
