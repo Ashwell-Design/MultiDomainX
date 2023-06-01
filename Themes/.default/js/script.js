@@ -2,7 +2,7 @@
  * googleTranslateElement
  * Initializes the google translate functionality
  */
-function googleTranslateElementInit() {
+googleTranslateElementInit = () => {
 	new google.translate.TranslateElement({
 		pageLanguage: 'en',
 		includedLanguages: 'en,ar,bn,de,es,fa,fr,gu,hi,hu,id,it,ja,jv,ko,ms,mr,pl,pt,ro,ru,sw,ta,te,th,tr,uk,ur,vi,zh-CN,zh-TW,am,az,be,bg,ca,cs,cy,da,el,et,eu,fi,ga,gl,he,hr,ht,is,ka,km,kn',
@@ -14,7 +14,7 @@ function googleTranslateElementInit() {
  * Define the changeLanguage function to handle language changes
  * @param {string} lang 
  */
-function changeLanguage(lang) {
+changeLanguage = (lang) => {
 	if($('.skiptranslate').contents().find('a[title=Close]').length > 0) {
 		($('.skiptranslate').contents().find('a[title=Close]')[0]).click();
 	}
@@ -35,7 +35,7 @@ function changeLanguage(lang) {
 	 * @param {object} elem 
 	 * @param {function} callback 
 	 */
-	function loadTable(elem, callback) {
+	loadTable = (elem, callback) => {
 		var elem = $(elem)[0];
 		if($(elem).length > 0) {
 			extension = $(elem).attr('preload-attributes');
@@ -53,7 +53,7 @@ function changeLanguage(lang) {
 
 			initSqlJs({
 				locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${filename}`
-			}).then(function(SQL){
+			}).then((SQL) => {
 				xhr.open('GET', '/central.sqlite', true);
 				xhr.responseType = 'arraybuffer';
 				xhr.onload = e => {
@@ -109,8 +109,8 @@ function changeLanguage(lang) {
 		}
 		callback(elem);
 	}
-$(document).ready(async function() {
-	$('[preload=true]').each(async function() {
+$(document).ready(async () => {
+	$('[preload=true]').each(async () => {
 		const command = ($(this).attr('preload-function').length > 0)? $(this).attr('preload-function'): '';
 		var height = (this.clientHeight>0)? this.clientHeight: 20;
 		this.style.height = height + 'px';
@@ -129,7 +129,7 @@ $(document).ready(async function() {
 		$(this).data('command-executed', true);
 	});
 });
-$(document).ready(function() {
+$(document).ready(() => {
 	$(document).on('click keydown', (event) => {
 		const $target = $(event.target);
 		const $dropdownMenu = $('.dropdown-menu.lang');
@@ -151,7 +151,7 @@ $(document).ready(function() {
 	// Create an observer instance linked to the callback function to execute when mutations are observed
 	var observer = new MutationObserver((mutationsList, observer) => {
 		// Check for specific attribute changes
-		mutationsList.forEach(function(mutation) {
+		mutationsList.forEach((mutation) => {
 			if (mutation.type === 'attributes' && mutation.attributeName === 'lang') {
 				// Do something when the attribute changes
 				$('.langChanger').val(mutation.target.getAttribute('lang'));
