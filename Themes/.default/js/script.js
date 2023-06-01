@@ -76,7 +76,7 @@ function changeLanguage(lang) {
 							buttonString.split('+').forEach((button) => {
 								[front, url] = button.split('/', 2);
 								[type, front] = front.split('=', 2);
-								switch(front){
+								switch(type){
 									case 'icon':
 										buttons += '<a href="'+url+'"><i class="fa fa-'+front+'"></i></a>';
 									case 'text':
