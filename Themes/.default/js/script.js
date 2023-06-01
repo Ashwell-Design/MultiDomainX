@@ -76,8 +76,10 @@ function changeLanguage(lang) {
 								switch(type){
 									case 'icon':
 										buttons += '<a href="'+url+'"><i class="fa fa-'+front+'"></i></a>';
+										break;
 									case 'text':
 										buttons += '<a href="'+url+'">'+front+'</a>';
+										break;
 								}
 										
 							});
