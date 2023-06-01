@@ -1,4 +1,7 @@
-// Initializes the google translate functionality
+/**
+ * googleTranslateElement
+ * Initializes the google translate functionality
+ */
 function googleTranslateElementInit() {
 	new google.translate.TranslateElement({
 		pageLanguage: 'en',
@@ -6,7 +9,11 @@ function googleTranslateElementInit() {
 		layout: google.translate.TranslateElement.InlineLayout.SIMPLE
 	}, 'googtrans');
 }
-// Define the changeLanguage function to handle language changes
+/**
+ * changeLanguage
+ * Define the changeLanguage function to handle language changes
+ * @param {string} lang 
+ */
 function changeLanguage(lang) {
 	if($('.skiptranslate').contents().find('a[title=Close]').length > 0) {
 		($('.skiptranslate').contents().find('a[title=Close]')[0]).click();
@@ -24,85 +31,84 @@ function changeLanguage(lang) {
  * FUNCTIONS FOR PRELOADING ELEMENTS
  */
 	/**
-	 * 
-	 * @param {DOM} elem 
+	 * loadTable
+	 * @param {object} elem 
 	 * @param {function} callback 
 	 */
-		function loadTable(elem, callback) {
-			console.log(typeof(elem));
-			var elem = $(elem)[0];
-			if($(elem).length > 0) {
-				extension = $(elem).attr('preload-attributes');
-				const [table, col_ids, buttonString] = extension.split('-', 3);
-				const cols = col_ids.split(".");
-				const thead = $(elem).children('thead')[0];
-				const tbody = $(elem).children('tbody')[0];
+	function loadTable(elem, callback) {
+		var elem = $(elem)[0];
+		if($(elem).length > 0) {
+			extension = $(elem).attr('preload-attributes');
+			const [table, col_ids, buttonString] = extension.split('-', 3);
+			const cols = col_ids.split(".");
+			const thead = $(elem).children('thead')[0];
+			const tbody = $(elem).children('tbody')[0];
 
-				const data_rows = document.createElement("tr");
-				const td = document.createElement("td");
+			const data_rows = document.createElement("tr");
+			const td = document.createElement("td");
 
-				const xhr = new XMLHttpRequest();
+			const xhr = new XMLHttpRequest();
 
-				var buttons = '';
+			var buttons = '';
 
-				initSqlJs({
-					locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${filename}`
-				}).then(function(SQL){
-					xhr.open('GET', '/central.sqlite', true);
-					xhr.responseType = 'arraybuffer';
-					xhr.onload = e => {
-						const uInt8Array = new Uint8Array(xhr.response);
-						const db = new SQL.Database(uInt8Array);
-						/** 
-						 * TABLE HEADER
-						 */
-						var stmt = db.prepare("PRAGMA table_info("+table+")");
-						stmt.run()
-						var i=0;
-						header_row = $("<tr></tr>").appendTo(thead);
-						while (stmt.step()) {
-							if(cols.includes(i.toString())) {
-								$("<th></th>").appendTo(header_row).html(Object.values(stmt.getAsObject())[1]);
+			initSqlJs({
+				locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${filename}`
+			}).then(function(SQL){
+				xhr.open('GET', '/central.sqlite', true);
+				xhr.responseType = 'arraybuffer';
+				xhr.onload = e => {
+					const uInt8Array = new Uint8Array(xhr.response);
+					const db = new SQL.Database(uInt8Array);
+					/** 
+					 * TABLE HEADER
+					 */
+					var stmt = db.prepare("PRAGMA table_info("+table+")");
+					stmt.run()
+					var i=0;
+					header_row = $("<tr></tr>").appendTo(thead);
+					while (stmt.step()) {
+						if(cols.includes(i.toString())) {
+							$("<th></th>").appendTo(header_row).html(Object.values(stmt.getAsObject())[1]);
+						}
+						i++;
+					}
+					var i=0;
+					/** 
+					 * TABLE BUTTONS
+					 */
+					if(buttonString.length > 0) {
+						$("<th></th>").appendTo(header_row);
+						buttonString.split('+').forEach((button) => {
+							[_, type, front, url] = button.split(/([a-z]+)=([a-zA-Z]+)\/([a-zA-Z]+)/);
+							switch(type){
+								case 'icon':
+									buttons += '<a href="'+url+'"><i class="fa fa-'+front+'"></i></a>';
+									break;
+								case 'text':
+									buttons += '<a href="'+url+'">'+front+'</a>';
+									break;
 							}
-							i++;
-						}
-						var i=0;
-						/** 
-						 * TABLE BUTTONS
-						 */
-						if(buttonString.length > 0) {
-							$("<th></th>").appendTo(header_row);
-							buttonString.split('+').forEach((button) => {
-								[_, type, front, url] = button.split(/([a-z]+)=([a-zA-Z]+)\/([a-zA-Z]+)/);
-								switch(type){
-									case 'icon':
-										buttons += '<a href="'+url+'"><i class="fa fa-'+front+'"></i></a>';
-										break;
-									case 'text':
-										buttons += '<a href="'+url+'">'+front+'</a>';
-										break;
-								}
-										
-							});
-						}
-						/** 
-						 * TABLE DATA
-						 */
-						var stmt = db.prepare("SELECT * FROM "+table);
-						stmt.run()
-						while (stmt.step()) {
-							data_row = $("<tr></tr>").appendTo(tbody);
-							cols.forEach((col) => {
-								$("<td></td>").appendTo(data_row).html(Object.values(stmt.getAsObject())[col]);
-							})
-							$("<td>"+buttons+"</td>").appendTo(data_row);
-						}
-					};
-					xhr.send();
-				});
-			}
-			callback(elem);
+									
+						});
+					}
+					/** 
+					 * TABLE DATA
+					 */
+					var stmt = db.prepare("SELECT * FROM "+table);
+					stmt.run()
+					while (stmt.step()) {
+						data_row = $("<tr></tr>").appendTo(tbody);
+						cols.forEach((col) => {
+							$("<td></td>").appendTo(data_row).html(Object.values(stmt.getAsObject())[col]);
+						})
+						$("<td>"+buttons+"</td>").appendTo(data_row);
+					}
+				};
+				xhr.send();
+			});
 		}
+		callback(elem);
+	}
 $(document).ready(async function() {
 	$('[preload=true]').each(async function() {
 		const command = ($(this).attr('preload-function').length > 0)? $(this).attr('preload-function'): '';
@@ -142,9 +148,8 @@ $(document).ready(function() {
 			}
 		}
 	});
-
-	// Callback function to execute when mutations are observed
-	var callback = function(mutationsList, observer) {
+	// Create an observer instance linked to the callback function to execute when mutations are observed
+	var observer = new MutationObserver((mutationsList, observer) => {
 		// Check for specific attribute changes
 		mutationsList.forEach(function(mutation) {
 			if (mutation.type === 'attributes' && mutation.attributeName === 'lang') {
@@ -159,9 +164,7 @@ $(document).ready(function() {
 				}
 			}
 		});
-	};
-	// Create an observer instance linked to the callback function
-	var observer = new MutationObserver(callback);
+	});
 	// Start observing the target node for configured mutations
 	observer.observe($('html').get(0), { attributes: true, childList: false, subtree: false });
 
@@ -308,5 +311,5 @@ $(document).ready(function() {
 				display: 'flex'
 			}).focus();
 		});
-	}7
-});77
+	}
+});
