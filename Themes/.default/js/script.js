@@ -25,10 +25,11 @@ function changeLanguage(lang) {
  */
 	/**
 	 * 
-	 * @param {DOM ELement} elem 
-	 * @param {Function} callback 
+	 * @param {DOM} elem 
+	 * @param {function} callback 
 	 */
 		function loadTable(elem, callback) {
+			console.log(typeof(callback));
 			var elem = $(elem)[0];
 			if($(elem).length > 0) {
 				extension = $(elem).attr('preload-attributes');
@@ -113,7 +114,7 @@ $(document).ready(async function() {
 			await new Promise((resolve) => {
 				const elem = $(this);
 
-				window[command](elem, function(callback) {
+				window[command](elem, (callback) => {
 					$(callback).attr('preload-status', 'Loaded');
 					resolve();
 				});
