@@ -29,7 +29,7 @@ function changeLanguage(lang) {
 	 * @param {function} callback 
 	 */
 		function loadTable(elem, callback) {
-			console.log(typeof(callback));
+			console.log(typeof(elem));
 			var elem = $(elem)[0];
 			if($(elem).length > 0) {
 				extension = $(elem).attr('preload-attributes');
