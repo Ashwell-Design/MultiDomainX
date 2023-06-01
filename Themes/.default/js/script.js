@@ -42,6 +42,8 @@ function changeLanguage(lang) {
 
 				const xhr = new XMLHttpRequest();
 
+				var buttons = '';
+
 				initSqlJs({
 					locateFile: filename => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.6.1/${filename}`
 				}).then(function(SQL){
@@ -70,19 +72,18 @@ function changeLanguage(lang) {
 						console.log(buttonString);
 						console.log(buttonString.length);
 						if(buttonString.length > 0) {
-							$("<th></th>").appendTo(header_row); var out='';
+							$("<th></th>").appendTo(header_row);
 							buttonString.split('+').forEach((button) => {
 								[front, url] = button.split('/', 2);
 								[type, front] = front.split('=', 2);
 								switch(front){
 									case 'icon':
-										out += '<a href="'+url+'"><i class="fa fa-'+front+'"></i></a>';
+										buttons += '<a href="'+url+'"><i class="fa fa-'+front+'"></i></a>';
 									case 'text':
-										out += '<a href="'+url+'">'+front+'</a>';
+										buttons += '<a href="'+url+'">'+front+'</a>';
 								}
 										
 							});
-							buttonString = out;
 						}
 						/** 
 						 * TABLE DATA
@@ -94,7 +95,7 @@ function changeLanguage(lang) {
 							cols.forEach((col) => {
 								$("<td></td>").appendTo(data_row).html(Object.values(stmt.getAsObject())[col]);
 							})
-							$(buttonString).appendTo(data_row);
+							$(buttons).appendTo(data_row);
 						}
 					};
 					xhr.send();
