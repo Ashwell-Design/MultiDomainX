@@ -73,10 +73,6 @@ function changeLanguage(lang) {
 							$("<th></th>").appendTo(header_row);
 							buttonString.split('+').forEach((button) => {
 								[_, type, front, url] = button.split(/([a-z]+)=([a-zA-Z]+)\/([a-zA-Z]+)/);
-								console.log(button);
-								console.log(type);
-								console.log(front);
-								console.log(url);
 								switch(type){
 									case 'icon':
 										buttons += '<a href="'+url+'"><i class="fa fa-'+front+'"></i></a>';
