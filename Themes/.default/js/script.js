@@ -27,9 +27,7 @@ function changeLanguage(lang) {
 		location.reload();
 	}
 }
-/**
- * FUNCTIONS FOR PRELOADING ELEMENTS
- */
+// FUNCTIONS FOR PRELOADING ELEMENTS
 	/**
 	 * loadTable
 	 * @param {object} elem 
