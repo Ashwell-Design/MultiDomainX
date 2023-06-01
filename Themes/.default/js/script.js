@@ -65,7 +65,25 @@ function changeLanguage(lang) {
 						}
 						var i=0;
 						/** 
-						 * TABLE HEADER
+						 * TABLE BUTTONS
+						 */
+						if(buttonString.length > 0) {
+							$("<th></th>").appendTo(header_row); var out='';
+							buttonString.split('+').forEach((button) => {
+								[front, url] = button.split('/', 2);
+								[type, front] = front.split('=', 2);
+								switch(front){
+									case 'icon':
+										out += '<a href="'+url+'"><i class="fa fa-'+front+'"></i></a>';
+									case 'text':
+										out += '<a href="'+url+'">'+front+'</a>';
+								}
+										
+							});
+							buttonString = out;
+						}
+						/** 
+						 * TABLE DATA
 						 */
 						var stmt = db.prepare("SELECT * FROM "+table);
 						stmt.run()
@@ -74,6 +92,7 @@ function changeLanguage(lang) {
 							cols.forEach((col) => {
 								$("<td></td>").appendTo(data_row).html(Object.values(stmt.getAsObject())[col]);
 							})
+							$(buttonString).appendTo(data_row);
 						}
 					};
 					xhr.send();
