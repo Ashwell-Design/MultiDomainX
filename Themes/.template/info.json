@@ -1,0 +1,48 @@
+{
+	"Root": ".template",
+	"version": 1.0,
+	"Name": {
+		"Normal": "Template Theme",
+		"Short": "Template"
+	},
+	"Description": {
+		"Normal": "A template theme for MultiDomainX",
+		"Short": "A template theme for MultiDomainX",
+		"File": "README.md"
+	},
+	"Icon": "icon.jpg",
+	"Author": {
+		"Name": "Ashwell-Design",
+		"Icon": "author.png"
+	},
+	"GitHub": "Ashwell-Design/MultiDomainX",
+
+	"Scripts": [
+		{	"Name": "Template Theme Script",
+			"Description": "This would be the description for the script.",
+			"URL": "/script.js",
+			"Image": "",
+			"Version": "1.0",
+			"Tags": [
+				"script",
+				"js",
+				"javascript"
+			],
+			"Hash": ""
+		}
+	],
+	"Styles": [
+		{	"Name": "Template Theme Stylesheet",
+			"Description": "This would be the description for the stylesheet.",
+			"URL": "/style.css",
+			"Image": "",
+			"Version": "1.0",
+			"Tags": [
+				"style",
+				"css"
+			],
+			"Hash": ""
+		}
+	],
+	"Sections": { }
+}

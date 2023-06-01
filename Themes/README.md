@@ -21,9 +21,22 @@ After you have installed a new theme, you may want to apply it to a domain. To d
 the basic file structure for any new theme would be as follows
 
 ```bash
-├── assets
+├── js
 │   ├── script.js
+├── css
 │   └── style.css
+├── sections
+│   ├── breadcrumb
+│   │   ├── breadcrumb_1.html
+│   │   └── breadcrumb_3.html
+│   ├── carousel
+│   │   └── carousel_1.html
+│   ├── chart
+│   │   └── ...
+│   ...
+├── static
+│   ├── author.png
+│   └── icon.png
 └── info.jsons
 ```
 
