@@ -67,6 +67,8 @@ function changeLanguage(lang) {
 						/** 
 						 * TABLE BUTTONS
 						 */
+						console.log(buttonString);
+						console.log(buttonString.length);
 						if(buttonString.length > 0) {
 							$("<th></th>").appendTo(header_row); var out='';
 							buttonString.split('+').forEach((button) => {
