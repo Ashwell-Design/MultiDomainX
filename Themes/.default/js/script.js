@@ -69,13 +69,10 @@ function changeLanguage(lang) {
 						/** 
 						 * TABLE BUTTONS
 						 */
-						console.log(buttonString);
-						console.log(buttonString.length);
 						if(buttonString.length > 0) {
 							$("<th></th>").appendTo(header_row);
 							buttonString.split('+').forEach((button) => {
-								[front, url] = button.split('/', 2);
-								[type, front] = front.split('=', 2);
+								[type, front, url] = button.split('/', 3).map(item => item.split('=', 2)[1]);
 								switch(type){
 									case 'icon':
 										buttons += '<a href="'+url+'"><i class="fa fa-'+front+'"></i></a>';
