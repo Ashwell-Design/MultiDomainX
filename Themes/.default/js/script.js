@@ -95,7 +95,7 @@ function changeLanguage(lang) {
 							cols.forEach((col) => {
 								$("<td></td>").appendTo(data_row).html(Object.values(stmt.getAsObject())[col]);
 							})
-							$(buttons).appendTo(data_row);
+							$("<td>"+buttons+"</td>").appendTo(data_row);
 						}
 					};
 					xhr.send();
