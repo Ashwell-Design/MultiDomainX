@@ -1,5 +1,5 @@
 #
-#	gENERAL CONFIG
+#	General Config
 	<ifModule mod_rewrite.c>
 		RewriteEngine On
 	</ifModule>
