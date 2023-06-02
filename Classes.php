@@ -190,11 +190,11 @@
 		public function fetchArray($string) {
 			$multiArray = array();
 			if($string instanceof SQLite3Result) {
-				$rows = ($string)->fetchArray();
+				$rows = $string;
 			} else {
-				$rows = ($this->query($string))->fetchArray();
+				$rows = $this->query($string);
 			}
-			while ($row = $rows) {
+			while ($row = $rows->fetchArray()) {
 				$multiArray[] = $row;
 			}
 			return $multiArray;
