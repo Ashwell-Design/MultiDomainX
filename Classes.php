@@ -195,7 +195,7 @@
 				$rows = ($this->query($string))->fetchArray();
 			}
 			while ($row = $rows) {
-				$multiArray[$i] = $row;
+				$multiArray[] = $row;
 			}
 			return $multiArray;
 		}
