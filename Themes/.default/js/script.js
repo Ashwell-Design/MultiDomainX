@@ -107,6 +107,12 @@ function changeLanguage(lang) {
 		}
 		callback(elem);
 	}
+	function loadImage(elem, callback) {
+		setTimeout(calback(), 5000);
+	}
+	function loadText(elem, callback) {
+		setTimeout(calback(), 5000);
+	}
 $(document).ready(async function() {
 	$('[preload=true]').each(async function() {
 		const command = ($(this).attr('preload-function').length > 0)? $(this).attr('preload-function'): '';
