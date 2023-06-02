@@ -36,11 +36,12 @@
 						case "l": // LIST
 							if($string == 'nav') {
 								$links = '';
-								$q = $this->db->query("SELECT `Name`, `Url`, `Page`, `Subpage` FROM `Pages` WHERE `Domain`=$dom_id AND `Menu?`=1");
+								$q = $this->db->query("SELECT `Name`, `Url`, `Permalink` FROM `Pages` WHERE `Domain`=$dom_id AND `Menu?`=1");
 								while($item = $this->db->array($q)) {
-									[$name, $url, $page, $subpage] = $item;
+									[$name, $url, $pattern] = $item;
 									$active = null;
-									if($page == QS_PAGE && $subpage == QS_SUBPAGE) {
+									if(preg_match($pattern, __PERMALINK__)) {
+									// if($page == QS_PAGE && $subpage == QS_SUBPAGE) {
 										$active = 'active';
 									}
 									$links .= "<li class=\"nav-item\"><a href=\"$url\" class=\"nav-link text-auto $active\" style=\"color: inherit;\" aria-current=\"page\">$name</a></li>";
@@ -539,8 +540,7 @@
 			$this->permalinks = $this->db->fetchArray("SELECT `Permalink` FROM `Pages` WHERE `Domain`=".$dom_id);
 			foreach ($this->permalinks as $route) {
 				$pattern = '#^' . $route[0] . '$#'; // Add delimiters and anchors for exact matching
-				$matches = [];
-				if (preg_match($pattern, $permalink, $matches)) {
+				if (preg_match($pattern, $permalink)) {
 					$this->page_id = $this->db->array(sprintf("SELECT `ID` FROM `Pages` WHERE `Permalink`='%s'", $route[0]))[0];
 					break;
 				}
