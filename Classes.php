@@ -288,9 +288,9 @@
 							$out .= '<div class="col-md-'.$width.'" id="'.$cnt.'"><div class="row">';
 							if(strpos($string, ':')!==false) {
 								[$seccode, $string] = explode(':', $string);
-								print_r($seccode);
 								$tools = new Tools($this->db);
 								if ($this->db->num_rows($sql = sprintf("SELECT `Type`, `File` FROM `Sections` WHERE `Code`='%s'", $seccode)) == 1) {
+									print_r('here');
 									[$type, $file] = $this->db->array($sql);
 									if(file_exists("{$this->theme_path}/sections/$type/$file.html")) {
 										$out .= $tools->ParseShortcodes(
