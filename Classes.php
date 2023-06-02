@@ -392,13 +392,14 @@
 		}
 	}
 	class Page {
-		protected $db, $permalink;
-		public $page_id, $info;
+		protected $db, $permalinks;
+		public $page_id, $info, $permalink;
 		public function __construct($dom_id, $permalink, $db) {
-			print_r($permalink);
 			$this->db = $db;
 			$this->permalink = $permalink;
 			$this->query = $query;
+			$this->permalinks = $this->db->array("SELECT `Permalink` FROM `Pages`");
+			print_r($this->$permalinks);
 			if($this->db->array(sprintf("SELECT `ID` FROM `Pages` WHERE `Domain`='%s' AND `Page`='%s' AND `Subpage`='%s'", $dom_id, $page, $subpage)) != "") {
 				$this->page_id = $this->db->array(sprintf("SELECT `ID` FROM `Pages` WHERE `Domain`='%s' AND `Page`='%s' AND `Subpage`='%s'", $dom_id, $page, $subpage))[0];
 			} else {
