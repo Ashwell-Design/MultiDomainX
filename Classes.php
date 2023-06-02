@@ -421,10 +421,7 @@
 		public function __construct($dom_id, $permalink, $db) {
 			$this->db = $db;
 			$this->permalink = $permalink;
-			$this->permalinks = $this->db->fetchAssoc("SELECT `Permalink` FROM `Pages`");
-			print('<pre>');
-			print_r($this->permalinks);
-			print('</pre>');
+			$this->permalinks = $this->db->fetchArray("SELECT `Permalink` FROM `Pages`");
 			if($this->page_id) {
 				$this->info = $this->db->assoc(sprintf("SELECT * FROM `Pages` WHERE `ID`='%s'", $this->page_id));
 			} else {
