@@ -426,7 +426,6 @@
 				$pattern = '#^' . $route[0] . '$#'; // Add delimiters and anchors for exact matching
 				$matches = [];
 				if (preg_match($pattern, $permalink, $matches)) {
-					print_r('Here, Match: '.);
 					$this->info = $this->db->assoc(sprintf("SELECT * FROM `Pages` WHERE `Permalink`='%s'", $route[0]));
 					break;
 				}
