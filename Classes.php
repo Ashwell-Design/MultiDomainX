@@ -187,6 +187,28 @@
 			}
 			return $count;
 		}
+		public function fetchArray($string) {
+			$multiArray = array();
+			if($string instanceof SQLite3Result) {
+				$rows = ($string)->fetchArray();
+			} else {
+				$rows = ($this->query($string))->fetchArray();
+			}
+			while ($row = $rows) {
+				$multiArray[] = $row;
+			}
+		}
+		public function fetchAssoc($string) {
+			$multiArray = array();
+			if($string instanceof SQLite3Result) {
+				$rows = ($string)->fetchAssoc();
+			} else {
+				$rows = ($this->query($string))->fetchAssoc();
+			}
+			while ($row = $rows) {
+				$multiArray[] = $row;
+			}
+		}
 	}
 	class Website {
 		protected $website, $db;
