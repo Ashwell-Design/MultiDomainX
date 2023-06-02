@@ -253,7 +253,6 @@
 					print_r($width);
 					if(strpos($string, ',') !== false) {
 						$row = explode(',', $string); 
-						print_r($row);
 						$out .= '<div class="col-md-'.$width.'"><div class="row">';
 						foreach ($row as $string) {
 							$cnt++;
@@ -261,7 +260,6 @@
 							$out .= '<div class="col-md-'.$width.'" id="'.$cnt.'"><div class="row">';
 							[$seccode, $string] = explode(':', $string);
 							$tools = new Tools($this->db);
-							print_r($seccode);
 							if ($this->db->num_rows($sql = sprintf("SELECT `Type`, `File` FROM `Sections` WHERE `Code`='%s'", $seccode)) == 1) {
 								[$type, $file] = $this->db->array($sql);
 								if(file_exists("{$this->theme_path}/sections/$type/$file.html")) {
@@ -288,6 +286,7 @@
 						if(strpos($string, ';')!==false) {
 							$cnt++;
 							[$width, $string] = explode(';', $string);
+							print_r($width);
 							$out .= '<div class="col-md-'.$width.'" id="'.$cnt.'"><div class="row">';
 							if(strpos($string, ':')!==false) {
 								[$seccode, $string] = explode(':', $string);
