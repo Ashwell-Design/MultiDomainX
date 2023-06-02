@@ -206,7 +206,7 @@
 			} else {
 				$rows = $this->query($string);
 			}
-			while ($row = $rows->fetchArray(SQLITE3_ASSOC);) {
+			while ($row = $rows->fetchArray(SQLITE3_ASSOC)) {
 				$multiArray[] = $row;
 			}
 		}
