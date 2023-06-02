@@ -5,7 +5,7 @@
 			$this->db = $db;
 		}
 		/**ParseShortcodes
-		 * Input a few basinc bits of informtion and then it will replace any <%[...]%> tag with the correct data
+		 * Input a few basinc bits of informtion and then it will replace any '<%[...]%>' tag with the correct data
 		 * @param {string} string
 		 * @param {string} file
 		 * @param {int} dom_id
