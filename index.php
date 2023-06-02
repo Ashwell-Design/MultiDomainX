@@ -3,7 +3,7 @@ ini_set('display_errors', '1'); error_reporting(E_ALL);
 
 define('__ROOT__',		dirname(__FILE__));
 define('SERVER_NAME',	$_SERVER['SERVER_NAME']);
-define('__PERMALINK__',	'/'.strtolower($_GET['perma']));
+define('__PERMALINK__',	(isset($_GET['perma']))? '/'.strtolower($_GET['perma']): '/');
 define('__QS-FILE__',	isset($_GET['file'])	? $_GET['file'] : "doesnt");
 define('__QS-EXT__',	isset($_GET['ext'])		? $_GET['ext'] : "exist");
 require_once('Classes.php');
