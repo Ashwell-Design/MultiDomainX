@@ -185,7 +185,7 @@
 			} else {
 				$result = $this->db->query($string);
 			}
-			return $string == FALSE? return false : return true;
+			return $result == FALSE? false : true;
 		}
 		/** array
 		 * This gets an array from the database using the SQL string supplied
