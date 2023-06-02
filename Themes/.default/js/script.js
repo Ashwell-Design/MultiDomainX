@@ -1,6 +1,6 @@
-/**
- * googleTranslateElement
+/**googleTranslateElement
  * Initializes the google translate functionality
+ * @completed
  */
 function googleTranslateElementInit() {
 	new google.translate.TranslateElement({
@@ -9,10 +9,10 @@ function googleTranslateElementInit() {
 		layout: google.translate.TranslateElement.InlineLayout.SIMPLE
 	}, 'googtrans');
 }
-/**
- * changeLanguage
+/**changeLanguage
  * Define the changeLanguage function to handle language changes
  * @param {string} lang 
+ * @completed
  */
 function changeLanguage(lang) {
 	if($('.skiptranslate').contents().find('a[title=Close]').length > 0) {
@@ -28,10 +28,11 @@ function changeLanguage(lang) {
 	}
 }
 // FUNCTIONS FOR PRELOADING ELEMENTS
-	/**
-	 * loadTable
-	 * @param {object} elem 
-	 * @param {function} callback 
+	/**loadTable
+	 * This function is used to dynamically load the contents of a table
+	 * @param {object} elem
+	 * @param {function} callback
+	 * @completed
 	 */
 	function loadTable(elem, callback) {
 		var elem = $(elem)[0];
@@ -107,12 +108,25 @@ function changeLanguage(lang) {
 		}
 		callback(elem);
 	}
+	/**loadImage
+	 * This function is used to dynamically load the contents of an image
+	 * @param {object} elem
+	 * @param {function} callback
+	 * @TODO
+	 */
 	function loadImage(elem, callback) {
 		setTimeout(calback(), 5000); // TODO: Load Image
 	}
+	/**loadText
+	 * This function is used to dynamically load text
+	 * @param {object} elem
+	 * @param {function} callback
+	 * @TODO
+	 */
 	function loadText(elem, callback) {
 		setTimeout(calback(), 5000); // TODO: Load Text
 	}
+// ASYNC
 $(document).ready(async function() {
 	$('[preload=true]').each(async function() {
 		const command = ($(this).attr('preload-function').length > 0)? $(this).attr('preload-function'): '';
