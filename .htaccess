@@ -40,7 +40,7 @@
 
 		RewriteCond %{REQUEST_FILENAME} !-d
 		RewriteCond %{REQUEST_FILENAME} !-f
-		RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+		RewriteRule ^(.*)$ index.php?perma=$1 [QSA,L]
 	</IfModule>
 #
 #	Enable text-compression for static files
