@@ -290,7 +290,7 @@
 								[$seccode, $string] = explode(':', $string);
 								$tools = new Tools($this->db);
 								if ($this->db->num_rows($sql = sprintf("SELECT `Type`, `File` FROM `Sections` WHERE `Code`='%s'", $seccode)) == 1) {
-									print_r('here');
+									print_r(file_exists("{$this->theme_path}/sections/$type/$file.html"));
 									[$type, $file] = $this->db->array($sql);
 									if(file_exists("{$this->theme_path}/sections/$type/$file.html")) {
 										$out .= $tools->ParseShortcodes(
