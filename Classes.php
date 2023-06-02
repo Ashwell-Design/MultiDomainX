@@ -202,11 +202,11 @@
 		public function fetchAssoc($string) {
 			$multiArray = array();
 			if($string instanceof SQLite3Result) {
-				$rows = ($string)->fetchAssoc();
+				$rows = $string;
 			} else {
-				$rows = ($this->query($string))->fetchAssoc();
+				$rows = $this->query($string);
 			}
-			while ($row = $rows) {
+			while ($row = $rows->fetchArray(SQLITE3_ASSOC);) {
 				$multiArray[] = $row;
 			}
 		}
