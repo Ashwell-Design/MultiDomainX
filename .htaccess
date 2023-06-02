@@ -1,3 +1,4 @@
+RewriteEngine On
 #
 #	Allow REST api request methods. GET POST PUT and DELETE
 	<Limit GET POST PUT DELETE PATCH>
