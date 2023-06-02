@@ -421,7 +421,9 @@
 			$this->db = $db;
 			$this->permalink = $permalink;
 			$this->permalinks = $this->db->fetchArray("SELECT `Permalink` FROM `Pages`");
+			print('<pre>');
 			print_r($this->permalinks);
+			print('</pre>');
 			if($this->page_id) {
 				$this->info = $this->db->assoc(sprintf("SELECT * FROM `Pages` WHERE `ID`='%s'", $this->page_id));
 			} else {
