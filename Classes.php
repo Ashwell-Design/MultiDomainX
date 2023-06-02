@@ -422,14 +422,19 @@
 			$this->db = $db;
 			$this->permalink = $permalink;
 			$this->permalinks = $this->db->fetchArray("SELECT `Permalink` FROM `Pages` WHERE `Domain`=".$dom_id);
-			$this->info = false;
 			foreach ($this->permalinks as $route) {
 				$pattern = '#^' . $route[0] . '$#'; // Add delimiters and anchors for exact matching
 				$matches = [];
 				if (preg_match($pattern, $permalink, $matches)) {
-					$this->info = $this->db->assoc(sprintf("SELECT * FROM `Pages` WHERE `Permalink`='%s'", $route[0]));
+					$this->info = $this->db->array(sprintf("SELECT `ID` FROM `Pages` WHERE `Permalink`='%s'", $route))[0];
 					break;
 				}
+			}
+			
+			if($this->page_id) {
+				$this->info = $this->db->assoc(sprintf("SELECT * FROM `Pages` WHERE `ID`='%s'", $this->page_id));
+			} else {
+				$this->info = false;
 			}
 		}
 
