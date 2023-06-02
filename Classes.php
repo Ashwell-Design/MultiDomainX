@@ -426,7 +426,7 @@
 				$pattern = '#^' . $route[0] . '$#'; // Add delimiters and anchors for exact matching
 				$matches = [];
 				if (preg_match($pattern, $permalink, $matches)) {
-					print_r('Here, Match: ');
+					print_r('Here, Match: '.$route[0]);
 					// Invoke the corresponding action or controller with matched parameters
 					if (function_exists($action)) {
 						call_user_func_array($action, $matches);
