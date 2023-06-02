@@ -395,6 +395,7 @@
 		protected $db, $permalink;
 		public $page_id, $info;
 		public function __construct($dom_id, $permalink, $db) {
+			print_r($permalink);
 			$this->db = $db;
 			$this->permalink = $permalink;
 			$this->query = $query;
