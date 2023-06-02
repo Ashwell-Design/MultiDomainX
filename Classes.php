@@ -420,7 +420,7 @@
 		public function __construct($dom_id, $permalink, $db) {
 			$this->db = $db;
 			$this->permalink = $permalink;
-			$this->permalinks = $this->db->fetchArray("SELECT `Permalink` FROM `Pages`");
+			$this->permalinks = $this->db->fetchAssoc("SELECT `Permalink` FROM `Pages`");
 			print('<pre>');
 			print_r($this->permalinks);
 			print('</pre>');
