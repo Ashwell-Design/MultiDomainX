@@ -245,6 +245,7 @@
 			return "<!DOCTYPE html><html lang=\"en\"><head>{$this->generateHead()}</head><body id=\"googtrans\">{$this->generateBody()}</body></html>";
 		}
 		public function generateSectionRow($section) {
+			print_r($section);
 			$out = NULL; $cnt=0;
 			if(strpos($section, '%') !== false) {
 				$row = explode('%', $section);	array_shift($row);
