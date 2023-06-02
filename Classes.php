@@ -422,7 +422,6 @@
 			$this->db = $db;
 			$this->permalink = $permalink;
 			$this->permalinks = $this->db->fetchArray("SELECT `Permalink` FROM `Pages` WHERE `Domain`=".$dom_id);
-			print_r($this->permalinks);
 			foreach ($routes[0] as $route) {
 				$pattern = '#^' . $route . '$#'; // Add delimiters and anchors for exact matching
 				$matches = [];
