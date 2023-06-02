@@ -3,7 +3,7 @@
 		protected $db;
 		/** __construct
 		 * This is a constructor function the help build the class
-		 * @param object $db
+		 * @param Object $db
 		 * @return Tools
 		 */
 		public function __construct($db) {
@@ -11,11 +11,11 @@
 		}
 		/** ParseShortcodes
 		 * Input a few basic bits of informtion and then it will replace any '<%[...]%>' tag with the correct data
-		 * @param string $string
-		 * @param string $file
-		 * @param int	 $dom_id
-		 * @param string $str
-		 * @return string
+		 * @param String $string
+		 * @param String $file
+		 * @param Int	 $dom_id
+		 * @param String $str
+		 * @return String
 		 */
 		function ParseShortcodes($string, $file, $dom_id, $str) {
 			return preg_replace_callback('/<%\[([0-9a-zA-Z:_\- ]+)\]%>/', function($matches) use ($file, $dom_id, $str) {
@@ -68,8 +68,8 @@
 		}
 		/** array_to_ini_string
 		 * converts an array to a ini file string output
-		 * @param array $array
-		 * @return string
+		 * @param Array $array
+		 * @return String
 		 */
 		function array_to_ini_string($array) {
 			$output = '';
@@ -84,8 +84,8 @@
 		}
 		/** get_mime_type
 		 * This function reads a file mime and returns its HTML mime-type
-		 * @param string
-		 * @return string
+		 * @param String
+		 * @return String
 		 */
 		function get_mime_type($filename) {
 			$idx = explode( '.', $filename );
@@ -157,29 +157,41 @@
 	}
 	class DB {
 		protected $db;
+		/** __construct
+		 * This is a constructor function the help build the class
+		 * @param String $file
+		 * @return DB
+		 */
 		public function __construct($file) {
 			$this->db = new Sqlite3(__ROOT__."/$file.sqlite");
 		}
 
+		/** query
+		 * This function executes a the SQL command supplied
+		 * @param String string
+		 * @return SQLite3Result
+		 */
 		public function query($string) {
 			return $this->db->query($string);
 		}
+		/** execute
+		 * This function executes hhe SQL string supplied and responds with a TRUE or FALSE as to if it has been completed successfully
+		 * @param String string
+		 * @return Boolean
+		 */
 		public function execute($string) {
 			if ($string instanceof SQLite3Result) {
-				if ($string == FALSE) {
-					return false;
-				} else {
-					return true;
-				}
+				$result = $string;
 			} else {
 				$result = $this->db->query($string);
-				if($result == FALSE) {
-					return false;
-				} else {
-					return true;
-				}
 			}
-		}		
+			return $string == FALSE? return false : return true;
+		}
+		/** array
+		 * This gets an array from the database using the SQL string supplied
+		 * @param String string
+		 * @return Array
+		 */
 		public function array($string) {
 			if($string instanceof SQLite3Result) {
 				return ($string)->fetchArray();
@@ -187,6 +199,11 @@
 				return ($this->query($string))->fetchArray();
 			}
 		}
+		/** assoc
+		 * This gets a labelled array from the database using the SQL string supplied
+		 * @param String string
+		 * @return Assoc
+		 */
 		public function assoc($string) {
 			if($string instanceof SQLite3Result) {
 				return ($string)->fetchArray(SQLITE3_ASSOC);
@@ -194,13 +211,23 @@
 				return ($this->query($string))->fetchArray(SQLITE3_ASSOC);
 			}
 		}
+		/** row
+		 * This gets a ropw from the database and returns it in an array
+		 * @param String string
+		 * @return Array
+		 */
 		public function row($string) {
 			if($string instanceof SQLite3Result) {
-				return $this->array($string, SQLITE3_ASSOC);
+				return $this->array($string);
 			} else {
-				return $this->array($this->query($string), SQLITE3_ASSOC);
+				return $this->array($this->query($string));
 			}
 		}
+		/** num_rows
+		 *  This function gets the number of rows the SQL string supplied responds with
+		 * @param String string
+		 * @return Array
+		 */
 		public function num_rows($string) {
 			$q = $this->query($string);
 			$count = 0;
@@ -209,6 +236,11 @@
 			}
 			return $count;
 		}
+		/** fetchArray
+		 * This function returns all of the data from the database using the SQL string supplied
+		 * @param String string
+		 * @return Array
+		 */
 		public function fetchArray($string) {
 			$multiArray = array();
 			if($string instanceof SQLite3Result) {
@@ -221,6 +253,11 @@
 			}
 			return $multiArray;
 		}
+		/** fetchAssoc
+		 * This function returns all of the data from the database in a labelled array using the SQL string supplied
+		 * @param String string
+		 * @return Assoc
+		 */
 		public function fetchAssoc($string) {
 			$multiArray = array();
 			if($string instanceof SQLite3Result) {
@@ -237,14 +274,24 @@
 	class Website {
 		protected $website, $db;
 		public $info;
-		public function __construct($website, $db) {
+		/** __construct
+		 * This is a constructor function the help build the class
+		 * @param String $domain
+		 * @param Object $db
+		 * @return Website
+		 */
+		public function __construct($domain, $db) {
 			$this->db = $db;
-			$this->website = $website;
-			$this->info = $db->assoc(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", $this->website));
+			$this->domain = $domain;
+			$this->info = $db->assoc(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", $this->domain));
 		}
 
+		/** getTheme
+		 * This function retrieves all theme information regarding the domain requested
+		 * @return Array
+		 */
 		public function getTheme() {
-			$id = $this->db->array(sprintf("SELECT `Theme` FROM `Domains` WHERE `Domain`='%s'", $this->website))[0];
+			$id = $this->db->array(sprintf("SELECT `Theme` FROM `Domains` WHERE `Domain`='%s'", $this->domain))[0];
 			return $this->db->assoc(sprintf("SELECT * FROM `Themes` WHERE `ID`='%s' AND `Active?`=1", $id));
 		}
 	}
@@ -479,6 +526,13 @@
 	class Page {
 		protected $db, $permalinks;
 		public $page_id, $info, $permalink;
+		/** __construct
+		 * This is a constructor function the help build the class
+		 * @param Int
+		 * @param String
+		 * @param Object
+		 * @return Page
+		 */
 		public function __construct($dom_id, $permalink, $db) {
 			$this->db = $db;
 			$this->permalink = $permalink;
@@ -499,6 +553,11 @@
 			}
 		}
 
+		/** getConfiguration
+		 * This function will get the configuration value for the requested setting
+		 * @param string $cnf
+		 * @return string
+		 */
 		public function getConfiguration($cnf) {
 			return $this->db->row("SELECT `Field` FROM `Configuration` WHERE `Variable`='$cnf'")[0];
 		}
