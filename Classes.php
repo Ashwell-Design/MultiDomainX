@@ -253,6 +253,7 @@
 				foreach ($row as $section) {
 					print_r($section);
 					[$width, $string] = explode('|', $section, 2);
+					print_r($width);
 					if(strpos($string, ',') !== false) {
 						$row = explode(',', $string); 
 						$out .= '<div class="col-md-'.$width.'"><div class="row">';
@@ -262,6 +263,7 @@
 							$out .= '<div class="col-md-'.$width.'" id="'.$cnt.'"><div class="row">';
 							[$seccode, $string] = explode(':', $string);
 							$tools = new Tools($this->db);
+							print_r($seccode);
 							if ($this->db->num_rows($sql = sprintf("SELECT `Type`, `File` FROM `Sections` WHERE `Code`='%s'", $seccode)) == 1) {
 								[$type, $file] = $this->db->array($sql);
 								if(file_exists("{$this->theme_path}/sections/$type/$file.html")) {
