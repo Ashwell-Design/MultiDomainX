@@ -194,7 +194,7 @@
 			} else {
 				$rows = $this->query($string);
 			}
-			while ($row = $rows->fetchAssoc()) {
+			while ($row = $rows->fetchArray()) {
 				$multiArray[] = $row;
 			}
 			return $multiArray;
