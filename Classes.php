@@ -4,7 +4,14 @@
 		public function __construct($db) {
 			$this->db = $db;
 		}
-
+		/**ParseShortcodes
+		 * Input a few basinc bits of informtion and then it will replace any <%[...]%> tag with the correct data
+		 * @param {string} string
+		 * @param {string} file
+		 * @param {int} dom_id
+		 * @param {string} str
+		 * @return string
+		 */
 		function ParseShortcodes($string, $file, $dom_id, $str) {
 			return preg_replace_callback('/<%\[([0-9a-zA-Z:_\- ]+)\]%>/', function($matches) use ($file, $dom_id, $str) {
 				if(!str_contains($matches[1], ':')) {
@@ -291,7 +298,6 @@
 								$tools = new Tools($this->db);
 								if ($this->db->num_rows($sql = sprintf("SELECT `Type`, `File` FROM `Sections` WHERE `Code`='%s'", $seccode)) == 1) {
 									[$type, $file] = $this->db->array($sql);
-									print_r(file_exists("{$this->theme_path}/sections/$type/$file.html"));
 									if(file_exists("{$this->theme_path}/sections/$type/$file.html")) {
 										$out .= $tools->ParseShortcodes(
 											file_get_contents("{$this->theme_path}/sections/$type/$file.html"),
