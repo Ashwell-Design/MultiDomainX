@@ -397,7 +397,6 @@
 		public function __construct($dom_id, $permalink, $db) {
 			$this->db = $db;
 			$this->permalink = $permalink;
-			$this->query = $query;
 			$this->permalinks = $this->db->array("SELECT `Permalink` FROM `Pages`");
 			print_r($this->$permalinks);
 			if($this->db->array(sprintf("SELECT `ID` FROM `Pages` WHERE `Domain`='%s' AND `Page`='%s' AND `Subpage`='%s'", $dom_id, $page, $subpage)) != "") {
