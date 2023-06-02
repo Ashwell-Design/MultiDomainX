@@ -1,15 +1,19 @@
 <?php
 	class Tools {
 		protected $db;
+		/** __construct
+		 * 
+		 * @param {}
+		 */
 		public function __construct($db) {
 			$this->db = $db;
 		}
-		/**ParseShortcodes
+		/** ParseShortcodes
 		 * Input a few basinc bits of informtion and then it will replace any '<%[...]%>' tag with the correct data
-		 * @param {string} string
-		 * @param {string} file
-		 * @param {int} dom_id
-		 * @param {string} str
+		 * @param {string} $string
+		 * @param {string} $file
+		 * @param {int} $dom_id
+		 * @param {string} $str
 		 * @return string
 		 */
 		function ParseShortcodes($string, $file, $dom_id, $str) {
@@ -61,6 +65,9 @@
 				}
 			}, $string);
 		}
+		/** array_to_ini_string
+		 * 
+		 */
 		function array_to_ini_string($array) {
 			$output = '';
 			foreach ($array as $section => $values) {
@@ -72,6 +79,9 @@
 			}
 			return $output;
 		}
+		/** get_mime_type
+		 * 
+		 */
 		function get_mime_type($filename) {
 			$idx = explode( '.', $filename );
 			$count_explode = count($idx);
@@ -236,8 +246,17 @@
 	class Theme {
 		protected $id, $db, $dom_id;
 		public $info, $theme_id, $domain_id, $page, $default_theme, $theme_root, $theme_path, $theme_path_default;
+		/** __construct
+		 * 
+		 * @param int	 $theme_id
+		 * @param 		 $db
+		 * @param int	 $dom_id
+		 * @param string $page
+		 * @param string $d_theme
+		 */
 		public function __construct($theme_id, $db, $dom_id, $page, $d_theme) {
 			$this->db = $db;
+			print_r(gettype($db));
 			$this->info = $db->assoc(sprintf("SELECT * FROM `Themes` WHERE `id`='%s'", $theme_id));
 			$this->theme_id = $theme_id;
 			$this->domain_id = $dom_id;
@@ -248,9 +267,136 @@
 			$this->theme_path_default = $this->theme_root.$this->default_theme;
 		}
 
+		/**generate
+		 * this function starts the dynamic generation for the page requested.
+		 */
 		public function generate() {
 			return "<!DOCTYPE html><html lang=\"en\"><head>{$this->generateHead()}</head><body id=\"googtrans\">{$this->generateBody()}</body></html>";
 		}
+		// Halves
+		/**generateHead
+		 * This function runs the requiored functions to generage the <body></body> for the website requested
+		 */
+		public function generateHead($head='') {
+			$head .= $this->getMeta();
+			$head .= $this->getFavicon();
+			$head .= $this->getTitle();
+			$head .= $this->getStyles();
+			$head .= $this->getCustomHead();
+			return $head;
+		}
+		/**generateBody
+		 * This function runs the requiored functions to generage the <body></body> for the website requested
+		 */
+		public function generateBody($body='') {
+			$body .= $this->getScripts();
+			if(($code = $this->page->info['Sections']) != null) {
+				$sections = explode("$", $code);	array_shift($sections);	$cnt=NULL;
+				$body .= '<main class="container-fluid row">';
+				foreach ($sections as $section) {
+					preg_match_all('/([0-9]+)\[([A-Za-z0-9\|\%\#\;\:\,\-\=\+\.\/]+)\]/', preg_replace('/\s+/', '', preg_replace('/\s+/', '', $section, 2)), $matches);
+					$row_string = $matches[2][0];	$cnt++;
+					$body .= $this->generateSectionRow($row_string);
+				}
+				$body .= '</main>';
+			} else {
+				$body = 'Error: No page string was set';
+			}
+			return str_replace(PHP_EOL, '', $body);
+		}
+		// Segments
+		/** getMeta
+		 * This function gets the metadata for the website requested
+		 */
+		public function getMeta($out='<!-- META -->') {
+			$out .= sprintf('<meta charset="utf-8">');
+			$out .= sprintf('<meta content="ie=edge" http-eqiv="X-UA-Compatible">');
+			$out .= sprintf('<meta name="viewport" content="width=device-width, initial-scale=1.0">');
+			$out .= sprintf('<meta name="title" content="%s">', $this->page->info['Title']);
+			$out .= sprintf('<meta name="description" content="%s">', $this->page->info['Description']);
+			$out .= sprintf('<meta name="author" content="%s">', "Ashwell Design");
+			$out .= sprintf('<meta name="keywords" content="%s">', $this->page->info['Keywords']);
+			return $out;
+		}
+		/** getTitle
+		 * This function gets the title for the website requested
+		 */
+		public function getTitle($out='<!-- TITLE -->') {
+			return $out .= "<title>{$this->page->info['Title']}</title>";
+		}
+		/** getStyles
+		 * This function gets the stylesheets for the website requested
+		 */
+		public function getStyles($out = '<!-- STYLES -->') {
+			$themePaths = [$this->theme_path_default, $this->theme_path];
+			foreach ($themePaths as $themePath) {
+				$infoPath = "{$themePath}/info.json";
+				if(file_exists($infoPath)) {
+					$styles = json_decode(file_get_contents($infoPath), true)['Styles'];
+					foreach ($styles as $style) {
+						$url = isset($style['URL']) ? $style['URL'] : '';
+						if (!filter_var($url, FILTER_VALIDATE_URL)) $url = "/Themes/".$this->info['Location']."/css".$url;
+						$integrity = ($style['Hash'] !== null)? $style['Hash'] : '';
+						$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\"%s crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\"%s crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $url, $integrity, $url, $integrity);
+					}
+				} else {
+					// TODO: Print error, Missing theme styles
+				}
+			}
+			return $out;
+		}
+		/** getScripts
+		 * This function gets the scripts for the website requested
+		 */
+		public function getScripts($out='<!-- SCRIPTS -->') {
+			$themePaths = [$this->theme_path_default, $this->theme_path];
+			foreach ($themePaths as $themePath) {
+				$infoPath = "{$themePath}/info.json";
+				if(file_exists($infoPath)) {
+					$scripts = json_decode(file_get_contents($infoPath), true)['Scripts'];
+					foreach ($scripts as $script) {
+						$url = isset($script['URL']) ? $script['URL'] : '';
+						if(!filter_var($url, FILTER_VALIDATE_URL)) $url = "/Themes/".$this->info['Location']."/js".$url;
+						$integrity = ($script['Hash'] !== null)? $script['Hash'] : '';
+						$out .= sprintf("<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $url, $integrity);
+					}
+				} else {
+					// TODO: Print error, Missing theme scripts
+				}
+			}
+			return $out;
+		}
+		/** getCustomHead
+		 * This function gets the custom head variables for the website requested
+		 */
+		public function getCustomHead($out='<!-- CUSTOM HEAD -->') {
+			return $out .= $this->page->info['Head'];
+		}
+		/** getFavicon
+		 * This function gets the favicon for the website requested
+		 */
+		public function getFavicon($out = '<!-- FAVICON -->') {
+			$image = $this->db->array(sprintf("SELECT `Favicon` FROM `Pages` WHERE `ID`='%s'", $this->theme_id))[0];
+			$out .= sprintf('<link rel="apple-touch-icon" sizes="57x57" href="/MD_Static/Favicons/%s/apple-icon-57x57.png">', $image);
+			$out .= sprintf('<link rel="apple-touch-icon" sizes="60x60" href="/MD_Static/Favicons/%s/apple-icon-60x60.png">', $image);
+			$out .= sprintf('<link rel="apple-touch-icon" sizes="72x72" href="/MD_Static/Favicons/%s/apple-icon-72x72.png">', $image);
+			$out .= sprintf('<link rel="apple-touch-icon" sizes="76x76" href="/MD_Static/Favicons/%s/apple-icon-76x76.png">', $image);
+			$out .= sprintf('<link rel="apple-touch-icon" sizes="114x114" href="/MD_Static/Favicons/%s/apple-icon-114x114.png">', $image);
+			$out .= sprintf('<link rel="apple-touch-icon" sizes="120x120" href="/MD_Static/Favicons/%s/apple-icon-120x120.png">', $image);
+			$out .= sprintf('<link rel="apple-touch-icon" sizes="144x144" href="/MD_Static/Favicons/%s/apple-icon-144x144.png">', $image);
+			$out .= sprintf('<link rel="apple-touch-icon" sizes="152x152" href="/MD_Static/Favicons/%s/apple-icon-152x152.png">', $image);
+			$out .= sprintf('<link rel="apple-touch-icon" sizes="180x180" href="/MD_Static/Favicons/%s/apple-icon-180x180.png">', $image);
+			$out .= sprintf('<link rel="icon" type="image/png" sizes="192x192"  href="/MD_Static/Favicons/%s/android-icon-192x192.png">', $image);
+			$out .= sprintf('<link rel="icon" type="image/png" sizes="32x32" href="/MD_Static/Favicons/%s/favicon-32x32.png">', $image);
+			$out .= sprintf('<link rel="icon" type="image/png" sizes="96x96" href="/MD_Static/Favicons/%s/favicon-96x96.png">', $image);
+			$out .= sprintf('<link rel="icon" type="image/png" sizes="16x16" href="/MD_Static/Favicons/%s/favicon-16x16.png">', $image);
+			$out .= sprintf('<meta name="msapplication-TileImage" content="/MD_Static/Favicons/%s/ms-icon-144x144.png">', $image);
+			return $out .= '<meta name="msapplication-TileColor" content="#ffffff">';
+		}
+		/** generateSectionRow
+		 * This function is run to generate the segmented body for the website requested
+		 * @param {string} $section
+		 */
 		public function generateSectionRow($section) {
 			$out = NULL; $cnt=0;
 			if(strpos($section, '%') !== false) {
@@ -323,102 +469,6 @@
 
 			}
 			return $out;
-		}
-		// Halves
-		public function generateHead($head='') {
-			$head .= $this->getMeta();
-			$head .= $this->getFavicon();
-			$head .= $this->getTitle();
-			$head .= $this->getStyles();
-			$head .= $this->getCustomHead();
-			return $head;
-		}
-		public function generateBody($body='') {
-			$body .= $this->getScripts();
-			if(($code = $this->page->info['Sections']) != null) {
-				$sections = explode("$", $code);	array_shift($sections);	$cnt=NULL;
-				$body .= '<main class="container-fluid row">';
-				foreach ($sections as $section) {
-					preg_match_all('/([0-9]+)\[([A-Za-z0-9\|\%\#\;\:\,\-\=\+\.\/]+)\]/', preg_replace('/\s+/', '', preg_replace('/\s+/', '', $section, 2)), $matches);
-					$row_string = $matches[2][0];	$cnt++;
-					$body .= $this->generateSectionRow($row_string);
-				}
-				$body .= '</main>';
-			} else {
-				$body = 'Error: No page string was set';
-			}
-			return str_replace(PHP_EOL, '', $body);
-		}
-		// Segments
-		public function getMeta($out='<!-- META -->') {
-			$out .= sprintf('<meta charset="utf-8">');
-			$out .= sprintf('<meta content="ie=edge" http-eqiv="X-UA-Compatible">');
-			$out .= sprintf('<meta name="viewport" content="width=device-width, initial-scale=1.0">');
-			$out .= sprintf('<meta name="title" content="%s">', $this->page->info['Title']);
-			$out .= sprintf('<meta name="description" content="%s">', $this->page->info['Description']);
-			$out .= sprintf('<meta name="author" content="%s">', "Ashwell Design");
-			$out .= sprintf('<meta name="keywords" content="%s">', $this->page->info['Keywords']);
-			return $out;
-		}
-		public function getTitle($out='<!-- TITLE -->') {
-			return $out .= "<title>{$this->page->info['Title']}</title>";
-		}
-		public function getStyles($out = '<!-- STYLES -->') {
-			$themePaths = [$this->theme_path_default, $this->theme_path];
-			foreach ($themePaths as $themePath) {
-				$infoPath = "{$themePath}/info.json";
-				if(file_exists($infoPath)) {
-					$styles = json_decode(file_get_contents($infoPath), true)['Styles'];
-					foreach ($styles as $style) {
-						$url = isset($style['URL']) ? $style['URL'] : '';
-						if (!filter_var($url, FILTER_VALIDATE_URL)) $url = "/Themes/".$this->info['Location']."/css".$url;
-						$integrity = ($style['Hash'] !== null)? $style['Hash'] : '';
-						$out .= sprintf("<noscript><link rel=\"stylesheet\" href=\"%s\"%s crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></noscript><link rel=\"stylesheet\" href=\"%s\"%s crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\" as=\"style\" onload=\"this.onload=null;this.rel='stylesheet'\">", $url, $integrity, $url, $integrity);
-					}
-				} else {
-					// TODO: Print error, Missing theme styles
-				}
-			}
-			return $out;
-		}
-		public function getScripts($out='<!-- SCRIPTS -->') {
-			$themePaths = [$this->theme_path_default, $this->theme_path];
-			foreach ($themePaths as $themePath) {
-				$infoPath = "{$themePath}/info.json";
-				if(file_exists($infoPath)) {
-					$scripts = json_decode(file_get_contents($infoPath), true)['Scripts'];
-					foreach ($scripts as $script) {
-						$url = isset($script['URL']) ? $script['URL'] : '';
-						if(!filter_var($url, FILTER_VALIDATE_URL)) $url = "/Themes/".$this->info['Location']."/js".$url;
-						$integrity = ($script['Hash'] !== null)? $script['Hash'] : '';
-						$out .= sprintf("<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" referrerpolicy=\"no-referrer\"></script>", $url, $integrity);
-					}
-				} else {
-					// TODO: Print error, Missing theme scripts
-				}
-			}
-			return $out;
-		}
-		public function getCustomHead($out='<!-- CUSTOM HEAD -->') {
-			return $out .= $this->page->info['Head'];
-		}
-		public function getFavicon($out = '<!-- FAVICON -->') {
-			$image = $this->db->array(sprintf("SELECT `Favicon` FROM `Pages` WHERE `ID`='%s'", $this->theme_id))[0];
-			$out .= sprintf('<link rel="apple-touch-icon" sizes="57x57" href="/MD_Static/Favicons/%s/apple-icon-57x57.png">', $image);
-			$out .= sprintf('<link rel="apple-touch-icon" sizes="60x60" href="/MD_Static/Favicons/%s/apple-icon-60x60.png">', $image);
-			$out .= sprintf('<link rel="apple-touch-icon" sizes="72x72" href="/MD_Static/Favicons/%s/apple-icon-72x72.png">', $image);
-			$out .= sprintf('<link rel="apple-touch-icon" sizes="76x76" href="/MD_Static/Favicons/%s/apple-icon-76x76.png">', $image);
-			$out .= sprintf('<link rel="apple-touch-icon" sizes="114x114" href="/MD_Static/Favicons/%s/apple-icon-114x114.png">', $image);
-			$out .= sprintf('<link rel="apple-touch-icon" sizes="120x120" href="/MD_Static/Favicons/%s/apple-icon-120x120.png">', $image);
-			$out .= sprintf('<link rel="apple-touch-icon" sizes="144x144" href="/MD_Static/Favicons/%s/apple-icon-144x144.png">', $image);
-			$out .= sprintf('<link rel="apple-touch-icon" sizes="152x152" href="/MD_Static/Favicons/%s/apple-icon-152x152.png">', $image);
-			$out .= sprintf('<link rel="apple-touch-icon" sizes="180x180" href="/MD_Static/Favicons/%s/apple-icon-180x180.png">', $image);
-			$out .= sprintf('<link rel="icon" type="image/png" sizes="192x192"  href="/MD_Static/Favicons/%s/android-icon-192x192.png">', $image);
-			$out .= sprintf('<link rel="icon" type="image/png" sizes="32x32" href="/MD_Static/Favicons/%s/favicon-32x32.png">', $image);
-			$out .= sprintf('<link rel="icon" type="image/png" sizes="96x96" href="/MD_Static/Favicons/%s/favicon-96x96.png">', $image);
-			$out .= sprintf('<link rel="icon" type="image/png" sizes="16x16" href="/MD_Static/Favicons/%s/favicon-16x16.png">', $image);
-			$out .= sprintf('<meta name="msapplication-TileImage" content="/MD_Static/Favicons/%s/ms-icon-144x144.png">', $image);
-			return $out .= '<meta name="msapplication-TileColor" content="#ffffff">';
 		}
 	}
 	class Page {
