@@ -250,7 +250,6 @@
 				$row = explode('%', $section);	array_shift($row);
 				foreach ($row as $section) {
 					[$width, $string] = explode('|', $section, 2);
-					print_r($width);
 					if(strpos($string, ',') !== false) {
 						$row = explode(',', $string); 
 						$out .= '<div class="col-md-'.$width.'"><div class="row">';
@@ -286,10 +285,10 @@
 						if(strpos($string, ';')!==false) {
 							$cnt++;
 							[$width, $string] = explode(';', $string);
-							print_r($width);
 							$out .= '<div class="col-md-'.$width.'" id="'.$cnt.'"><div class="row">';
 							if(strpos($string, ':')!==false) {
 								[$seccode, $string] = explode(':', $string);
+								print_r($seccode);
 								$tools = new Tools($this->db);
 								if ($this->db->num_rows($sql = sprintf("SELECT `Type`, `File` FROM `Sections` WHERE `Code`='%s'", $seccode)) == 1) {
 									[$type, $file] = $this->db->array($sql);
