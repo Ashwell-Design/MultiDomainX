@@ -421,8 +421,24 @@
 		public function __construct($dom_id, $permalink, $db) {
 			$this->db = $db;
 			$this->permalink = $permalink;
-			$this->permalinks = $this->db->fetchArray("SELECT `Permalink` FROM `Pages`");
+			$this->permalinks = $this->db->fetchArray("SELECT `Permalink` FROM `Pages` WHERE `Domain`="+$this->$dom_id);
 			print_r($this->permalinks);
+			foreach ($routes[0] as $route) {
+				$pattern = '#^' . $route . '$#'; // Add delimiters and anchors for exact matching
+				$matches = [];
+				if (preg_match($pattern, $permalink, $matches)) {
+					print_r('Here, Match: ');
+					// Invoke the corresponding action or controller with matched parameters
+					if (function_exists($action)) {
+						call_user_func_array($action, $matches);
+					} else {
+						// Handle invalid route or action
+						die('Invalid route or action.');
+					}
+					break;
+				}
+			}
+			
 			if($this->page_id) {
 				$this->info = $this->db->assoc(sprintf("SELECT * FROM `Pages` WHERE `ID`='%s'", $this->page_id));
 			} else {
