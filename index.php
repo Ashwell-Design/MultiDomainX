@@ -22,7 +22,6 @@ if($db_c->num_rows(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", $_SERV
 			header("Content-Type: " . $tools->get_mime_type(__QSFILE__.".".__QSEXT__) . "; charset=UTF-8;");
 			require_once($file);
 		} else {
-			print('here');
 			print($theme->generate());
 		}
 	} else {

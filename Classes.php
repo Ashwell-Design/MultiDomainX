@@ -245,6 +245,7 @@
 			return "<!DOCTYPE html><html lang=\"en\"><head>{$this->generateHead()}</head><body id=\"googtrans\">{$this->generateBody()}</body></html>";
 		}
 		public function generateSectionRow($section) {
+			print_r('here');
 			$out = NULL; $cnt=0;
 			if(strpos($section, '%') !== false) {
 				$row = explode('%', $section);	array_shift($row);
@@ -261,7 +262,6 @@
 							$tools = new Tools($this->db);
 							if ($this->db->num_rows($sql = sprintf("SELECT `Type`, `File` FROM `Sections` WHERE `Code`='%s'", $seccode)) == 1) {
 								[$type, $file] = $this->db->array($sql);
-								print_r("{$this->theme_path}/sections/$type/$file.html");
 								if(file_exists("{$this->theme_path}/sections/$type/$file.html")) {
 									$out .= $tools->ParseShortcodes(
 										file_get_contents("{$this->theme_path}/sections/$type/$file.html"),
