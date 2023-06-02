@@ -426,22 +426,10 @@
 				$pattern = '#^' . $route[0] . '$#'; // Add delimiters and anchors for exact matching
 				$matches = [];
 				if (preg_match($pattern, $permalink, $matches)) {
-					print_r('Here, Match: '.$route[0]);
-					// Invoke the corresponding action or controller with matched parameters
-					if (function_exists($action)) {
-						call_user_func_array($action, $matches);
-					} else {
-						// Handle invalid route or action
-						die('Invalid route or action.');
-					}
+					print_r('Here, Match: '.);
+					$this->info = $this->db->assoc(sprintf("SELECT * FROM `Pages` WHERE `Permalink`='%s'", $route[0]));
 					break;
 				}
-			}
-			
-			if($this->page_id) {
-				$this->info = $this->db->assoc(sprintf("SELECT * FROM `Pages` WHERE `ID`='%s'", $this->page_id));
-			} else {
-				$this->info = false;
 			}
 		}
 
