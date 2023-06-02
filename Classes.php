@@ -2,18 +2,19 @@
 	class Tools {
 		protected $db;
 		/** __construct
-		 * 
-		 * @param {}
+		 * This is a constructor function the help build the class
+		 * @param object $db
+		 * @return Tools
 		 */
 		public function __construct($db) {
 			$this->db = $db;
 		}
 		/** ParseShortcodes
-		 * Input a few basinc bits of informtion and then it will replace any '<%[...]%>' tag with the correct data
-		 * @param {string} $string
-		 * @param {string} $file
-		 * @param {int} $dom_id
-		 * @param {string} $str
+		 * Input a few basic bits of informtion and then it will replace any '<%[...]%>' tag with the correct data
+		 * @param string $string
+		 * @param string $file
+		 * @param int	 $dom_id
+		 * @param string $str
 		 * @return string
 		 */
 		function ParseShortcodes($string, $file, $dom_id, $str) {
@@ -66,7 +67,9 @@
 			}, $string);
 		}
 		/** array_to_ini_string
-		 * 
+		 * converts an array to a ini file string output
+		 * @param array $array
+		 * @return string
 		 */
 		function array_to_ini_string($array) {
 			$output = '';
@@ -80,7 +83,9 @@
 			return $output;
 		}
 		/** get_mime_type
-		 * 
+		 * This function reads a file mime and returns its HTML mime-type
+		 * @param string
+		 * @return string
 		 */
 		function get_mime_type($filename) {
 			$idx = explode( '.', $filename );
@@ -247,16 +252,16 @@
 		protected $id, $db, $dom_id;
 		public $info, $theme_id, $domain_id, $page, $default_theme, $theme_root, $theme_path, $theme_path_default;
 		/** __construct
-		 * 
+		 * This is a constructor function the help build the class
 		 * @param int	 $theme_id
-		 * @param 		 $db
+		 * @param object $db
 		 * @param int	 $dom_id
 		 * @param string $page
 		 * @param string $d_theme
+		 * @return Theme
 		 */
 		public function __construct($theme_id, $db, $dom_id, $page, $d_theme) {
 			$this->db = $db;
-			print_r(gettype($db));
 			$this->info = $db->assoc(sprintf("SELECT * FROM `Themes` WHERE `id`='%s'", $theme_id));
 			$this->theme_id = $theme_id;
 			$this->domain_id = $dom_id;
