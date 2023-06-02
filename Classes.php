@@ -251,6 +251,7 @@
 				$row = explode('%', $section);	array_shift($row);
 				print_r($row);
 				foreach ($row as $section) {
+					print_r($section);
 					[$width, $string] = explode('|', $section, 2);
 					if(strpos($string, ',') !== false) {
 						$row = explode(',', $string); 
