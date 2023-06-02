@@ -194,9 +194,12 @@
 			} else {
 				$rows = ($this->query($string))->fetchArray();
 			}
+			$i=0;
 			while ($row = $rows) {
-				$multiArray[] = $row;
+				$multiArray[$i] = $row;
+				$i++;
 			}
+			$i=0;
 		}
 		public function fetchAssoc($string) {
 			$multiArray = array();
