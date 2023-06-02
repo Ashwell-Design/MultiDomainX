@@ -245,13 +245,10 @@
 			return "<!DOCTYPE html><html lang=\"en\"><head>{$this->generateHead()}</head><body id=\"googtrans\">{$this->generateBody()}</body></html>";
 		}
 		public function generateSectionRow($section) {
-			print_r('<pre>'.$section.'</pre>');
 			$out = NULL; $cnt=0;
 			if(strpos($section, '%') !== false) {
 				$row = explode('%', $section);	array_shift($row);
-				print_r($row);
 				foreach ($row as $section) {
-					print_r($section);
 					[$width, $string] = explode('|', $section, 2);
 					print_r($width);
 					if(strpos($string, ',') !== false) {
