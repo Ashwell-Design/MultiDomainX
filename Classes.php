@@ -399,11 +399,6 @@
 			$this->permalink = $permalink;
 			$this->permalinks = $this->db->array("SELECT `Permalink` FROM `Pages`");
 			print_r($this->$permalinks);
-			if($this->db->array(sprintf("SELECT `ID` FROM `Pages` WHERE `Domain`='%s' AND `Page`='%s' AND `Subpage`='%s'", $dom_id, $page, $subpage)) != "") {
-				$this->page_id = $this->db->array(sprintf("SELECT `ID` FROM `Pages` WHERE `Domain`='%s' AND `Page`='%s' AND `Subpage`='%s'", $dom_id, $page, $subpage))[0];
-			} else {
-				$this->page_id = false;
-			}
 			if($this->page_id) {
 				$this->info = $this->db->assoc(sprintf("SELECT * FROM `Pages` WHERE `ID`='%s'", $this->page_id));
 			} else {
