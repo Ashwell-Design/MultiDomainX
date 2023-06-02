@@ -253,6 +253,7 @@
 					print_r($width);
 					if(strpos($string, ',') !== false) {
 						$row = explode(',', $string); 
+						print_r($row);
 						$out .= '<div class="col-md-'.$width.'"><div class="row">';
 						foreach ($row as $string) {
 							$cnt++;
