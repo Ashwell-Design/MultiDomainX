@@ -328,7 +328,6 @@
 		}
 		public function generateBody($body='') {
 			$body .= $this->getScripts();
-			$body .= $this->info;
 			if(($code = $this->page->info['Sections']) != null) {
 				$sections = explode("$", $code);	array_shift($sections);	$cnt=NULL;
 				$body .= '<main class="container-fluid row">';
