@@ -249,6 +249,7 @@
 			$out = NULL; $cnt=0;
 			if(strpos($section, '%') !== false) {
 				$row = explode('%', $section);	array_shift($row);
+				print_r($row);
 				foreach ($row as $section) {
 					[$width, $string] = explode('|', $section, 2);
 					if(strpos($string, ',') !== false) {
