@@ -209,6 +209,7 @@
 			while ($row = $rows->fetchArray(SQLITE3_ASSOC)) {
 				$multiArray[] = $row;
 			}
+			return $multiArray;
 		}
 	}
 	class Website {
