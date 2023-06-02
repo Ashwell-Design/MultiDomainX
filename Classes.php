@@ -41,7 +41,6 @@
 									[$name, $url, $pattern] = $item;
 									$active = null;
 									if(preg_match($pattern, __PERMALINK__)) {
-									// if($page == QS_PAGE && $subpage == QS_SUBPAGE) {
 										$active = 'active';
 									}
 									$links .= "<li class=\"nav-item\"><a href=\"$url\" class=\"nav-link text-auto $active\" style=\"color: inherit;\" aria-current=\"page\">$name</a></li>";
