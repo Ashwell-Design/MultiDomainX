@@ -108,10 +108,10 @@ function changeLanguage(lang) {
 		callback(elem);
 	}
 	function loadImage(elem, callback) {
-		setTimeout(calback(), 5000);
+		setTimeout(calback(), 5000); // TODO: Load Image
 	}
 	function loadText(elem, callback) {
-		setTimeout(calback(), 5000);
+		setTimeout(calback(), 5000); // TODO: Load Text
 	}
 $(document).ready(async function() {
 	$('[preload=true]').each(async function() {
