@@ -32,8 +32,10 @@
 	</IfModule>
 #
 #	APPEND WWW. IF NO SUBDOMAIN EXISTS
-	RewriteCond %{HTTP_HOST} ^[^.]+\.[^.]+$
-	RewriteRule ^(.*)$ www.%{HTTP_HOST}/$1 [L,R=301]
+	<IfModule mod_rewrite.c>
+		RewriteCond %{HTTP_HOST} ^[^.]+\.[^.]+$
+		RewriteRule ^(.*)$ www.%{HTTP_HOST}/$1 [L,R=301]
+	</IfModule>
 #
 #	REDIRECT ALL REQUESTS TO INDEX OR FILES, RESPECTIVELY
 	<IfModule mod_rewrite.c>
