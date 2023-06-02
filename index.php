@@ -9,6 +9,7 @@ define('QS',			isset($_GET['q'])		? (strpos($_GET['q'], '/') ? explode('/', strt
 define('QS_FILE',		isset($_GET['file'])	? $_GET['file'] : "doesnt");
 define('QS_EXT',		isset($_GET['ext'])		? $_GET['ext'] : "exist");
 require_once('Classes.php');
+print_r(QS_PAGE.' '.QS_SUBPAGE.' '.QS);
 
 $db_c = new DB('central');
 $db_a = new DB('metrics');
