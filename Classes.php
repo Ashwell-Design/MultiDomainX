@@ -1,7 +1,7 @@
 <?php
 	class Tools {
 		protected $db;
-		/** __construct
+		/**
 		 * This is a constructor function the help build the class
 		 * @param Object $db
 		 * @return Tools
@@ -9,7 +9,8 @@
 		public function __construct($db) {
 			$this->db = $db;
 		}
-		/** ParseShortcodes
+
+		/**
 		 * Input a few basic bits of informtion and then it will replace any '<%[...]%>' tag with the correct data
 		 * @param String $string
 		 * @param String $file
@@ -66,7 +67,7 @@
 				}
 			}, $string);
 		}
-		/** array_to_ini_string
+		/**
 		 * converts an array to a ini file string output
 		 * @param Array $array
 		 * @return String
@@ -82,7 +83,7 @@
 			}
 			return $output;
 		}
-		/** get_mime_type
+		/**
 		 * This function reads a file mime and returns its HTML mime-type
 		 * @param String
 		 * @return String
@@ -157,7 +158,7 @@
 	}
 	class DB {
 		protected $db;
-		/** __construct
+		/**
 		 * This is a constructor function the help build the class
 		 * @param String $file
 		 * @return DB
@@ -166,7 +167,7 @@
 			$this->db = new Sqlite3(__ROOT__."/$file.sqlite");
 		}
 
-		/** query
+		/**
 		 * This function executes a the SQL command supplied
 		 * @param String string
 		 * @return SQLite3Result
@@ -174,7 +175,7 @@
 		public function query($string) {
 			return $this->db->query($string);
 		}
-		/** execute
+		/**
 		 * This function executes hhe SQL string supplied and responds with a TRUE or FALSE as to if it has been completed successfully
 		 * @param String string
 		 * @return Boolean
@@ -187,7 +188,7 @@
 			}
 			return $result == FALSE? false : true;
 		}
-		/** array
+		/**
 		 * This gets an array from the database using the SQL string supplied
 		 * @param String string
 		 * @return Array
@@ -199,7 +200,7 @@
 				return ($this->query($string))->fetchArray();
 			}
 		}
-		/** assoc
+		/**
 		 * This gets a labelled array from the database using the SQL string supplied
 		 * @param String string
 		 * @return Assoc
@@ -211,7 +212,7 @@
 				return ($this->query($string))->fetchArray(SQLITE3_ASSOC);
 			}
 		}
-		/** row
+		/**
 		 * This gets a ropw from the database and returns it in an array
 		 * @param String string
 		 * @return Array
@@ -223,7 +224,7 @@
 				return $this->array($this->query($string));
 			}
 		}
-		/** num_rows
+		/**
 		 *  This function gets the number of rows the SQL string supplied responds with
 		 * @param String string
 		 * @return Array
@@ -236,7 +237,7 @@
 			}
 			return $count;
 		}
-		/** fetchArray
+		/**
 		 * This function returns all of the data from the database using the SQL string supplied
 		 * @param String string
 		 * @return Array
@@ -253,7 +254,7 @@
 			}
 			return $multiArray;
 		}
-		/** fetchAssoc
+		/**
 		 * This function returns all of the data from the database in a labelled array using the SQL string supplied
 		 * @param String string
 		 * @return Assoc
@@ -274,7 +275,7 @@
 	class Website {
 		protected $website, $db;
 		public $info;
-		/** __construct
+		/**
 		 * This is a constructor function the help build the class
 		 * @param String $domain
 		 * @param Object $db
@@ -286,7 +287,7 @@
 			$this->info = $db->assoc(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", $this->domain));
 		}
 
-		/** getTheme
+		/**
 		 * This function retrieves all theme information regarding the domain requested
 		 * @return Array
 		 */
@@ -298,7 +299,7 @@
 	class Theme {
 		protected $id, $db, $dom_id;
 		public $info, $theme_id, $domain_id, $page, $default_theme, $theme_root, $theme_path, $theme_path_default;
-		/** __construct
+		/**
 		 * This is a constructor function the help build the class
 		 * @param int	 $theme_id
 		 * @param object $db
@@ -319,15 +320,16 @@
 			$this->theme_path_default = $this->theme_root.$this->default_theme;
 		}
 
-		/**generate
+		/**
 		 * this function starts the dynamic generation for the page requested.
+		 * @return String
 		 */
 		public function generate() {
 			return "<!DOCTYPE html><html lang=\"en\"><head>{$this->generateHead()}</head><body id=\"googtrans\">{$this->generateBody()}</body></html>";
 		}
-		// Halves
-		/**generateHead
+		/**
 		 * This function runs the requiored functions to generage the <body></body> for the website requested
+		 * @return String
 		 */
 		public function generateHead($head='') {
 			$head .= $this->getMeta();
@@ -337,8 +339,9 @@
 			$head .= $this->getCustomHead();
 			return $head;
 		}
-		/**generateBody
+		/**
 		 * This function runs the requiored functions to generage the <body></body> for the website requested
+		 * @return String
 		 */
 		public function generateBody($body='') {
 			$body .= $this->getScripts();
@@ -356,9 +359,9 @@
 			}
 			return str_replace(PHP_EOL, '', $body);
 		}
-		// Segments
-		/** getMeta
+		/**
 		 * This function gets the metadata for the website requested
+		 * @return String
 		 */
 		public function getMeta($out='<!-- META -->') {
 			$out .= sprintf('<meta charset="utf-8">');
@@ -370,14 +373,16 @@
 			$out .= sprintf('<meta name="keywords" content="%s">', $this->page->info['Keywords']);
 			return $out;
 		}
-		/** getTitle
+		/**
 		 * This function gets the title for the website requested
+		 * @return String
 		 */
 		public function getTitle($out='<!-- TITLE -->') {
 			return $out .= "<title>{$this->page->info['Title']}</title>";
 		}
-		/** getStyles
+		/**
 		 * This function gets the stylesheets for the website requested
+		 * @return String
 		 */
 		public function getStyles($out = '<!-- STYLES -->') {
 			$themePaths = [$this->theme_path_default, $this->theme_path];
@@ -397,8 +402,9 @@
 			}
 			return $out;
 		}
-		/** getScripts
+		/**
 		 * This function gets the scripts for the website requested
+		 * @return String
 		 */
 		public function getScripts($out='<!-- SCRIPTS -->') {
 			$themePaths = [$this->theme_path_default, $this->theme_path];
@@ -418,14 +424,16 @@
 			}
 			return $out;
 		}
-		/** getCustomHead
+		/**
 		 * This function gets the custom head variables for the website requested
+		 * @return String
 		 */
 		public function getCustomHead($out='<!-- CUSTOM HEAD -->') {
 			return $out .= $this->page->info['Head'];
 		}
-		/** getFavicon
+		/**
 		 * This function gets the favicon for the website requested
+		 * @return String
 		 */
 		public function getFavicon($out = '<!-- FAVICON -->') {
 			$image = $this->db->array(sprintf("SELECT `Favicon` FROM `Pages` WHERE `ID`='%s'", $this->theme_id))[0];
@@ -445,9 +453,9 @@
 			$out .= sprintf('<meta name="msapplication-TileImage" content="/MD_Static/Favicons/%s/ms-icon-144x144.png">', $image);
 			return $out .= '<meta name="msapplication-TileColor" content="#ffffff">';
 		}
-		/** generateSectionRow
+		/**
 		 * This function is run to generate the segmented body for the website requested
-		 * @param {string} $section
+		 * @param String $section
 		 */
 		public function generateSectionRow($section) {
 			$out = NULL; $cnt=0;
@@ -526,7 +534,7 @@
 	class Page {
 		protected $db, $permalinks;
 		public $page_id, $info, $permalink;
-		/** __construct
+		/**
 		 * This is a constructor function the help build the class
 		 * @param Int
 		 * @param String
@@ -552,10 +560,10 @@
 			}
 		}
 
-		/** getConfiguration
+		/**
 		 * This function will get the configuration value for the requested setting
-		 * @param string $cnf
-		 * @return string
+		 * @param String $cnf
+		 * @return String
 		 */
 		public function getConfiguration($cnf) {
 			return $this->db->row("SELECT `Field` FROM `Configuration` WHERE `Variable`='$cnf'")[0];
