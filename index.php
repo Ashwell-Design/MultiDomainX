@@ -19,7 +19,7 @@ if($db_c->num_rows(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", $_SERV
 		$theme = new Theme($website->info['Theme'], $db_c, $website->info['ID'], $page, $page->getConfiguration('DefaultTheme'));
 		$themeinfo = $theme->info;
 		if(file_exists($file = __ROOT__."/".__QSFILE__.".".__QSEXT__)) {
-			header("Content-Type: " . $tools->get_mime_type(__QSFILE__.".".__QSEXT__) . "; charset=UTF-8;");
+			header("Content-Type: ".$tools->get_mime_type(__QSFILE__.".".__QSEXT__)."; charset=UTF-8;");
 			require_once($file);
 		} else {
 			print($theme->generate());
