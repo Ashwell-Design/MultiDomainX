@@ -11,10 +11,10 @@ require_once('Classes.php');
 $db_c = new DB('central');
 $db_a = new DB('metrics');
 $tools = new Tools($db_c);
-print_r('Here');
 if($db_c->num_rows(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", $_SERVER['SERVER_NAME'])) > 0) {
 	$website = new Website($_SERVER['SERVER_NAME'], $db_c);
 	$page = new Page($website->info['ID'], __PERMALINK__, $db_c);
+	print_r($page);
 	if($page->page_id) {
 		$theme = new Theme($website->info['Theme'], $db_c, $website->info['ID'], $page, $page->getConfiguration('DefaultTheme'));
 		$themeinfo = $theme->info;
