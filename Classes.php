@@ -548,7 +548,7 @@
 			foreach ($this->permalinks as $route) {
 				$pattern = '#^' . $route[0] . '$#'; // Add delimiters and anchors for exact matching
 				if (preg_match($pattern, $permalink)) {
-					$this->page_id = $this->db->array(sprintf("SELECT `ID` FROM `Pages` WHERE `Permalink`='%s' AND \Domain\=%s", $route[0], $dom_id))[0];
+					$this->page_id = $this->db->array(sprintf("SELECT `ID` FROM `Pages` WHERE `Permalink`='%s' AND `Domain`=%s", $route[0], $dom_id))[0];
 					break;
 				}
 			}
