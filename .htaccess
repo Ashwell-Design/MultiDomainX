@@ -47,7 +47,9 @@
 
 		RewriteCond %{REQUEST_FILENAME} !-d
 		RewriteCond %{REQUEST_FILENAME} !-f
-		RewriteRule ^(.*)$ index.php?perma=/$1 [QSA,L]
+
+		RewriteRule ^([0-9a-zA-Z\_\-\.\*]+)/$ /index.php?perma=$1 [END,L,QSA]
+		RewriteRule ^$ /index.php [END,L,QSA]
 	</IfModule>
 #
 #	Enable text-compression for static files
