@@ -2,7 +2,7 @@
 ini_set('display_errors', '1'); error_reporting(E_ALL);
 
 define('__ROOT__',		dirname(__FILE__));
-define('__PERMALINK__',	(isset($_GET['perma']))	? '/'.strtolower($_GET['perma']): '/');
+define('__PERMALINK__',	(isset($_GET['perma']))	? '/'.strtolower($_GET['perma']).'/': '/');
 define('__QSFILE__',	isset($_GET['file'])	? $_GET['file'] : "doesnt");
 define('__QSEXT__',		isset($_GET['ext'])		? $_GET['ext'] : "exist");
 require_once('Classes.php');
