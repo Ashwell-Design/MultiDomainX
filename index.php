@@ -13,7 +13,6 @@ $tools = new Tools($db_c);
 if($db_c->num_rows(sprintf("SELECT * FROM `Domains` WHERE `Domain`='%s'", $_SERVER['SERVER_NAME'])) > 0) {
 	$website = new Website($_SERVER['SERVER_NAME'], $db_c);
 	$page = new Page($website->info['ID'], __PERMALINK__, $db_c);
-	print($page->page_id);
 	if($page->page_id) {
 		$theme = new Theme($website->info['Theme'], $db_c, $website->info['ID'], $page, $page->getConfiguration('DefaultTheme'));
 		$themeinfo = $theme->info;
