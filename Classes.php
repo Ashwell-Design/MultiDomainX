@@ -41,6 +41,7 @@
 								while($item = $this->db->array($q)) {
 									[$name, $url, $pattern] = $item;
 									$active = null;
+									print($pattern);
 									if(preg_match('/'.$pattern.'/', __PERMALINK__)) {
 										$active = 'active';
 									}
