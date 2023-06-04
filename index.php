@@ -7,8 +7,6 @@ define('__QSFILE__',	isset($_GET['file'])	? $_GET['file'] : "doesnt");
 define('__QSEXT__',		isset($_GET['ext'])		? $_GET['ext'] : "exist");
 require_once('Classes.php');
 
-print_r(__PERMALINK__);
-
 $db_c = new DB('central');
 $db_a = new DB('metrics');
 $tools = new Tools($db_c);
