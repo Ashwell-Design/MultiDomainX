@@ -42,7 +42,7 @@
 									[$name, $url, $pattern] = $item;
 									$active = null;
 									print($pattern);
-									if(preg_match('/'.$pattern.'/', __PERMALINK__)) {
+									if(preg_match($pattern, __PERMALINK__)) {
 										$active = 'active';
 									}
 									$links .= "<li class=\"nav-item\"><a href=\"$url\" class=\"nav-link text-auto $active\" style=\"color: inherit;\" aria-current=\"page\">$name</a></li>";
