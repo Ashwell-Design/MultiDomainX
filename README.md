@@ -13,6 +13,14 @@ MultiDomainX is an innovative and user-friendly software solution designed to st
 - Cloud-based platform for easy access from anywhere
 - User-friendly interface
 
+## Requirements
+
+- Apache v2.4.54.2
+  - mod_rewrite enabled
+  - mod_headers enabled
+  - mod_deflate enabled
+- PHP 8.0.26
+
 ## Installation
 
 Instructions go here.

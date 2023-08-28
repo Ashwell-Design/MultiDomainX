@@ -39,10 +39,16 @@
 								$links = '';
 								$q = $this->db->query("SELECT `Name`, `Url`, `Permalink` FROM `Pages` WHERE `Domain`=$dom_id AND `Menu?`=1");
 								while($item = $this->db->array($q)) {
-									[$name, $url, $pattern] = $item;
-									$active = null;
-									if(preg_match($pattern, __PERMALINK__)) {
-										$active = 'active';
+									[$name, $url, $perm] = $item;
+									$active=null;
+									try {
+										if(preg_match($perm, __PERMALINK__)) {
+											$active = 'active';
+										}
+									} catch (Error $er) {
+										if($perm == __PERMALINK__) {
+											$active = 'active';
+										}
 									}
 									$links .= "<li class=\"nav-item\"><a href=\"$url\" class=\"nav-link text-auto $active\" style=\"color: inherit;\" aria-current=\"page\">$name</a></li>";
 								}
@@ -436,7 +442,7 @@
 		 * @return String
 		 */
 		public function getFavicon($out = '<!-- FAVICON -->') {
-			$image = $this->db->array(sprintf("SELECT `Favicon` FROM `Pages` WHERE `ID`='%s'", $this->theme_id))[0];
+			$image = $this->db->array(sprintf("SELECT `Favicon` FROM `Pages` WHERE `ID`='%s'", $this->page->page_id))[0];
 			$out .= sprintf('<link rel="apple-touch-icon" sizes="57x57" href="/MD_Static/Favicons/%s/apple-icon-57x57.png">', $image);
 			$out .= sprintf('<link rel="apple-touch-icon" sizes="60x60" href="/MD_Static/Favicons/%s/apple-icon-60x60.png">', $image);
 			$out .= sprintf('<link rel="apple-touch-icon" sizes="72x72" href="/MD_Static/Favicons/%s/apple-icon-72x72.png">', $image);

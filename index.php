@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors', '1'); error_reporting(E_ALL);
+ini_set('display_errors', '1'); error_reporting(E_ERROR);
 
 define('__ROOT__',		dirname(__FILE__));
 define('__PERMALINK__',	(isset($_GET['perma']))	? '/'.strtolower($_GET['perma']).'/': '/');
